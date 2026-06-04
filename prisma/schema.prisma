@@ -1,0 +1,379 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OrganizationType {
+  PELADA
+  TEAM
+}
+
+enum MembershipRole {
+  OWNER
+  ADMIN
+  CAPTAIN
+  PLAYER
+}
+
+enum MembershipStatus {
+  ACTIVE
+  INVITED
+  SUSPENDED
+  LEFT
+}
+
+enum AttendanceStatus {
+  PENDING
+  CONFIRMED
+  DECLINED
+  WAITLISTED
+}
+
+enum MatchStatus {
+  SCHEDULED
+  IN_PROGRESS
+  FINISHED
+  CANCELLED
+}
+
+enum MatchResult {
+  WIN
+  DRAW
+  LOSS
+}
+
+enum InviteStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  CANCELLED
+  EXPIRED
+}
+
+enum FinancialTransactionType {
+  INCOME
+  EXPENSE
+}
+
+enum FinancialTransactionStatus {
+  PENDING
+  PAID
+  CANCELLED
+}
+
+model User {
+  id            String   @id @default(cuid())
+  name          String
+  email         String   @unique
+  emailVerified DateTime?
+  imageUrl      String?
+  phone         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  memberships                  Membership[]
+  peladaAttendances            PeladaAttendance[]
+  peladaStats                  PeladaPlayerStat[]
+  peladaMvpAwards              PeladaOccurrence[]    @relation("PeladaOccurrenceMvp")
+  peladaMvpVotesGiven          PeladaMvpVote[]       @relation("PeladaMvpVotesGiven")
+  peladaMvpVotesReceived       PeladaMvpVote[]       @relation("PeladaMvpVotesReceived")
+  matchAttendances             MatchAttendance[]
+  matchLineupEntries           MatchLineupEntry[]
+  matchStats                   MatchPlayerStat[]
+  createdOrganizations         Organization[]        @relation("OrganizationCreatedBy")
+  createdPeladaOccurrences     PeladaOccurrence[]    @relation("PeladaOccurrenceCreatedBy")
+  createdMatches               Match[]               @relation("MatchCreatedBy")
+  createdFinancialTransactions FinancialTransaction[] @relation("FinancialTransactionCreatedBy")
+  sentOpponentInvites          OpponentInvite[]      @relation("OpponentInviteSentBy")
+
+  @@index([email])
+}
+
+model Organization {
+  id          String           @id @default(cuid())
+  type        OrganizationType
+  name        String
+  slug        String           @unique
+  description String?
+  logoUrl     String?
+  city        String?
+  state       String?
+  isActive    Boolean          @default(true)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  createdById String?
+  createdBy   User?   @relation("OrganizationCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+
+  memberships           Membership[]
+  peladaOccurrences     PeladaOccurrence[]
+  homeMatches           Match[]                @relation("MatchHomeOrganization")
+  awayMatches           Match[]                @relation("MatchAwayOrganization")
+  matchAttendances      MatchAttendance[]
+  financialTransactions FinancialTransaction[]
+  rankings              RankingSnapshot[]
+  sentOpponentInvites   OpponentInvite[]       @relation("OpponentInviteFromOrganization")
+  receivedOpponentInvites OpponentInvite[]     @relation("OpponentInviteToOrganization")
+
+  @@index([type])
+  @@index([isActive])
+  @@index([createdById])
+}
+
+model Membership {
+  id             String           @id @default(cuid())
+  role           MembershipRole   @default(PLAYER)
+  status         MembershipStatus @default(ACTIVE)
+  nickname       String?
+  shirtNumber    Int?
+  position       String?
+  joinedAt       DateTime         @default(now())
+  leftAt         DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  userId         String
+  organizationId String
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, organizationId])
+  @@index([organizationId, role])
+  @@index([organizationId, status])
+  @@index([userId])
+}
+
+model PeladaOccurrence {
+  id          String   @id @default(cuid())
+  title       String
+  scheduledAt DateTime
+  location    String
+  notes       String?
+  isCancelled Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  organizationId String
+  createdById    String?
+  mvpUserId      String?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdBy    User?        @relation("PeladaOccurrenceCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  mvp          User?        @relation("PeladaOccurrenceMvp", fields: [mvpUserId], references: [id], onDelete: SetNull)
+
+  attendances PeladaAttendance[]
+  playerStats PeladaPlayerStat[]
+  mvpVotes    PeladaMvpVote[]
+
+  @@index([organizationId, scheduledAt])
+  @@index([createdById])
+  @@index([mvpUserId])
+}
+
+model PeladaAttendance {
+  id        String           @id @default(cuid())
+  status    AttendanceStatus @default(PENDING)
+  note      String?
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  peladaOccurrenceId String
+  userId             String
+
+  peladaOccurrence PeladaOccurrence @relation(fields: [peladaOccurrenceId], references: [id], onDelete: Cascade)
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([peladaOccurrenceId, userId])
+  @@index([userId])
+  @@index([peladaOccurrenceId, status])
+}
+
+model PeladaPlayerStat {
+  id        String   @id @default(cuid())
+  goals     Int      @default(0)
+  assists   Int      @default(0)
+  isMvp     Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  peladaOccurrenceId String
+  userId             String
+
+  peladaOccurrence PeladaOccurrence @relation(fields: [peladaOccurrenceId], references: [id], onDelete: Cascade)
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([peladaOccurrenceId, userId])
+  @@index([userId])
+}
+
+model PeladaMvpVote {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  peladaOccurrenceId String
+  voterUserId        String
+  votedUserId        String
+
+  peladaOccurrence PeladaOccurrence @relation(fields: [peladaOccurrenceId], references: [id], onDelete: Cascade)
+  voter            User             @relation("PeladaMvpVotesGiven", fields: [voterUserId], references: [id], onDelete: Cascade)
+  voted            User             @relation("PeladaMvpVotesReceived", fields: [votedUserId], references: [id], onDelete: Cascade)
+
+  @@unique([peladaOccurrenceId, voterUserId])
+  @@index([peladaOccurrenceId, votedUserId])
+  @@index([voterUserId])
+  @@index([votedUserId])
+}
+
+model Match {
+  id                 String      @id @default(cuid())
+  title              String?
+  opponentName       String?
+  scheduledAt        DateTime
+  location           String
+  status             MatchStatus @default(SCHEDULED)
+  homeScore          Int?
+  awayScore          Int?
+  result             MatchResult?
+  notes              String?
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+
+  homeOrganizationId String
+  awayOrganizationId String?
+  createdById        String?
+
+  homeOrganization Organization  @relation("MatchHomeOrganization", fields: [homeOrganizationId], references: [id], onDelete: Cascade)
+  awayOrganization Organization? @relation("MatchAwayOrganization", fields: [awayOrganizationId], references: [id], onDelete: SetNull)
+  createdBy        User?         @relation("MatchCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+
+  attendances MatchAttendance[]
+  lineup      MatchLineupEntry[]
+  playerStats MatchPlayerStat[]
+
+  @@index([homeOrganizationId, scheduledAt])
+  @@index([awayOrganizationId])
+  @@index([status])
+  @@index([createdById])
+}
+
+model MatchAttendance {
+  id        String           @id @default(cuid())
+  status    AttendanceStatus @default(PENDING)
+  note      String?
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  matchId        String
+  userId         String
+  organizationId String
+
+  match        Match        @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([matchId, userId])
+  @@index([organizationId, status])
+  @@index([userId])
+}
+
+model MatchLineupEntry {
+  id        String   @id @default(cuid())
+  position  String?
+  isStarter Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  matchId String
+  userId  String
+
+  match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([matchId, userId])
+  @@index([userId])
+  @@index([matchId, isStarter])
+}
+
+model MatchPlayerStat {
+  id        String   @id @default(cuid())
+  goals     Int      @default(0)
+  assists   Int      @default(0)
+  yellowCards Int    @default(0)
+  redCards    Int    @default(0)
+  rating    Decimal? @db.Decimal(3, 1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  matchId String
+  userId  String
+
+  match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([matchId, userId])
+  @@index([userId])
+}
+
+model FinancialTransaction {
+  id          String                     @id @default(cuid())
+  type        FinancialTransactionType
+  status      FinancialTransactionStatus @default(PENDING)
+  amountCents Int
+  description String
+  occurredAt  DateTime                   @default(now())
+  createdAt   DateTime                   @default(now())
+  updatedAt   DateTime                   @updatedAt
+
+  organizationId String
+  createdById    String?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdBy    User?        @relation("FinancialTransactionCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@index([organizationId, occurredAt])
+  @@index([organizationId, type])
+  @@index([createdById])
+}
+
+model RankingSnapshot {
+  id        String   @id @default(cuid())
+  scope     String
+  payload   Json
+  startsAt  DateTime?
+  endsAt    DateTime?
+  createdAt DateTime @default(now())
+
+  organizationId String
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId, scope, createdAt])
+}
+
+model OpponentInvite {
+  id          String       @id @default(cuid())
+  status      InviteStatus @default(PENDING)
+  message     String?
+  scheduledAt DateTime?
+  location    String?
+  expiresAt   DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  fromOrganizationId String
+  toOrganizationId   String
+  sentById           String?
+
+  fromOrganization Organization @relation("OpponentInviteFromOrganization", fields: [fromOrganizationId], references: [id], onDelete: Cascade)
+  toOrganization   Organization @relation("OpponentInviteToOrganization", fields: [toOrganizationId], references: [id], onDelete: Cascade)
+  sentBy           User?        @relation("OpponentInviteSentBy", fields: [sentById], references: [id], onDelete: SetNull)
+
+  @@index([fromOrganizationId, status])
+  @@index([toOrganizationId, status])
+  @@index([sentById])
+}
