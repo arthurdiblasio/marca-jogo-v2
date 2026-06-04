@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --font-sans: Manrope, ui-sans-serif, system-ui, sans-serif;
+
+  --background: #f8fafc;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --primary: #16a34a;
+  --primary-foreground: #ffffff;
+  --secondary: #111827;
+  --secondary-foreground: #ffffff;
+  --accent: #facc15;
+  --accent-foreground: #111827;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #16a34a;
+
+  --radius: 0.5rem;
+  --shadow-card: none;
+  --shadow-hover: 0 8px 18px rgb(15 23 42 / 0.08);
+  --shadow-modal: 0 18px 48px rgb(15 23 42 / 0.16);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #07110b;
+  --foreground: #f8fafc;
+  --card: #0d1b13;
+  --card-foreground: #f8fafc;
+  --popover: #0d1b13;
+  --popover-foreground: #f8fafc;
+  --primary: #22c55e;
+  --primary-foreground: #052e16;
+  --secondary: #f8fafc;
+  --secondary-foreground: #111827;
+  --accent: #facc15;
+  --accent-foreground: #111827;
+  --muted: #14231a;
+  --muted-foreground: #94a3b8;
+  --border: #203329;
+  --input: #203329;
+  --ring: #22c55e;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --shadow-card: var(--shadow-card);
+  --shadow-hover: var(--shadow-hover);
+  --shadow-modal: var(--shadow-modal);
+  --breakpoint-xs: 30rem;
+  --breakpoint-3xl: 100rem;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.heading-xl {
+  font-size: clamp(2rem, 7vw, 4.5rem);
+  line-height: 0.94;
+  font-weight: 900;
+}
+
+.heading-lg {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.05;
+  font-weight: 900;
+}
+
+.heading-md {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1.15;
+  font-weight: 850;
+}
+
+.body-lg {
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+.body-md {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.body-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.caption {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.sport-section {
+  border-top: 1px solid var(--border);
+  background: var(--card);
+}
+
+.sport-row {
+  border-bottom: 1px solid var(--border);
+}
+
+.sport-row:last-child {
+  border-bottom: 0;
+}
