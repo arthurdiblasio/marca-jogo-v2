@@ -65,32 +65,105 @@ enum FinancialTransactionStatus {
   CANCELLED
 }
 
+enum Position {
+  GOALKEEPER
+  DEFENDER
+  FULLBACK
+  MIDFIELDER
+  WINGER
+  STRIKER
+}
+
+enum PreferredFoot {
+  LEFT
+  RIGHT
+  BOTH
+}
+
 model User {
-  id            String   @id @default(cuid())
-  name          String
-  email         String   @unique
+  id String @id @default(cuid())
+
+  email         String    @unique
   emailVerified DateTime?
-  imageUrl      String?
-  phone         String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+
+  passwordHash String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile Profile?
 
   memberships                  Membership[]
   peladaAttendances            PeladaAttendance[]
   peladaStats                  PeladaPlayerStat[]
-  peladaMvpAwards              PeladaOccurrence[]    @relation("PeladaOccurrenceMvp")
-  peladaMvpVotesGiven          PeladaMvpVote[]       @relation("PeladaMvpVotesGiven")
-  peladaMvpVotesReceived       PeladaMvpVote[]       @relation("PeladaMvpVotesReceived")
+  peladaMvpAwards              PeladaOccurrence[]     @relation("PeladaOccurrenceMvp")
+  peladaMvpVotesGiven          PeladaMvpVote[]        @relation("PeladaMvpVotesGiven")
+  peladaMvpVotesReceived       PeladaMvpVote[]        @relation("PeladaMvpVotesReceived")
   matchAttendances             MatchAttendance[]
   matchLineupEntries           MatchLineupEntry[]
   matchStats                   MatchPlayerStat[]
-  createdOrganizations         Organization[]        @relation("OrganizationCreatedBy")
-  createdPeladaOccurrences     PeladaOccurrence[]    @relation("PeladaOccurrenceCreatedBy")
-  createdMatches               Match[]               @relation("MatchCreatedBy")
+  createdOrganizations         Organization[]         @relation("OrganizationCreatedBy")
+  createdPeladaOccurrences     PeladaOccurrence[]     @relation("PeladaOccurrenceCreatedBy")
+  createdMatches               Match[]                @relation("MatchCreatedBy")
   createdFinancialTransactions FinancialTransaction[] @relation("FinancialTransactionCreatedBy")
-  sentOpponentInvites          OpponentInvite[]      @relation("OpponentInviteSentBy")
+  sentOpponentInvites          OpponentInvite[]       @relation("OpponentInviteSentBy")
+  passwordResetTokens          PasswordResetToken[]
 
   @@index([email])
+}
+
+model PasswordResetToken {
+  id String @id @default(cuid())
+
+  token String @unique
+
+  userId String
+
+  expiresAt DateTime
+
+  usedAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+}
+
+model Profile {
+  id String @id @default(cuid())
+
+  userId String @unique
+
+  fullName String
+  nickname String?
+
+  imageUrl String?
+
+  phone String?
+
+  birthDate DateTime?
+
+  city  String?
+  state String?
+
+  position Position?
+
+  preferredFoot PreferredFoot?
+
+  shirtNumber Int?
+
+  bio String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([fullName])
+  @@index([city, state])
+  @@index([position])
 }
 
 model Organization {
@@ -109,15 +182,15 @@ model Organization {
   createdById String?
   createdBy   User?   @relation("OrganizationCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
 
-  memberships           Membership[]
-  peladaOccurrences     PeladaOccurrence[]
-  homeMatches           Match[]                @relation("MatchHomeOrganization")
-  awayMatches           Match[]                @relation("MatchAwayOrganization")
-  matchAttendances      MatchAttendance[]
-  financialTransactions FinancialTransaction[]
-  rankings              RankingSnapshot[]
-  sentOpponentInvites   OpponentInvite[]       @relation("OpponentInviteFromOrganization")
-  receivedOpponentInvites OpponentInvite[]     @relation("OpponentInviteToOrganization")
+  memberships             Membership[]
+  peladaOccurrences       PeladaOccurrence[]
+  homeMatches             Match[]                @relation("MatchHomeOrganization")
+  awayMatches             Match[]                @relation("MatchAwayOrganization")
+  matchAttendances        MatchAttendance[]
+  financialTransactions   FinancialTransaction[]
+  rankings                RankingSnapshot[]
+  sentOpponentInvites     OpponentInvite[]       @relation("OpponentInviteFromOrganization")
+  receivedOpponentInvites OpponentInvite[]       @relation("OpponentInviteToOrganization")
 
   @@index([type])
   @@index([isActive])
@@ -125,16 +198,16 @@ model Organization {
 }
 
 model Membership {
-  id             String           @id @default(cuid())
-  role           MembershipRole   @default(PLAYER)
-  status         MembershipStatus @default(ACTIVE)
-  nickname       String?
-  shirtNumber    Int?
-  position       String?
-  joinedAt       DateTime         @default(now())
-  leftAt         DateTime?
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
+  id          String           @id @default(cuid())
+  role        MembershipRole   @default(PLAYER)
+  status      MembershipStatus @default(ACTIVE)
+  nickname    String?
+  shirtNumber Int?
+  position    String?
+  joinedAt    DateTime         @default(now())
+  leftAt      DateTime?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
 
   userId         String
   organizationId String
@@ -153,6 +226,8 @@ model PeladaOccurrence {
   title       String
   scheduledAt DateTime
   location    String
+  lat         Decimal? @db.Decimal(10, 7)
+  lng         Decimal? @db.Decimal(10, 7)
   notes       String?
   isCancelled Boolean  @default(false)
   createdAt   DateTime @default(now())
@@ -230,18 +305,20 @@ model PeladaMvpVote {
 }
 
 model Match {
-  id                 String      @id @default(cuid())
-  title              String?
-  opponentName       String?
-  scheduledAt        DateTime
-  location           String
-  status             MatchStatus @default(SCHEDULED)
-  homeScore          Int?
-  awayScore          Int?
-  result             MatchResult?
-  notes              String?
-  createdAt          DateTime    @default(now())
-  updatedAt          DateTime    @updatedAt
+  id           String       @id @default(cuid())
+  title        String?
+  opponentName String?
+  scheduledAt  DateTime
+  location     String
+  lat          Decimal?     @db.Decimal(10, 7)
+  lng          Decimal?     @db.Decimal(10, 7)
+  status       MatchStatus  @default(SCHEDULED)
+  homeScore    Int?
+  awayScore    Int?
+  result       MatchResult?
+  notes        String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 
   homeOrganizationId String
   awayOrganizationId String?
@@ -300,14 +377,14 @@ model MatchLineupEntry {
 }
 
 model MatchPlayerStat {
-  id        String   @id @default(cuid())
-  goals     Int      @default(0)
-  assists   Int      @default(0)
-  yellowCards Int    @default(0)
-  redCards    Int    @default(0)
-  rating    Decimal? @db.Decimal(3, 1)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(cuid())
+  goals       Int      @default(0)
+  assists     Int      @default(0)
+  yellowCards Int      @default(0)
+  redCards    Int      @default(0)
+  rating      Decimal? @db.Decimal(3, 1)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   matchId String
   userId  String
@@ -341,12 +418,12 @@ model FinancialTransaction {
 }
 
 model RankingSnapshot {
-  id        String   @id @default(cuid())
+  id        String    @id @default(cuid())
   scope     String
   payload   Json
   startsAt  DateTime?
   endsAt    DateTime?
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
 
   organizationId String
 
