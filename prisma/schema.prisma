@@ -86,7 +86,8 @@ model User {
   email         String    @unique
   emailVerified DateTime?
 
-  passwordHash String
+  passwordHash String?
+  googleId     String? @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -4,7 +4,7 @@ import { Toaster } from "sonner";
 
 import { AppShell } from "@/components/layout/app-shell";
 import "@/styles/globals.css";
-
+import { GoogleProvider } from "@/providers/google-provider";
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-sans"
@@ -22,9 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${manrope.variable} antialiased`}>
-        <AppShell>{children}</AppShell>
-        <Toaster richColors position="top-right" />
+      <body className={`${manrope.className} antialiased`}>
+        <GoogleProvider>
+          <AppShell>{children}</AppShell>
+          <Toaster richColors position="top-right" />
+        </GoogleProvider>
       </body>
     </html>
   );

@@ -1,12 +1,7 @@
+import { registerUser } from "@/modules/auth/actions/register-user";
+import { registerUserSchema } from "@/modules/auth/schemas/register-user-schema";
 import { NextResponse } from "next/server";
-
 import { ZodError } from "zod";
-
-import { makeRegisterUserUseCase } from "@/modules/auth/application/factories/make-register-user-use-case";
-
-import { EmailAlreadyInUseError } from "@/modules/auth/application/errors/email-already-in-use-error";
-
-import { registerUserSchema } from "@/modules/auth/presentation/validators/register-user.schema";
 
 export async function POST(request: Request) {
   try {
@@ -14,9 +9,7 @@ export async function POST(request: Request) {
 
     const data = registerUserSchema.parse(body);
 
-    const useCase = makeRegisterUserUseCase();
-
-    const user = await useCase.execute(data);
+    const user = await registerUser(data);
 
     return NextResponse.json(
       {
@@ -32,7 +25,6 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Validation failed",
           errors: error.flatten(),
         },
         {
@@ -41,7 +33,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (error instanceof EmailAlreadyInUseError) {
+    if (error instanceof Error && error.message === "Email already exists") {
       return NextResponse.json(
         {
           success: false,
