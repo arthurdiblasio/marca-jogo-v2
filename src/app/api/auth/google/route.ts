@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 import { loginWithGoogle } from "@/modules/auth/actions/login-with-google";
 
-import { jwtService } from "@/modules/auth/services/jwt-service";
+import { createSession } from "@/shared/auth/auth-session";
 
 const googleClient = new OAuth2Client(
   process.env.GOOGLE_CLIENT_ID,
@@ -23,22 +23,11 @@ export async function POST(request: Request) {
     email: email!,
     name: name!,
   });
-  const token = await jwtService.sign({
+  await createSession({
     id: user.id,
     email: user.email,
   });
-  const cookieStore = await cookies();
 
-  cookieStore.set("access_token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-
-    sameSite: "lax",
-
-    path: "/",
-
-    maxAge: 60 * 60 * 24 * 7,
-  });
   return NextResponse.json({
     success: true,
   });

@@ -1,13 +1,10 @@
-import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-
+import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
-import { makeLoginUserUseCase } from "@/modules/auth/application/factories/make-login-user-use-case";
-
-import { InvalidCredentialsError } from "@/modules/auth/application/errors/invalid-credentials-error";
-
-import { loginUserSchema } from "@/modules/auth/presentation/validators/login-user.schema";
+import { loginUser } from "@/modules/auth/actions/login-user";
+import { loginUserSchema } from "@/modules/auth/schemas/login-user-schema";
+import { createSession } from "@/shared/auth/auth-session";
 
 export async function POST(request: Request) {
   try {
@@ -15,42 +12,20 @@ export async function POST(request: Request) {
 
     const data = loginUserSchema.parse(body);
 
-    const useCase = makeLoginUserUseCase();
+    const user = await loginUser(data);
 
-    const result = await useCase.execute(data);
-
-    const cookieStore = await cookies();
-
-    cookieStore.set("access_token", result.token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
+    await createSession({
+      id: user.id,
+      email: user.email,
     });
-
     return NextResponse.json({
       success: true,
-      data: result.user,
     });
   } catch (error) {
-    if (error instanceof InvalidCredentialsError) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: error.message,
-        },
-        {
-          status: 401,
-        },
-      );
-    }
-
     if (error instanceof ZodError) {
       return NextResponse.json(
         {
           success: false,
-          message: "Validation failed",
           errors: error.flatten(),
         },
         {
@@ -59,7 +34,17 @@ export async function POST(request: Request) {
       );
     }
 
-    console.error(error);
+    if (error instanceof Error) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: error.message,
+        },
+        {
+          status: 400,
+        },
+      );
+    }
 
     return NextResponse.json(
       {

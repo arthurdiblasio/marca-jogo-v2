@@ -1,11 +1,11 @@
-export default function AuthLayout({
+import { requireGuest } from "@/shared/auth/require-guest";
+
+export default async function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <main className="min-h-screen bg-slate-50">
-      {children}
-    </main>
-  );
+  await requireGuest();
+
+  return children;
 }

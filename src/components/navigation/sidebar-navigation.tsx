@@ -1,17 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Bell, Search, Trophy } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Bell, LogOut, Search, Trophy } from "lucide-react";
 
 import { OrganizationSwitcher } from "@/components/navigation/organization-switcher";
 import { Button } from "@/components/ui/button";
 import { mainNavigation } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
+import { logoutRequest } from "@/modules/auth/services/auth-api";
 
 export function SidebarNavigation() {
   const pathname = usePathname();
+  const router = useRouter();
 
+  async function handleLogout() {
+    await logoutRequest();
+
+    router.replace("/");
+    router.refresh();
+  }
   return (
     <aside className="fixed left-0 top-0 z-30 hidden h-screen w-64 border-r bg-card p-3 lg:block">
       <div className="flex h-full flex-col">
@@ -60,6 +68,13 @@ export function SidebarNavigation() {
           <p className="mt-1 text-3xl font-black leading-none">2026</p>
           <p className="body-sm mt-2 font-bold text-muted-foreground">Futebol amador em modo profissional.</p>
         </div>
+        <Button
+          variant="ghost"
+          onClick={handleLogout}
+        >
+          <LogOut className="mr-2 h-4 w-4" />
+          Sair
+        </Button>
       </div>
     </aside>
   );

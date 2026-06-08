@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   LockKeyhole,
   Mail,
-  User,
 } from "lucide-react";
 import {
   useForm,
@@ -20,15 +19,15 @@ import { FormField } from "@/components/ui/form-field";
 import { InputWithIcon } from "@/components/ui/input-with-icon";
 
 import {
-  registerUserSchema,
-  type RegisterUserInput,
-} from "@/modules/auth/schemas/register-user-schema";
+  loginUserSchema,
+  type LoginUserInput,
+} from "@/modules/auth/schemas/login-user-schema";
 
 import { GoogleButton } from "./google-button";
-import { registerRequest } from "@/modules/auth/services/auth-api";
 import { PasswordInput } from "../ui/password-input";
+import { loginRequest } from "@/modules/auth/services/auth-api";
 
-export function RegisterForm() {
+export function LoginForm() {
   const router = useRouter();
 
   const {
@@ -38,28 +37,30 @@ export function RegisterForm() {
       errors,
       isSubmitting,
     },
-  } = useForm<RegisterUserInput>({
+  } = useForm<LoginUserInput>({
     resolver: zodResolver(
-      registerUserSchema,
+      loginUserSchema,
     ),
   });
 
   async function onSubmit(
-    data: RegisterUserInput,
+    data: LoginUserInput,
   ) {
     try {
-      await registerRequest(data);
+      await loginRequest(data);
 
       toast.success(
-        "Conta criada com sucesso!",
+        "Login realizado com sucesso",
       );
 
-      router.push("/login");
+      router.replace(
+        "/dashboard",
+      );
     } catch (error) {
       toast.error(
         error instanceof Error
           ? error.message
-          : "Erro ao criar conta",
+          : "Erro ao realizar login",
       );
     }
   }
@@ -74,28 +75,6 @@ export function RegisterForm() {
       <GoogleButton />
 
       <Divider />
-
-      <FormField
-        label="Nome Completo"
-        htmlFor="fullName"
-        error={
-          errors.fullName?.message
-        }
-      >
-        <InputWithIcon
-          id="fullName"
-          icon={
-            <User className="h-4 w-4" />
-          }
-          placeholder="Seu nome completo"
-          hasError={
-            !!errors.fullName
-          }
-          {...register(
-            "fullName",
-          )}
-        />
-      </FormField>
 
       <FormField
         label="Email"
@@ -122,7 +101,8 @@ export function RegisterForm() {
         label="Senha"
         htmlFor="password"
         error={
-          errors.password?.message
+          errors.password
+            ?.message
         }
       >
         <PasswordInput
@@ -135,45 +115,42 @@ export function RegisterForm() {
         />
       </FormField>
 
-      <FormField
-        label="Confirmar Senha"
-        htmlFor="confirmPassword"
-        error={
-          errors
-            .confirmPassword
-            ?.message
-        }
-      >
-        <PasswordInput
-          id="confirmPassword"
-          placeholder="********"
-          hasError={
-            !!errors.confirmPassword
-          }
-          {...register("confirmPassword")}
-        />
-      </FormField>
+      <div className="flex justify-end">
+        <Link
+          href="/forgot-password"
+          className="
+            text-sm
+            font-medium
+            text-green-600
+            transition-colors
+            hover:text-green-700
+          "
+        >
+          Esqueci minha senha
+        </Link>
+      </div>
 
       <Button
         type="submit"
         disabled={isSubmitting}
       >
         {isSubmitting
-          ? "Criando conta..."
-          : "Criar Conta"}
+          ? "Entrando..."
+          : "Entrar"}
       </Button>
 
       <p className="text-center text-sm text-slate-600">
-        Já possui uma conta?{" "}
+        Ainda não possui conta?{" "}
         <Link
-          href="/login"
+          href="/register"
           className="
             font-semibold
             text-green-600
+            transition-colors
             hover:text-green-700
           "
         >
-          Entrar
+          Criar conta
         </Link>
       </p>
     </form>
