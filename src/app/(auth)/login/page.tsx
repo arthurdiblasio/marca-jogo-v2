@@ -6,9 +6,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-slate-50">
       <AuthHeader />
 
-      <section className="mx-auto max-w-md px-6 py-8">
-        <LoginForm />
-      </section>
+      <LoginForm />
     </div>
   );
 }

@@ -155,3 +155,29 @@ body {
 .sport-row:last-child {
   border-bottom: 0;
 }
+
+@keyframes football {
+  0% {
+    transform: translateX(0);
+  }
+
+  45% {
+    transform: translateX(240px);
+  }
+
+  50% {
+    transform: translateX(240px) scale(1.15);
+  }
+
+  55% {
+    transform: translateX(240px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-football {
+  animation: football 2.2s infinite ease-in-out;
+}

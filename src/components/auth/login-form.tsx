@@ -26,6 +26,8 @@ import {
 import { GoogleButton } from "./google-button";
 import { PasswordInput } from "../ui/password-input";
 import { loginRequest } from "@/modules/auth/services/auth-api";
+import { useState } from "react";
+import { FootballLoading } from "../loading/football-loading";
 
 export function LoginForm() {
   const router = useRouter();
@@ -43,20 +45,28 @@ export function LoginForm() {
     ),
   });
 
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
+
   async function onSubmit(
     data: LoginUserInput,
   ) {
     try {
+      console.log(data);
+      setIsAuthenticating(true);
+
       await loginRequest(data);
 
       toast.success(
         "Login realizado com sucesso",
       );
 
+      setIsAuthenticating(false);
+
       router.replace(
         "/dashboard",
       );
     } catch (error) {
+      setIsAuthenticating(false);
       toast.error(
         error instanceof Error
           ? error.message
@@ -65,7 +75,12 @@ export function LoginForm() {
     }
   }
 
+  if (isAuthenticating) {
+    return <FootballLoading />;
+  }
+
   return (
+
     <form
       onSubmit={handleSubmit(
         onSubmit,
