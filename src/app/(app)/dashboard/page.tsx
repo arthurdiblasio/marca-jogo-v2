@@ -1,24 +1,18 @@
-import { EventScoreboard } from "@/components/football/event-scoreboard";
-import { ParticipantList } from "@/components/football/participant-list";
-import { SportSection } from "@/components/football/sport-section";
-import { SportsRanking } from "@/components/football/sports-ranking";
-import { StatStrip } from "@/components/football/stat-strip";
-import { CtaSection } from "@/components/landing/cta-section";
-import { FeaturesSection } from "@/components/landing/features-section";
-import { HeroSection } from "@/components/landing/hero-section";
-import { MatchPreview } from "@/components/landing/match-preview";
-import { RankingPreview } from "@/components/landing/ranking-preview";
-import { PageTransition } from "@/components/motion/page-transition";
-import { PageHeader } from "@/components/navigation/page-header";
-import { peladaRanking, peladaStats } from "@/constants/mock-data";
+import { requireAuth } from "@/shared/auth/require-auth";
+import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
+import { EmptyOrgsState } from "@/components/organizations/empty-orgs-state";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const session = await requireAuth();
+  const orgs = await organizationRepository.findByUserId(session.id);
+
+  if (orgs.length === 0) {
+    return <EmptyOrgsState />;
+  }
+
   return (
-    <>
-      <HeroSection />
-      <FeaturesSection />
-      <MatchPreview />
-      <RankingPreview />
-      <CtaSection /></>
+    <div>
+      <h1 className="text-2xl font-black text-slate-900">Dashboard</h1>
+    </div>
   );
 }
