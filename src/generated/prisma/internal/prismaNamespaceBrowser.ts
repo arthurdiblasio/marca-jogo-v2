@@ -54,6 +54,7 @@ export const ModelName = {
   User: 'User',
   PasswordResetToken: 'PasswordResetToken',
   Profile: 'Profile',
+  ProfileModality: 'ProfileModality',
   Organization: 'Organization',
   Membership: 'Membership',
   PeladaOccurrence: 'PeladaOccurrence',
@@ -120,15 +121,28 @@ export const ProfileScalarFieldEnum = {
   birthDate: 'birthDate',
   city: 'city',
   state: 'state',
-  position: 'position',
   preferredFoot: 'preferredFoot',
   shirtNumber: 'shirtNumber',
   bio: 'bio',
+  onboardingStep: 'onboardingStep',
+  onboardingCompletedAt: 'onboardingCompletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
+
+
+export const ProfileModalityScalarFieldEnum = {
+  id: 'id',
+  modality: 'modality',
+  positions: 'positions',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  profileId: 'profileId'
+} as const
+
+export type ProfileModalityScalarFieldEnum = (typeof ProfileModalityScalarFieldEnum)[keyof typeof ProfileModalityScalarFieldEnum]
 
 
 export const OrganizationScalarFieldEnum = {
@@ -143,6 +157,7 @@ export const OrganizationScalarFieldEnum = {
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  modality: 'modality',
   createdById: 'createdById'
 } as const
 

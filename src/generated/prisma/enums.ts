@@ -94,16 +94,14 @@ export const FinancialTransactionStatus = {
 export type FinancialTransactionStatus = (typeof FinancialTransactionStatus)[keyof typeof FinancialTransactionStatus]
 
 
-export const Position = {
-  GOALKEEPER: 'GOALKEEPER',
-  DEFENDER: 'DEFENDER',
-  FULLBACK: 'FULLBACK',
-  MIDFIELDER: 'MIDFIELDER',
-  WINGER: 'WINGER',
-  STRIKER: 'STRIKER'
+export const SportModality = {
+  FIELD_11: 'FIELD_11',
+  SOCIETY_7: 'SOCIETY_7',
+  SOCIETY_8: 'SOCIETY_8',
+  FUTSAL_5: 'FUTSAL_5'
 } as const
 
-export type Position = (typeof Position)[keyof typeof Position]
+export type SportModality = (typeof SportModality)[keyof typeof SportModality]
 
 
 export const PreferredFoot = {

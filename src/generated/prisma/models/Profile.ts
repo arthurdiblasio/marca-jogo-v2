@@ -28,10 +28,12 @@ export type AggregateProfile = {
 
 export type ProfileAvgAggregateOutputType = {
   shirtNumber: number | null
+  onboardingStep: number | null
 }
 
 export type ProfileSumAggregateOutputType = {
   shirtNumber: number | null
+  onboardingStep: number | null
 }
 
 export type ProfileMinAggregateOutputType = {
@@ -44,10 +46,11 @@ export type ProfileMinAggregateOutputType = {
   birthDate: Date | null
   city: string | null
   state: string | null
-  position: $Enums.Position | null
   preferredFoot: $Enums.PreferredFoot | null
   shirtNumber: number | null
   bio: string | null
+  onboardingStep: number | null
+  onboardingCompletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -62,10 +65,11 @@ export type ProfileMaxAggregateOutputType = {
   birthDate: Date | null
   city: string | null
   state: string | null
-  position: $Enums.Position | null
   preferredFoot: $Enums.PreferredFoot | null
   shirtNumber: number | null
   bio: string | null
+  onboardingStep: number | null
+  onboardingCompletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -80,10 +84,11 @@ export type ProfileCountAggregateOutputType = {
   birthDate: number
   city: number
   state: number
-  position: number
   preferredFoot: number
   shirtNumber: number
   bio: number
+  onboardingStep: number
+  onboardingCompletedAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -92,10 +97,12 @@ export type ProfileCountAggregateOutputType = {
 
 export type ProfileAvgAggregateInputType = {
   shirtNumber?: true
+  onboardingStep?: true
 }
 
 export type ProfileSumAggregateInputType = {
   shirtNumber?: true
+  onboardingStep?: true
 }
 
 export type ProfileMinAggregateInputType = {
@@ -108,10 +115,11 @@ export type ProfileMinAggregateInputType = {
   birthDate?: true
   city?: true
   state?: true
-  position?: true
   preferredFoot?: true
   shirtNumber?: true
   bio?: true
+  onboardingStep?: true
+  onboardingCompletedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -126,10 +134,11 @@ export type ProfileMaxAggregateInputType = {
   birthDate?: true
   city?: true
   state?: true
-  position?: true
   preferredFoot?: true
   shirtNumber?: true
   bio?: true
+  onboardingStep?: true
+  onboardingCompletedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -144,10 +153,11 @@ export type ProfileCountAggregateInputType = {
   birthDate?: true
   city?: true
   state?: true
-  position?: true
   preferredFoot?: true
   shirtNumber?: true
   bio?: true
+  onboardingStep?: true
+  onboardingCompletedAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -249,10 +259,11 @@ export type ProfileGroupByOutputType = {
   birthDate: Date | null
   city: string | null
   state: string | null
-  position: $Enums.Position | null
   preferredFoot: $Enums.PreferredFoot | null
   shirtNumber: number | null
   bio: string | null
+  onboardingStep: number
+  onboardingCompletedAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: ProfileCountAggregateOutputType | null
@@ -290,13 +301,15 @@ export type ProfileWhereInput = {
   birthDate?: Prisma.DateTimeNullableFilter<"Profile"> | Date | string | null
   city?: Prisma.StringNullableFilter<"Profile"> | string | null
   state?: Prisma.StringNullableFilter<"Profile"> | string | null
-  position?: Prisma.EnumPositionNullableFilter<"Profile"> | $Enums.Position | null
   preferredFoot?: Prisma.EnumPreferredFootNullableFilter<"Profile"> | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.IntNullableFilter<"Profile"> | number | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
+  onboardingStep?: Prisma.IntFilter<"Profile"> | number
+  onboardingCompletedAt?: Prisma.DateTimeNullableFilter<"Profile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  modalityPositions?: Prisma.ProfileModalityListRelationFilter
 }
 
 export type ProfileOrderByWithRelationInput = {
@@ -309,13 +322,15 @@ export type ProfileOrderByWithRelationInput = {
   birthDate?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   state?: Prisma.SortOrderInput | Prisma.SortOrder
-  position?: Prisma.SortOrderInput | Prisma.SortOrder
   preferredFoot?: Prisma.SortOrderInput | Prisma.SortOrder
   shirtNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
+  onboardingStep?: Prisma.SortOrder
+  onboardingCompletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  modalityPositions?: Prisma.ProfileModalityOrderByRelationAggregateInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -331,13 +346,15 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   birthDate?: Prisma.DateTimeNullableFilter<"Profile"> | Date | string | null
   city?: Prisma.StringNullableFilter<"Profile"> | string | null
   state?: Prisma.StringNullableFilter<"Profile"> | string | null
-  position?: Prisma.EnumPositionNullableFilter<"Profile"> | $Enums.Position | null
   preferredFoot?: Prisma.EnumPreferredFootNullableFilter<"Profile"> | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.IntNullableFilter<"Profile"> | number | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
+  onboardingStep?: Prisma.IntFilter<"Profile"> | number
+  onboardingCompletedAt?: Prisma.DateTimeNullableFilter<"Profile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  modalityPositions?: Prisma.ProfileModalityListRelationFilter
 }, "id" | "userId">
 
 export type ProfileOrderByWithAggregationInput = {
@@ -350,10 +367,11 @@ export type ProfileOrderByWithAggregationInput = {
   birthDate?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   state?: Prisma.SortOrderInput | Prisma.SortOrder
-  position?: Prisma.SortOrderInput | Prisma.SortOrder
   preferredFoot?: Prisma.SortOrderInput | Prisma.SortOrder
   shirtNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
+  onboardingStep?: Prisma.SortOrder
+  onboardingCompletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ProfileCountOrderByAggregateInput
@@ -376,10 +394,11 @@ export type ProfileScalarWhereWithAggregatesInput = {
   birthDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
   city?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   state?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
-  position?: Prisma.EnumPositionNullableWithAggregatesFilter<"Profile"> | $Enums.Position | null
   preferredFoot?: Prisma.EnumPreferredFootNullableWithAggregatesFilter<"Profile"> | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.IntNullableWithAggregatesFilter<"Profile"> | number | null
   bio?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
+  onboardingStep?: Prisma.IntWithAggregatesFilter<"Profile"> | number
+  onboardingCompletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Profile"> | Date | string
 }
@@ -393,13 +412,15 @@ export type ProfileCreateInput = {
   birthDate?: Date | string | null
   city?: string | null
   state?: string | null
-  position?: $Enums.Position | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
+  onboardingStep?: number
+  onboardingCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutProfileInput
+  modalityPositions?: Prisma.ProfileModalityCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateInput = {
@@ -412,12 +433,14 @@ export type ProfileUncheckedCreateInput = {
   birthDate?: Date | string | null
   city?: string | null
   state?: string | null
-  position?: $Enums.Position | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
+  onboardingStep?: number
+  onboardingCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  modalityPositions?: Prisma.ProfileModalityUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUpdateInput = {
@@ -429,13 +452,15 @@ export type ProfileUpdateInput = {
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  position?: Prisma.NullableEnumPositionFieldUpdateOperationsInput | $Enums.Position | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingStep?: Prisma.IntFieldUpdateOperationsInput | number
+  onboardingCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
+  modalityPositions?: Prisma.ProfileModalityUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateInput = {
@@ -448,12 +473,14 @@ export type ProfileUncheckedUpdateInput = {
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  position?: Prisma.NullableEnumPositionFieldUpdateOperationsInput | $Enums.Position | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingStep?: Prisma.IntFieldUpdateOperationsInput | number
+  onboardingCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modalityPositions?: Prisma.ProfileModalityUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyInput = {
@@ -466,10 +493,11 @@ export type ProfileCreateManyInput = {
   birthDate?: Date | string | null
   city?: string | null
   state?: string | null
-  position?: $Enums.Position | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
+  onboardingStep?: number
+  onboardingCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -483,10 +511,11 @@ export type ProfileUpdateManyMutationInput = {
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  position?: Prisma.NullableEnumPositionFieldUpdateOperationsInput | $Enums.Position | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingStep?: Prisma.IntFieldUpdateOperationsInput | number
+  onboardingCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -501,10 +530,11 @@ export type ProfileUncheckedUpdateManyInput = {
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  position?: Prisma.NullableEnumPositionFieldUpdateOperationsInput | $Enums.Position | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingStep?: Prisma.IntFieldUpdateOperationsInput | number
+  onboardingCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -524,16 +554,18 @@ export type ProfileCountOrderByAggregateInput = {
   birthDate?: Prisma.SortOrder
   city?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  position?: Prisma.SortOrder
   preferredFoot?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   bio?: Prisma.SortOrder
+  onboardingStep?: Prisma.SortOrder
+  onboardingCompletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type ProfileAvgOrderByAggregateInput = {
   shirtNumber?: Prisma.SortOrder
+  onboardingStep?: Prisma.SortOrder
 }
 
 export type ProfileMaxOrderByAggregateInput = {
@@ -546,10 +578,11 @@ export type ProfileMaxOrderByAggregateInput = {
   birthDate?: Prisma.SortOrder
   city?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  position?: Prisma.SortOrder
   preferredFoot?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   bio?: Prisma.SortOrder
+  onboardingStep?: Prisma.SortOrder
+  onboardingCompletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -564,16 +597,23 @@ export type ProfileMinOrderByAggregateInput = {
   birthDate?: Prisma.SortOrder
   city?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  position?: Prisma.SortOrder
   preferredFoot?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   bio?: Prisma.SortOrder
+  onboardingStep?: Prisma.SortOrder
+  onboardingCompletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type ProfileSumOrderByAggregateInput = {
   shirtNumber?: Prisma.SortOrder
+  onboardingStep?: Prisma.SortOrder
+}
+
+export type ProfileScalarRelationFilter = {
+  is?: Prisma.ProfileWhereInput
+  isNot?: Prisma.ProfileWhereInput
 }
 
 export type ProfileCreateNestedOneWithoutUserInput = {
@@ -608,10 +648,6 @@ export type ProfileUncheckedUpdateOneWithoutUserNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutUserInput, Prisma.ProfileUpdateWithoutUserInput>, Prisma.ProfileUncheckedUpdateWithoutUserInput>
 }
 
-export type NullableEnumPositionFieldUpdateOperationsInput = {
-  set?: $Enums.Position | null
-}
-
 export type NullableEnumPreferredFootFieldUpdateOperationsInput = {
   set?: $Enums.PreferredFoot | null
 }
@@ -624,6 +660,28 @@ export type NullableIntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type ProfileCreateNestedOneWithoutModalityPositionsInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutModalityPositionsInput, Prisma.ProfileUncheckedCreateWithoutModalityPositionsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutModalityPositionsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneRequiredWithoutModalityPositionsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutModalityPositionsInput, Prisma.ProfileUncheckedCreateWithoutModalityPositionsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutModalityPositionsInput
+  upsert?: Prisma.ProfileUpsertWithoutModalityPositionsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutModalityPositionsInput, Prisma.ProfileUpdateWithoutModalityPositionsInput>, Prisma.ProfileUncheckedUpdateWithoutModalityPositionsInput>
+}
+
 export type ProfileCreateWithoutUserInput = {
   id?: string
   fullName: string
@@ -633,12 +691,14 @@ export type ProfileCreateWithoutUserInput = {
   birthDate?: Date | string | null
   city?: string | null
   state?: string | null
-  position?: $Enums.Position | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
+  onboardingStep?: number
+  onboardingCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  modalityPositions?: Prisma.ProfileModalityCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutUserInput = {
@@ -650,12 +710,14 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   birthDate?: Date | string | null
   city?: string | null
   state?: string | null
-  position?: $Enums.Position | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
+  onboardingStep?: number
+  onboardingCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  modalityPositions?: Prisma.ProfileModalityUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutUserInput = {
@@ -683,12 +745,14 @@ export type ProfileUpdateWithoutUserInput = {
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  position?: Prisma.NullableEnumPositionFieldUpdateOperationsInput | $Enums.Position | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingStep?: Prisma.IntFieldUpdateOperationsInput | number
+  onboardingCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modalityPositions?: Prisma.ProfileModalityUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutUserInput = {
@@ -700,14 +764,137 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  position?: Prisma.NullableEnumPositionFieldUpdateOperationsInput | $Enums.Position | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingStep?: Prisma.IntFieldUpdateOperationsInput | number
+  onboardingCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modalityPositions?: Prisma.ProfileModalityUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateWithoutModalityPositionsInput = {
+  id?: string
+  fullName: string
+  nickname?: string | null
+  imageUrl?: string | null
+  phone?: string | null
+  birthDate?: Date | string | null
+  city?: string | null
+  state?: string | null
+  preferredFoot?: $Enums.PreferredFoot | null
+  shirtNumber?: number | null
+  bio?: string | null
+  onboardingStep?: number
+  onboardingCompletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutModalityPositionsInput = {
+  id?: string
+  userId: string
+  fullName: string
+  nickname?: string | null
+  imageUrl?: string | null
+  phone?: string | null
+  birthDate?: Date | string | null
+  city?: string | null
+  state?: string | null
+  preferredFoot?: $Enums.PreferredFoot | null
+  shirtNumber?: number | null
+  bio?: string | null
+  onboardingStep?: number
+  onboardingCompletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ProfileCreateOrConnectWithoutModalityPositionsInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutModalityPositionsInput, Prisma.ProfileUncheckedCreateWithoutModalityPositionsInput>
+}
+
+export type ProfileUpsertWithoutModalityPositionsInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutModalityPositionsInput, Prisma.ProfileUncheckedUpdateWithoutModalityPositionsInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutModalityPositionsInput, Prisma.ProfileUncheckedCreateWithoutModalityPositionsInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutModalityPositionsInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutModalityPositionsInput, Prisma.ProfileUncheckedUpdateWithoutModalityPositionsInput>
+}
+
+export type ProfileUpdateWithoutModalityPositionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
+  shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingStep?: Prisma.IntFieldUpdateOperationsInput | number
+  onboardingCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutModalityPositionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
+  shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingStep?: Prisma.IntFieldUpdateOperationsInput | number
+  onboardingCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+
+/**
+ * Count Type ProfileCountOutputType
+ */
+
+export type ProfileCountOutputType = {
+  modalityPositions: number
+}
+
+export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  modalityPositions?: boolean | ProfileCountOutputTypeCountModalityPositionsArgs
+}
+
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProfileCountOutputType
+   */
+  select?: Prisma.ProfileCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountModalityPositionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProfileModalityWhereInput
+}
 
 
 export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -720,13 +907,16 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   birthDate?: boolean
   city?: boolean
   state?: boolean
-  position?: boolean
   preferredFoot?: boolean
   shirtNumber?: boolean
   bio?: boolean
+  onboardingStep?: boolean
+  onboardingCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  modalityPositions?: boolean | Prisma.Profile$modalityPositionsArgs<ExtArgs>
+  _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
 export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -739,10 +929,11 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   birthDate?: boolean
   city?: boolean
   state?: boolean
-  position?: boolean
   preferredFoot?: boolean
   shirtNumber?: boolean
   bio?: boolean
+  onboardingStep?: boolean
+  onboardingCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -758,10 +949,11 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   birthDate?: boolean
   city?: boolean
   state?: boolean
-  position?: boolean
   preferredFoot?: boolean
   shirtNumber?: boolean
   bio?: boolean
+  onboardingStep?: boolean
+  onboardingCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -777,17 +969,20 @@ export type ProfileSelectScalar = {
   birthDate?: boolean
   city?: boolean
   state?: boolean
-  position?: boolean
   preferredFoot?: boolean
   shirtNumber?: boolean
   bio?: boolean
+  onboardingStep?: boolean
+  onboardingCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fullName" | "nickname" | "imageUrl" | "phone" | "birthDate" | "city" | "state" | "position" | "preferredFoot" | "shirtNumber" | "bio" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fullName" | "nickname" | "imageUrl" | "phone" | "birthDate" | "city" | "state" | "preferredFoot" | "shirtNumber" | "bio" | "onboardingStep" | "onboardingCompletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  modalityPositions?: boolean | Prisma.Profile$modalityPositionsArgs<ExtArgs>
+  _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -800,6 +995,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "Profile"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
+    modalityPositions: Prisma.$ProfileModalityPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -811,10 +1007,11 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     birthDate: Date | null
     city: string | null
     state: string | null
-    position: $Enums.Position | null
     preferredFoot: $Enums.PreferredFoot | null
     shirtNumber: number | null
     bio: string | null
+    onboardingStep: number
+    onboardingCompletedAt: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["profile"]>
@@ -1212,6 +1409,7 @@ readonly fields: ProfileFieldRefs;
 export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  modalityPositions<T extends Prisma.Profile$modalityPositionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$modalityPositionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProfileModalityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1250,10 +1448,11 @@ export interface ProfileFieldRefs {
   readonly birthDate: Prisma.FieldRef<"Profile", 'DateTime'>
   readonly city: Prisma.FieldRef<"Profile", 'String'>
   readonly state: Prisma.FieldRef<"Profile", 'String'>
-  readonly position: Prisma.FieldRef<"Profile", 'Position'>
   readonly preferredFoot: Prisma.FieldRef<"Profile", 'PreferredFoot'>
   readonly shirtNumber: Prisma.FieldRef<"Profile", 'Int'>
   readonly bio: Prisma.FieldRef<"Profile", 'String'>
+  readonly onboardingStep: Prisma.FieldRef<"Profile", 'Int'>
+  readonly onboardingCompletedAt: Prisma.FieldRef<"Profile", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Profile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Profile", 'DateTime'>
 }
@@ -1654,6 +1853,30 @@ export type ProfileDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Profiles to delete.
    */
   limit?: number
+}
+
+/**
+ * Profile.modalityPositions
+ */
+export type Profile$modalityPositionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProfileModality
+   */
+  select?: Prisma.ProfileModalitySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProfileModality
+   */
+  omit?: Prisma.ProfileModalityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProfileModalityInclude<ExtArgs> | null
+  where?: Prisma.ProfileModalityWhereInput
+  orderBy?: Prisma.ProfileModalityOrderByWithRelationInput | Prisma.ProfileModalityOrderByWithRelationInput[]
+  cursor?: Prisma.ProfileModalityWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProfileModalityScalarFieldEnum | Prisma.ProfileModalityScalarFieldEnum[]
 }
 
 /**

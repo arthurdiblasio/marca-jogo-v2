@@ -525,14 +525,6 @@ export type PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceNestedInpu
   deleteMany?: Prisma.PeladaPlayerStatScalarWhereInput | Prisma.PeladaPlayerStatScalarWhereInput[]
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type PeladaPlayerStatCreateWithoutUserInput = {
   id?: string
   goals?: number

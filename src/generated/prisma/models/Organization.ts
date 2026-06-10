@@ -36,6 +36,7 @@ export type OrganizationMinAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  modality: $Enums.SportModality | null
   createdById: string | null
 }
 
@@ -51,6 +52,7 @@ export type OrganizationMaxAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  modality: $Enums.SportModality | null
   createdById: string | null
 }
 
@@ -66,6 +68,7 @@ export type OrganizationCountAggregateOutputType = {
   isActive: number
   createdAt: number
   updatedAt: number
+  modality: number
   createdById: number
   _all: number
 }
@@ -83,6 +86,7 @@ export type OrganizationMinAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  modality?: true
   createdById?: true
 }
 
@@ -98,6 +102,7 @@ export type OrganizationMaxAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  modality?: true
   createdById?: true
 }
 
@@ -113,6 +118,7 @@ export type OrganizationCountAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  modality?: true
   createdById?: true
   _all?: true
 }
@@ -201,6 +207,7 @@ export type OrganizationGroupByOutputType = {
   isActive: boolean
   createdAt: Date
   updatedAt: Date
+  modality: $Enums.SportModality | null
   createdById: string | null
   _count: OrganizationCountAggregateOutputType | null
   _min: OrganizationMinAggregateOutputType | null
@@ -237,6 +244,7 @@ export type OrganizationWhereInput = {
   isActive?: Prisma.BoolFilter<"Organization"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
+  modality?: Prisma.EnumSportModalityNullableFilter<"Organization"> | $Enums.SportModality | null
   createdById?: Prisma.StringNullableFilter<"Organization"> | string | null
   createdBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   memberships?: Prisma.MembershipListRelationFilter
@@ -262,6 +270,7 @@ export type OrganizationOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  modality?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdBy?: Prisma.UserOrderByWithRelationInput
   memberships?: Prisma.MembershipOrderByRelationAggregateInput
@@ -290,6 +299,7 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Organization"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
+  modality?: Prisma.EnumSportModalityNullableFilter<"Organization"> | $Enums.SportModality | null
   createdById?: Prisma.StringNullableFilter<"Organization"> | string | null
   createdBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   memberships?: Prisma.MembershipListRelationFilter
@@ -315,6 +325,7 @@ export type OrganizationOrderByWithAggregationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  modality?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.OrganizationCountOrderByAggregateInput
   _max?: Prisma.OrganizationMaxOrderByAggregateInput
@@ -336,6 +347,7 @@ export type OrganizationScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"Organization"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Organization"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Organization"> | Date | string
+  modality?: Prisma.EnumSportModalityNullableWithAggregatesFilter<"Organization"> | $Enums.SportModality | null
   createdById?: Prisma.StringNullableWithAggregatesFilter<"Organization"> | string | null
 }
 
@@ -351,6 +363,7 @@ export type OrganizationCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -375,6 +388,7 @@ export type OrganizationUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -399,6 +413,7 @@ export type OrganizationUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -423,6 +438,7 @@ export type OrganizationUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -447,6 +463,7 @@ export type OrganizationCreateManyInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
 }
 
@@ -462,6 +479,7 @@ export type OrganizationUpdateManyMutationInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
 }
 
 export type OrganizationUncheckedUpdateManyInput = {
@@ -476,6 +494,7 @@ export type OrganizationUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -501,6 +520,7 @@ export type OrganizationCountOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  modality?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
 }
 
@@ -516,6 +536,7 @@ export type OrganizationMaxOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  modality?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
 }
 
@@ -531,6 +552,7 @@ export type OrganizationMinOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  modality?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
 }
 
@@ -592,6 +614,10 @@ export type EnumOrganizationTypeFieldUpdateOperationsInput = {
 
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
+}
+
+export type NullableEnumSportModalityFieldUpdateOperationsInput = {
+  set?: $Enums.SportModality | null
 }
 
 export type OrganizationCreateNestedOneWithoutMembershipsInput = {
@@ -734,6 +760,7 @@ export type OrganizationCreateWithoutCreatedByInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
@@ -757,6 +784,7 @@ export type OrganizationUncheckedCreateWithoutCreatedByInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
@@ -809,6 +837,7 @@ export type OrganizationScalarWhereInput = {
   isActive?: Prisma.BoolFilter<"Organization"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
+  modality?: Prisma.EnumSportModalityNullableFilter<"Organization"> | $Enums.SportModality | null
   createdById?: Prisma.StringNullableFilter<"Organization"> | string | null
 }
 
@@ -824,6 +853,7 @@ export type OrganizationCreateWithoutMembershipsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
@@ -847,6 +877,7 @@ export type OrganizationUncheckedCreateWithoutMembershipsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
@@ -886,6 +917,7 @@ export type OrganizationUpdateWithoutMembershipsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
@@ -909,6 +941,7 @@ export type OrganizationUncheckedUpdateWithoutMembershipsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
@@ -932,6 +965,7 @@ export type OrganizationCreateWithoutPeladaOccurrencesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
@@ -955,6 +989,7 @@ export type OrganizationUncheckedCreateWithoutPeladaOccurrencesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
@@ -994,6 +1029,7 @@ export type OrganizationUpdateWithoutPeladaOccurrencesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
@@ -1017,6 +1053,7 @@ export type OrganizationUncheckedUpdateWithoutPeladaOccurrencesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
@@ -1040,6 +1077,7 @@ export type OrganizationCreateWithoutHomeMatchesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1063,6 +1101,7 @@ export type OrganizationUncheckedCreateWithoutHomeMatchesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1091,6 +1130,7 @@ export type OrganizationCreateWithoutAwayMatchesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1114,6 +1154,7 @@ export type OrganizationUncheckedCreateWithoutAwayMatchesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1153,6 +1194,7 @@ export type OrganizationUpdateWithoutHomeMatchesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1176,6 +1218,7 @@ export type OrganizationUncheckedUpdateWithoutHomeMatchesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1210,6 +1253,7 @@ export type OrganizationUpdateWithoutAwayMatchesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1233,6 +1277,7 @@ export type OrganizationUncheckedUpdateWithoutAwayMatchesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1256,6 +1301,7 @@ export type OrganizationCreateWithoutMatchAttendancesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1279,6 +1325,7 @@ export type OrganizationUncheckedCreateWithoutMatchAttendancesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1318,6 +1365,7 @@ export type OrganizationUpdateWithoutMatchAttendancesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1341,6 +1389,7 @@ export type OrganizationUncheckedUpdateWithoutMatchAttendancesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1364,6 +1413,7 @@ export type OrganizationCreateWithoutFinancialTransactionsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1387,6 +1437,7 @@ export type OrganizationUncheckedCreateWithoutFinancialTransactionsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1426,6 +1477,7 @@ export type OrganizationUpdateWithoutFinancialTransactionsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1449,6 +1501,7 @@ export type OrganizationUncheckedUpdateWithoutFinancialTransactionsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1472,6 +1525,7 @@ export type OrganizationCreateWithoutRankingsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1495,6 +1549,7 @@ export type OrganizationUncheckedCreateWithoutRankingsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1534,6 +1589,7 @@ export type OrganizationUpdateWithoutRankingsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1557,6 +1613,7 @@ export type OrganizationUncheckedUpdateWithoutRankingsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1580,6 +1637,7 @@ export type OrganizationCreateWithoutSentOpponentInvitesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1603,6 +1661,7 @@ export type OrganizationUncheckedCreateWithoutSentOpponentInvitesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1631,6 +1690,7 @@ export type OrganizationCreateWithoutReceivedOpponentInvitesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1654,6 +1714,7 @@ export type OrganizationUncheckedCreateWithoutReceivedOpponentInvitesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1693,6 +1754,7 @@ export type OrganizationUpdateWithoutSentOpponentInvitesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1716,6 +1778,7 @@ export type OrganizationUncheckedUpdateWithoutSentOpponentInvitesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1750,6 +1813,7 @@ export type OrganizationUpdateWithoutReceivedOpponentInvitesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1773,6 +1837,7 @@ export type OrganizationUncheckedUpdateWithoutReceivedOpponentInvitesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1796,6 +1861,7 @@ export type OrganizationCreateManyCreatedByInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
 }
 
 export type OrganizationUpdateWithoutCreatedByInput = {
@@ -1810,6 +1876,7 @@ export type OrganizationUpdateWithoutCreatedByInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
@@ -1833,6 +1900,7 @@ export type OrganizationUncheckedUpdateWithoutCreatedByInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
@@ -1856,6 +1924,7 @@ export type OrganizationUncheckedUpdateManyWithoutCreatedByInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
 }
 
 
@@ -1973,6 +2042,7 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  modality?: boolean
   createdById?: boolean
   createdBy?: boolean | Prisma.Organization$createdByArgs<ExtArgs>
   memberships?: boolean | Prisma.Organization$membershipsArgs<ExtArgs>
@@ -1999,6 +2069,7 @@ export type OrganizationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  modality?: boolean
   createdById?: boolean
   createdBy?: boolean | Prisma.Organization$createdByArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
@@ -2015,6 +2086,7 @@ export type OrganizationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  modality?: boolean
   createdById?: boolean
   createdBy?: boolean | Prisma.Organization$createdByArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
@@ -2031,10 +2103,11 @@ export type OrganizationSelectScalar = {
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  modality?: boolean
   createdById?: boolean
 }
 
-export type OrganizationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "name" | "slug" | "description" | "logoUrl" | "city" | "state" | "isActive" | "createdAt" | "updatedAt" | "createdById", ExtArgs["result"]["organization"]>
+export type OrganizationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "name" | "slug" | "description" | "logoUrl" | "city" | "state" | "isActive" | "createdAt" | "updatedAt" | "modality" | "createdById", ExtArgs["result"]["organization"]>
 export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   createdBy?: boolean | Prisma.Organization$createdByArgs<ExtArgs>
   memberships?: boolean | Prisma.Organization$membershipsArgs<ExtArgs>
@@ -2081,6 +2154,7 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     isActive: boolean
     createdAt: Date
     updatedAt: Date
+    modality: $Enums.SportModality | null
     createdById: string | null
   }, ExtArgs["result"]["organization"]>
   composites: {}
@@ -2526,6 +2600,7 @@ export interface OrganizationFieldRefs {
   readonly isActive: Prisma.FieldRef<"Organization", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Organization", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Organization", 'DateTime'>
+  readonly modality: Prisma.FieldRef<"Organization", 'SportModality'>
   readonly createdById: Prisma.FieldRef<"Organization", 'String'>
 }
     

@@ -4,11 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  LockKeyhole,
-  Mail,
-  User,
-} from "lucide-react";
+import { Mail, User } from "lucide-react";
 import {
   useForm,
 } from "react-hook-form";

@@ -387,6 +387,7 @@ export const ModelName = {
   User: 'User',
   PasswordResetToken: 'PasswordResetToken',
   Profile: 'Profile',
+  ProfileModality: 'ProfileModality',
   Organization: 'Organization',
   Membership: 'Membership',
   PeladaOccurrence: 'PeladaOccurrence',
@@ -415,7 +416,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "passwordResetToken" | "profile" | "organization" | "membership" | "peladaOccurrence" | "peladaAttendance" | "peladaPlayerStat" | "peladaMvpVote" | "match" | "matchAttendance" | "matchLineupEntry" | "matchPlayerStat" | "financialTransaction" | "rankingSnapshot" | "opponentInvite"
+    modelProps: "user" | "passwordResetToken" | "profile" | "profileModality" | "organization" | "membership" | "peladaOccurrence" | "peladaAttendance" | "peladaPlayerStat" | "peladaMvpVote" | "match" | "matchAttendance" | "matchLineupEntry" | "matchPlayerStat" | "financialTransaction" | "rankingSnapshot" | "opponentInvite"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -638,6 +639,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ProfileCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ProfileCountAggregateOutputType> | number
+        }
+      }
+    }
+    ProfileModality: {
+      payload: Prisma.$ProfileModalityPayload<ExtArgs>
+      fields: Prisma.ProfileModalityFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProfileModalityFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProfileModalityFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload>
+        }
+        findFirst: {
+          args: Prisma.ProfileModalityFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProfileModalityFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload>
+        }
+        findMany: {
+          args: Prisma.ProfileModalityFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload>[]
+        }
+        create: {
+          args: Prisma.ProfileModalityCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload>
+        }
+        createMany: {
+          args: Prisma.ProfileModalityCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ProfileModalityCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload>[]
+        }
+        delete: {
+          args: Prisma.ProfileModalityDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload>
+        }
+        update: {
+          args: Prisma.ProfileModalityUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload>
+        }
+        deleteMany: {
+          args: Prisma.ProfileModalityDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProfileModalityUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ProfileModalityUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload>[]
+        }
+        upsert: {
+          args: Prisma.ProfileModalityUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileModalityPayload>
+        }
+        aggregate: {
+          args: Prisma.ProfileModalityAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProfileModality>
+        }
+        groupBy: {
+          args: Prisma.ProfileModalityGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProfileModalityGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProfileModalityCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProfileModalityCountAggregateOutputType> | number
         }
       }
     }
@@ -1677,15 +1752,28 @@ export const ProfileScalarFieldEnum = {
   birthDate: 'birthDate',
   city: 'city',
   state: 'state',
-  position: 'position',
   preferredFoot: 'preferredFoot',
   shirtNumber: 'shirtNumber',
   bio: 'bio',
+  onboardingStep: 'onboardingStep',
+  onboardingCompletedAt: 'onboardingCompletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
+
+
+export const ProfileModalityScalarFieldEnum = {
+  id: 'id',
+  modality: 'modality',
+  positions: 'positions',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  profileId: 'profileId'
+} as const
+
+export type ProfileModalityScalarFieldEnum = (typeof ProfileModalityScalarFieldEnum)[keyof typeof ProfileModalityScalarFieldEnum]
 
 
 export const OrganizationScalarFieldEnum = {
@@ -1700,6 +1788,7 @@ export const OrganizationScalarFieldEnum = {
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  modality: 'modality',
   createdById: 'createdById'
 } as const
 
@@ -1968,20 +2057,6 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'Position'
- */
-export type EnumPositionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Position'>
-    
-
-
-/**
- * Reference to a field of type 'Position[]'
- */
-export type ListEnumPositionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Position[]'>
-    
-
-
-/**
  * Reference to a field of type 'PreferredFoot'
  */
 export type EnumPreferredFootFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PreferredFoot'>
@@ -2006,6 +2081,20 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SportModality'
+ */
+export type EnumSportModalityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SportModality'>
+    
+
+
+/**
+ * Reference to a field of type 'SportModality[]'
+ */
+export type ListEnumSportModalityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SportModality[]'>
     
 
 
@@ -2296,6 +2385,7 @@ export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   passwordResetToken?: Prisma.PasswordResetTokenOmit
   profile?: Prisma.ProfileOmit
+  profileModality?: Prisma.ProfileModalityOmit
   organization?: Prisma.OrganizationOmit
   membership?: Prisma.MembershipOmit
   peladaOccurrence?: Prisma.PeladaOccurrenceOmit

@@ -11,6 +11,7 @@
 export type * from './models/User'
 export type * from './models/PasswordResetToken'
 export type * from './models/Profile'
+export type * from './models/ProfileModality'
 export type * from './models/Organization'
 export type * from './models/Membership'
 export type * from './models/PeladaOccurrence'

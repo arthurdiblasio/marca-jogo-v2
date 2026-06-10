@@ -57,6 +57,11 @@ export type PasswordResetToken = Prisma.PasswordResetTokenModel
  */
 export type Profile = Prisma.ProfileModel
 /**
+ * Model ProfileModality
+ * 
+ */
+export type ProfileModality = Prisma.ProfileModalityModel
+/**
  * Model Organization
  * 
  */
