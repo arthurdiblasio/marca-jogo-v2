@@ -1,26 +1,17 @@
-import { CtaSection } from "@/components/landing/cta-section";
 import { FeaturesSection } from "@/components/landing/features-section";
 import { HeroSection } from "@/components/landing/hero-section";
-import { MatchPreview } from "@/components/landing/match-preview";
-import { RankingPreview } from "@/components/landing/ranking-preview";
-import { getSession } from "@/shared/auth/auth-session";
-import { redirect } from "next/navigation";
+import { HowItWorks } from "@/components/landing/how-it-works";
+import { Navbar } from "@/components/landing/navbar";
+import { StatsPreview } from "@/components/landing/stats-preview";
 
-export default async function HomePage() {
-  const session =
-    await getSession();
-
-  if (session) {
-    redirect("/dashboard");
-  }
-
+export default function PublicPage() {
   return (
-    <main className="min-h-screen bg-slate-50">
+    <>
+      <Navbar />
       <HeroSection />
+      <HowItWorks />
       <FeaturesSection />
-      <MatchPreview />
-      <RankingPreview />
-      <CtaSection />
-    </main>
+      <StatsPreview />
+    </>
   );
 }

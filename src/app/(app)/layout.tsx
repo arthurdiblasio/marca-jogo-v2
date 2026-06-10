@@ -1,3 +1,4 @@
+import { AppShell } from "@/components/layout/app-shell";
 import { requireAuth } from "@/shared/auth/require-auth";
 
 export default async function AppLayout({
@@ -7,5 +8,9 @@ export default async function AppLayout({
 }>) {
   await requireAuth();
 
-  return children;
+  return (
+    <AppShell>
+      {children}
+    </AppShell>
+  );
 }
