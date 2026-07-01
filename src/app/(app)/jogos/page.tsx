@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Plus } from "lucide-react";
+import { ClipboardList, Plus } from "lucide-react";
 
 import { PageTransition } from "@/components/motion/page-transition";
 import { PageHeader } from "@/components/navigation/page-header";
@@ -31,12 +31,20 @@ export default async function GameListingsBoardPage({
           title="Times buscando adversário"
           description="Encontre times com campo já reservado ou publique o seu jogo para outros times encontrarem."
         />
-        <Button asChild size="sm" className="w-auto shrink-0">
-          <Link href="/jogos/novo">
-            <Plus className="size-4" />
-            Publicar jogo
-          </Link>
-        </Button>
+        <div className="flex shrink-0 gap-2">
+          <Button asChild variant="outline" size="sm" className="w-auto">
+            <Link href="/jogos/meus-jogos">
+              <ClipboardList className="size-4" />
+              Meus jogos
+            </Link>
+          </Button>
+          <Button asChild size="sm" className="w-auto">
+            <Link href="/jogos/novo">
+              <Plus className="size-4" />
+              Publicar jogo
+            </Link>
+          </Button>
+        </div>
       </div>
 
       <GameListingsFilterBar />

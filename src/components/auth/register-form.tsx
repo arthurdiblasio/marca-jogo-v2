@@ -24,7 +24,7 @@ import { GoogleButton } from "./google-button";
 import { registerRequest } from "@/modules/auth/services/auth-api";
 import { PasswordInput } from "../ui/password-input";
 
-export function RegisterForm() {
+export function RegisterForm({ inviteToken }: { inviteToken?: string }) {
   const router = useRouter();
 
   const {
@@ -50,7 +50,7 @@ export function RegisterForm() {
         "Conta criada com sucesso!",
       );
 
-      router.push("/login");
+      router.push(inviteToken ? `/login?invite=${inviteToken}` : "/login");
     } catch (error) {
       toast.error(
         error instanceof Error
@@ -162,7 +162,7 @@ export function RegisterForm() {
       <p className="text-center text-sm text-slate-600">
         Já possui uma conta?{" "}
         <Link
-          href="/login"
+          href={inviteToken ? `/login?invite=${inviteToken}` : "/login"}
           className="
             font-semibold
             text-green-600

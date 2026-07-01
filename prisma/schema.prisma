@@ -131,6 +131,8 @@ model User {
   createdGameListings          GameListing[]          @relation("GameListingCreatedBy")
   createdGameListingSeries     GameListingSeries[]    @relation("GameListingSeriesCreatedBy")
   gameListingResponses         GameListingResponse[]  @relation("GameListingResponseRespondedBy")
+  playerInvitesCreated         PlayerInvite[]         @relation("PlayerInviteCreatedBy")
+  playerInvitesUsed            PlayerInvite[]         @relation("PlayerInviteUsedBy")
 
   @@index([email])
 }
@@ -236,6 +238,7 @@ model Organization {
   gameListings            GameListing[]          @relation("GameListingOrganization")
   gameListingSeries       GameListingSeries[]    @relation("GameListingSeriesOrganization")
   gameListingResponses    GameListingResponse[]  @relation("GameListingResponseOrganization")
+  playerInvites           PlayerInvite[]
 
   @@index([type])
   @@index([isActive])
@@ -499,6 +502,26 @@ model OpponentInvite {
   @@index([fromOrganizationId, status])
   @@index([toOrganizationId, status])
   @@index([sentById])
+}
+
+model PlayerInvite {
+  id        String       @id @default(cuid())
+  token     String       @unique
+  status    InviteStatus @default(PENDING)
+  role      MembershipRole @default(PLAYER)
+  expiresAt DateTime
+  createdAt DateTime     @default(now())
+
+  organizationId String
+  createdById    String
+  usedByUserId   String?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdBy    User         @relation("PlayerInviteCreatedBy", fields: [createdById], references: [id], onDelete: Cascade)
+  usedBy       User?        @relation("PlayerInviteUsedBy", fields: [usedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([token])
+  @@index([organizationId, status])
 }
 
 model GameListingSeries {

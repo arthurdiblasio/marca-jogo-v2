@@ -401,6 +401,7 @@ export const ModelName = {
   FinancialTransaction: 'FinancialTransaction',
   RankingSnapshot: 'RankingSnapshot',
   OpponentInvite: 'OpponentInvite',
+  PlayerInvite: 'PlayerInvite',
   GameListingSeries: 'GameListingSeries',
   GameListing: 'GameListing',
   GameListingPhoto: 'GameListingPhoto',
@@ -420,7 +421,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "passwordResetToken" | "profile" | "profileModality" | "organization" | "membership" | "peladaOccurrence" | "peladaAttendance" | "peladaPlayerStat" | "peladaMvpVote" | "match" | "matchAttendance" | "matchLineupEntry" | "matchPlayerStat" | "financialTransaction" | "rankingSnapshot" | "opponentInvite" | "gameListingSeries" | "gameListing" | "gameListingPhoto" | "gameListingResponse"
+    modelProps: "user" | "passwordResetToken" | "profile" | "profileModality" | "organization" | "membership" | "peladaOccurrence" | "peladaAttendance" | "peladaPlayerStat" | "peladaMvpVote" | "match" | "matchAttendance" | "matchLineupEntry" | "matchPlayerStat" | "financialTransaction" | "rankingSnapshot" | "opponentInvite" | "playerInvite" | "gameListingSeries" | "gameListing" | "gameListingPhoto" | "gameListingResponse"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1682,6 +1683,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PlayerInvite: {
+      payload: Prisma.$PlayerInvitePayload<ExtArgs>
+      fields: Prisma.PlayerInviteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlayerInviteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlayerInviteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload>
+        }
+        findFirst: {
+          args: Prisma.PlayerInviteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlayerInviteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload>
+        }
+        findMany: {
+          args: Prisma.PlayerInviteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload>[]
+        }
+        create: {
+          args: Prisma.PlayerInviteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload>
+        }
+        createMany: {
+          args: Prisma.PlayerInviteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlayerInviteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload>[]
+        }
+        delete: {
+          args: Prisma.PlayerInviteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload>
+        }
+        update: {
+          args: Prisma.PlayerInviteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload>
+        }
+        deleteMany: {
+          args: Prisma.PlayerInviteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlayerInviteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlayerInviteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload>[]
+        }
+        upsert: {
+          args: Prisma.PlayerInviteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerInvitePayload>
+        }
+        aggregate: {
+          args: Prisma.PlayerInviteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlayerInvite>
+        }
+        groupBy: {
+          args: Prisma.PlayerInviteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlayerInviteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlayerInviteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlayerInviteCountAggregateOutputType> | number
+        }
+      }
+    }
     GameListingSeries: {
       payload: Prisma.$GameListingSeriesPayload<ExtArgs>
       fields: Prisma.GameListingSeriesFieldRefs
@@ -2282,6 +2357,21 @@ export const OpponentInviteScalarFieldEnum = {
 export type OpponentInviteScalarFieldEnum = (typeof OpponentInviteScalarFieldEnum)[keyof typeof OpponentInviteScalarFieldEnum]
 
 
+export const PlayerInviteScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  status: 'status',
+  role: 'role',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  organizationId: 'organizationId',
+  createdById: 'createdById',
+  usedByUserId: 'usedByUserId'
+} as const
+
+export type PlayerInviteScalarFieldEnum = (typeof PlayerInviteScalarFieldEnum)[keyof typeof PlayerInviteScalarFieldEnum]
+
+
 export const GameListingSeriesScalarFieldEnum = {
   id: 'id',
   frequency: 'frequency',
@@ -2806,6 +2896,7 @@ export type GlobalOmitConfig = {
   financialTransaction?: Prisma.FinancialTransactionOmit
   rankingSnapshot?: Prisma.RankingSnapshotOmit
   opponentInvite?: Prisma.OpponentInviteOmit
+  playerInvite?: Prisma.PlayerInviteOmit
   gameListingSeries?: Prisma.GameListingSeriesOmit
   gameListing?: Prisma.GameListingOmit
   gameListingPhoto?: Prisma.GameListingPhotoOmit

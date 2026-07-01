@@ -217,6 +217,8 @@ export type UserWhereInput = {
   createdGameListings?: Prisma.GameListingListRelationFilter
   createdGameListingSeries?: Prisma.GameListingSeriesListRelationFilter
   gameListingResponses?: Prisma.GameListingResponseListRelationFilter
+  playerInvitesCreated?: Prisma.PlayerInviteListRelationFilter
+  playerInvitesUsed?: Prisma.PlayerInviteListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -246,6 +248,8 @@ export type UserOrderByWithRelationInput = {
   createdGameListings?: Prisma.GameListingOrderByRelationAggregateInput
   createdGameListingSeries?: Prisma.GameListingSeriesOrderByRelationAggregateInput
   gameListingResponses?: Prisma.GameListingResponseOrderByRelationAggregateInput
+  playerInvitesCreated?: Prisma.PlayerInviteOrderByRelationAggregateInput
+  playerInvitesUsed?: Prisma.PlayerInviteOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -278,6 +282,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdGameListings?: Prisma.GameListingListRelationFilter
   createdGameListingSeries?: Prisma.GameListingSeriesListRelationFilter
   gameListingResponses?: Prisma.GameListingResponseListRelationFilter
+  playerInvitesCreated?: Prisma.PlayerInviteListRelationFilter
+  playerInvitesUsed?: Prisma.PlayerInviteListRelationFilter
 }, "id" | "email" | "googleId">
 
 export type UserOrderByWithAggregationInput = {
@@ -333,6 +339,8 @@ export type UserCreateInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -362,6 +370,8 @@ export type UserUncheckedCreateInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUpdateInput = {
@@ -391,6 +401,8 @@ export type UserUpdateInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -420,6 +432,8 @@ export type UserUncheckedUpdateInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -744,6 +758,36 @@ export type UserUpdateOneWithoutSentOpponentInvitesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSentOpponentInvitesInput, Prisma.UserUpdateWithoutSentOpponentInvitesInput>, Prisma.UserUncheckedUpdateWithoutSentOpponentInvitesInput>
 }
 
+export type UserCreateNestedOneWithoutPlayerInvitesCreatedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPlayerInvitesCreatedInput, Prisma.UserUncheckedCreateWithoutPlayerInvitesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPlayerInvitesCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutPlayerInvitesUsedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPlayerInvitesUsedInput, Prisma.UserUncheckedCreateWithoutPlayerInvitesUsedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPlayerInvitesUsedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPlayerInvitesCreatedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPlayerInvitesCreatedInput, Prisma.UserUncheckedCreateWithoutPlayerInvitesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPlayerInvitesCreatedInput
+  upsert?: Prisma.UserUpsertWithoutPlayerInvitesCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPlayerInvitesCreatedInput, Prisma.UserUpdateWithoutPlayerInvitesCreatedInput>, Prisma.UserUncheckedUpdateWithoutPlayerInvitesCreatedInput>
+}
+
+export type UserUpdateOneWithoutPlayerInvitesUsedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPlayerInvitesUsedInput, Prisma.UserUncheckedCreateWithoutPlayerInvitesUsedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPlayerInvitesUsedInput
+  upsert?: Prisma.UserUpsertWithoutPlayerInvitesUsedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPlayerInvitesUsedInput, Prisma.UserUpdateWithoutPlayerInvitesUsedInput>, Prisma.UserUncheckedUpdateWithoutPlayerInvitesUsedInput>
+}
+
 export type UserCreateNestedOneWithoutCreatedGameListingSeriesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedGameListingSeriesInput, Prisma.UserUncheckedCreateWithoutCreatedGameListingSeriesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedGameListingSeriesInput
@@ -818,6 +862,8 @@ export type UserCreateWithoutPasswordResetTokensInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutPasswordResetTokensInput = {
@@ -846,6 +892,8 @@ export type UserUncheckedCreateWithoutPasswordResetTokensInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutPasswordResetTokensInput = {
@@ -890,6 +938,8 @@ export type UserUpdateWithoutPasswordResetTokensInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPasswordResetTokensInput = {
@@ -918,6 +968,8 @@ export type UserUncheckedUpdateWithoutPasswordResetTokensInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -946,6 +998,8 @@ export type UserCreateWithoutProfileInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -974,6 +1028,8 @@ export type UserUncheckedCreateWithoutProfileInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -1018,6 +1074,8 @@ export type UserUpdateWithoutProfileInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -1046,6 +1104,8 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutCreatedOrganizationsInput = {
@@ -1074,6 +1134,8 @@ export type UserCreateWithoutCreatedOrganizationsInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedOrganizationsInput = {
@@ -1102,6 +1164,8 @@ export type UserUncheckedCreateWithoutCreatedOrganizationsInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedOrganizationsInput = {
@@ -1146,6 +1210,8 @@ export type UserUpdateWithoutCreatedOrganizationsInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedOrganizationsInput = {
@@ -1174,6 +1240,8 @@ export type UserUncheckedUpdateWithoutCreatedOrganizationsInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutMembershipsInput = {
@@ -1202,6 +1270,8 @@ export type UserCreateWithoutMembershipsInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutMembershipsInput = {
@@ -1230,6 +1300,8 @@ export type UserUncheckedCreateWithoutMembershipsInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutMembershipsInput = {
@@ -1274,6 +1346,8 @@ export type UserUpdateWithoutMembershipsInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembershipsInput = {
@@ -1302,6 +1376,8 @@ export type UserUncheckedUpdateWithoutMembershipsInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutCreatedPeladaOccurrencesInput = {
@@ -1330,6 +1406,8 @@ export type UserCreateWithoutCreatedPeladaOccurrencesInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedPeladaOccurrencesInput = {
@@ -1358,6 +1436,8 @@ export type UserUncheckedCreateWithoutCreatedPeladaOccurrencesInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedPeladaOccurrencesInput = {
@@ -1391,6 +1471,8 @@ export type UserCreateWithoutPeladaMvpAwardsInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutPeladaMvpAwardsInput = {
@@ -1419,6 +1501,8 @@ export type UserUncheckedCreateWithoutPeladaMvpAwardsInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutPeladaMvpAwardsInput = {
@@ -1463,6 +1547,8 @@ export type UserUpdateWithoutCreatedPeladaOccurrencesInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedPeladaOccurrencesInput = {
@@ -1491,6 +1577,8 @@ export type UserUncheckedUpdateWithoutCreatedPeladaOccurrencesInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUpsertWithoutPeladaMvpAwardsInput = {
@@ -1530,6 +1618,8 @@ export type UserUpdateWithoutPeladaMvpAwardsInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPeladaMvpAwardsInput = {
@@ -1558,6 +1648,8 @@ export type UserUncheckedUpdateWithoutPeladaMvpAwardsInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutPeladaAttendancesInput = {
@@ -1586,6 +1678,8 @@ export type UserCreateWithoutPeladaAttendancesInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutPeladaAttendancesInput = {
@@ -1614,6 +1708,8 @@ export type UserUncheckedCreateWithoutPeladaAttendancesInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutPeladaAttendancesInput = {
@@ -1658,6 +1754,8 @@ export type UserUpdateWithoutPeladaAttendancesInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPeladaAttendancesInput = {
@@ -1686,6 +1784,8 @@ export type UserUncheckedUpdateWithoutPeladaAttendancesInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutPeladaStatsInput = {
@@ -1714,6 +1814,8 @@ export type UserCreateWithoutPeladaStatsInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutPeladaStatsInput = {
@@ -1742,6 +1844,8 @@ export type UserUncheckedCreateWithoutPeladaStatsInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutPeladaStatsInput = {
@@ -1786,6 +1890,8 @@ export type UserUpdateWithoutPeladaStatsInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPeladaStatsInput = {
@@ -1814,6 +1920,8 @@ export type UserUncheckedUpdateWithoutPeladaStatsInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutPeladaMvpVotesGivenInput = {
@@ -1842,6 +1950,8 @@ export type UserCreateWithoutPeladaMvpVotesGivenInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutPeladaMvpVotesGivenInput = {
@@ -1870,6 +1980,8 @@ export type UserUncheckedCreateWithoutPeladaMvpVotesGivenInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutPeladaMvpVotesGivenInput = {
@@ -1903,6 +2015,8 @@ export type UserCreateWithoutPeladaMvpVotesReceivedInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutPeladaMvpVotesReceivedInput = {
@@ -1931,6 +2045,8 @@ export type UserUncheckedCreateWithoutPeladaMvpVotesReceivedInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutPeladaMvpVotesReceivedInput = {
@@ -1975,6 +2091,8 @@ export type UserUpdateWithoutPeladaMvpVotesGivenInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPeladaMvpVotesGivenInput = {
@@ -2003,6 +2121,8 @@ export type UserUncheckedUpdateWithoutPeladaMvpVotesGivenInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUpsertWithoutPeladaMvpVotesReceivedInput = {
@@ -2042,6 +2162,8 @@ export type UserUpdateWithoutPeladaMvpVotesReceivedInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPeladaMvpVotesReceivedInput = {
@@ -2070,6 +2192,8 @@ export type UserUncheckedUpdateWithoutPeladaMvpVotesReceivedInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutCreatedMatchesInput = {
@@ -2098,6 +2222,8 @@ export type UserCreateWithoutCreatedMatchesInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedMatchesInput = {
@@ -2126,6 +2252,8 @@ export type UserUncheckedCreateWithoutCreatedMatchesInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedMatchesInput = {
@@ -2170,6 +2298,8 @@ export type UserUpdateWithoutCreatedMatchesInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedMatchesInput = {
@@ -2198,6 +2328,8 @@ export type UserUncheckedUpdateWithoutCreatedMatchesInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutMatchAttendancesInput = {
@@ -2226,6 +2358,8 @@ export type UserCreateWithoutMatchAttendancesInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutMatchAttendancesInput = {
@@ -2254,6 +2388,8 @@ export type UserUncheckedCreateWithoutMatchAttendancesInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutMatchAttendancesInput = {
@@ -2298,6 +2434,8 @@ export type UserUpdateWithoutMatchAttendancesInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMatchAttendancesInput = {
@@ -2326,6 +2464,8 @@ export type UserUncheckedUpdateWithoutMatchAttendancesInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutMatchLineupEntriesInput = {
@@ -2354,6 +2494,8 @@ export type UserCreateWithoutMatchLineupEntriesInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutMatchLineupEntriesInput = {
@@ -2382,6 +2524,8 @@ export type UserUncheckedCreateWithoutMatchLineupEntriesInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutMatchLineupEntriesInput = {
@@ -2426,6 +2570,8 @@ export type UserUpdateWithoutMatchLineupEntriesInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMatchLineupEntriesInput = {
@@ -2454,6 +2600,8 @@ export type UserUncheckedUpdateWithoutMatchLineupEntriesInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutMatchStatsInput = {
@@ -2482,6 +2630,8 @@ export type UserCreateWithoutMatchStatsInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutMatchStatsInput = {
@@ -2510,6 +2660,8 @@ export type UserUncheckedCreateWithoutMatchStatsInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutMatchStatsInput = {
@@ -2554,6 +2706,8 @@ export type UserUpdateWithoutMatchStatsInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMatchStatsInput = {
@@ -2582,6 +2736,8 @@ export type UserUncheckedUpdateWithoutMatchStatsInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutCreatedFinancialTransactionsInput = {
@@ -2610,6 +2766,8 @@ export type UserCreateWithoutCreatedFinancialTransactionsInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedFinancialTransactionsInput = {
@@ -2638,6 +2796,8 @@ export type UserUncheckedCreateWithoutCreatedFinancialTransactionsInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedFinancialTransactionsInput = {
@@ -2682,6 +2842,8 @@ export type UserUpdateWithoutCreatedFinancialTransactionsInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedFinancialTransactionsInput = {
@@ -2710,6 +2872,8 @@ export type UserUncheckedUpdateWithoutCreatedFinancialTransactionsInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutSentOpponentInvitesInput = {
@@ -2738,6 +2902,8 @@ export type UserCreateWithoutSentOpponentInvitesInput = {
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutSentOpponentInvitesInput = {
@@ -2766,6 +2932,8 @@ export type UserUncheckedCreateWithoutSentOpponentInvitesInput = {
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutSentOpponentInvitesInput = {
@@ -2810,6 +2978,8 @@ export type UserUpdateWithoutSentOpponentInvitesInput = {
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSentOpponentInvitesInput = {
@@ -2838,6 +3008,280 @@ export type UserUncheckedUpdateWithoutSentOpponentInvitesInput = {
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserCreateWithoutPlayerInvitesCreatedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
+}
+
+export type UserUncheckedCreateWithoutPlayerInvitesCreatedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
+}
+
+export type UserCreateOrConnectWithoutPlayerInvitesCreatedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPlayerInvitesCreatedInput, Prisma.UserUncheckedCreateWithoutPlayerInvitesCreatedInput>
+}
+
+export type UserCreateWithoutPlayerInvitesUsedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+}
+
+export type UserUncheckedCreateWithoutPlayerInvitesUsedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+}
+
+export type UserCreateOrConnectWithoutPlayerInvitesUsedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPlayerInvitesUsedInput, Prisma.UserUncheckedCreateWithoutPlayerInvitesUsedInput>
+}
+
+export type UserUpsertWithoutPlayerInvitesCreatedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPlayerInvitesCreatedInput, Prisma.UserUncheckedUpdateWithoutPlayerInvitesCreatedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPlayerInvitesCreatedInput, Prisma.UserUncheckedCreateWithoutPlayerInvitesCreatedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPlayerInvitesCreatedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPlayerInvitesCreatedInput, Prisma.UserUncheckedUpdateWithoutPlayerInvitesCreatedInput>
+}
+
+export type UserUpdateWithoutPlayerInvitesCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPlayerInvitesCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUpsertWithoutPlayerInvitesUsedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPlayerInvitesUsedInput, Prisma.UserUncheckedUpdateWithoutPlayerInvitesUsedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPlayerInvitesUsedInput, Prisma.UserUncheckedCreateWithoutPlayerInvitesUsedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPlayerInvitesUsedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPlayerInvitesUsedInput, Prisma.UserUncheckedUpdateWithoutPlayerInvitesUsedInput>
+}
+
+export type UserUpdateWithoutPlayerInvitesUsedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPlayerInvitesUsedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutCreatedGameListingSeriesInput = {
@@ -2866,6 +3310,8 @@ export type UserCreateWithoutCreatedGameListingSeriesInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedGameListingSeriesInput = {
@@ -2894,6 +3340,8 @@ export type UserUncheckedCreateWithoutCreatedGameListingSeriesInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedGameListingSeriesInput = {
@@ -2938,6 +3386,8 @@ export type UserUpdateWithoutCreatedGameListingSeriesInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedGameListingSeriesInput = {
@@ -2966,6 +3416,8 @@ export type UserUncheckedUpdateWithoutCreatedGameListingSeriesInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutCreatedGameListingsInput = {
@@ -2994,6 +3446,8 @@ export type UserCreateWithoutCreatedGameListingsInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedGameListingsInput = {
@@ -3022,6 +3476,8 @@ export type UserUncheckedCreateWithoutCreatedGameListingsInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedGameListingsInput = {
@@ -3066,6 +3522,8 @@ export type UserUpdateWithoutCreatedGameListingsInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedGameListingsInput = {
@@ -3094,6 +3552,8 @@ export type UserUncheckedUpdateWithoutCreatedGameListingsInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserCreateWithoutGameListingResponsesInput = {
@@ -3122,6 +3582,8 @@ export type UserCreateWithoutGameListingResponsesInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
 }
 
 export type UserUncheckedCreateWithoutGameListingResponsesInput = {
@@ -3150,6 +3612,8 @@ export type UserUncheckedCreateWithoutGameListingResponsesInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
 }
 
 export type UserCreateOrConnectWithoutGameListingResponsesInput = {
@@ -3194,6 +3658,8 @@ export type UserUpdateWithoutGameListingResponsesInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGameListingResponsesInput = {
@@ -3222,6 +3688,8 @@ export type UserUncheckedUpdateWithoutGameListingResponsesInput = {
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
   createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
 }
 
 
@@ -3248,6 +3716,8 @@ export type UserCountOutputType = {
   createdGameListings: number
   createdGameListingSeries: number
   gameListingResponses: number
+  playerInvitesCreated: number
+  playerInvitesUsed: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3269,6 +3739,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   createdGameListings?: boolean | UserCountOutputTypeCountCreatedGameListingsArgs
   createdGameListingSeries?: boolean | UserCountOutputTypeCountCreatedGameListingSeriesArgs
   gameListingResponses?: boolean | UserCountOutputTypeCountGameListingResponsesArgs
+  playerInvitesCreated?: boolean | UserCountOutputTypeCountPlayerInvitesCreatedArgs
+  playerInvitesUsed?: boolean | UserCountOutputTypeCountPlayerInvitesUsedArgs
 }
 
 /**
@@ -3407,6 +3879,20 @@ export type UserCountOutputTypeCountGameListingResponsesArgs<ExtArgs extends run
   where?: Prisma.GameListingResponseWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPlayerInvitesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PlayerInviteWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPlayerInvitesUsedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PlayerInviteWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3435,6 +3921,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdGameListings?: boolean | Prisma.User$createdGameListingsArgs<ExtArgs>
   createdGameListingSeries?: boolean | Prisma.User$createdGameListingSeriesArgs<ExtArgs>
   gameListingResponses?: boolean | Prisma.User$gameListingResponsesArgs<ExtArgs>
+  playerInvitesCreated?: boolean | Prisma.User$playerInvitesCreatedArgs<ExtArgs>
+  playerInvitesUsed?: boolean | Prisma.User$playerInvitesUsedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -3489,6 +3977,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   createdGameListings?: boolean | Prisma.User$createdGameListingsArgs<ExtArgs>
   createdGameListingSeries?: boolean | Prisma.User$createdGameListingSeriesArgs<ExtArgs>
   gameListingResponses?: boolean | Prisma.User$gameListingResponsesArgs<ExtArgs>
+  playerInvitesCreated?: boolean | Prisma.User$playerInvitesCreatedArgs<ExtArgs>
+  playerInvitesUsed?: boolean | Prisma.User$playerInvitesUsedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3516,6 +4006,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     createdGameListings: Prisma.$GameListingPayload<ExtArgs>[]
     createdGameListingSeries: Prisma.$GameListingSeriesPayload<ExtArgs>[]
     gameListingResponses: Prisma.$GameListingResponsePayload<ExtArgs>[]
+    playerInvitesCreated: Prisma.$PlayerInvitePayload<ExtArgs>[]
+    playerInvitesUsed: Prisma.$PlayerInvitePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3938,6 +4430,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   createdGameListings<T extends Prisma.User$createdGameListingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdGameListingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GameListingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdGameListingSeries<T extends Prisma.User$createdGameListingSeriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdGameListingSeriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GameListingSeriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   gameListingResponses<T extends Prisma.User$gameListingResponsesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$gameListingResponsesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GameListingResponsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  playerInvitesCreated<T extends Prisma.User$playerInvitesCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$playerInvitesCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlayerInvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  playerInvitesUsed<T extends Prisma.User$playerInvitesUsedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$playerInvitesUsedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlayerInvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4815,6 +5309,54 @@ export type User$gameListingResponsesArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.GameListingResponseScalarFieldEnum | Prisma.GameListingResponseScalarFieldEnum[]
+}
+
+/**
+ * User.playerInvitesCreated
+ */
+export type User$playerInvitesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PlayerInvite
+   */
+  select?: Prisma.PlayerInviteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PlayerInvite
+   */
+  omit?: Prisma.PlayerInviteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PlayerInviteInclude<ExtArgs> | null
+  where?: Prisma.PlayerInviteWhereInput
+  orderBy?: Prisma.PlayerInviteOrderByWithRelationInput | Prisma.PlayerInviteOrderByWithRelationInput[]
+  cursor?: Prisma.PlayerInviteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PlayerInviteScalarFieldEnum | Prisma.PlayerInviteScalarFieldEnum[]
+}
+
+/**
+ * User.playerInvitesUsed
+ */
+export type User$playerInvitesUsedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PlayerInvite
+   */
+  select?: Prisma.PlayerInviteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PlayerInvite
+   */
+  omit?: Prisma.PlayerInviteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PlayerInviteInclude<ExtArgs> | null
+  where?: Prisma.PlayerInviteWhereInput
+  orderBy?: Prisma.PlayerInviteOrderByWithRelationInput | Prisma.PlayerInviteOrderByWithRelationInput[]
+  cursor?: Prisma.PlayerInviteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PlayerInviteScalarFieldEnum | Prisma.PlayerInviteScalarFieldEnum[]
 }
 
 /**

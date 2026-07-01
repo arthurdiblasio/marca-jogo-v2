@@ -25,8 +25,9 @@ import { PasswordInput } from "../ui/password-input";
 import { loginRequest } from "@/modules/auth/services/auth-api";
 import { useState } from "react";
 import { FootballLoading } from "../loading/football-loading";
+import { acceptPlayerInviteAction } from "@/modules/player-invites/actions/accept-player-invite";
 
-export function LoginForm() {
+export function LoginForm({ inviteToken }: { inviteToken?: string }) {
   const router = useRouter();
 
   const {
@@ -52,6 +53,18 @@ export function LoginForm() {
       setIsAuthenticating(true);
 
       await loginRequest(data);
+
+      if (inviteToken) {
+        try {
+          await acceptPlayerInviteAction(inviteToken);
+        } catch (inviteError) {
+          toast.error(
+            inviteError instanceof Error
+              ? inviteError.message
+              : "Erro ao aceitar convite",
+          );
+        }
+      }
 
       toast.success(
         "Login realizado com sucesso",
@@ -154,7 +167,7 @@ export function LoginForm() {
       <p className="text-center text-sm text-slate-600">
         Ainda não possui conta?{" "}
         <Link
-          href="/register"
+          href={inviteToken ? `/register?invite=${inviteToken}` : "/register"}
           className="
             font-semibold
             text-green-600

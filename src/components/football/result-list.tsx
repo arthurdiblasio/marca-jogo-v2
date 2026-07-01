@@ -1,14 +1,20 @@
-const results = [
-  { home: "Real Ibirite", away: "Villa Nova", score: "3-1", status: "V" },
-  { home: "Santa Rita", away: "Real Ibirite", score: "2-2", status: "E" },
-  { home: "Real Ibirite", away: "Uniao FC", score: "1-0", status: "V" }
-];
+export type MatchResultRow = {
+  id: string;
+  home: string;
+  away: string;
+  score: string;
+  status: "V" | "E" | "D";
+};
 
-export function ResultList() {
+export function ResultList({ results }: { results: MatchResultRow[] }) {
+  if (results.length === 0) {
+    return <p className="px-4 py-3 text-sm text-slate-400">Nenhum resultado ainda.</p>;
+  }
+
   return (
     <div>
       {results.map((result) => (
-        <div key={`${result.home}-${result.away}`} className="sport-row grid grid-cols-[1fr_auto_1fr_auto] items-center gap-3 px-4 py-3">
+        <div key={result.id} className="sport-row grid grid-cols-[1fr_auto_1fr_auto] items-center gap-3 px-4 py-3">
           <p className="truncate text-right text-sm font-extrabold">{result.home}</p>
           <span className="rounded bg-muted px-3 py-1 text-lg font-black">{result.score}</span>
           <p className="truncate text-sm font-extrabold">{result.away}</p>

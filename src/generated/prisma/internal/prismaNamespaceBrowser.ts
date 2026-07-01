@@ -68,6 +68,7 @@ export const ModelName = {
   FinancialTransaction: 'FinancialTransaction',
   RankingSnapshot: 'RankingSnapshot',
   OpponentInvite: 'OpponentInvite',
+  PlayerInvite: 'PlayerInvite',
   GameListingSeries: 'GameListingSeries',
   GameListing: 'GameListing',
   GameListingPhoto: 'GameListingPhoto',
@@ -353,6 +354,21 @@ export const OpponentInviteScalarFieldEnum = {
 } as const
 
 export type OpponentInviteScalarFieldEnum = (typeof OpponentInviteScalarFieldEnum)[keyof typeof OpponentInviteScalarFieldEnum]
+
+
+export const PlayerInviteScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  status: 'status',
+  role: 'role',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  organizationId: 'organizationId',
+  createdById: 'createdById',
+  usedByUserId: 'usedByUserId'
+} as const
+
+export type PlayerInviteScalarFieldEnum = (typeof PlayerInviteScalarFieldEnum)[keyof typeof PlayerInviteScalarFieldEnum]
 
 
 export const GameListingSeriesScalarFieldEnum = {

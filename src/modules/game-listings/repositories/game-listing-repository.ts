@@ -129,6 +129,18 @@ export const gameListingRepository = {
     });
   },
 
+  listByOrganization(organizationId: string) {
+    return prisma.gameListing.findMany({
+      where: { organizationId },
+      include: {
+        photos: { orderBy: { order: "asc" }, take: 1 },
+        _count: { select: { responses: true } },
+        responses: { where: { status: "PENDING" }, select: { id: true } },
+      },
+      orderBy: { scheduledAt: "desc" },
+    });
+  },
+
   findById(id: string) {
     return prisma.gameListing.findUnique({
       where: { id },
