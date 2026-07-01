@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         <Link
           href="/"
@@ -16,7 +16,7 @@ export function Navbar() {
             <Shield className="h-5 w-5 text-white" />
           </div>
 
-          <span className="text-lg font-extrabold text-white">
+          <span className="text-lg font-extrabold text-foreground">
             Marca Jogo
           </span>
         </Link>
