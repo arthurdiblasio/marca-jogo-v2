@@ -256,6 +256,9 @@ export type OrganizationWhereInput = {
   rankings?: Prisma.RankingSnapshotListRelationFilter
   sentOpponentInvites?: Prisma.OpponentInviteListRelationFilter
   receivedOpponentInvites?: Prisma.OpponentInviteListRelationFilter
+  gameListings?: Prisma.GameListingListRelationFilter
+  gameListingSeries?: Prisma.GameListingSeriesListRelationFilter
+  gameListingResponses?: Prisma.GameListingResponseListRelationFilter
 }
 
 export type OrganizationOrderByWithRelationInput = {
@@ -282,6 +285,9 @@ export type OrganizationOrderByWithRelationInput = {
   rankings?: Prisma.RankingSnapshotOrderByRelationAggregateInput
   sentOpponentInvites?: Prisma.OpponentInviteOrderByRelationAggregateInput
   receivedOpponentInvites?: Prisma.OpponentInviteOrderByRelationAggregateInput
+  gameListings?: Prisma.GameListingOrderByRelationAggregateInput
+  gameListingSeries?: Prisma.GameListingSeriesOrderByRelationAggregateInput
+  gameListingResponses?: Prisma.GameListingResponseOrderByRelationAggregateInput
 }
 
 export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
@@ -311,6 +317,9 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   rankings?: Prisma.RankingSnapshotListRelationFilter
   sentOpponentInvites?: Prisma.OpponentInviteListRelationFilter
   receivedOpponentInvites?: Prisma.OpponentInviteListRelationFilter
+  gameListings?: Prisma.GameListingListRelationFilter
+  gameListingSeries?: Prisma.GameListingSeriesListRelationFilter
+  gameListingResponses?: Prisma.GameListingResponseListRelationFilter
 }, "id" | "slug">
 
 export type OrganizationOrderByWithAggregationInput = {
@@ -374,6 +383,9 @@ export type OrganizationCreateInput = {
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateInput = {
@@ -399,6 +411,9 @@ export type OrganizationUncheckedCreateInput = {
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUpdateInput = {
@@ -424,6 +439,9 @@ export type OrganizationUpdateInput = {
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateInput = {
@@ -449,6 +467,9 @@ export type OrganizationUncheckedUpdateInput = {
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyInput = {
@@ -748,6 +769,48 @@ export type OrganizationUpdateOneRequiredWithoutReceivedOpponentInvitesNestedInp
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutReceivedOpponentInvitesInput, Prisma.OrganizationUpdateWithoutReceivedOpponentInvitesInput>, Prisma.OrganizationUncheckedUpdateWithoutReceivedOpponentInvitesInput>
 }
 
+export type OrganizationCreateNestedOneWithoutGameListingSeriesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingSeriesInput, Prisma.OrganizationUncheckedCreateWithoutGameListingSeriesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutGameListingSeriesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutGameListingSeriesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingSeriesInput, Prisma.OrganizationUncheckedCreateWithoutGameListingSeriesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutGameListingSeriesInput
+  upsert?: Prisma.OrganizationUpsertWithoutGameListingSeriesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutGameListingSeriesInput, Prisma.OrganizationUpdateWithoutGameListingSeriesInput>, Prisma.OrganizationUncheckedUpdateWithoutGameListingSeriesInput>
+}
+
+export type OrganizationCreateNestedOneWithoutGameListingsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingsInput, Prisma.OrganizationUncheckedCreateWithoutGameListingsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutGameListingsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutGameListingsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingsInput, Prisma.OrganizationUncheckedCreateWithoutGameListingsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutGameListingsInput
+  upsert?: Prisma.OrganizationUpsertWithoutGameListingsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutGameListingsInput, Prisma.OrganizationUpdateWithoutGameListingsInput>, Prisma.OrganizationUncheckedUpdateWithoutGameListingsInput>
+}
+
+export type OrganizationCreateNestedOneWithoutGameListingResponsesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingResponsesInput, Prisma.OrganizationUncheckedCreateWithoutGameListingResponsesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutGameListingResponsesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutGameListingResponsesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingResponsesInput, Prisma.OrganizationUncheckedCreateWithoutGameListingResponsesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutGameListingResponsesInput
+  upsert?: Prisma.OrganizationUpsertWithoutGameListingResponsesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutGameListingResponsesInput, Prisma.OrganizationUpdateWithoutGameListingResponsesInput>, Prisma.OrganizationUncheckedUpdateWithoutGameListingResponsesInput>
+}
+
 export type OrganizationCreateWithoutCreatedByInput = {
   id?: string
   type: $Enums.OrganizationType
@@ -770,6 +833,9 @@ export type OrganizationCreateWithoutCreatedByInput = {
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutCreatedByInput = {
@@ -794,6 +860,9 @@ export type OrganizationUncheckedCreateWithoutCreatedByInput = {
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutCreatedByInput = {
@@ -863,6 +932,9 @@ export type OrganizationCreateWithoutMembershipsInput = {
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutMembershipsInput = {
@@ -887,6 +959,9 @@ export type OrganizationUncheckedCreateWithoutMembershipsInput = {
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMembershipsInput = {
@@ -927,6 +1002,9 @@ export type OrganizationUpdateWithoutMembershipsInput = {
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMembershipsInput = {
@@ -951,6 +1029,9 @@ export type OrganizationUncheckedUpdateWithoutMembershipsInput = {
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutPeladaOccurrencesInput = {
@@ -975,6 +1056,9 @@ export type OrganizationCreateWithoutPeladaOccurrencesInput = {
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutPeladaOccurrencesInput = {
@@ -999,6 +1083,9 @@ export type OrganizationUncheckedCreateWithoutPeladaOccurrencesInput = {
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutPeladaOccurrencesInput = {
@@ -1039,6 +1126,9 @@ export type OrganizationUpdateWithoutPeladaOccurrencesInput = {
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutPeladaOccurrencesInput = {
@@ -1063,6 +1153,9 @@ export type OrganizationUncheckedUpdateWithoutPeladaOccurrencesInput = {
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutHomeMatchesInput = {
@@ -1087,6 +1180,9 @@ export type OrganizationCreateWithoutHomeMatchesInput = {
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutHomeMatchesInput = {
@@ -1111,6 +1207,9 @@ export type OrganizationUncheckedCreateWithoutHomeMatchesInput = {
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutHomeMatchesInput = {
@@ -1140,6 +1239,9 @@ export type OrganizationCreateWithoutAwayMatchesInput = {
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutAwayMatchesInput = {
@@ -1164,6 +1266,9 @@ export type OrganizationUncheckedCreateWithoutAwayMatchesInput = {
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutAwayMatchesInput = {
@@ -1204,6 +1309,9 @@ export type OrganizationUpdateWithoutHomeMatchesInput = {
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutHomeMatchesInput = {
@@ -1228,6 +1336,9 @@ export type OrganizationUncheckedUpdateWithoutHomeMatchesInput = {
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUpsertWithoutAwayMatchesInput = {
@@ -1263,6 +1374,9 @@ export type OrganizationUpdateWithoutAwayMatchesInput = {
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutAwayMatchesInput = {
@@ -1287,6 +1401,9 @@ export type OrganizationUncheckedUpdateWithoutAwayMatchesInput = {
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutMatchAttendancesInput = {
@@ -1311,6 +1428,9 @@ export type OrganizationCreateWithoutMatchAttendancesInput = {
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutMatchAttendancesInput = {
@@ -1335,6 +1455,9 @@ export type OrganizationUncheckedCreateWithoutMatchAttendancesInput = {
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMatchAttendancesInput = {
@@ -1375,6 +1498,9 @@ export type OrganizationUpdateWithoutMatchAttendancesInput = {
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMatchAttendancesInput = {
@@ -1399,6 +1525,9 @@ export type OrganizationUncheckedUpdateWithoutMatchAttendancesInput = {
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutFinancialTransactionsInput = {
@@ -1423,6 +1552,9 @@ export type OrganizationCreateWithoutFinancialTransactionsInput = {
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutFinancialTransactionsInput = {
@@ -1447,6 +1579,9 @@ export type OrganizationUncheckedCreateWithoutFinancialTransactionsInput = {
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutFinancialTransactionsInput = {
@@ -1487,6 +1622,9 @@ export type OrganizationUpdateWithoutFinancialTransactionsInput = {
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutFinancialTransactionsInput = {
@@ -1511,6 +1649,9 @@ export type OrganizationUncheckedUpdateWithoutFinancialTransactionsInput = {
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutRankingsInput = {
@@ -1535,6 +1676,9 @@ export type OrganizationCreateWithoutRankingsInput = {
   financialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutRankingsInput = {
@@ -1559,6 +1703,9 @@ export type OrganizationUncheckedCreateWithoutRankingsInput = {
   financialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutRankingsInput = {
@@ -1599,6 +1746,9 @@ export type OrganizationUpdateWithoutRankingsInput = {
   financialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutRankingsInput = {
@@ -1623,6 +1773,9 @@ export type OrganizationUncheckedUpdateWithoutRankingsInput = {
   financialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutSentOpponentInvitesInput = {
@@ -1647,6 +1800,9 @@ export type OrganizationCreateWithoutSentOpponentInvitesInput = {
   financialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutOrganizationInput
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutSentOpponentInvitesInput = {
@@ -1671,6 +1827,9 @@ export type OrganizationUncheckedCreateWithoutSentOpponentInvitesInput = {
   financialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutOrganizationInput
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutSentOpponentInvitesInput = {
@@ -1700,6 +1859,9 @@ export type OrganizationCreateWithoutReceivedOpponentInvitesInput = {
   financialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutOrganizationInput
   rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutReceivedOpponentInvitesInput = {
@@ -1724,6 +1886,9 @@ export type OrganizationUncheckedCreateWithoutReceivedOpponentInvitesInput = {
   financialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutOrganizationInput
   rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutReceivedOpponentInvitesInput = {
@@ -1764,6 +1929,9 @@ export type OrganizationUpdateWithoutSentOpponentInvitesInput = {
   financialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutOrganizationNestedInput
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutSentOpponentInvitesInput = {
@@ -1788,6 +1956,9 @@ export type OrganizationUncheckedUpdateWithoutSentOpponentInvitesInput = {
   financialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutOrganizationNestedInput
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUpsertWithoutReceivedOpponentInvitesInput = {
@@ -1823,6 +1994,9 @@ export type OrganizationUpdateWithoutReceivedOpponentInvitesInput = {
   financialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutOrganizationNestedInput
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutReceivedOpponentInvitesInput = {
@@ -1847,6 +2021,381 @@ export type OrganizationUncheckedUpdateWithoutReceivedOpponentInvitesInput = {
   financialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutOrganizationNestedInput
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutGameListingSeriesInput = {
+  id?: string
+  type: $Enums.OrganizationType
+  name: string
+  slug: string
+  description?: string | null
+  logoUrl?: string | null
+  city?: string | null
+  state?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
+  homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
+  awayMatches?: Prisma.MatchCreateNestedManyWithoutAwayOrganizationInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutOrganizationInput
+  financialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutOrganizationInput
+  rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
+  receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutGameListingSeriesInput = {
+  id?: string
+  type: $Enums.OrganizationType
+  name: string
+  slug: string
+  description?: string | null
+  logoUrl?: string | null
+  city?: string | null
+  state?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
+  createdById?: string | null
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
+  homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
+  awayMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutAwayOrganizationInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutOrganizationInput
+  financialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutOrganizationInput
+  rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutGameListingSeriesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingSeriesInput, Prisma.OrganizationUncheckedCreateWithoutGameListingSeriesInput>
+}
+
+export type OrganizationUpsertWithoutGameListingSeriesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutGameListingSeriesInput, Prisma.OrganizationUncheckedUpdateWithoutGameListingSeriesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingSeriesInput, Prisma.OrganizationUncheckedCreateWithoutGameListingSeriesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutGameListingSeriesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutGameListingSeriesInput, Prisma.OrganizationUncheckedUpdateWithoutGameListingSeriesInput>
+}
+
+export type OrganizationUpdateWithoutGameListingSeriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumOrganizationTypeFieldUpdateOperationsInput | $Enums.OrganizationType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
+  homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
+  awayMatches?: Prisma.MatchUpdateManyWithoutAwayOrganizationNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutOrganizationNestedInput
+  financialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutOrganizationNestedInput
+  rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutGameListingSeriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumOrganizationTypeFieldUpdateOperationsInput | $Enums.OrganizationType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
+  homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
+  awayMatches?: Prisma.MatchUncheckedUpdateManyWithoutAwayOrganizationNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutOrganizationNestedInput
+  financialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutOrganizationNestedInput
+  rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutGameListingsInput = {
+  id?: string
+  type: $Enums.OrganizationType
+  name: string
+  slug: string
+  description?: string | null
+  logoUrl?: string | null
+  city?: string | null
+  state?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
+  homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
+  awayMatches?: Prisma.MatchCreateNestedManyWithoutAwayOrganizationInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutOrganizationInput
+  financialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutOrganizationInput
+  rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
+  receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutGameListingsInput = {
+  id?: string
+  type: $Enums.OrganizationType
+  name: string
+  slug: string
+  description?: string | null
+  logoUrl?: string | null
+  city?: string | null
+  state?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
+  createdById?: string | null
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
+  homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
+  awayMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutAwayOrganizationInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutOrganizationInput
+  financialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutOrganizationInput
+  rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutGameListingsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingsInput, Prisma.OrganizationUncheckedCreateWithoutGameListingsInput>
+}
+
+export type OrganizationUpsertWithoutGameListingsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutGameListingsInput, Prisma.OrganizationUncheckedUpdateWithoutGameListingsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingsInput, Prisma.OrganizationUncheckedCreateWithoutGameListingsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutGameListingsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutGameListingsInput, Prisma.OrganizationUncheckedUpdateWithoutGameListingsInput>
+}
+
+export type OrganizationUpdateWithoutGameListingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumOrganizationTypeFieldUpdateOperationsInput | $Enums.OrganizationType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
+  homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
+  awayMatches?: Prisma.MatchUpdateManyWithoutAwayOrganizationNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutOrganizationNestedInput
+  financialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutOrganizationNestedInput
+  rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutGameListingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumOrganizationTypeFieldUpdateOperationsInput | $Enums.OrganizationType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
+  homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
+  awayMatches?: Prisma.MatchUncheckedUpdateManyWithoutAwayOrganizationNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutOrganizationNestedInput
+  financialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutOrganizationNestedInput
+  rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutGameListingResponsesInput = {
+  id?: string
+  type: $Enums.OrganizationType
+  name: string
+  slug: string
+  description?: string | null
+  logoUrl?: string | null
+  city?: string | null
+  state?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
+  homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
+  awayMatches?: Prisma.MatchCreateNestedManyWithoutAwayOrganizationInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutOrganizationInput
+  financialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutOrganizationInput
+  rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
+  receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutGameListingResponsesInput = {
+  id?: string
+  type: $Enums.OrganizationType
+  name: string
+  slug: string
+  description?: string | null
+  logoUrl?: string | null
+  city?: string | null
+  state?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
+  createdById?: string | null
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
+  homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
+  awayMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutAwayOrganizationInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutOrganizationInput
+  financialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutOrganizationInput
+  rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutGameListingResponsesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingResponsesInput, Prisma.OrganizationUncheckedCreateWithoutGameListingResponsesInput>
+}
+
+export type OrganizationUpsertWithoutGameListingResponsesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutGameListingResponsesInput, Prisma.OrganizationUncheckedUpdateWithoutGameListingResponsesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutGameListingResponsesInput, Prisma.OrganizationUncheckedCreateWithoutGameListingResponsesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutGameListingResponsesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutGameListingResponsesInput, Prisma.OrganizationUncheckedUpdateWithoutGameListingResponsesInput>
+}
+
+export type OrganizationUpdateWithoutGameListingResponsesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumOrganizationTypeFieldUpdateOperationsInput | $Enums.OrganizationType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
+  homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
+  awayMatches?: Prisma.MatchUpdateManyWithoutAwayOrganizationNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutOrganizationNestedInput
+  financialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutOrganizationNestedInput
+  rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutGameListingResponsesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumOrganizationTypeFieldUpdateOperationsInput | $Enums.OrganizationType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
+  homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
+  awayMatches?: Prisma.MatchUncheckedUpdateManyWithoutAwayOrganizationNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutOrganizationNestedInput
+  financialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutOrganizationNestedInput
+  rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyCreatedByInput = {
@@ -1886,6 +2435,9 @@ export type OrganizationUpdateWithoutCreatedByInput = {
   rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutCreatedByInput = {
@@ -1910,6 +2462,9 @@ export type OrganizationUncheckedUpdateWithoutCreatedByInput = {
   rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
   receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateManyWithoutCreatedByInput = {
@@ -1942,6 +2497,9 @@ export type OrganizationCountOutputType = {
   rankings: number
   sentOpponentInvites: number
   receivedOpponentInvites: number
+  gameListings: number
+  gameListingSeries: number
+  gameListingResponses: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1954,6 +2512,9 @@ export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Exte
   rankings?: boolean | OrganizationCountOutputTypeCountRankingsArgs
   sentOpponentInvites?: boolean | OrganizationCountOutputTypeCountSentOpponentInvitesArgs
   receivedOpponentInvites?: boolean | OrganizationCountOutputTypeCountReceivedOpponentInvitesArgs
+  gameListings?: boolean | OrganizationCountOutputTypeCountGameListingsArgs
+  gameListingSeries?: boolean | OrganizationCountOutputTypeCountGameListingSeriesArgs
+  gameListingResponses?: boolean | OrganizationCountOutputTypeCountGameListingResponsesArgs
 }
 
 /**
@@ -2029,6 +2590,27 @@ export type OrganizationCountOutputTypeCountReceivedOpponentInvitesArgs<ExtArgs 
   where?: Prisma.OpponentInviteWhereInput
 }
 
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountGameListingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GameListingWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountGameListingSeriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GameListingSeriesWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountGameListingResponsesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GameListingResponseWhereInput
+}
+
 
 export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2054,6 +2636,9 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   rankings?: boolean | Prisma.Organization$rankingsArgs<ExtArgs>
   sentOpponentInvites?: boolean | Prisma.Organization$sentOpponentInvitesArgs<ExtArgs>
   receivedOpponentInvites?: boolean | Prisma.Organization$receivedOpponentInvitesArgs<ExtArgs>
+  gameListings?: boolean | Prisma.Organization$gameListingsArgs<ExtArgs>
+  gameListingSeries?: boolean | Prisma.Organization$gameListingSeriesArgs<ExtArgs>
+  gameListingResponses?: boolean | Prisma.Organization$gameListingResponsesArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
@@ -2119,6 +2704,9 @@ export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.Interna
   rankings?: boolean | Prisma.Organization$rankingsArgs<ExtArgs>
   sentOpponentInvites?: boolean | Prisma.Organization$sentOpponentInvitesArgs<ExtArgs>
   receivedOpponentInvites?: boolean | Prisma.Organization$receivedOpponentInvitesArgs<ExtArgs>
+  gameListings?: boolean | Prisma.Organization$gameListingsArgs<ExtArgs>
+  gameListingSeries?: boolean | Prisma.Organization$gameListingSeriesArgs<ExtArgs>
+  gameListingResponses?: boolean | Prisma.Organization$gameListingResponsesArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2141,6 +2729,9 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     rankings: Prisma.$RankingSnapshotPayload<ExtArgs>[]
     sentOpponentInvites: Prisma.$OpponentInvitePayload<ExtArgs>[]
     receivedOpponentInvites: Prisma.$OpponentInvitePayload<ExtArgs>[]
+    gameListings: Prisma.$GameListingPayload<ExtArgs>[]
+    gameListingSeries: Prisma.$GameListingSeriesPayload<ExtArgs>[]
+    gameListingResponses: Prisma.$GameListingResponsePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2560,6 +3151,9 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   rankings<T extends Prisma.Organization$rankingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$rankingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RankingSnapshotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sentOpponentInvites<T extends Prisma.Organization$sentOpponentInvitesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$sentOpponentInvitesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OpponentInvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   receivedOpponentInvites<T extends Prisma.Organization$receivedOpponentInvitesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$receivedOpponentInvitesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OpponentInvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  gameListings<T extends Prisma.Organization$gameListingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$gameListingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GameListingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  gameListingSeries<T extends Prisma.Organization$gameListingSeriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$gameListingSeriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GameListingSeriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  gameListingResponses<T extends Prisma.Organization$gameListingResponsesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$gameListingResponsesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GameListingResponsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3235,6 +3829,78 @@ export type Organization$receivedOpponentInvitesArgs<ExtArgs extends runtime.Typ
   take?: number
   skip?: number
   distinct?: Prisma.OpponentInviteScalarFieldEnum | Prisma.OpponentInviteScalarFieldEnum[]
+}
+
+/**
+ * Organization.gameListings
+ */
+export type Organization$gameListingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GameListing
+   */
+  select?: Prisma.GameListingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GameListing
+   */
+  omit?: Prisma.GameListingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GameListingInclude<ExtArgs> | null
+  where?: Prisma.GameListingWhereInput
+  orderBy?: Prisma.GameListingOrderByWithRelationInput | Prisma.GameListingOrderByWithRelationInput[]
+  cursor?: Prisma.GameListingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GameListingScalarFieldEnum | Prisma.GameListingScalarFieldEnum[]
+}
+
+/**
+ * Organization.gameListingSeries
+ */
+export type Organization$gameListingSeriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GameListingSeries
+   */
+  select?: Prisma.GameListingSeriesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GameListingSeries
+   */
+  omit?: Prisma.GameListingSeriesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GameListingSeriesInclude<ExtArgs> | null
+  where?: Prisma.GameListingSeriesWhereInput
+  orderBy?: Prisma.GameListingSeriesOrderByWithRelationInput | Prisma.GameListingSeriesOrderByWithRelationInput[]
+  cursor?: Prisma.GameListingSeriesWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GameListingSeriesScalarFieldEnum | Prisma.GameListingSeriesScalarFieldEnum[]
+}
+
+/**
+ * Organization.gameListingResponses
+ */
+export type Organization$gameListingResponsesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GameListingResponse
+   */
+  select?: Prisma.GameListingResponseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GameListingResponse
+   */
+  omit?: Prisma.GameListingResponseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GameListingResponseInclude<ExtArgs> | null
+  where?: Prisma.GameListingResponseWhereInput
+  orderBy?: Prisma.GameListingResponseOrderByWithRelationInput | Prisma.GameListingResponseOrderByWithRelationInput[]
+  cursor?: Prisma.GameListingResponseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GameListingResponseScalarFieldEnum | Prisma.GameListingResponseScalarFieldEnum[]
 }
 
 /**

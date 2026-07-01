@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { Megaphone, Search } from "lucide-react";
+
 import { EventScoreboard } from "@/components/football/event-scoreboard";
 import { ResultList } from "@/components/football/result-list";
 import { SportSection } from "@/components/football/sport-section";
@@ -5,6 +8,7 @@ import { SquadList } from "@/components/football/squad-list";
 import { StatStrip } from "@/components/football/stat-strip";
 import { PageTransition } from "@/components/motion/page-transition";
 import { PageHeader } from "@/components/navigation/page-header";
+import { Button } from "@/components/ui/button";
 import { teamPlayers, teamStats } from "@/constants/mock-data";
 
 export default function TeamHomePage() {
@@ -15,6 +19,21 @@ export default function TeamHomePage() {
         title="Home do Time"
         description="Proximo jogo, forma recente, estatisticas coletivas e elenco em formato de match center."
       />
+
+      <div className="flex flex-wrap gap-3">
+        <Button asChild size="sm" className="w-auto">
+          <Link href="/jogos">
+            <Search className="size-4" />
+            Ver mural de jogos
+          </Link>
+        </Button>
+        <Button asChild variant="outline" size="sm" className="w-auto">
+          <Link href="/jogos/novo">
+            <Megaphone className="size-4" />
+            Publicar jogo
+          </Link>
+        </Button>
+      </div>
 
       <EventScoreboard
         type="time"

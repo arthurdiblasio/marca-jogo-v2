@@ -102,3 +102,23 @@ export type RankingSnapshot = Prisma.RankingSnapshotModel
  * 
  */
 export type OpponentInvite = Prisma.OpponentInviteModel
+/**
+ * Model GameListingSeries
+ * 
+ */
+export type GameListingSeries = Prisma.GameListingSeriesModel
+/**
+ * Model GameListing
+ * 
+ */
+export type GameListing = Prisma.GameListingModel
+/**
+ * Model GameListingPhoto
+ * 
+ */
+export type GameListingPhoto = Prisma.GameListingPhotoModel
+/**
+ * Model GameListingResponse
+ * 
+ */
+export type GameListingResponse = Prisma.GameListingResponseModel

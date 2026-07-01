@@ -67,7 +67,11 @@ export const ModelName = {
   MatchPlayerStat: 'MatchPlayerStat',
   FinancialTransaction: 'FinancialTransaction',
   RankingSnapshot: 'RankingSnapshot',
-  OpponentInvite: 'OpponentInvite'
+  OpponentInvite: 'OpponentInvite',
+  GameListingSeries: 'GameListingSeries',
+  GameListing: 'GameListing',
+  GameListingPhoto: 'GameListingPhoto',
+  GameListingResponse: 'GameListingResponse'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -349,6 +353,71 @@ export const OpponentInviteScalarFieldEnum = {
 } as const
 
 export type OpponentInviteScalarFieldEnum = (typeof OpponentInviteScalarFieldEnum)[keyof typeof OpponentInviteScalarFieldEnum]
+
+
+export const GameListingSeriesScalarFieldEnum = {
+  id: 'id',
+  frequency: 'frequency',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  isCancelled: 'isCancelled',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  organizationId: 'organizationId',
+  createdById: 'createdById'
+} as const
+
+export type GameListingSeriesScalarFieldEnum = (typeof GameListingSeriesScalarFieldEnum)[keyof typeof GameListingSeriesScalarFieldEnum]
+
+
+export const GameListingScalarFieldEnum = {
+  id: 'id',
+  modality: 'modality',
+  scheduledAt: 'scheduledAt',
+  location: 'location',
+  city: 'city',
+  state: 'state',
+  lat: 'lat',
+  lng: 'lng',
+  priceCents: 'priceCents',
+  priceNotes: 'priceNotes',
+  notes: 'notes',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  organizationId: 'organizationId',
+  createdById: 'createdById',
+  seriesId: 'seriesId',
+  matchId: 'matchId'
+} as const
+
+export type GameListingScalarFieldEnum = (typeof GameListingScalarFieldEnum)[keyof typeof GameListingScalarFieldEnum]
+
+
+export const GameListingPhotoScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  order: 'order',
+  createdAt: 'createdAt',
+  gameListingId: 'gameListingId',
+  gameListingSeriesId: 'gameListingSeriesId'
+} as const
+
+export type GameListingPhotoScalarFieldEnum = (typeof GameListingPhotoScalarFieldEnum)[keyof typeof GameListingPhotoScalarFieldEnum]
+
+
+export const GameListingResponseScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  message: 'message',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  gameListingId: 'gameListingId',
+  organizationId: 'organizationId',
+  respondedById: 'respondedById'
+} as const
+
+export type GameListingResponseScalarFieldEnum = (typeof GameListingResponseScalarFieldEnum)[keyof typeof GameListingResponseScalarFieldEnum]
 
 
 export const SortOrder = {

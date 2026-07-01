@@ -7,12 +7,17 @@ import { Bell, LogOut, Search, Trophy } from "lucide-react";
 import { OrganizationSwitcher } from "@/components/navigation/organization-switcher";
 import { Button } from "@/components/ui/button";
 import { mainNavigation } from "@/constants/navigation";
+import { useOrgs } from "@/contexts/org-context";
 import { cn } from "@/lib/utils";
 import { logoutRequest } from "@/modules/auth/services/auth-api";
 
 export function SidebarNavigation() {
   const pathname = usePathname();
   const router = useRouter();
+  const { activeOrg } = useOrgs();
+  const navigation = mainNavigation.filter(
+    (item) => !item.orgTypes || (activeOrg && item.orgTypes.includes(activeOrg.type))
+  );
 
   async function handleLogout() {
     await logoutRequest();
@@ -43,7 +48,7 @@ export function SidebarNavigation() {
         <OrganizationSwitcher className="mb-4" />
 
         <nav className="space-y-0.5">
-          {mainNavigation.map((item) => {
+          {navigation.map((item) => {
             const Icon = item.icon;
             const active = pathname === item.href;
 

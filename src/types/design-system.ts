@@ -6,6 +6,7 @@ export type NavigationItem = {
   href: string;
   label: string;
   icon: LucideIcon;
+  orgTypes?: ("PELADA" | "TEAM")[];
 };
 
 export type OrganizationType = "pelada" | "time";

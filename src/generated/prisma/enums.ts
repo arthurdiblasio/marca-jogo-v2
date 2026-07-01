@@ -111,3 +111,32 @@ export const PreferredFoot = {
 } as const
 
 export type PreferredFoot = (typeof PreferredFoot)[keyof typeof PreferredFoot]
+
+
+export const GameListingStatus = {
+  OPEN: 'OPEN',
+  MATCHED: 'MATCHED',
+  EXPIRED: 'EXPIRED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type GameListingStatus = (typeof GameListingStatus)[keyof typeof GameListingStatus]
+
+
+export const GameListingResponseStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED'
+} as const
+
+export type GameListingResponseStatus = (typeof GameListingResponseStatus)[keyof typeof GameListingResponseStatus]
+
+
+export const GameListingFrequency = {
+  DAILY: 'DAILY',
+  WEEKLY: 'WEEKLY',
+  BIWEEKLY: 'BIWEEKLY',
+  MONTHLY: 'MONTHLY'
+} as const
+
+export type GameListingFrequency = (typeof GameListingFrequency)[keyof typeof GameListingFrequency]

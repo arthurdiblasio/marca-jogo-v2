@@ -78,6 +78,27 @@ enum PreferredFoot {
   BOTH
 }
 
+enum GameListingStatus {
+  OPEN
+  MATCHED
+  EXPIRED
+  CANCELLED
+}
+
+enum GameListingResponseStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+}
+
+/// BIWEEKLY = fixed 15-day interval ("de 15 em 15 dias"), not alternating calendar weeks
+enum GameListingFrequency {
+  DAILY
+  WEEKLY
+  BIWEEKLY
+  MONTHLY
+}
+
 model User {
   id String @id @default(cuid())
 
@@ -107,6 +128,9 @@ model User {
   createdFinancialTransactions FinancialTransaction[] @relation("FinancialTransactionCreatedBy")
   sentOpponentInvites          OpponentInvite[]       @relation("OpponentInviteSentBy")
   passwordResetTokens          PasswordResetToken[]
+  createdGameListings          GameListing[]          @relation("GameListingCreatedBy")
+  createdGameListingSeries     GameListingSeries[]    @relation("GameListingSeriesCreatedBy")
+  gameListingResponses         GameListingResponse[]  @relation("GameListingResponseRespondedBy")
 
   @@index([email])
 }
@@ -209,6 +233,9 @@ model Organization {
   rankings                RankingSnapshot[]
   sentOpponentInvites     OpponentInvite[]       @relation("OpponentInviteFromOrganization")
   receivedOpponentInvites OpponentInvite[]       @relation("OpponentInviteToOrganization")
+  gameListings            GameListing[]          @relation("GameListingOrganization")
+  gameListingSeries       GameListingSeries[]    @relation("GameListingSeriesOrganization")
+  gameListingResponses    GameListingResponse[]  @relation("GameListingResponseOrganization")
 
   @@index([type])
   @@index([isActive])
@@ -349,6 +376,7 @@ model Match {
   attendances MatchAttendance[]
   lineup      MatchLineupEntry[]
   playerStats MatchPlayerStat[]
+  gameListing GameListing? @relation("GameListingMatch")
 
   @@index([homeOrganizationId, scheduledAt])
   @@index([awayOrganizationId])
@@ -471,4 +499,105 @@ model OpponentInvite {
   @@index([fromOrganizationId, status])
   @@index([toOrganizationId, status])
   @@index([sentById])
+}
+
+model GameListingSeries {
+  id String @id @default(cuid())
+
+  frequency GameListingFrequency
+  startDate DateTime
+  endDate   DateTime
+
+  isCancelled Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organizationId String
+  createdById    String?
+
+  organization Organization @relation("GameListingSeriesOrganization", fields: [organizationId], references: [id], onDelete: Cascade)
+  createdBy    User?        @relation("GameListingSeriesCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+
+  listings GameListing[]
+  photos   GameListingPhoto[]
+
+  @@index([organizationId])
+}
+
+model GameListing {
+  id String @id @default(cuid())
+
+  modality    SportModality
+  scheduledAt DateTime
+  location    String
+  city        String
+  state       String
+  lat         Decimal? @db.Decimal(10, 7)
+  lng         Decimal? @db.Decimal(10, 7)
+
+  priceCents Int?
+  priceNotes String?
+  notes      String?
+
+  status GameListingStatus @default(OPEN)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organizationId String
+  createdById    String?
+  seriesId       String?
+  matchId        String? @unique
+
+  organization Organization       @relation("GameListingOrganization", fields: [organizationId], references: [id], onDelete: Cascade)
+  createdBy    User?              @relation("GameListingCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  series       GameListingSeries? @relation(fields: [seriesId], references: [id], onDelete: SetNull)
+  match        Match?             @relation("GameListingMatch", fields: [matchId], references: [id], onDelete: SetNull)
+
+  photos    GameListingPhoto[]
+  responses GameListingResponse[]
+
+  @@index([status, scheduledAt])
+  @@index([city, state, status])
+  @@index([organizationId, status])
+  @@index([seriesId])
+}
+
+model GameListingPhoto {
+  id    String @id @default(cuid())
+  url   String
+  order Int    @default(0)
+
+  createdAt DateTime @default(now())
+
+  gameListingId       String
+  gameListingSeriesId String?
+
+  gameListing       GameListing        @relation(fields: [gameListingId], references: [id], onDelete: Cascade)
+  gameListingSeries GameListingSeries? @relation(fields: [gameListingSeriesId], references: [id], onDelete: SetNull)
+
+  @@index([gameListingId])
+}
+
+model GameListingResponse {
+  id String @id @default(cuid())
+
+  status  GameListingResponseStatus @default(PENDING)
+  message String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  gameListingId  String
+  organizationId String
+  respondedById  String?
+
+  gameListing  GameListing  @relation(fields: [gameListingId], references: [id], onDelete: Cascade)
+  organization Organization @relation("GameListingResponseOrganization", fields: [organizationId], references: [id], onDelete: Cascade)
+  respondedBy  User?        @relation("GameListingResponseRespondedBy", fields: [respondedById], references: [id], onDelete: SetNull)
+
+  @@unique([gameListingId, organizationId])
+  @@index([gameListingId, status])
+  @@index([organizationId])
 }

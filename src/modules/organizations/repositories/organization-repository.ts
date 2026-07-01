@@ -21,6 +21,10 @@ export const organizationRepository = {
     });
   },
 
+  findById(id: string) {
+    return prisma.organization.findUnique({ where: { id } });
+  },
+
   async generateUniqueSlug(name: string): Promise<string> {
     const base = slugify(name);
     let slug = base;

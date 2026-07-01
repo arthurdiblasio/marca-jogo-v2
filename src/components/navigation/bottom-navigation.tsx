@@ -4,11 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { mainNavigation } from "@/constants/navigation";
+import { useOrgs } from "@/contexts/org-context";
 import { cn } from "@/lib/utils";
 
 export function BottomNavigation() {
   const pathname = usePathname();
-  const items = mainNavigation.slice(0, 4);
+  const { activeOrg } = useOrgs();
+  const items = mainNavigation
+    .filter((item) => !item.orgTypes || (activeOrg && item.orgTypes.includes(activeOrg.type)))
+    .slice(0, 4);
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-40 border-t bg-card px-2 pb-[env(safe-area-inset-bottom)] pt-2 lg:hidden">
