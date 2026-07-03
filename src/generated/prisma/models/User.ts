@@ -205,12 +205,20 @@ export type UserWhereInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceListRelationFilter
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteListRelationFilter
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteListRelationFilter
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingListRelationFilter
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingListRelationFilter
   matchAttendances?: Prisma.MatchAttendanceListRelationFilter
   matchLineupEntries?: Prisma.MatchLineupEntryListRelationFilter
   matchStats?: Prisma.MatchPlayerStatListRelationFilter
+  matchMvpAwards?: Prisma.MatchListRelationFilter
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteListRelationFilter
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteListRelationFilter
+  matchRatingsGiven?: Prisma.MatchPlayerRatingListRelationFilter
+  matchRatingsReceived?: Prisma.MatchPlayerRatingListRelationFilter
   createdOrganizations?: Prisma.OrganizationListRelationFilter
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceListRelationFilter
   createdMatches?: Prisma.MatchListRelationFilter
+  createdGuestPlayers?: Prisma.GuestPlayerListRelationFilter
   createdFinancialTransactions?: Prisma.FinancialTransactionListRelationFilter
   sentOpponentInvites?: Prisma.OpponentInviteListRelationFilter
   passwordResetTokens?: Prisma.PasswordResetTokenListRelationFilter
@@ -236,12 +244,20 @@ export type UserOrderByWithRelationInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceOrderByRelationAggregateInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteOrderByRelationAggregateInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteOrderByRelationAggregateInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingOrderByRelationAggregateInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingOrderByRelationAggregateInput
   matchAttendances?: Prisma.MatchAttendanceOrderByRelationAggregateInput
   matchLineupEntries?: Prisma.MatchLineupEntryOrderByRelationAggregateInput
   matchStats?: Prisma.MatchPlayerStatOrderByRelationAggregateInput
+  matchMvpAwards?: Prisma.MatchOrderByRelationAggregateInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteOrderByRelationAggregateInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteOrderByRelationAggregateInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingOrderByRelationAggregateInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingOrderByRelationAggregateInput
   createdOrganizations?: Prisma.OrganizationOrderByRelationAggregateInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceOrderByRelationAggregateInput
   createdMatches?: Prisma.MatchOrderByRelationAggregateInput
+  createdGuestPlayers?: Prisma.GuestPlayerOrderByRelationAggregateInput
   createdFinancialTransactions?: Prisma.FinancialTransactionOrderByRelationAggregateInput
   sentOpponentInvites?: Prisma.OpponentInviteOrderByRelationAggregateInput
   passwordResetTokens?: Prisma.PasswordResetTokenOrderByRelationAggregateInput
@@ -270,12 +286,20 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   peladaMvpAwards?: Prisma.PeladaOccurrenceListRelationFilter
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteListRelationFilter
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteListRelationFilter
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingListRelationFilter
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingListRelationFilter
   matchAttendances?: Prisma.MatchAttendanceListRelationFilter
   matchLineupEntries?: Prisma.MatchLineupEntryListRelationFilter
   matchStats?: Prisma.MatchPlayerStatListRelationFilter
+  matchMvpAwards?: Prisma.MatchListRelationFilter
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteListRelationFilter
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteListRelationFilter
+  matchRatingsGiven?: Prisma.MatchPlayerRatingListRelationFilter
+  matchRatingsReceived?: Prisma.MatchPlayerRatingListRelationFilter
   createdOrganizations?: Prisma.OrganizationListRelationFilter
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceListRelationFilter
   createdMatches?: Prisma.MatchListRelationFilter
+  createdGuestPlayers?: Prisma.GuestPlayerListRelationFilter
   createdFinancialTransactions?: Prisma.FinancialTransactionListRelationFilter
   sentOpponentInvites?: Prisma.OpponentInviteListRelationFilter
   passwordResetTokens?: Prisma.PasswordResetTokenListRelationFilter
@@ -327,12 +351,20 @@ export type UserCreateInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -358,12 +390,20 @@ export type UserUncheckedCreateInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -389,12 +429,20 @@ export type UserUpdateInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -420,12 +468,20 @@ export type UserUncheckedUpdateInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -566,6 +622,22 @@ export type UserUpdateOneWithoutCreatedOrganizationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreatedOrganizationsInput, Prisma.UserUpdateWithoutCreatedOrganizationsInput>, Prisma.UserUncheckedUpdateWithoutCreatedOrganizationsInput>
 }
 
+export type UserCreateNestedOneWithoutCreatedGuestPlayersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedGuestPlayersInput, Prisma.UserUncheckedCreateWithoutCreatedGuestPlayersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedGuestPlayersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutCreatedGuestPlayersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedGuestPlayersInput, Prisma.UserUncheckedCreateWithoutCreatedGuestPlayersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedGuestPlayersInput
+  upsert?: Prisma.UserUpsertWithoutCreatedGuestPlayersInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreatedGuestPlayersInput, Prisma.UserUpdateWithoutCreatedGuestPlayersInput>, Prisma.UserUncheckedUpdateWithoutCreatedGuestPlayersInput>
+}
+
 export type UserCreateNestedOneWithoutMembershipsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutMembershipsInput, Prisma.UserUncheckedCreateWithoutMembershipsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutMembershipsInput
@@ -632,10 +704,12 @@ export type UserCreateNestedOneWithoutPeladaStatsInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutPeladaStatsNestedInput = {
+export type UserUpdateOneWithoutPeladaStatsNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutPeladaStatsInput, Prisma.UserUncheckedCreateWithoutPeladaStatsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutPeladaStatsInput
   upsert?: Prisma.UserUpsertWithoutPeladaStatsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPeladaStatsInput, Prisma.UserUpdateWithoutPeladaStatsInput>, Prisma.UserUncheckedUpdateWithoutPeladaStatsInput>
 }
@@ -668,9 +742,43 @@ export type UserUpdateOneRequiredWithoutPeladaMvpVotesReceivedNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPeladaMvpVotesReceivedInput, Prisma.UserUpdateWithoutPeladaMvpVotesReceivedInput>, Prisma.UserUncheckedUpdateWithoutPeladaMvpVotesReceivedInput>
 }
 
+export type UserCreateNestedOneWithoutPeladaRatingsGivenInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPeladaRatingsGivenInput, Prisma.UserUncheckedCreateWithoutPeladaRatingsGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPeladaRatingsGivenInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutPeladaRatingsReceivedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPeladaRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutPeladaRatingsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPeladaRatingsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPeladaRatingsGivenNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPeladaRatingsGivenInput, Prisma.UserUncheckedCreateWithoutPeladaRatingsGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPeladaRatingsGivenInput
+  upsert?: Prisma.UserUpsertWithoutPeladaRatingsGivenInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPeladaRatingsGivenInput, Prisma.UserUpdateWithoutPeladaRatingsGivenInput>, Prisma.UserUncheckedUpdateWithoutPeladaRatingsGivenInput>
+}
+
+export type UserUpdateOneRequiredWithoutPeladaRatingsReceivedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPeladaRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutPeladaRatingsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPeladaRatingsReceivedInput
+  upsert?: Prisma.UserUpsertWithoutPeladaRatingsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPeladaRatingsReceivedInput, Prisma.UserUpdateWithoutPeladaRatingsReceivedInput>, Prisma.UserUncheckedUpdateWithoutPeladaRatingsReceivedInput>
+}
+
 export type UserCreateNestedOneWithoutCreatedMatchesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedMatchesInput, Prisma.UserUncheckedCreateWithoutCreatedMatchesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedMatchesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutMatchMvpAwardsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpAwardsInput, Prisma.UserUncheckedCreateWithoutMatchMvpAwardsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchMvpAwardsInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
@@ -682,6 +790,72 @@ export type UserUpdateOneWithoutCreatedMatchesNestedInput = {
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreatedMatchesInput, Prisma.UserUpdateWithoutCreatedMatchesInput>, Prisma.UserUncheckedUpdateWithoutCreatedMatchesInput>
+}
+
+export type UserUpdateOneWithoutMatchMvpAwardsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpAwardsInput, Prisma.UserUncheckedCreateWithoutMatchMvpAwardsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchMvpAwardsInput
+  upsert?: Prisma.UserUpsertWithoutMatchMvpAwardsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMatchMvpAwardsInput, Prisma.UserUpdateWithoutMatchMvpAwardsInput>, Prisma.UserUncheckedUpdateWithoutMatchMvpAwardsInput>
+}
+
+export type UserCreateNestedOneWithoutMatchMvpVotesGivenInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpVotesGivenInput, Prisma.UserUncheckedCreateWithoutMatchMvpVotesGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchMvpVotesGivenInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutMatchMvpVotesReceivedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpVotesReceivedInput, Prisma.UserUncheckedCreateWithoutMatchMvpVotesReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchMvpVotesReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMatchMvpVotesGivenNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpVotesGivenInput, Prisma.UserUncheckedCreateWithoutMatchMvpVotesGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchMvpVotesGivenInput
+  upsert?: Prisma.UserUpsertWithoutMatchMvpVotesGivenInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMatchMvpVotesGivenInput, Prisma.UserUpdateWithoutMatchMvpVotesGivenInput>, Prisma.UserUncheckedUpdateWithoutMatchMvpVotesGivenInput>
+}
+
+export type UserUpdateOneRequiredWithoutMatchMvpVotesReceivedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpVotesReceivedInput, Prisma.UserUncheckedCreateWithoutMatchMvpVotesReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchMvpVotesReceivedInput
+  upsert?: Prisma.UserUpsertWithoutMatchMvpVotesReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMatchMvpVotesReceivedInput, Prisma.UserUpdateWithoutMatchMvpVotesReceivedInput>, Prisma.UserUncheckedUpdateWithoutMatchMvpVotesReceivedInput>
+}
+
+export type UserCreateNestedOneWithoutMatchRatingsGivenInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchRatingsGivenInput, Prisma.UserUncheckedCreateWithoutMatchRatingsGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchRatingsGivenInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutMatchRatingsReceivedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutMatchRatingsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchRatingsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMatchRatingsGivenNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchRatingsGivenInput, Prisma.UserUncheckedCreateWithoutMatchRatingsGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchRatingsGivenInput
+  upsert?: Prisma.UserUpsertWithoutMatchRatingsGivenInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMatchRatingsGivenInput, Prisma.UserUpdateWithoutMatchRatingsGivenInput>, Prisma.UserUncheckedUpdateWithoutMatchRatingsGivenInput>
+}
+
+export type UserUpdateOneRequiredWithoutMatchRatingsReceivedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutMatchRatingsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchRatingsReceivedInput
+  upsert?: Prisma.UserUpsertWithoutMatchRatingsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMatchRatingsReceivedInput, Prisma.UserUpdateWithoutMatchRatingsReceivedInput>, Prisma.UserUncheckedUpdateWithoutMatchRatingsReceivedInput>
 }
 
 export type UserCreateNestedOneWithoutMatchAttendancesInput = {
@@ -718,10 +892,12 @@ export type UserCreateNestedOneWithoutMatchStatsInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutMatchStatsNestedInput = {
+export type UserUpdateOneWithoutMatchStatsNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutMatchStatsInput, Prisma.UserUncheckedCreateWithoutMatchStatsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchStatsInput
   upsert?: Prisma.UserUpsertWithoutMatchStatsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMatchStatsInput, Prisma.UserUpdateWithoutMatchStatsInput>, Prisma.UserUncheckedUpdateWithoutMatchStatsInput>
 }
@@ -851,12 +1027,20 @@ export type UserCreateWithoutPasswordResetTokensInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
@@ -881,12 +1065,20 @@ export type UserUncheckedCreateWithoutPasswordResetTokensInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
@@ -927,12 +1119,20 @@ export type UserUpdateWithoutPasswordResetTokensInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
@@ -957,12 +1157,20 @@ export type UserUncheckedUpdateWithoutPasswordResetTokensInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -986,12 +1194,20 @@ export type UserCreateWithoutProfileInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -1016,12 +1232,20 @@ export type UserUncheckedCreateWithoutProfileInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -1062,12 +1286,20 @@ export type UserUpdateWithoutProfileInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -1092,12 +1324,20 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -1123,11 +1363,19 @@ export type UserCreateWithoutCreatedOrganizationsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -1153,11 +1401,19 @@ export type UserUncheckedCreateWithoutCreatedOrganizationsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -1199,11 +1455,19 @@ export type UserUpdateWithoutCreatedOrganizationsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -1229,9 +1493,185 @@ export type UserUncheckedUpdateWithoutCreatedOrganizationsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserCreateWithoutCreatedGuestPlayersInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
+}
+
+export type UserUncheckedCreateWithoutCreatedGuestPlayersInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
+}
+
+export type UserCreateOrConnectWithoutCreatedGuestPlayersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreatedGuestPlayersInput, Prisma.UserUncheckedCreateWithoutCreatedGuestPlayersInput>
+}
+
+export type UserUpsertWithoutCreatedGuestPlayersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCreatedGuestPlayersInput, Prisma.UserUncheckedUpdateWithoutCreatedGuestPlayersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreatedGuestPlayersInput, Prisma.UserUncheckedCreateWithoutCreatedGuestPlayersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCreatedGuestPlayersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCreatedGuestPlayersInput, Prisma.UserUncheckedUpdateWithoutCreatedGuestPlayersInput>
+}
+
+export type UserUpdateWithoutCreatedGuestPlayersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCreatedGuestPlayersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -1258,12 +1698,20 @@ export type UserCreateWithoutMembershipsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -1288,12 +1736,20 @@ export type UserUncheckedCreateWithoutMembershipsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -1334,12 +1790,20 @@ export type UserUpdateWithoutMembershipsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -1364,12 +1828,20 @@ export type UserUncheckedUpdateWithoutMembershipsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -1395,11 +1867,19 @@ export type UserCreateWithoutCreatedPeladaOccurrencesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -1425,11 +1905,19 @@ export type UserUncheckedCreateWithoutCreatedPeladaOccurrencesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -1459,12 +1947,20 @@ export type UserCreateWithoutPeladaMvpAwardsInput = {
   peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -1489,12 +1985,20 @@ export type UserUncheckedCreateWithoutPeladaMvpAwardsInput = {
   peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -1536,11 +2040,19 @@ export type UserUpdateWithoutCreatedPeladaOccurrencesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -1566,11 +2078,19 @@ export type UserUncheckedUpdateWithoutCreatedPeladaOccurrencesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -1606,12 +2126,20 @@ export type UserUpdateWithoutPeladaMvpAwardsInput = {
   peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -1636,12 +2164,20 @@ export type UserUncheckedUpdateWithoutPeladaMvpAwardsInput = {
   peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -1666,12 +2202,20 @@ export type UserCreateWithoutPeladaAttendancesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -1696,12 +2240,20 @@ export type UserUncheckedCreateWithoutPeladaAttendancesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -1742,12 +2294,20 @@ export type UserUpdateWithoutPeladaAttendancesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -1772,12 +2332,20 @@ export type UserUncheckedUpdateWithoutPeladaAttendancesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -1802,12 +2370,20 @@ export type UserCreateWithoutPeladaStatsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -1832,12 +2408,20 @@ export type UserUncheckedCreateWithoutPeladaStatsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -1878,12 +2462,20 @@ export type UserUpdateWithoutPeladaStatsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -1908,12 +2500,20 @@ export type UserUncheckedUpdateWithoutPeladaStatsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -1938,12 +2538,20 @@ export type UserCreateWithoutPeladaMvpVotesGivenInput = {
   peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -1968,12 +2576,20 @@ export type UserUncheckedCreateWithoutPeladaMvpVotesGivenInput = {
   peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -2003,12 +2619,20 @@ export type UserCreateWithoutPeladaMvpVotesReceivedInput = {
   peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -2033,12 +2657,20 @@ export type UserUncheckedCreateWithoutPeladaMvpVotesReceivedInput = {
   peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -2079,12 +2711,20 @@ export type UserUpdateWithoutPeladaMvpVotesGivenInput = {
   peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -2109,12 +2749,20 @@ export type UserUncheckedUpdateWithoutPeladaMvpVotesGivenInput = {
   peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -2150,12 +2798,20 @@ export type UserUpdateWithoutPeladaMvpVotesReceivedInput = {
   peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -2180,12 +2836,356 @@ export type UserUncheckedUpdateWithoutPeladaMvpVotesReceivedInput = {
   peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserCreateWithoutPeladaRatingsGivenInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
+}
+
+export type UserUncheckedCreateWithoutPeladaRatingsGivenInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
+}
+
+export type UserCreateOrConnectWithoutPeladaRatingsGivenInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPeladaRatingsGivenInput, Prisma.UserUncheckedCreateWithoutPeladaRatingsGivenInput>
+}
+
+export type UserCreateWithoutPeladaRatingsReceivedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
+}
+
+export type UserUncheckedCreateWithoutPeladaRatingsReceivedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
+}
+
+export type UserCreateOrConnectWithoutPeladaRatingsReceivedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPeladaRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutPeladaRatingsReceivedInput>
+}
+
+export type UserUpsertWithoutPeladaRatingsGivenInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPeladaRatingsGivenInput, Prisma.UserUncheckedUpdateWithoutPeladaRatingsGivenInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPeladaRatingsGivenInput, Prisma.UserUncheckedCreateWithoutPeladaRatingsGivenInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPeladaRatingsGivenInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPeladaRatingsGivenInput, Prisma.UserUncheckedUpdateWithoutPeladaRatingsGivenInput>
+}
+
+export type UserUpdateWithoutPeladaRatingsGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPeladaRatingsGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUpsertWithoutPeladaRatingsReceivedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPeladaRatingsReceivedInput, Prisma.UserUncheckedUpdateWithoutPeladaRatingsReceivedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPeladaRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutPeladaRatingsReceivedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPeladaRatingsReceivedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPeladaRatingsReceivedInput, Prisma.UserUncheckedUpdateWithoutPeladaRatingsReceivedInput>
+}
+
+export type UserUpdateWithoutPeladaRatingsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPeladaRatingsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -2211,11 +3211,19 @@ export type UserCreateWithoutCreatedMatchesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -2241,11 +3249,19 @@ export type UserUncheckedCreateWithoutCreatedMatchesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -2259,6 +3275,87 @@ export type UserUncheckedCreateWithoutCreatedMatchesInput = {
 export type UserCreateOrConnectWithoutCreatedMatchesInput = {
   where: Prisma.UserWhereUniqueInput
   create: Prisma.XOR<Prisma.UserCreateWithoutCreatedMatchesInput, Prisma.UserUncheckedCreateWithoutCreatedMatchesInput>
+}
+
+export type UserCreateWithoutMatchMvpAwardsInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
+}
+
+export type UserUncheckedCreateWithoutMatchMvpAwardsInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
+}
+
+export type UserCreateOrConnectWithoutMatchMvpAwardsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpAwardsInput, Prisma.UserUncheckedCreateWithoutMatchMvpAwardsInput>
 }
 
 export type UserUpsertWithoutCreatedMatchesInput = {
@@ -2287,11 +3384,19 @@ export type UserUpdateWithoutCreatedMatchesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -2317,11 +3422,778 @@ export type UserUncheckedUpdateWithoutCreatedMatchesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUpsertWithoutMatchMvpAwardsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMatchMvpAwardsInput, Prisma.UserUncheckedUpdateWithoutMatchMvpAwardsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpAwardsInput, Prisma.UserUncheckedCreateWithoutMatchMvpAwardsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMatchMvpAwardsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMatchMvpAwardsInput, Prisma.UserUncheckedUpdateWithoutMatchMvpAwardsInput>
+}
+
+export type UserUpdateWithoutMatchMvpAwardsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMatchMvpAwardsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserCreateWithoutMatchMvpVotesGivenInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
+}
+
+export type UserUncheckedCreateWithoutMatchMvpVotesGivenInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
+}
+
+export type UserCreateOrConnectWithoutMatchMvpVotesGivenInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpVotesGivenInput, Prisma.UserUncheckedCreateWithoutMatchMvpVotesGivenInput>
+}
+
+export type UserCreateWithoutMatchMvpVotesReceivedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
+}
+
+export type UserUncheckedCreateWithoutMatchMvpVotesReceivedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
+}
+
+export type UserCreateOrConnectWithoutMatchMvpVotesReceivedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpVotesReceivedInput, Prisma.UserUncheckedCreateWithoutMatchMvpVotesReceivedInput>
+}
+
+export type UserUpsertWithoutMatchMvpVotesGivenInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMatchMvpVotesGivenInput, Prisma.UserUncheckedUpdateWithoutMatchMvpVotesGivenInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpVotesGivenInput, Prisma.UserUncheckedCreateWithoutMatchMvpVotesGivenInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMatchMvpVotesGivenInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMatchMvpVotesGivenInput, Prisma.UserUncheckedUpdateWithoutMatchMvpVotesGivenInput>
+}
+
+export type UserUpdateWithoutMatchMvpVotesGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMatchMvpVotesGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUpsertWithoutMatchMvpVotesReceivedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMatchMvpVotesReceivedInput, Prisma.UserUncheckedUpdateWithoutMatchMvpVotesReceivedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchMvpVotesReceivedInput, Prisma.UserUncheckedCreateWithoutMatchMvpVotesReceivedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMatchMvpVotesReceivedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMatchMvpVotesReceivedInput, Prisma.UserUncheckedUpdateWithoutMatchMvpVotesReceivedInput>
+}
+
+export type UserUpdateWithoutMatchMvpVotesReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMatchMvpVotesReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserCreateWithoutMatchRatingsGivenInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
+}
+
+export type UserUncheckedCreateWithoutMatchRatingsGivenInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
+}
+
+export type UserCreateOrConnectWithoutMatchRatingsGivenInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchRatingsGivenInput, Prisma.UserUncheckedCreateWithoutMatchRatingsGivenInput>
+}
+
+export type UserCreateWithoutMatchRatingsReceivedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteCreateNestedManyWithoutUsedByInput
+}
+
+export type UserUncheckedCreateWithoutMatchRatingsReceivedInput = {
+  id?: string
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutUserInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
+  createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutCreatedByInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutRespondedByInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutCreatedByInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutUsedByInput
+}
+
+export type UserCreateOrConnectWithoutMatchRatingsReceivedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutMatchRatingsReceivedInput>
+}
+
+export type UserUpsertWithoutMatchRatingsGivenInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMatchRatingsGivenInput, Prisma.UserUncheckedUpdateWithoutMatchRatingsGivenInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchRatingsGivenInput, Prisma.UserUncheckedCreateWithoutMatchRatingsGivenInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMatchRatingsGivenInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMatchRatingsGivenInput, Prisma.UserUncheckedUpdateWithoutMatchRatingsGivenInput>
+}
+
+export type UserUpdateWithoutMatchRatingsGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMatchRatingsGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUncheckedUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUncheckedUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUpsertWithoutMatchRatingsReceivedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMatchRatingsReceivedInput, Prisma.UserUncheckedUpdateWithoutMatchRatingsReceivedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutMatchRatingsReceivedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMatchRatingsReceivedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMatchRatingsReceivedInput, Prisma.UserUncheckedUpdateWithoutMatchRatingsReceivedInput>
+}
+
+export type UserUpdateWithoutMatchRatingsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
+  createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
+  createdGameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutCreatedByNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutRespondedByNestedInput
+  playerInvitesCreated?: Prisma.PlayerInviteUpdateManyWithoutCreatedByNestedInput
+  playerInvitesUsed?: Prisma.PlayerInviteUpdateManyWithoutUsedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMatchRatingsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  peladaAttendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  peladaStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
+  peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -2347,11 +4219,19 @@ export type UserCreateWithoutMatchAttendancesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -2377,11 +4257,19 @@ export type UserUncheckedCreateWithoutMatchAttendancesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -2423,11 +4311,19 @@ export type UserUpdateWithoutMatchAttendancesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -2453,11 +4349,19 @@ export type UserUncheckedUpdateWithoutMatchAttendancesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -2483,11 +4387,19 @@ export type UserCreateWithoutMatchLineupEntriesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -2513,11 +4425,19 @@ export type UserUncheckedCreateWithoutMatchLineupEntriesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -2559,11 +4479,19 @@ export type UserUpdateWithoutMatchLineupEntriesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -2589,11 +4517,19 @@ export type UserUncheckedUpdateWithoutMatchLineupEntriesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -2619,11 +4555,19 @@ export type UserCreateWithoutMatchStatsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -2649,11 +4593,19 @@ export type UserUncheckedCreateWithoutMatchStatsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -2695,11 +4647,19 @@ export type UserUpdateWithoutMatchStatsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -2725,11 +4685,19 @@ export type UserUncheckedUpdateWithoutMatchStatsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -2755,12 +4723,20 @@ export type UserCreateWithoutCreatedFinancialTransactionsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
@@ -2785,12 +4761,20 @@ export type UserUncheckedCreateWithoutCreatedFinancialTransactionsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2831,12 +4815,20 @@ export type UserUpdateWithoutCreatedFinancialTransactionsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
@@ -2861,12 +4853,20 @@ export type UserUncheckedUpdateWithoutCreatedFinancialTransactionsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -2891,12 +4891,20 @@ export type UserCreateWithoutSentOpponentInvitesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
   createdGameListings?: Prisma.GameListingCreateNestedManyWithoutCreatedByInput
@@ -2921,12 +4929,20 @@ export type UserUncheckedCreateWithoutSentOpponentInvitesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
   createdGameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2967,12 +4983,20 @@ export type UserUpdateWithoutSentOpponentInvitesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
   createdGameListings?: Prisma.GameListingUpdateManyWithoutCreatedByNestedInput
@@ -2997,12 +5021,20 @@ export type UserUncheckedUpdateWithoutSentOpponentInvitesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
   createdGameListings?: Prisma.GameListingUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -3027,12 +5059,20 @@ export type UserCreateWithoutPlayerInvitesCreatedInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -3057,12 +5097,20 @@ export type UserUncheckedCreateWithoutPlayerInvitesCreatedInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -3092,12 +5140,20 @@ export type UserCreateWithoutPlayerInvitesUsedInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -3122,12 +5178,20 @@ export type UserUncheckedCreateWithoutPlayerInvitesUsedInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -3168,12 +5232,20 @@ export type UserUpdateWithoutPlayerInvitesCreatedInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -3198,12 +5270,20 @@ export type UserUncheckedUpdateWithoutPlayerInvitesCreatedInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -3239,12 +5319,20 @@ export type UserUpdateWithoutPlayerInvitesUsedInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -3269,12 +5357,20 @@ export type UserUncheckedUpdateWithoutPlayerInvitesUsedInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -3299,12 +5395,20 @@ export type UserCreateWithoutCreatedGameListingSeriesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -3329,12 +5433,20 @@ export type UserUncheckedCreateWithoutCreatedGameListingSeriesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -3375,12 +5487,20 @@ export type UserUpdateWithoutCreatedGameListingSeriesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -3405,12 +5525,20 @@ export type UserUncheckedUpdateWithoutCreatedGameListingSeriesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -3435,12 +5563,20 @@ export type UserCreateWithoutCreatedGameListingsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -3465,12 +5601,20 @@ export type UserUncheckedCreateWithoutCreatedGameListingsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -3511,12 +5655,20 @@ export type UserUpdateWithoutCreatedGameListingsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -3541,12 +5693,20 @@ export type UserUncheckedUpdateWithoutCreatedGameListingsInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -3571,12 +5731,20 @@ export type UserCreateWithoutGameListingResponsesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
@@ -3601,12 +5769,20 @@ export type UserUncheckedCreateWithoutGameListingResponsesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutMvpInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVoterInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutUserInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutUserInput
   matchStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutUserInput
+  matchMvpAwards?: Prisma.MatchUncheckedCreateNestedManyWithoutMvpInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVoterInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutVotedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRaterInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutRatedInput
   createdOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutCreatedByInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutCreatedByInput
   createdMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutCreatedByInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutCreatedByInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutCreatedByInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutSentByInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
@@ -3647,12 +5823,20 @@ export type UserUpdateWithoutGameListingResponsesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
@@ -3677,12 +5861,20 @@ export type UserUncheckedUpdateWithoutGameListingResponsesInput = {
   peladaMvpAwards?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutMvpNestedInput
   peladaMvpVotesGiven?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
   peladaMvpVotesReceived?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  peladaRatingsGiven?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  peladaRatingsReceived?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutUserNestedInput
   matchLineupEntries?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutUserNestedInput
   matchStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput
+  matchMvpAwards?: Prisma.MatchUncheckedUpdateManyWithoutMvpNestedInput
+  matchMvpVotesGiven?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVoterNestedInput
+  matchMvpVotesReceived?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutVotedNestedInput
+  matchRatingsGiven?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRaterNestedInput
+  matchRatingsReceived?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutRatedNestedInput
   createdOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdPeladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByNestedInput
   createdMatches?: Prisma.MatchUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdGuestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutCreatedByNestedInput
   createdFinancialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutCreatedByNestedInput
   sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutSentByNestedInput
   passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -3704,12 +5896,20 @@ export type UserCountOutputType = {
   peladaMvpAwards: number
   peladaMvpVotesGiven: number
   peladaMvpVotesReceived: number
+  peladaRatingsGiven: number
+  peladaRatingsReceived: number
   matchAttendances: number
   matchLineupEntries: number
   matchStats: number
+  matchMvpAwards: number
+  matchMvpVotesGiven: number
+  matchMvpVotesReceived: number
+  matchRatingsGiven: number
+  matchRatingsReceived: number
   createdOrganizations: number
   createdPeladaOccurrences: number
   createdMatches: number
+  createdGuestPlayers: number
   createdFinancialTransactions: number
   sentOpponentInvites: number
   passwordResetTokens: number
@@ -3727,12 +5927,20 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   peladaMvpAwards?: boolean | UserCountOutputTypeCountPeladaMvpAwardsArgs
   peladaMvpVotesGiven?: boolean | UserCountOutputTypeCountPeladaMvpVotesGivenArgs
   peladaMvpVotesReceived?: boolean | UserCountOutputTypeCountPeladaMvpVotesReceivedArgs
+  peladaRatingsGiven?: boolean | UserCountOutputTypeCountPeladaRatingsGivenArgs
+  peladaRatingsReceived?: boolean | UserCountOutputTypeCountPeladaRatingsReceivedArgs
   matchAttendances?: boolean | UserCountOutputTypeCountMatchAttendancesArgs
   matchLineupEntries?: boolean | UserCountOutputTypeCountMatchLineupEntriesArgs
   matchStats?: boolean | UserCountOutputTypeCountMatchStatsArgs
+  matchMvpAwards?: boolean | UserCountOutputTypeCountMatchMvpAwardsArgs
+  matchMvpVotesGiven?: boolean | UserCountOutputTypeCountMatchMvpVotesGivenArgs
+  matchMvpVotesReceived?: boolean | UserCountOutputTypeCountMatchMvpVotesReceivedArgs
+  matchRatingsGiven?: boolean | UserCountOutputTypeCountMatchRatingsGivenArgs
+  matchRatingsReceived?: boolean | UserCountOutputTypeCountMatchRatingsReceivedArgs
   createdOrganizations?: boolean | UserCountOutputTypeCountCreatedOrganizationsArgs
   createdPeladaOccurrences?: boolean | UserCountOutputTypeCountCreatedPeladaOccurrencesArgs
   createdMatches?: boolean | UserCountOutputTypeCountCreatedMatchesArgs
+  createdGuestPlayers?: boolean | UserCountOutputTypeCountCreatedGuestPlayersArgs
   createdFinancialTransactions?: boolean | UserCountOutputTypeCountCreatedFinancialTransactionsArgs
   sentOpponentInvites?: boolean | UserCountOutputTypeCountSentOpponentInvitesArgs
   passwordResetTokens?: boolean | UserCountOutputTypeCountPasswordResetTokensArgs
@@ -3798,6 +6006,20 @@ export type UserCountOutputTypeCountPeladaMvpVotesReceivedArgs<ExtArgs extends r
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountPeladaRatingsGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PeladaPlayerRatingWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPeladaRatingsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PeladaPlayerRatingWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountMatchAttendancesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.MatchAttendanceWhereInput
 }
@@ -3819,6 +6041,41 @@ export type UserCountOutputTypeCountMatchStatsArgs<ExtArgs extends runtime.Types
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountMatchMvpAwardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMatchMvpVotesGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchMvpVoteWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMatchMvpVotesReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchMvpVoteWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMatchRatingsGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchPlayerRatingWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMatchRatingsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchPlayerRatingWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountCreatedOrganizationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.OrganizationWhereInput
 }
@@ -3835,6 +6092,13 @@ export type UserCountOutputTypeCountCreatedPeladaOccurrencesArgs<ExtArgs extends
  */
 export type UserCountOutputTypeCountCreatedMatchesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.MatchWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCreatedGuestPlayersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GuestPlayerWhereInput
 }
 
 /**
@@ -3909,12 +6173,20 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   peladaMvpAwards?: boolean | Prisma.User$peladaMvpAwardsArgs<ExtArgs>
   peladaMvpVotesGiven?: boolean | Prisma.User$peladaMvpVotesGivenArgs<ExtArgs>
   peladaMvpVotesReceived?: boolean | Prisma.User$peladaMvpVotesReceivedArgs<ExtArgs>
+  peladaRatingsGiven?: boolean | Prisma.User$peladaRatingsGivenArgs<ExtArgs>
+  peladaRatingsReceived?: boolean | Prisma.User$peladaRatingsReceivedArgs<ExtArgs>
   matchAttendances?: boolean | Prisma.User$matchAttendancesArgs<ExtArgs>
   matchLineupEntries?: boolean | Prisma.User$matchLineupEntriesArgs<ExtArgs>
   matchStats?: boolean | Prisma.User$matchStatsArgs<ExtArgs>
+  matchMvpAwards?: boolean | Prisma.User$matchMvpAwardsArgs<ExtArgs>
+  matchMvpVotesGiven?: boolean | Prisma.User$matchMvpVotesGivenArgs<ExtArgs>
+  matchMvpVotesReceived?: boolean | Prisma.User$matchMvpVotesReceivedArgs<ExtArgs>
+  matchRatingsGiven?: boolean | Prisma.User$matchRatingsGivenArgs<ExtArgs>
+  matchRatingsReceived?: boolean | Prisma.User$matchRatingsReceivedArgs<ExtArgs>
   createdOrganizations?: boolean | Prisma.User$createdOrganizationsArgs<ExtArgs>
   createdPeladaOccurrences?: boolean | Prisma.User$createdPeladaOccurrencesArgs<ExtArgs>
   createdMatches?: boolean | Prisma.User$createdMatchesArgs<ExtArgs>
+  createdGuestPlayers?: boolean | Prisma.User$createdGuestPlayersArgs<ExtArgs>
   createdFinancialTransactions?: boolean | Prisma.User$createdFinancialTransactionsArgs<ExtArgs>
   sentOpponentInvites?: boolean | Prisma.User$sentOpponentInvitesArgs<ExtArgs>
   passwordResetTokens?: boolean | Prisma.User$passwordResetTokensArgs<ExtArgs>
@@ -3965,12 +6237,20 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   peladaMvpAwards?: boolean | Prisma.User$peladaMvpAwardsArgs<ExtArgs>
   peladaMvpVotesGiven?: boolean | Prisma.User$peladaMvpVotesGivenArgs<ExtArgs>
   peladaMvpVotesReceived?: boolean | Prisma.User$peladaMvpVotesReceivedArgs<ExtArgs>
+  peladaRatingsGiven?: boolean | Prisma.User$peladaRatingsGivenArgs<ExtArgs>
+  peladaRatingsReceived?: boolean | Prisma.User$peladaRatingsReceivedArgs<ExtArgs>
   matchAttendances?: boolean | Prisma.User$matchAttendancesArgs<ExtArgs>
   matchLineupEntries?: boolean | Prisma.User$matchLineupEntriesArgs<ExtArgs>
   matchStats?: boolean | Prisma.User$matchStatsArgs<ExtArgs>
+  matchMvpAwards?: boolean | Prisma.User$matchMvpAwardsArgs<ExtArgs>
+  matchMvpVotesGiven?: boolean | Prisma.User$matchMvpVotesGivenArgs<ExtArgs>
+  matchMvpVotesReceived?: boolean | Prisma.User$matchMvpVotesReceivedArgs<ExtArgs>
+  matchRatingsGiven?: boolean | Prisma.User$matchRatingsGivenArgs<ExtArgs>
+  matchRatingsReceived?: boolean | Prisma.User$matchRatingsReceivedArgs<ExtArgs>
   createdOrganizations?: boolean | Prisma.User$createdOrganizationsArgs<ExtArgs>
   createdPeladaOccurrences?: boolean | Prisma.User$createdPeladaOccurrencesArgs<ExtArgs>
   createdMatches?: boolean | Prisma.User$createdMatchesArgs<ExtArgs>
+  createdGuestPlayers?: boolean | Prisma.User$createdGuestPlayersArgs<ExtArgs>
   createdFinancialTransactions?: boolean | Prisma.User$createdFinancialTransactionsArgs<ExtArgs>
   sentOpponentInvites?: boolean | Prisma.User$sentOpponentInvitesArgs<ExtArgs>
   passwordResetTokens?: boolean | Prisma.User$passwordResetTokensArgs<ExtArgs>
@@ -3994,12 +6274,20 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     peladaMvpAwards: Prisma.$PeladaOccurrencePayload<ExtArgs>[]
     peladaMvpVotesGiven: Prisma.$PeladaMvpVotePayload<ExtArgs>[]
     peladaMvpVotesReceived: Prisma.$PeladaMvpVotePayload<ExtArgs>[]
+    peladaRatingsGiven: Prisma.$PeladaPlayerRatingPayload<ExtArgs>[]
+    peladaRatingsReceived: Prisma.$PeladaPlayerRatingPayload<ExtArgs>[]
     matchAttendances: Prisma.$MatchAttendancePayload<ExtArgs>[]
     matchLineupEntries: Prisma.$MatchLineupEntryPayload<ExtArgs>[]
     matchStats: Prisma.$MatchPlayerStatPayload<ExtArgs>[]
+    matchMvpAwards: Prisma.$MatchPayload<ExtArgs>[]
+    matchMvpVotesGiven: Prisma.$MatchMvpVotePayload<ExtArgs>[]
+    matchMvpVotesReceived: Prisma.$MatchMvpVotePayload<ExtArgs>[]
+    matchRatingsGiven: Prisma.$MatchPlayerRatingPayload<ExtArgs>[]
+    matchRatingsReceived: Prisma.$MatchPlayerRatingPayload<ExtArgs>[]
     createdOrganizations: Prisma.$OrganizationPayload<ExtArgs>[]
     createdPeladaOccurrences: Prisma.$PeladaOccurrencePayload<ExtArgs>[]
     createdMatches: Prisma.$MatchPayload<ExtArgs>[]
+    createdGuestPlayers: Prisma.$GuestPlayerPayload<ExtArgs>[]
     createdFinancialTransactions: Prisma.$FinancialTransactionPayload<ExtArgs>[]
     sentOpponentInvites: Prisma.$OpponentInvitePayload<ExtArgs>[]
     passwordResetTokens: Prisma.$PasswordResetTokenPayload<ExtArgs>[]
@@ -4418,12 +6706,20 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   peladaMvpAwards<T extends Prisma.User$peladaMvpAwardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$peladaMvpAwardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaOccurrencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   peladaMvpVotesGiven<T extends Prisma.User$peladaMvpVotesGivenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$peladaMvpVotesGivenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaMvpVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   peladaMvpVotesReceived<T extends Prisma.User$peladaMvpVotesReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$peladaMvpVotesReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaMvpVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  peladaRatingsGiven<T extends Prisma.User$peladaRatingsGivenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$peladaRatingsGivenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaPlayerRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  peladaRatingsReceived<T extends Prisma.User$peladaRatingsReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$peladaRatingsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaPlayerRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   matchAttendances<T extends Prisma.User$matchAttendancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchAttendancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   matchLineupEntries<T extends Prisma.User$matchLineupEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchLineupEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchLineupEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   matchStats<T extends Prisma.User$matchStatsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchStatsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchPlayerStatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  matchMvpAwards<T extends Prisma.User$matchMvpAwardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchMvpAwardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  matchMvpVotesGiven<T extends Prisma.User$matchMvpVotesGivenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchMvpVotesGivenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchMvpVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  matchMvpVotesReceived<T extends Prisma.User$matchMvpVotesReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchMvpVotesReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchMvpVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  matchRatingsGiven<T extends Prisma.User$matchRatingsGivenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchRatingsGivenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchPlayerRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  matchRatingsReceived<T extends Prisma.User$matchRatingsReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchRatingsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchPlayerRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdOrganizations<T extends Prisma.User$createdOrganizationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdOrganizationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdPeladaOccurrences<T extends Prisma.User$createdPeladaOccurrencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdPeladaOccurrencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaOccurrencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdMatches<T extends Prisma.User$createdMatchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdMatchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  createdGuestPlayers<T extends Prisma.User$createdGuestPlayersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdGuestPlayersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GuestPlayerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdFinancialTransactions<T extends Prisma.User$createdFinancialTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdFinancialTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FinancialTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sentOpponentInvites<T extends Prisma.User$sentOpponentInvitesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sentOpponentInvitesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OpponentInvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   passwordResetTokens<T extends Prisma.User$passwordResetTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$passwordResetTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PasswordResetTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -5024,6 +7320,54 @@ export type User$peladaMvpVotesReceivedArgs<ExtArgs extends runtime.Types.Extens
 }
 
 /**
+ * User.peladaRatingsGiven
+ */
+export type User$peladaRatingsGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PeladaPlayerRating
+   */
+  select?: Prisma.PeladaPlayerRatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PeladaPlayerRating
+   */
+  omit?: Prisma.PeladaPlayerRatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PeladaPlayerRatingInclude<ExtArgs> | null
+  where?: Prisma.PeladaPlayerRatingWhereInput
+  orderBy?: Prisma.PeladaPlayerRatingOrderByWithRelationInput | Prisma.PeladaPlayerRatingOrderByWithRelationInput[]
+  cursor?: Prisma.PeladaPlayerRatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PeladaPlayerRatingScalarFieldEnum | Prisma.PeladaPlayerRatingScalarFieldEnum[]
+}
+
+/**
+ * User.peladaRatingsReceived
+ */
+export type User$peladaRatingsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PeladaPlayerRating
+   */
+  select?: Prisma.PeladaPlayerRatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PeladaPlayerRating
+   */
+  omit?: Prisma.PeladaPlayerRatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PeladaPlayerRatingInclude<ExtArgs> | null
+  where?: Prisma.PeladaPlayerRatingWhereInput
+  orderBy?: Prisma.PeladaPlayerRatingOrderByWithRelationInput | Prisma.PeladaPlayerRatingOrderByWithRelationInput[]
+  cursor?: Prisma.PeladaPlayerRatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PeladaPlayerRatingScalarFieldEnum | Prisma.PeladaPlayerRatingScalarFieldEnum[]
+}
+
+/**
  * User.matchAttendances
  */
 export type User$matchAttendancesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -5096,6 +7440,126 @@ export type User$matchStatsArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * User.matchMvpAwards
+ */
+export type User$matchMvpAwardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Match
+   */
+  select?: Prisma.MatchSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Match
+   */
+  omit?: Prisma.MatchOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchInclude<ExtArgs> | null
+  where?: Prisma.MatchWhereInput
+  orderBy?: Prisma.MatchOrderByWithRelationInput | Prisma.MatchOrderByWithRelationInput[]
+  cursor?: Prisma.MatchWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchScalarFieldEnum | Prisma.MatchScalarFieldEnum[]
+}
+
+/**
+ * User.matchMvpVotesGiven
+ */
+export type User$matchMvpVotesGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MatchMvpVote
+   */
+  select?: Prisma.MatchMvpVoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MatchMvpVote
+   */
+  omit?: Prisma.MatchMvpVoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchMvpVoteInclude<ExtArgs> | null
+  where?: Prisma.MatchMvpVoteWhereInput
+  orderBy?: Prisma.MatchMvpVoteOrderByWithRelationInput | Prisma.MatchMvpVoteOrderByWithRelationInput[]
+  cursor?: Prisma.MatchMvpVoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchMvpVoteScalarFieldEnum | Prisma.MatchMvpVoteScalarFieldEnum[]
+}
+
+/**
+ * User.matchMvpVotesReceived
+ */
+export type User$matchMvpVotesReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MatchMvpVote
+   */
+  select?: Prisma.MatchMvpVoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MatchMvpVote
+   */
+  omit?: Prisma.MatchMvpVoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchMvpVoteInclude<ExtArgs> | null
+  where?: Prisma.MatchMvpVoteWhereInput
+  orderBy?: Prisma.MatchMvpVoteOrderByWithRelationInput | Prisma.MatchMvpVoteOrderByWithRelationInput[]
+  cursor?: Prisma.MatchMvpVoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchMvpVoteScalarFieldEnum | Prisma.MatchMvpVoteScalarFieldEnum[]
+}
+
+/**
+ * User.matchRatingsGiven
+ */
+export type User$matchRatingsGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MatchPlayerRating
+   */
+  select?: Prisma.MatchPlayerRatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MatchPlayerRating
+   */
+  omit?: Prisma.MatchPlayerRatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchPlayerRatingInclude<ExtArgs> | null
+  where?: Prisma.MatchPlayerRatingWhereInput
+  orderBy?: Prisma.MatchPlayerRatingOrderByWithRelationInput | Prisma.MatchPlayerRatingOrderByWithRelationInput[]
+  cursor?: Prisma.MatchPlayerRatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchPlayerRatingScalarFieldEnum | Prisma.MatchPlayerRatingScalarFieldEnum[]
+}
+
+/**
+ * User.matchRatingsReceived
+ */
+export type User$matchRatingsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MatchPlayerRating
+   */
+  select?: Prisma.MatchPlayerRatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MatchPlayerRating
+   */
+  omit?: Prisma.MatchPlayerRatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchPlayerRatingInclude<ExtArgs> | null
+  where?: Prisma.MatchPlayerRatingWhereInput
+  orderBy?: Prisma.MatchPlayerRatingOrderByWithRelationInput | Prisma.MatchPlayerRatingOrderByWithRelationInput[]
+  cursor?: Prisma.MatchPlayerRatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchPlayerRatingScalarFieldEnum | Prisma.MatchPlayerRatingScalarFieldEnum[]
+}
+
+/**
  * User.createdOrganizations
  */
 export type User$createdOrganizationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -5165,6 +7629,30 @@ export type User$createdMatchesArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.MatchScalarFieldEnum | Prisma.MatchScalarFieldEnum[]
+}
+
+/**
+ * User.createdGuestPlayers
+ */
+export type User$createdGuestPlayersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GuestPlayer
+   */
+  select?: Prisma.GuestPlayerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GuestPlayer
+   */
+  omit?: Prisma.GuestPlayerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GuestPlayerInclude<ExtArgs> | null
+  where?: Prisma.GuestPlayerWhereInput
+  orderBy?: Prisma.GuestPlayerOrderByWithRelationInput | Prisma.GuestPlayerOrderByWithRelationInput[]
+  cursor?: Prisma.GuestPlayerWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GuestPlayerScalarFieldEnum | Prisma.GuestPlayerScalarFieldEnum[]
 }
 
 /**

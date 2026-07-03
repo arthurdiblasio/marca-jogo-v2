@@ -56,12 +56,16 @@ export const ModelName = {
   Profile: 'Profile',
   ProfileModality: 'ProfileModality',
   Organization: 'Organization',
+  GuestPlayer: 'GuestPlayer',
   Membership: 'Membership',
   PeladaOccurrence: 'PeladaOccurrence',
   PeladaAttendance: 'PeladaAttendance',
   PeladaPlayerStat: 'PeladaPlayerStat',
   PeladaMvpVote: 'PeladaMvpVote',
+  PeladaPlayerRating: 'PeladaPlayerRating',
   Match: 'Match',
+  MatchMvpVote: 'MatchMvpVote',
+  MatchPlayerRating: 'MatchPlayerRating',
   MatchAttendance: 'MatchAttendance',
   MatchLineupEntry: 'MatchLineupEntry',
   MatchPlayerStat: 'MatchPlayerStat',
@@ -124,8 +128,11 @@ export const ProfileScalarFieldEnum = {
   imageUrl: 'imageUrl',
   phone: 'phone',
   birthDate: 'birthDate',
+  address: 'address',
   city: 'city',
   state: 'state',
+  lat: 'lat',
+  lng: 'lng',
   preferredFoot: 'preferredFoot',
   shirtNumber: 'shirtNumber',
   bio: 'bio',
@@ -157,16 +164,35 @@ export const OrganizationScalarFieldEnum = {
   slug: 'slug',
   description: 'description',
   logoUrl: 'logoUrl',
+  address: 'address',
   city: 'city',
   state: 'state',
+  lat: 'lat',
+  lng: 'lng',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   modality: 'modality',
+  weekday: 'weekday',
+  scheduledTime: 'scheduledTime',
+  monthlyFee: 'monthlyFee',
+  singleFee: 'singleFee',
   createdById: 'createdById'
 } as const
 
 export type OrganizationScalarFieldEnum = (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum]
+
+
+export const GuestPlayerScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  organizationId: 'organizationId',
+  createdById: 'createdById'
+} as const
+
+export type GuestPlayerScalarFieldEnum = (typeof GuestPlayerScalarFieldEnum)[keyof typeof GuestPlayerScalarFieldEnum]
 
 
 export const MembershipScalarFieldEnum = {
@@ -176,6 +202,8 @@ export const MembershipScalarFieldEnum = {
   nickname: 'nickname',
   shirtNumber: 'shirtNumber',
   position: 'position',
+  isMonthly: 'isMonthly',
+  hasMergedGuest: 'hasMergedGuest',
   joinedAt: 'joinedAt',
   leftAt: 'leftAt',
   createdAt: 'createdAt',
@@ -198,6 +226,9 @@ export const PeladaOccurrenceScalarFieldEnum = {
   isCancelled: 'isCancelled',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  votingOpenedAt: 'votingOpenedAt',
+  votingClosesAt: 'votingClosesAt',
+  votingClosedAt: 'votingClosedAt',
   organizationId: 'organizationId',
   createdById: 'createdById',
   mvpUserId: 'mvpUserId'
@@ -227,7 +258,8 @@ export const PeladaPlayerStatScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   peladaOccurrenceId: 'peladaOccurrenceId',
-  userId: 'userId'
+  userId: 'userId',
+  guestPlayerId: 'guestPlayerId'
 } as const
 
 export type PeladaPlayerStatScalarFieldEnum = (typeof PeladaPlayerStatScalarFieldEnum)[keyof typeof PeladaPlayerStatScalarFieldEnum]
@@ -242,6 +274,19 @@ export const PeladaMvpVoteScalarFieldEnum = {
 } as const
 
 export type PeladaMvpVoteScalarFieldEnum = (typeof PeladaMvpVoteScalarFieldEnum)[keyof typeof PeladaMvpVoteScalarFieldEnum]
+
+
+export const PeladaPlayerRatingScalarFieldEnum = {
+  id: 'id',
+  rating: 'rating',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  peladaOccurrenceId: 'peladaOccurrenceId',
+  raterUserId: 'raterUserId',
+  ratedUserId: 'ratedUserId'
+} as const
+
+export type PeladaPlayerRatingScalarFieldEnum = (typeof PeladaPlayerRatingScalarFieldEnum)[keyof typeof PeladaPlayerRatingScalarFieldEnum]
 
 
 export const MatchScalarFieldEnum = {
@@ -259,12 +304,40 @@ export const MatchScalarFieldEnum = {
   notes: 'notes',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  votingOpenedAt: 'votingOpenedAt',
+  votingClosesAt: 'votingClosesAt',
+  votingClosedAt: 'votingClosedAt',
   homeOrganizationId: 'homeOrganizationId',
   awayOrganizationId: 'awayOrganizationId',
-  createdById: 'createdById'
+  createdById: 'createdById',
+  mvpUserId: 'mvpUserId'
 } as const
 
 export type MatchScalarFieldEnum = (typeof MatchScalarFieldEnum)[keyof typeof MatchScalarFieldEnum]
+
+
+export const MatchMvpVoteScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  matchId: 'matchId',
+  voterUserId: 'voterUserId',
+  votedUserId: 'votedUserId'
+} as const
+
+export type MatchMvpVoteScalarFieldEnum = (typeof MatchMvpVoteScalarFieldEnum)[keyof typeof MatchMvpVoteScalarFieldEnum]
+
+
+export const MatchPlayerRatingScalarFieldEnum = {
+  id: 'id',
+  rating: 'rating',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  matchId: 'matchId',
+  raterUserId: 'raterUserId',
+  ratedUserId: 'ratedUserId'
+} as const
+
+export type MatchPlayerRatingScalarFieldEnum = (typeof MatchPlayerRatingScalarFieldEnum)[keyof typeof MatchPlayerRatingScalarFieldEnum]
 
 
 export const MatchAttendanceScalarFieldEnum = {
@@ -304,7 +377,8 @@ export const MatchPlayerStatScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   matchId: 'matchId',
-  userId: 'userId'
+  userId: 'userId',
+  guestPlayerId: 'guestPlayerId'
 } as const
 
 export type MatchPlayerStatScalarFieldEnum = (typeof MatchPlayerStatScalarFieldEnum)[keyof typeof MatchPlayerStatScalarFieldEnum]

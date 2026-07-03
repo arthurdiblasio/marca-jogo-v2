@@ -6,11 +6,13 @@ import { ArrowRight } from "lucide-react";
 
 import { saveOnboardingStep } from "@/modules/onboarding/actions/save-onboarding-step";
 import { ONBOARDING_STEPS } from "@/modules/onboarding/types/onboarding";
+import { ImageUpload } from "@/components/ui/image-upload";
 import { OnboardingStepWrapper } from "../onboarding-step-wrapper";
 
 export function StepName() {
   const [fullName, setFullName] = useState("");
   const [nickname, setNickname] = useState("");
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const canContinue = fullName.trim().length >= 2;
@@ -22,6 +24,7 @@ export function StepName() {
     await saveOnboardingStep(ONBOARDING_STEPS.NAME, {
       fullName: fullName.trim(),
       nickname: nickname.trim() || undefined,
+      imageUrl: imageUrl ?? undefined,
     });
   }
 
@@ -31,6 +34,13 @@ export function StepName() {
       hint="Esse nome vai aparecer para os outros jogadores."
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        <div className="flex flex-col items-center gap-1.5">
+          <ImageUpload folder="profiles/avatars" onChange={setImageUrl} />
+          <p className="max-w-55 text-center text-xs text-slate-400">
+            Opcional. Use uma foto de rosto, tipo 3x4, para ficar bem visível.
+          </p>
+        </div>
+
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-semibold uppercase tracking-widest text-slate-400">
             Nome completo

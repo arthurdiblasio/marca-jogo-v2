@@ -45,6 +45,7 @@ export type PeladaPlayerStatMinAggregateOutputType = {
   updatedAt: Date | null
   peladaOccurrenceId: string | null
   userId: string | null
+  guestPlayerId: string | null
 }
 
 export type PeladaPlayerStatMaxAggregateOutputType = {
@@ -56,6 +57,7 @@ export type PeladaPlayerStatMaxAggregateOutputType = {
   updatedAt: Date | null
   peladaOccurrenceId: string | null
   userId: string | null
+  guestPlayerId: string | null
 }
 
 export type PeladaPlayerStatCountAggregateOutputType = {
@@ -67,6 +69,7 @@ export type PeladaPlayerStatCountAggregateOutputType = {
   updatedAt: number
   peladaOccurrenceId: number
   userId: number
+  guestPlayerId: number
   _all: number
 }
 
@@ -90,6 +93,7 @@ export type PeladaPlayerStatMinAggregateInputType = {
   updatedAt?: true
   peladaOccurrenceId?: true
   userId?: true
+  guestPlayerId?: true
 }
 
 export type PeladaPlayerStatMaxAggregateInputType = {
@@ -101,6 +105,7 @@ export type PeladaPlayerStatMaxAggregateInputType = {
   updatedAt?: true
   peladaOccurrenceId?: true
   userId?: true
+  guestPlayerId?: true
 }
 
 export type PeladaPlayerStatCountAggregateInputType = {
@@ -112,6 +117,7 @@ export type PeladaPlayerStatCountAggregateInputType = {
   updatedAt?: true
   peladaOccurrenceId?: true
   userId?: true
+  guestPlayerId?: true
   _all?: true
 }
 
@@ -209,7 +215,8 @@ export type PeladaPlayerStatGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   peladaOccurrenceId: string
-  userId: string
+  userId: string | null
+  guestPlayerId: string | null
   _count: PeladaPlayerStatCountAggregateOutputType | null
   _avg: PeladaPlayerStatAvgAggregateOutputType | null
   _sum: PeladaPlayerStatSumAggregateOutputType | null
@@ -243,9 +250,11 @@ export type PeladaPlayerStatWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"PeladaPlayerStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PeladaPlayerStat"> | Date | string
   peladaOccurrenceId?: Prisma.StringFilter<"PeladaPlayerStat"> | string
-  userId?: Prisma.StringFilter<"PeladaPlayerStat"> | string
+  userId?: Prisma.StringNullableFilter<"PeladaPlayerStat"> | string | null
+  guestPlayerId?: Prisma.StringNullableFilter<"PeladaPlayerStat"> | string | null
   peladaOccurrence?: Prisma.XOR<Prisma.PeladaOccurrenceScalarRelationFilter, Prisma.PeladaOccurrenceWhereInput>
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  guestPlayer?: Prisma.XOR<Prisma.GuestPlayerNullableScalarRelationFilter, Prisma.GuestPlayerWhereInput> | null
 }
 
 export type PeladaPlayerStatOrderByWithRelationInput = {
@@ -256,14 +265,17 @@ export type PeladaPlayerStatOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   peladaOccurrenceId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrderInput | Prisma.SortOrder
   peladaOccurrence?: Prisma.PeladaOccurrenceOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
+  guestPlayer?: Prisma.GuestPlayerOrderByWithRelationInput
 }
 
 export type PeladaPlayerStatWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   peladaOccurrenceId_userId?: Prisma.PeladaPlayerStatPeladaOccurrenceIdUserIdCompoundUniqueInput
+  peladaOccurrenceId_guestPlayerId?: Prisma.PeladaPlayerStatPeladaOccurrenceIdGuestPlayerIdCompoundUniqueInput
   AND?: Prisma.PeladaPlayerStatWhereInput | Prisma.PeladaPlayerStatWhereInput[]
   OR?: Prisma.PeladaPlayerStatWhereInput[]
   NOT?: Prisma.PeladaPlayerStatWhereInput | Prisma.PeladaPlayerStatWhereInput[]
@@ -273,10 +285,12 @@ export type PeladaPlayerStatWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"PeladaPlayerStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PeladaPlayerStat"> | Date | string
   peladaOccurrenceId?: Prisma.StringFilter<"PeladaPlayerStat"> | string
-  userId?: Prisma.StringFilter<"PeladaPlayerStat"> | string
+  userId?: Prisma.StringNullableFilter<"PeladaPlayerStat"> | string | null
+  guestPlayerId?: Prisma.StringNullableFilter<"PeladaPlayerStat"> | string | null
   peladaOccurrence?: Prisma.XOR<Prisma.PeladaOccurrenceScalarRelationFilter, Prisma.PeladaOccurrenceWhereInput>
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id" | "peladaOccurrenceId_userId">
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  guestPlayer?: Prisma.XOR<Prisma.GuestPlayerNullableScalarRelationFilter, Prisma.GuestPlayerWhereInput> | null
+}, "id" | "peladaOccurrenceId_userId" | "peladaOccurrenceId_guestPlayerId">
 
 export type PeladaPlayerStatOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -286,7 +300,8 @@ export type PeladaPlayerStatOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   peladaOccurrenceId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PeladaPlayerStatCountOrderByAggregateInput
   _avg?: Prisma.PeladaPlayerStatAvgOrderByAggregateInput
   _max?: Prisma.PeladaPlayerStatMaxOrderByAggregateInput
@@ -305,7 +320,8 @@ export type PeladaPlayerStatScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PeladaPlayerStat"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PeladaPlayerStat"> | Date | string
   peladaOccurrenceId?: Prisma.StringWithAggregatesFilter<"PeladaPlayerStat"> | string
-  userId?: Prisma.StringWithAggregatesFilter<"PeladaPlayerStat"> | string
+  userId?: Prisma.StringNullableWithAggregatesFilter<"PeladaPlayerStat"> | string | null
+  guestPlayerId?: Prisma.StringNullableWithAggregatesFilter<"PeladaPlayerStat"> | string | null
 }
 
 export type PeladaPlayerStatCreateInput = {
@@ -316,7 +332,8 @@ export type PeladaPlayerStatCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   peladaOccurrence: Prisma.PeladaOccurrenceCreateNestedOneWithoutPlayerStatsInput
-  user: Prisma.UserCreateNestedOneWithoutPeladaStatsInput
+  user?: Prisma.UserCreateNestedOneWithoutPeladaStatsInput
+  guestPlayer?: Prisma.GuestPlayerCreateNestedOneWithoutPeladaStatsInput
 }
 
 export type PeladaPlayerStatUncheckedCreateInput = {
@@ -327,7 +344,8 @@ export type PeladaPlayerStatUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   peladaOccurrenceId: string
-  userId: string
+  userId?: string | null
+  guestPlayerId?: string | null
 }
 
 export type PeladaPlayerStatUpdateInput = {
@@ -338,7 +356,8 @@ export type PeladaPlayerStatUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   peladaOccurrence?: Prisma.PeladaOccurrenceUpdateOneRequiredWithoutPlayerStatsNestedInput
-  user?: Prisma.UserUpdateOneRequiredWithoutPeladaStatsNestedInput
+  user?: Prisma.UserUpdateOneWithoutPeladaStatsNestedInput
+  guestPlayer?: Prisma.GuestPlayerUpdateOneWithoutPeladaStatsNestedInput
 }
 
 export type PeladaPlayerStatUncheckedUpdateInput = {
@@ -349,7 +368,8 @@ export type PeladaPlayerStatUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   peladaOccurrenceId?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PeladaPlayerStatCreateManyInput = {
@@ -360,7 +380,8 @@ export type PeladaPlayerStatCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   peladaOccurrenceId: string
-  userId: string
+  userId?: string | null
+  guestPlayerId?: string | null
 }
 
 export type PeladaPlayerStatUpdateManyMutationInput = {
@@ -380,7 +401,8 @@ export type PeladaPlayerStatUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   peladaOccurrenceId?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PeladaPlayerStatListRelationFilter = {
@@ -398,6 +420,11 @@ export type PeladaPlayerStatPeladaOccurrenceIdUserIdCompoundUniqueInput = {
   userId: string
 }
 
+export type PeladaPlayerStatPeladaOccurrenceIdGuestPlayerIdCompoundUniqueInput = {
+  peladaOccurrenceId: string
+  guestPlayerId: string
+}
+
 export type PeladaPlayerStatCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   goals?: Prisma.SortOrder
@@ -407,6 +434,7 @@ export type PeladaPlayerStatCountOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   peladaOccurrenceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrder
 }
 
 export type PeladaPlayerStatAvgOrderByAggregateInput = {
@@ -423,6 +451,7 @@ export type PeladaPlayerStatMaxOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   peladaOccurrenceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrder
 }
 
 export type PeladaPlayerStatMinOrderByAggregateInput = {
@@ -434,6 +463,7 @@ export type PeladaPlayerStatMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   peladaOccurrenceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrder
 }
 
 export type PeladaPlayerStatSumOrderByAggregateInput = {
@@ -480,6 +510,48 @@ export type PeladaPlayerStatUncheckedUpdateManyWithoutUserNestedInput = {
   connect?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
   update?: Prisma.PeladaPlayerStatUpdateWithWhereUniqueWithoutUserInput | Prisma.PeladaPlayerStatUpdateWithWhereUniqueWithoutUserInput[]
   updateMany?: Prisma.PeladaPlayerStatUpdateManyWithWhereWithoutUserInput | Prisma.PeladaPlayerStatUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.PeladaPlayerStatScalarWhereInput | Prisma.PeladaPlayerStatScalarWhereInput[]
+}
+
+export type PeladaPlayerStatCreateNestedManyWithoutGuestPlayerInput = {
+  create?: Prisma.XOR<Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput, Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput> | Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput[] | Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput[]
+  connectOrCreate?: Prisma.PeladaPlayerStatCreateOrConnectWithoutGuestPlayerInput | Prisma.PeladaPlayerStatCreateOrConnectWithoutGuestPlayerInput[]
+  createMany?: Prisma.PeladaPlayerStatCreateManyGuestPlayerInputEnvelope
+  connect?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+}
+
+export type PeladaPlayerStatUncheckedCreateNestedManyWithoutGuestPlayerInput = {
+  create?: Prisma.XOR<Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput, Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput> | Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput[] | Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput[]
+  connectOrCreate?: Prisma.PeladaPlayerStatCreateOrConnectWithoutGuestPlayerInput | Prisma.PeladaPlayerStatCreateOrConnectWithoutGuestPlayerInput[]
+  createMany?: Prisma.PeladaPlayerStatCreateManyGuestPlayerInputEnvelope
+  connect?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+}
+
+export type PeladaPlayerStatUpdateManyWithoutGuestPlayerNestedInput = {
+  create?: Prisma.XOR<Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput, Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput> | Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput[] | Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput[]
+  connectOrCreate?: Prisma.PeladaPlayerStatCreateOrConnectWithoutGuestPlayerInput | Prisma.PeladaPlayerStatCreateOrConnectWithoutGuestPlayerInput[]
+  upsert?: Prisma.PeladaPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput | Prisma.PeladaPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput[]
+  createMany?: Prisma.PeladaPlayerStatCreateManyGuestPlayerInputEnvelope
+  set?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+  disconnect?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+  delete?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+  connect?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+  update?: Prisma.PeladaPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput | Prisma.PeladaPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput[]
+  updateMany?: Prisma.PeladaPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput | Prisma.PeladaPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput[]
+  deleteMany?: Prisma.PeladaPlayerStatScalarWhereInput | Prisma.PeladaPlayerStatScalarWhereInput[]
+}
+
+export type PeladaPlayerStatUncheckedUpdateManyWithoutGuestPlayerNestedInput = {
+  create?: Prisma.XOR<Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput, Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput> | Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput[] | Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput[]
+  connectOrCreate?: Prisma.PeladaPlayerStatCreateOrConnectWithoutGuestPlayerInput | Prisma.PeladaPlayerStatCreateOrConnectWithoutGuestPlayerInput[]
+  upsert?: Prisma.PeladaPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput | Prisma.PeladaPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput[]
+  createMany?: Prisma.PeladaPlayerStatCreateManyGuestPlayerInputEnvelope
+  set?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+  disconnect?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+  delete?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+  connect?: Prisma.PeladaPlayerStatWhereUniqueInput | Prisma.PeladaPlayerStatWhereUniqueInput[]
+  update?: Prisma.PeladaPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput | Prisma.PeladaPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput[]
+  updateMany?: Prisma.PeladaPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput | Prisma.PeladaPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput[]
   deleteMany?: Prisma.PeladaPlayerStatScalarWhereInput | Prisma.PeladaPlayerStatScalarWhereInput[]
 }
 
@@ -533,6 +605,7 @@ export type PeladaPlayerStatCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   peladaOccurrence: Prisma.PeladaOccurrenceCreateNestedOneWithoutPlayerStatsInput
+  guestPlayer?: Prisma.GuestPlayerCreateNestedOneWithoutPeladaStatsInput
 }
 
 export type PeladaPlayerStatUncheckedCreateWithoutUserInput = {
@@ -543,6 +616,7 @@ export type PeladaPlayerStatUncheckedCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   peladaOccurrenceId: string
+  guestPlayerId?: string | null
 }
 
 export type PeladaPlayerStatCreateOrConnectWithoutUserInput = {
@@ -582,7 +656,56 @@ export type PeladaPlayerStatScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"PeladaPlayerStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PeladaPlayerStat"> | Date | string
   peladaOccurrenceId?: Prisma.StringFilter<"PeladaPlayerStat"> | string
-  userId?: Prisma.StringFilter<"PeladaPlayerStat"> | string
+  userId?: Prisma.StringNullableFilter<"PeladaPlayerStat"> | string | null
+  guestPlayerId?: Prisma.StringNullableFilter<"PeladaPlayerStat"> | string | null
+}
+
+export type PeladaPlayerStatCreateWithoutGuestPlayerInput = {
+  id?: string
+  goals?: number
+  assists?: number
+  isMvp?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  peladaOccurrence: Prisma.PeladaOccurrenceCreateNestedOneWithoutPlayerStatsInput
+  user?: Prisma.UserCreateNestedOneWithoutPeladaStatsInput
+}
+
+export type PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput = {
+  id?: string
+  goals?: number
+  assists?: number
+  isMvp?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  peladaOccurrenceId: string
+  userId?: string | null
+}
+
+export type PeladaPlayerStatCreateOrConnectWithoutGuestPlayerInput = {
+  where: Prisma.PeladaPlayerStatWhereUniqueInput
+  create: Prisma.XOR<Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput, Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput>
+}
+
+export type PeladaPlayerStatCreateManyGuestPlayerInputEnvelope = {
+  data: Prisma.PeladaPlayerStatCreateManyGuestPlayerInput | Prisma.PeladaPlayerStatCreateManyGuestPlayerInput[]
+  skipDuplicates?: boolean
+}
+
+export type PeladaPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput = {
+  where: Prisma.PeladaPlayerStatWhereUniqueInput
+  update: Prisma.XOR<Prisma.PeladaPlayerStatUpdateWithoutGuestPlayerInput, Prisma.PeladaPlayerStatUncheckedUpdateWithoutGuestPlayerInput>
+  create: Prisma.XOR<Prisma.PeladaPlayerStatCreateWithoutGuestPlayerInput, Prisma.PeladaPlayerStatUncheckedCreateWithoutGuestPlayerInput>
+}
+
+export type PeladaPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput = {
+  where: Prisma.PeladaPlayerStatWhereUniqueInput
+  data: Prisma.XOR<Prisma.PeladaPlayerStatUpdateWithoutGuestPlayerInput, Prisma.PeladaPlayerStatUncheckedUpdateWithoutGuestPlayerInput>
+}
+
+export type PeladaPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput = {
+  where: Prisma.PeladaPlayerStatScalarWhereInput
+  data: Prisma.XOR<Prisma.PeladaPlayerStatUpdateManyMutationInput, Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutGuestPlayerInput>
 }
 
 export type PeladaPlayerStatCreateWithoutPeladaOccurrenceInput = {
@@ -592,7 +715,8 @@ export type PeladaPlayerStatCreateWithoutPeladaOccurrenceInput = {
   isMvp?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutPeladaStatsInput
+  user?: Prisma.UserCreateNestedOneWithoutPeladaStatsInput
+  guestPlayer?: Prisma.GuestPlayerCreateNestedOneWithoutPeladaStatsInput
 }
 
 export type PeladaPlayerStatUncheckedCreateWithoutPeladaOccurrenceInput = {
@@ -602,7 +726,8 @@ export type PeladaPlayerStatUncheckedCreateWithoutPeladaOccurrenceInput = {
   isMvp?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  userId: string
+  userId?: string | null
+  guestPlayerId?: string | null
 }
 
 export type PeladaPlayerStatCreateOrConnectWithoutPeladaOccurrenceInput = {
@@ -639,6 +764,7 @@ export type PeladaPlayerStatCreateManyUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   peladaOccurrenceId: string
+  guestPlayerId?: string | null
 }
 
 export type PeladaPlayerStatUpdateWithoutUserInput = {
@@ -649,6 +775,7 @@ export type PeladaPlayerStatUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   peladaOccurrence?: Prisma.PeladaOccurrenceUpdateOneRequiredWithoutPlayerStatsNestedInput
+  guestPlayer?: Prisma.GuestPlayerUpdateOneWithoutPeladaStatsNestedInput
 }
 
 export type PeladaPlayerStatUncheckedUpdateWithoutUserInput = {
@@ -659,6 +786,7 @@ export type PeladaPlayerStatUncheckedUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   peladaOccurrenceId?: Prisma.StringFieldUpdateOperationsInput | string
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PeladaPlayerStatUncheckedUpdateManyWithoutUserInput = {
@@ -669,6 +797,51 @@ export type PeladaPlayerStatUncheckedUpdateManyWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   peladaOccurrenceId?: Prisma.StringFieldUpdateOperationsInput | string
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type PeladaPlayerStatCreateManyGuestPlayerInput = {
+  id?: string
+  goals?: number
+  assists?: number
+  isMvp?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  peladaOccurrenceId: string
+  userId?: string | null
+}
+
+export type PeladaPlayerStatUpdateWithoutGuestPlayerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  goals?: Prisma.IntFieldUpdateOperationsInput | number
+  assists?: Prisma.IntFieldUpdateOperationsInput | number
+  isMvp?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  peladaOccurrence?: Prisma.PeladaOccurrenceUpdateOneRequiredWithoutPlayerStatsNestedInput
+  user?: Prisma.UserUpdateOneWithoutPeladaStatsNestedInput
+}
+
+export type PeladaPlayerStatUncheckedUpdateWithoutGuestPlayerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  goals?: Prisma.IntFieldUpdateOperationsInput | number
+  assists?: Prisma.IntFieldUpdateOperationsInput | number
+  isMvp?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  peladaOccurrenceId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type PeladaPlayerStatUncheckedUpdateManyWithoutGuestPlayerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  goals?: Prisma.IntFieldUpdateOperationsInput | number
+  assists?: Prisma.IntFieldUpdateOperationsInput | number
+  isMvp?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  peladaOccurrenceId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PeladaPlayerStatCreateManyPeladaOccurrenceInput = {
@@ -678,7 +851,8 @@ export type PeladaPlayerStatCreateManyPeladaOccurrenceInput = {
   isMvp?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  userId: string
+  userId?: string | null
+  guestPlayerId?: string | null
 }
 
 export type PeladaPlayerStatUpdateWithoutPeladaOccurrenceInput = {
@@ -688,7 +862,8 @@ export type PeladaPlayerStatUpdateWithoutPeladaOccurrenceInput = {
   isMvp?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutPeladaStatsNestedInput
+  user?: Prisma.UserUpdateOneWithoutPeladaStatsNestedInput
+  guestPlayer?: Prisma.GuestPlayerUpdateOneWithoutPeladaStatsNestedInput
 }
 
 export type PeladaPlayerStatUncheckedUpdateWithoutPeladaOccurrenceInput = {
@@ -698,7 +873,8 @@ export type PeladaPlayerStatUncheckedUpdateWithoutPeladaOccurrenceInput = {
   isMvp?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceInput = {
@@ -708,7 +884,8 @@ export type PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceInput = {
   isMvp?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -722,8 +899,10 @@ export type PeladaPlayerStatSelect<ExtArgs extends runtime.Types.Extensions.Inte
   updatedAt?: boolean
   peladaOccurrenceId?: boolean
   userId?: boolean
+  guestPlayerId?: boolean
   peladaOccurrence?: boolean | Prisma.PeladaOccurrenceDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.PeladaPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.PeladaPlayerStat$guestPlayerArgs<ExtArgs>
 }, ExtArgs["result"]["peladaPlayerStat"]>
 
 export type PeladaPlayerStatSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -735,8 +914,10 @@ export type PeladaPlayerStatSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   updatedAt?: boolean
   peladaOccurrenceId?: boolean
   userId?: boolean
+  guestPlayerId?: boolean
   peladaOccurrence?: boolean | Prisma.PeladaOccurrenceDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.PeladaPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.PeladaPlayerStat$guestPlayerArgs<ExtArgs>
 }, ExtArgs["result"]["peladaPlayerStat"]>
 
 export type PeladaPlayerStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -748,8 +929,10 @@ export type PeladaPlayerStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   updatedAt?: boolean
   peladaOccurrenceId?: boolean
   userId?: boolean
+  guestPlayerId?: boolean
   peladaOccurrence?: boolean | Prisma.PeladaOccurrenceDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.PeladaPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.PeladaPlayerStat$guestPlayerArgs<ExtArgs>
 }, ExtArgs["result"]["peladaPlayerStat"]>
 
 export type PeladaPlayerStatSelectScalar = {
@@ -761,27 +944,32 @@ export type PeladaPlayerStatSelectScalar = {
   updatedAt?: boolean
   peladaOccurrenceId?: boolean
   userId?: boolean
+  guestPlayerId?: boolean
 }
 
-export type PeladaPlayerStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "goals" | "assists" | "isMvp" | "createdAt" | "updatedAt" | "peladaOccurrenceId" | "userId", ExtArgs["result"]["peladaPlayerStat"]>
+export type PeladaPlayerStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "goals" | "assists" | "isMvp" | "createdAt" | "updatedAt" | "peladaOccurrenceId" | "userId" | "guestPlayerId", ExtArgs["result"]["peladaPlayerStat"]>
 export type PeladaPlayerStatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   peladaOccurrence?: boolean | Prisma.PeladaOccurrenceDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.PeladaPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.PeladaPlayerStat$guestPlayerArgs<ExtArgs>
 }
 export type PeladaPlayerStatIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   peladaOccurrence?: boolean | Prisma.PeladaOccurrenceDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.PeladaPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.PeladaPlayerStat$guestPlayerArgs<ExtArgs>
 }
 export type PeladaPlayerStatIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   peladaOccurrence?: boolean | Prisma.PeladaOccurrenceDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.PeladaPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.PeladaPlayerStat$guestPlayerArgs<ExtArgs>
 }
 
 export type $PeladaPlayerStatPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PeladaPlayerStat"
   objects: {
     peladaOccurrence: Prisma.$PeladaOccurrencePayload<ExtArgs>
-    user: Prisma.$UserPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs> | null
+    guestPlayer: Prisma.$GuestPlayerPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -791,7 +979,8 @@ export type $PeladaPlayerStatPayload<ExtArgs extends runtime.Types.Extensions.In
     createdAt: Date
     updatedAt: Date
     peladaOccurrenceId: string
-    userId: string
+    userId: string | null
+    guestPlayerId: string | null
   }, ExtArgs["result"]["peladaPlayerStat"]>
   composites: {}
 }
@@ -1187,7 +1376,8 @@ readonly fields: PeladaPlayerStatFieldRefs;
 export interface Prisma__PeladaPlayerStatClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   peladaOccurrence<T extends Prisma.PeladaOccurrenceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeladaOccurrenceDefaultArgs<ExtArgs>>): Prisma.Prisma__PeladaOccurrenceClient<runtime.Types.Result.GetResult<Prisma.$PeladaOccurrencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.PeladaPlayerStat$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeladaPlayerStat$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  guestPlayer<T extends Prisma.PeladaPlayerStat$guestPlayerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeladaPlayerStat$guestPlayerArgs<ExtArgs>>): Prisma.Prisma__GuestPlayerClient<runtime.Types.Result.GetResult<Prisma.$GuestPlayerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1225,6 +1415,7 @@ export interface PeladaPlayerStatFieldRefs {
   readonly updatedAt: Prisma.FieldRef<"PeladaPlayerStat", 'DateTime'>
   readonly peladaOccurrenceId: Prisma.FieldRef<"PeladaPlayerStat", 'String'>
   readonly userId: Prisma.FieldRef<"PeladaPlayerStat", 'String'>
+  readonly guestPlayerId: Prisma.FieldRef<"PeladaPlayerStat", 'String'>
 }
     
 
@@ -1623,6 +1814,44 @@ export type PeladaPlayerStatDeleteManyArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many PeladaPlayerStats to delete.
    */
   limit?: number
+}
+
+/**
+ * PeladaPlayerStat.user
+ */
+export type PeladaPlayerStat$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * PeladaPlayerStat.guestPlayer
+ */
+export type PeladaPlayerStat$guestPlayerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GuestPlayer
+   */
+  select?: Prisma.GuestPlayerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GuestPlayer
+   */
+  omit?: Prisma.GuestPlayerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GuestPlayerInclude<ExtArgs> | null
+  where?: Prisma.GuestPlayerWhereInput
 }
 
 /**

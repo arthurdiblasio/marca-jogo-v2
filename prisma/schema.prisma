@@ -119,12 +119,20 @@ model User {
   peladaMvpAwards              PeladaOccurrence[]     @relation("PeladaOccurrenceMvp")
   peladaMvpVotesGiven          PeladaMvpVote[]        @relation("PeladaMvpVotesGiven")
   peladaMvpVotesReceived       PeladaMvpVote[]        @relation("PeladaMvpVotesReceived")
+  peladaRatingsGiven           PeladaPlayerRating[]   @relation("PeladaPlayerRatingsGiven")
+  peladaRatingsReceived        PeladaPlayerRating[]   @relation("PeladaPlayerRatingsReceived")
   matchAttendances             MatchAttendance[]
   matchLineupEntries           MatchLineupEntry[]
   matchStats                   MatchPlayerStat[]
+  matchMvpAwards               Match[]                @relation("MatchMvp")
+  matchMvpVotesGiven           MatchMvpVote[]         @relation("MatchMvpVotesGiven")
+  matchMvpVotesReceived        MatchMvpVote[]         @relation("MatchMvpVotesReceived")
+  matchRatingsGiven            MatchPlayerRating[]    @relation("MatchPlayerRatingsGiven")
+  matchRatingsReceived         MatchPlayerRating[]    @relation("MatchPlayerRatingsReceived")
   createdOrganizations         Organization[]         @relation("OrganizationCreatedBy")
   createdPeladaOccurrences     PeladaOccurrence[]     @relation("PeladaOccurrenceCreatedBy")
   createdMatches               Match[]                @relation("MatchCreatedBy")
+  createdGuestPlayers          GuestPlayer[]          @relation("GuestPlayerCreatedBy")
   createdFinancialTransactions FinancialTransaction[] @relation("FinancialTransactionCreatedBy")
   sentOpponentInvites          OpponentInvite[]       @relation("OpponentInviteSentBy")
   passwordResetTokens          PasswordResetToken[]
@@ -170,8 +178,11 @@ model Profile {
 
   birthDate DateTime?
 
-  city  String?
-  state String?
+  address String?
+  city    String?
+  state   String?
+  lat     Decimal? @db.Decimal(10, 7)
+  lng     Decimal? @db.Decimal(10, 7)
 
   preferredFoot PreferredFoot?
 
@@ -215,13 +226,21 @@ model Organization {
   slug        String           @unique
   description String?
   logoUrl     String?
+  address     String?
   city        String?
   state       String?
+  lat         Decimal?         @db.Decimal(10, 7)
+  lng         Decimal?         @db.Decimal(10, 7)
   isActive    Boolean          @default(true)
   createdAt   DateTime         @default(now())
   updatedAt   DateTime         @updatedAt
 
   modality    SportModality?
+
+  weekday       Int?
+  scheduledTime String?
+  monthlyFee    Decimal? @db.Decimal(10, 2)
+  singleFee     Decimal? @db.Decimal(10, 2)
 
   createdById String?
   createdBy   User?   @relation("OrganizationCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
@@ -239,10 +258,29 @@ model Organization {
   gameListingSeries       GameListingSeries[]    @relation("GameListingSeriesOrganization")
   gameListingResponses    GameListingResponse[]  @relation("GameListingResponseOrganization")
   playerInvites           PlayerInvite[]
+  guestPlayers            GuestPlayer[]
 
   @@index([type])
   @@index([isActive])
   @@index([createdById])
+}
+
+model GuestPlayer {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organizationId String
+  createdById    String?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdBy    User?        @relation("GuestPlayerCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+
+  peladaStats PeladaPlayerStat[]
+  matchStats  MatchPlayerStat[]
+
+  @@index([organizationId])
 }
 
 model Membership {
@@ -252,6 +290,8 @@ model Membership {
   nickname    String?
   shirtNumber Int?
   position    String?
+  isMonthly   Boolean          @default(false)
+  hasMergedGuest Boolean       @default(false)
   joinedAt    DateTime         @default(now())
   leftAt      DateTime?
   createdAt   DateTime         @default(now())
@@ -281,6 +321,10 @@ model PeladaOccurrence {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  votingOpenedAt DateTime?
+  votingClosesAt DateTime?
+  votingClosedAt DateTime?
+
   organizationId String
   createdById    String?
   mvpUserId      String?
@@ -292,6 +336,7 @@ model PeladaOccurrence {
   attendances PeladaAttendance[]
   playerStats PeladaPlayerStat[]
   mvpVotes    PeladaMvpVote[]
+  ratings     PeladaPlayerRating[]
 
   @@index([organizationId, scheduledAt])
   @@index([createdById])
@@ -325,13 +370,17 @@ model PeladaPlayerStat {
   updatedAt DateTime @updatedAt
 
   peladaOccurrenceId String
-  userId             String
+  userId             String?
+  guestPlayerId      String?
 
   peladaOccurrence PeladaOccurrence @relation(fields: [peladaOccurrenceId], references: [id], onDelete: Cascade)
-  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user             User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guestPlayer      GuestPlayer?     @relation(fields: [guestPlayerId], references: [id], onDelete: Cascade)
 
   @@unique([peladaOccurrenceId, userId])
+  @@unique([peladaOccurrenceId, guestPlayerId])
   @@index([userId])
+  @@index([guestPlayerId])
 }
 
 model PeladaMvpVote {
@@ -352,6 +401,25 @@ model PeladaMvpVote {
   @@index([votedUserId])
 }
 
+model PeladaPlayerRating {
+  id        String   @id @default(cuid())
+  rating    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  peladaOccurrenceId String
+  raterUserId         String
+  ratedUserId         String
+
+  peladaOccurrence PeladaOccurrence @relation(fields: [peladaOccurrenceId], references: [id], onDelete: Cascade)
+  rater            User             @relation("PeladaPlayerRatingsGiven", fields: [raterUserId], references: [id], onDelete: Cascade)
+  rated            User             @relation("PeladaPlayerRatingsReceived", fields: [ratedUserId], references: [id], onDelete: Cascade)
+
+  @@unique([peladaOccurrenceId, raterUserId, ratedUserId])
+  @@index([peladaOccurrenceId, ratedUserId])
+  @@index([raterUserId])
+}
+
 model Match {
   id           String       @id @default(cuid())
   title        String?
@@ -368,23 +436,69 @@ model Match {
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
 
+  votingOpenedAt DateTime?
+  votingClosesAt DateTime?
+  votingClosedAt DateTime?
+
   homeOrganizationId String
   awayOrganizationId String?
   createdById        String?
+  mvpUserId          String?
 
   homeOrganization Organization  @relation("MatchHomeOrganization", fields: [homeOrganizationId], references: [id], onDelete: Cascade)
   awayOrganization Organization? @relation("MatchAwayOrganization", fields: [awayOrganizationId], references: [id], onDelete: SetNull)
   createdBy        User?         @relation("MatchCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  mvp              User?         @relation("MatchMvp", fields: [mvpUserId], references: [id], onDelete: SetNull)
 
   attendances MatchAttendance[]
   lineup      MatchLineupEntry[]
   playerStats MatchPlayerStat[]
+  mvpVotes    MatchMvpVote[]
+  ratings     MatchPlayerRating[]
   gameListing GameListing? @relation("GameListingMatch")
 
   @@index([homeOrganizationId, scheduledAt])
   @@index([awayOrganizationId])
   @@index([status])
   @@index([createdById])
+  @@index([mvpUserId])
+}
+
+model MatchMvpVote {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  matchId     String
+  voterUserId String
+  votedUserId String
+
+  match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  voter User  @relation("MatchMvpVotesGiven", fields: [voterUserId], references: [id], onDelete: Cascade)
+  voted User  @relation("MatchMvpVotesReceived", fields: [votedUserId], references: [id], onDelete: Cascade)
+
+  @@unique([matchId, voterUserId])
+  @@index([matchId, votedUserId])
+  @@index([voterUserId])
+  @@index([votedUserId])
+}
+
+model MatchPlayerRating {
+  id        String   @id @default(cuid())
+  rating    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  matchId     String
+  raterUserId String
+  ratedUserId String
+
+  match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  rater User  @relation("MatchPlayerRatingsGiven", fields: [raterUserId], references: [id], onDelete: Cascade)
+  rated User  @relation("MatchPlayerRatingsReceived", fields: [ratedUserId], references: [id], onDelete: Cascade)
+
+  @@unique([matchId, raterUserId, ratedUserId])
+  @@index([matchId, ratedUserId])
+  @@index([raterUserId])
 }
 
 model MatchAttendance {
@@ -435,14 +549,18 @@ model MatchPlayerStat {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  matchId String
-  userId  String
+  matchId       String
+  userId        String?
+  guestPlayerId String?
 
-  match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
-  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  match       Match        @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  user        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guestPlayer GuestPlayer? @relation(fields: [guestPlayerId], references: [id], onDelete: Cascade)
 
   @@unique([matchId, userId])
+  @@unique([matchId, guestPlayerId])
   @@index([userId])
+  @@index([guestPlayerId])
 }
 
 model FinancialTransaction {

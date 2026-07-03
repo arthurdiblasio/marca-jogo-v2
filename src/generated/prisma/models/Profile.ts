@@ -27,11 +27,15 @@ export type AggregateProfile = {
 }
 
 export type ProfileAvgAggregateOutputType = {
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
   shirtNumber: number | null
   onboardingStep: number | null
 }
 
 export type ProfileSumAggregateOutputType = {
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
   shirtNumber: number | null
   onboardingStep: number | null
 }
@@ -44,8 +48,11 @@ export type ProfileMinAggregateOutputType = {
   imageUrl: string | null
   phone: string | null
   birthDate: Date | null
+  address: string | null
   city: string | null
   state: string | null
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
   preferredFoot: $Enums.PreferredFoot | null
   shirtNumber: number | null
   bio: string | null
@@ -63,8 +70,11 @@ export type ProfileMaxAggregateOutputType = {
   imageUrl: string | null
   phone: string | null
   birthDate: Date | null
+  address: string | null
   city: string | null
   state: string | null
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
   preferredFoot: $Enums.PreferredFoot | null
   shirtNumber: number | null
   bio: string | null
@@ -82,8 +92,11 @@ export type ProfileCountAggregateOutputType = {
   imageUrl: number
   phone: number
   birthDate: number
+  address: number
   city: number
   state: number
+  lat: number
+  lng: number
   preferredFoot: number
   shirtNumber: number
   bio: number
@@ -96,11 +109,15 @@ export type ProfileCountAggregateOutputType = {
 
 
 export type ProfileAvgAggregateInputType = {
+  lat?: true
+  lng?: true
   shirtNumber?: true
   onboardingStep?: true
 }
 
 export type ProfileSumAggregateInputType = {
+  lat?: true
+  lng?: true
   shirtNumber?: true
   onboardingStep?: true
 }
@@ -113,8 +130,11 @@ export type ProfileMinAggregateInputType = {
   imageUrl?: true
   phone?: true
   birthDate?: true
+  address?: true
   city?: true
   state?: true
+  lat?: true
+  lng?: true
   preferredFoot?: true
   shirtNumber?: true
   bio?: true
@@ -132,8 +152,11 @@ export type ProfileMaxAggregateInputType = {
   imageUrl?: true
   phone?: true
   birthDate?: true
+  address?: true
   city?: true
   state?: true
+  lat?: true
+  lng?: true
   preferredFoot?: true
   shirtNumber?: true
   bio?: true
@@ -151,8 +174,11 @@ export type ProfileCountAggregateInputType = {
   imageUrl?: true
   phone?: true
   birthDate?: true
+  address?: true
   city?: true
   state?: true
+  lat?: true
+  lng?: true
   preferredFoot?: true
   shirtNumber?: true
   bio?: true
@@ -257,8 +283,11 @@ export type ProfileGroupByOutputType = {
   imageUrl: string | null
   phone: string | null
   birthDate: Date | null
+  address: string | null
   city: string | null
   state: string | null
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
   preferredFoot: $Enums.PreferredFoot | null
   shirtNumber: number | null
   bio: string | null
@@ -299,8 +328,11 @@ export type ProfileWhereInput = {
   imageUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   phone?: Prisma.StringNullableFilter<"Profile"> | string | null
   birthDate?: Prisma.DateTimeNullableFilter<"Profile"> | Date | string | null
+  address?: Prisma.StringNullableFilter<"Profile"> | string | null
   city?: Prisma.StringNullableFilter<"Profile"> | string | null
   state?: Prisma.StringNullableFilter<"Profile"> | string | null
+  lat?: Prisma.DecimalNullableFilter<"Profile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.DecimalNullableFilter<"Profile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.EnumPreferredFootNullableFilter<"Profile"> | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.IntNullableFilter<"Profile"> | number | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -320,8 +352,11 @@ export type ProfileOrderByWithRelationInput = {
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   birthDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  address?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   state?: Prisma.SortOrderInput | Prisma.SortOrder
+  lat?: Prisma.SortOrderInput | Prisma.SortOrder
+  lng?: Prisma.SortOrderInput | Prisma.SortOrder
   preferredFoot?: Prisma.SortOrderInput | Prisma.SortOrder
   shirtNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -344,8 +379,11 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   imageUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   phone?: Prisma.StringNullableFilter<"Profile"> | string | null
   birthDate?: Prisma.DateTimeNullableFilter<"Profile"> | Date | string | null
+  address?: Prisma.StringNullableFilter<"Profile"> | string | null
   city?: Prisma.StringNullableFilter<"Profile"> | string | null
   state?: Prisma.StringNullableFilter<"Profile"> | string | null
+  lat?: Prisma.DecimalNullableFilter<"Profile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.DecimalNullableFilter<"Profile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.EnumPreferredFootNullableFilter<"Profile"> | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.IntNullableFilter<"Profile"> | number | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -365,8 +403,11 @@ export type ProfileOrderByWithAggregationInput = {
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   birthDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  address?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   state?: Prisma.SortOrderInput | Prisma.SortOrder
+  lat?: Prisma.SortOrderInput | Prisma.SortOrder
+  lng?: Prisma.SortOrderInput | Prisma.SortOrder
   preferredFoot?: Prisma.SortOrderInput | Prisma.SortOrder
   shirtNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -392,8 +433,11 @@ export type ProfileScalarWhereWithAggregatesInput = {
   imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   phone?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   birthDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
+  address?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   city?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   state?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
+  lat?: Prisma.DecimalNullableWithAggregatesFilter<"Profile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.DecimalNullableWithAggregatesFilter<"Profile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.EnumPreferredFootNullableWithAggregatesFilter<"Profile"> | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.IntNullableWithAggregatesFilter<"Profile"> | number | null
   bio?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
@@ -410,8 +454,11 @@ export type ProfileCreateInput = {
   imageUrl?: string | null
   phone?: string | null
   birthDate?: Date | string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
@@ -431,8 +478,11 @@ export type ProfileUncheckedCreateInput = {
   imageUrl?: string | null
   phone?: string | null
   birthDate?: Date | string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
@@ -450,8 +500,11 @@ export type ProfileUpdateInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -471,8 +524,11 @@ export type ProfileUncheckedUpdateInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -491,8 +547,11 @@ export type ProfileCreateManyInput = {
   imageUrl?: string | null
   phone?: string | null
   birthDate?: Date | string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
@@ -509,8 +568,11 @@ export type ProfileUpdateManyMutationInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -528,8 +590,11 @@ export type ProfileUncheckedUpdateManyInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -552,8 +617,11 @@ export type ProfileCountOrderByAggregateInput = {
   imageUrl?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   birthDate?: Prisma.SortOrder
+  address?: Prisma.SortOrder
   city?: Prisma.SortOrder
   state?: Prisma.SortOrder
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
   preferredFoot?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -564,6 +632,8 @@ export type ProfileCountOrderByAggregateInput = {
 }
 
 export type ProfileAvgOrderByAggregateInput = {
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   onboardingStep?: Prisma.SortOrder
 }
@@ -576,8 +646,11 @@ export type ProfileMaxOrderByAggregateInput = {
   imageUrl?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   birthDate?: Prisma.SortOrder
+  address?: Prisma.SortOrder
   city?: Prisma.SortOrder
   state?: Prisma.SortOrder
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
   preferredFoot?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -595,8 +668,11 @@ export type ProfileMinOrderByAggregateInput = {
   imageUrl?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   birthDate?: Prisma.SortOrder
+  address?: Prisma.SortOrder
   city?: Prisma.SortOrder
   state?: Prisma.SortOrder
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
   preferredFoot?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -607,6 +683,8 @@ export type ProfileMinOrderByAggregateInput = {
 }
 
 export type ProfileSumOrderByAggregateInput = {
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   onboardingStep?: Prisma.SortOrder
 }
@@ -646,6 +724,14 @@ export type ProfileUncheckedUpdateOneWithoutUserNestedInput = {
   delete?: Prisma.ProfileWhereInput | boolean
   connect?: Prisma.ProfileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutUserInput, Prisma.ProfileUpdateWithoutUserInput>, Prisma.ProfileUncheckedUpdateWithoutUserInput>
+}
+
+export type NullableDecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type NullableEnumPreferredFootFieldUpdateOperationsInput = {
@@ -689,8 +775,11 @@ export type ProfileCreateWithoutUserInput = {
   imageUrl?: string | null
   phone?: string | null
   birthDate?: Date | string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
@@ -708,8 +797,11 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   imageUrl?: string | null
   phone?: string | null
   birthDate?: Date | string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
@@ -743,8 +835,11 @@ export type ProfileUpdateWithoutUserInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -762,8 +857,11 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -781,8 +879,11 @@ export type ProfileCreateWithoutModalityPositionsInput = {
   imageUrl?: string | null
   phone?: string | null
   birthDate?: Date | string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
@@ -801,8 +902,11 @@ export type ProfileUncheckedCreateWithoutModalityPositionsInput = {
   imageUrl?: string | null
   phone?: string | null
   birthDate?: Date | string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: $Enums.PreferredFoot | null
   shirtNumber?: number | null
   bio?: string | null
@@ -835,8 +939,11 @@ export type ProfileUpdateWithoutModalityPositionsInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -855,8 +962,11 @@ export type ProfileUncheckedUpdateWithoutModalityPositionsInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   preferredFoot?: Prisma.NullableEnumPreferredFootFieldUpdateOperationsInput | $Enums.PreferredFoot | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -905,8 +1015,11 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   imageUrl?: boolean
   phone?: boolean
   birthDate?: boolean
+  address?: boolean
   city?: boolean
   state?: boolean
+  lat?: boolean
+  lng?: boolean
   preferredFoot?: boolean
   shirtNumber?: boolean
   bio?: boolean
@@ -927,8 +1040,11 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   imageUrl?: boolean
   phone?: boolean
   birthDate?: boolean
+  address?: boolean
   city?: boolean
   state?: boolean
+  lat?: boolean
+  lng?: boolean
   preferredFoot?: boolean
   shirtNumber?: boolean
   bio?: boolean
@@ -947,8 +1063,11 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   imageUrl?: boolean
   phone?: boolean
   birthDate?: boolean
+  address?: boolean
   city?: boolean
   state?: boolean
+  lat?: boolean
+  lng?: boolean
   preferredFoot?: boolean
   shirtNumber?: boolean
   bio?: boolean
@@ -967,8 +1086,11 @@ export type ProfileSelectScalar = {
   imageUrl?: boolean
   phone?: boolean
   birthDate?: boolean
+  address?: boolean
   city?: boolean
   state?: boolean
+  lat?: boolean
+  lng?: boolean
   preferredFoot?: boolean
   shirtNumber?: boolean
   bio?: boolean
@@ -978,7 +1100,7 @@ export type ProfileSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fullName" | "nickname" | "imageUrl" | "phone" | "birthDate" | "city" | "state" | "preferredFoot" | "shirtNumber" | "bio" | "onboardingStep" | "onboardingCompletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fullName" | "nickname" | "imageUrl" | "phone" | "birthDate" | "address" | "city" | "state" | "lat" | "lng" | "preferredFoot" | "shirtNumber" | "bio" | "onboardingStep" | "onboardingCompletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   modalityPositions?: boolean | Prisma.Profile$modalityPositionsArgs<ExtArgs>
@@ -1005,8 +1127,11 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     imageUrl: string | null
     phone: string | null
     birthDate: Date | null
+    address: string | null
     city: string | null
     state: string | null
+    lat: runtime.Decimal | null
+    lng: runtime.Decimal | null
     preferredFoot: $Enums.PreferredFoot | null
     shirtNumber: number | null
     bio: string | null
@@ -1446,8 +1571,11 @@ export interface ProfileFieldRefs {
   readonly imageUrl: Prisma.FieldRef<"Profile", 'String'>
   readonly phone: Prisma.FieldRef<"Profile", 'String'>
   readonly birthDate: Prisma.FieldRef<"Profile", 'DateTime'>
+  readonly address: Prisma.FieldRef<"Profile", 'String'>
   readonly city: Prisma.FieldRef<"Profile", 'String'>
   readonly state: Prisma.FieldRef<"Profile", 'String'>
+  readonly lat: Prisma.FieldRef<"Profile", 'Decimal'>
+  readonly lng: Prisma.FieldRef<"Profile", 'Decimal'>
   readonly preferredFoot: Prisma.FieldRef<"Profile", 'PreferredFoot'>
   readonly shirtNumber: Prisma.FieldRef<"Profile", 'Int'>
   readonly bio: Prisma.FieldRef<"Profile", 'String'>

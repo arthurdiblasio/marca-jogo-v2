@@ -15,6 +15,18 @@ export function Avatar({
   );
 }
 
+export function AvatarImage({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>) {
+  return (
+    <AvatarPrimitive.Image
+      className={cn("size-full object-cover", className)}
+      {...props}
+    />
+  );
+}
+
 export function AvatarFallback({
   className,
   ...props

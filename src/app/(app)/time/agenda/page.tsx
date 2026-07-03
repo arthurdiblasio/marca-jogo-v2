@@ -104,29 +104,31 @@ function PastMatchCard({ match, activeOrgId }: { match: MatchWithOrgs; activeOrg
   const { opponentLabel, teamScore, opponentScore, outcome } = getMatchPerspective(match, activeOrgId);
 
   return (
-    <Card className="flex items-center justify-between gap-3 p-4">
-      <div>
-        <p className="font-bold text-slate-900">vs {opponentLabel}</p>
-        <p className="text-sm text-slate-500 capitalize">{formatListingDateTime(match.scheduledAt)}</p>
-      </div>
-      <div className="flex items-center gap-2">
-        {match.status === "CANCELLED" ? (
-          <span className="text-sm font-semibold text-slate-400">Cancelado</span>
-        ) : (
-          <>
-            {teamScore != null && opponentScore != null && (
-              <span className="rounded bg-slate-100 px-3 py-1 text-sm font-black text-slate-700">
-                {teamScore} x {opponentScore}
-              </span>
-            )}
-            {outcome && (
-              <span className={`rounded-full px-3 py-1 text-xs font-bold ${OUTCOME_CLASS[outcome]}`}>
-                {OUTCOME_LABEL[outcome]}
-              </span>
-            )}
-          </>
-        )}
-      </div>
-    </Card>
+    <Link href={`/time/agenda/${match.id}`}>
+      <Card className="flex items-center justify-between gap-3 p-4 transition hover:border-slate-300">
+        <div>
+          <p className="font-bold text-slate-900">vs {opponentLabel}</p>
+          <p className="text-sm text-slate-500 capitalize">{formatListingDateTime(match.scheduledAt)}</p>
+        </div>
+        <div className="flex items-center gap-2">
+          {match.status === "CANCELLED" ? (
+            <span className="text-sm font-semibold text-slate-400">Cancelado</span>
+          ) : (
+            <>
+              {teamScore != null && opponentScore != null && (
+                <span className="rounded bg-slate-100 px-3 py-1 text-sm font-black text-slate-700">
+                  {teamScore} x {opponentScore}
+                </span>
+              )}
+              {outcome && (
+                <span className={`rounded-full px-3 py-1 text-xs font-bold ${OUTCOME_CLASS[outcome]}`}>
+                  {OUTCOME_LABEL[outcome]}
+                </span>
+              )}
+            </>
+          )}
+        </div>
+      </Card>
+    </Link>
   );
 }

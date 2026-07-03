@@ -42,9 +42,17 @@ export const organizationRepository = {
     slug: string;
     type: OrganizationType;
     modality?: SportModality;
+    logoUrl?: string;
+    address?: string;
     city?: string;
     state?: string;
+    lat?: number;
+    lng?: number;
     description?: string;
+    weekday?: number;
+    scheduledTime?: string;
+    monthlyFee?: number;
+    singleFee?: number;
     createdById: string;
   }) {
     return prisma.$transaction(async (tx) => {
@@ -54,9 +62,17 @@ export const organizationRepository = {
           slug: data.slug,
           type: data.type,
           modality: data.modality,
+          logoUrl: data.logoUrl,
+          address: data.address,
           city: data.city,
           state: data.state,
+          lat: data.lat,
+          lng: data.lng,
           description: data.description,
+          weekday: data.weekday,
+          scheduledTime: data.scheduledTime,
+          monthlyFee: data.monthlyFee,
+          singleFee: data.singleFee,
           createdById: data.createdById,
         },
       });
@@ -71,6 +87,44 @@ export const organizationRepository = {
       });
 
       return org;
+    });
+  },
+
+  update(
+    id: string,
+    data: {
+      name: string;
+      modality?: SportModality;
+      logoUrl?: string;
+      address?: string;
+      city?: string;
+      state?: string;
+      lat?: number;
+      lng?: number;
+      description?: string;
+      weekday?: number;
+      scheduledTime?: string;
+      monthlyFee?: number;
+      singleFee?: number;
+    },
+  ) {
+    return prisma.organization.update({
+      where: { id },
+      data: {
+        name: data.name,
+        modality: data.modality,
+        logoUrl: data.logoUrl,
+        address: data.address,
+        city: data.city,
+        state: data.state,
+        lat: data.lat,
+        lng: data.lng,
+        description: data.description,
+        weekday: data.weekday,
+        scheduledTime: data.scheduledTime,
+        monthlyFee: data.monthlyFee,
+        singleFee: data.singleFee,
+      },
     });
   },
 };

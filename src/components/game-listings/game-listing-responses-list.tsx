@@ -7,6 +7,7 @@ import { Shield } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { acceptResponseAction } from "@/modules/game-listings/actions/accept-response";
 import type { GameListingDetail } from "@/modules/game-listings/types";
 
@@ -56,9 +57,14 @@ export function GameListingResponsesList({
       {responses.map((response) => (
         <Card key={response.id} className="flex items-center justify-between gap-3 p-4">
           <div className="flex items-center gap-3">
-            <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-green-50">
-              <Shield className="size-5 text-primary" />
-            </div>
+            <Avatar className="size-10 rounded-xl bg-green-50">
+              {response.organization.logoUrl && (
+                <AvatarImage src={response.organization.logoUrl} alt={response.organization.name} />
+              )}
+              <AvatarFallback className="rounded-xl bg-transparent">
+                <Shield className="size-5 text-primary" />
+              </AvatarFallback>
+            </Avatar>
             <div>
               <p className="font-bold text-slate-900">{response.organization.name}</p>
               {response.message && <p className="text-sm text-slate-500">{response.message}</p>}

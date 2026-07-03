@@ -40,6 +40,8 @@ export async function createGameListingAction(formData: FormData) {
     location: data.location,
     city: data.city,
     state: data.state,
+    lat: data.lat,
+    lng: data.lng,
     priceCents: data.priceCents,
     priceNotes: data.priceNotes,
     notes: data.notes,

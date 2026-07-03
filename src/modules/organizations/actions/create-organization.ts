@@ -22,9 +22,17 @@ export async function createOrganizationAction(input: CreateOrganizationInput) {
     slug,
     type: data.type as OrganizationType,
     modality: data.modality as SportModality | undefined,
+    logoUrl: data.logoUrl,
+    address: data.address,
     city: data.city,
     state: data.state,
+    lat: data.lat,
+    lng: data.lng,
     description: data.description,
+    weekday: data.weekday,
+    scheduledTime: data.scheduledTime,
+    monthlyFee: data.monthlyFee,
+    singleFee: data.singleFee,
     createdById: session.id,
   });
 

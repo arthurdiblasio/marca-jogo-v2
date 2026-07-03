@@ -15,6 +15,8 @@ type ListingData = {
   location: string;
   city: string;
   state: string;
+  lat?: number;
+  lng?: number;
   priceCents?: number;
   priceNotes?: string;
   notes?: string;
@@ -37,6 +39,8 @@ export const gameListingRepository = {
         location: params.data.location,
         city: params.data.city,
         state: params.data.state,
+        lat: params.data.lat,
+        lng: params.data.lng,
         priceCents: params.data.priceCents,
         priceNotes: params.data.priceNotes,
         notes: params.data.notes,
@@ -78,6 +82,8 @@ export const gameListingRepository = {
           location: params.data.location,
           city: params.data.city,
           state: params.data.state,
+          lat: params.data.lat,
+          lng: params.data.lng,
           priceCents: params.data.priceCents,
           priceNotes: params.data.priceNotes,
           notes: params.data.notes,

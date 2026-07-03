@@ -20,8 +20,26 @@ export type OrganizationModel = runtime.Types.Result.DefaultSelection<Prisma.$Or
 
 export type AggregateOrganization = {
   _count: OrganizationCountAggregateOutputType | null
+  _avg: OrganizationAvgAggregateOutputType | null
+  _sum: OrganizationSumAggregateOutputType | null
   _min: OrganizationMinAggregateOutputType | null
   _max: OrganizationMaxAggregateOutputType | null
+}
+
+export type OrganizationAvgAggregateOutputType = {
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
+  weekday: number | null
+  monthlyFee: runtime.Decimal | null
+  singleFee: runtime.Decimal | null
+}
+
+export type OrganizationSumAggregateOutputType = {
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
+  weekday: number | null
+  monthlyFee: runtime.Decimal | null
+  singleFee: runtime.Decimal | null
 }
 
 export type OrganizationMinAggregateOutputType = {
@@ -31,12 +49,19 @@ export type OrganizationMinAggregateOutputType = {
   slug: string | null
   description: string | null
   logoUrl: string | null
+  address: string | null
   city: string | null
   state: string | null
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
   modality: $Enums.SportModality | null
+  weekday: number | null
+  scheduledTime: string | null
+  monthlyFee: runtime.Decimal | null
+  singleFee: runtime.Decimal | null
   createdById: string | null
 }
 
@@ -47,12 +72,19 @@ export type OrganizationMaxAggregateOutputType = {
   slug: string | null
   description: string | null
   logoUrl: string | null
+  address: string | null
   city: string | null
   state: string | null
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
   modality: $Enums.SportModality | null
+  weekday: number | null
+  scheduledTime: string | null
+  monthlyFee: runtime.Decimal | null
+  singleFee: runtime.Decimal | null
   createdById: string | null
 }
 
@@ -63,16 +95,39 @@ export type OrganizationCountAggregateOutputType = {
   slug: number
   description: number
   logoUrl: number
+  address: number
   city: number
   state: number
+  lat: number
+  lng: number
   isActive: number
   createdAt: number
   updatedAt: number
   modality: number
+  weekday: number
+  scheduledTime: number
+  monthlyFee: number
+  singleFee: number
   createdById: number
   _all: number
 }
 
+
+export type OrganizationAvgAggregateInputType = {
+  lat?: true
+  lng?: true
+  weekday?: true
+  monthlyFee?: true
+  singleFee?: true
+}
+
+export type OrganizationSumAggregateInputType = {
+  lat?: true
+  lng?: true
+  weekday?: true
+  monthlyFee?: true
+  singleFee?: true
+}
 
 export type OrganizationMinAggregateInputType = {
   id?: true
@@ -81,12 +136,19 @@ export type OrganizationMinAggregateInputType = {
   slug?: true
   description?: true
   logoUrl?: true
+  address?: true
   city?: true
   state?: true
+  lat?: true
+  lng?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
   modality?: true
+  weekday?: true
+  scheduledTime?: true
+  monthlyFee?: true
+  singleFee?: true
   createdById?: true
 }
 
@@ -97,12 +159,19 @@ export type OrganizationMaxAggregateInputType = {
   slug?: true
   description?: true
   logoUrl?: true
+  address?: true
   city?: true
   state?: true
+  lat?: true
+  lng?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
   modality?: true
+  weekday?: true
+  scheduledTime?: true
+  monthlyFee?: true
+  singleFee?: true
   createdById?: true
 }
 
@@ -113,12 +182,19 @@ export type OrganizationCountAggregateInputType = {
   slug?: true
   description?: true
   logoUrl?: true
+  address?: true
   city?: true
   state?: true
+  lat?: true
+  lng?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
   modality?: true
+  weekday?: true
+  scheduledTime?: true
+  monthlyFee?: true
+  singleFee?: true
   createdById?: true
   _all?: true
 }
@@ -161,6 +237,18 @@ export type OrganizationAggregateArgs<ExtArgs extends runtime.Types.Extensions.I
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: OrganizationAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: OrganizationSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: OrganizationMinAggregateInputType
@@ -191,6 +279,8 @@ export type OrganizationGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   _count?: OrganizationCountAggregateInputType | true
+  _avg?: OrganizationAvgAggregateInputType
+  _sum?: OrganizationSumAggregateInputType
   _min?: OrganizationMinAggregateInputType
   _max?: OrganizationMaxAggregateInputType
 }
@@ -202,14 +292,23 @@ export type OrganizationGroupByOutputType = {
   slug: string
   description: string | null
   logoUrl: string | null
+  address: string | null
   city: string | null
   state: string | null
+  lat: runtime.Decimal | null
+  lng: runtime.Decimal | null
   isActive: boolean
   createdAt: Date
   updatedAt: Date
   modality: $Enums.SportModality | null
+  weekday: number | null
+  scheduledTime: string | null
+  monthlyFee: runtime.Decimal | null
+  singleFee: runtime.Decimal | null
   createdById: string | null
   _count: OrganizationCountAggregateOutputType | null
+  _avg: OrganizationAvgAggregateOutputType | null
+  _sum: OrganizationSumAggregateOutputType | null
   _min: OrganizationMinAggregateOutputType | null
   _max: OrganizationMaxAggregateOutputType | null
 }
@@ -239,12 +338,19 @@ export type OrganizationWhereInput = {
   slug?: Prisma.StringFilter<"Organization"> | string
   description?: Prisma.StringNullableFilter<"Organization"> | string | null
   logoUrl?: Prisma.StringNullableFilter<"Organization"> | string | null
+  address?: Prisma.StringNullableFilter<"Organization"> | string | null
   city?: Prisma.StringNullableFilter<"Organization"> | string | null
   state?: Prisma.StringNullableFilter<"Organization"> | string | null
+  lat?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFilter<"Organization"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   modality?: Prisma.EnumSportModalityNullableFilter<"Organization"> | $Enums.SportModality | null
+  weekday?: Prisma.IntNullableFilter<"Organization"> | number | null
+  scheduledTime?: Prisma.StringNullableFilter<"Organization"> | string | null
+  monthlyFee?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.StringNullableFilter<"Organization"> | string | null
   createdBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   memberships?: Prisma.MembershipListRelationFilter
@@ -260,6 +366,7 @@ export type OrganizationWhereInput = {
   gameListingSeries?: Prisma.GameListingSeriesListRelationFilter
   gameListingResponses?: Prisma.GameListingResponseListRelationFilter
   playerInvites?: Prisma.PlayerInviteListRelationFilter
+  guestPlayers?: Prisma.GuestPlayerListRelationFilter
 }
 
 export type OrganizationOrderByWithRelationInput = {
@@ -269,12 +376,19 @@ export type OrganizationOrderByWithRelationInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  address?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   state?: Prisma.SortOrderInput | Prisma.SortOrder
+  lat?: Prisma.SortOrderInput | Prisma.SortOrder
+  lng?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   modality?: Prisma.SortOrderInput | Prisma.SortOrder
+  weekday?: Prisma.SortOrderInput | Prisma.SortOrder
+  scheduledTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  monthlyFee?: Prisma.SortOrderInput | Prisma.SortOrder
+  singleFee?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdBy?: Prisma.UserOrderByWithRelationInput
   memberships?: Prisma.MembershipOrderByRelationAggregateInput
@@ -290,6 +404,7 @@ export type OrganizationOrderByWithRelationInput = {
   gameListingSeries?: Prisma.GameListingSeriesOrderByRelationAggregateInput
   gameListingResponses?: Prisma.GameListingResponseOrderByRelationAggregateInput
   playerInvites?: Prisma.PlayerInviteOrderByRelationAggregateInput
+  guestPlayers?: Prisma.GuestPlayerOrderByRelationAggregateInput
 }
 
 export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
@@ -302,12 +417,19 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Organization"> | string
   description?: Prisma.StringNullableFilter<"Organization"> | string | null
   logoUrl?: Prisma.StringNullableFilter<"Organization"> | string | null
+  address?: Prisma.StringNullableFilter<"Organization"> | string | null
   city?: Prisma.StringNullableFilter<"Organization"> | string | null
   state?: Prisma.StringNullableFilter<"Organization"> | string | null
+  lat?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFilter<"Organization"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   modality?: Prisma.EnumSportModalityNullableFilter<"Organization"> | $Enums.SportModality | null
+  weekday?: Prisma.IntNullableFilter<"Organization"> | number | null
+  scheduledTime?: Prisma.StringNullableFilter<"Organization"> | string | null
+  monthlyFee?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.StringNullableFilter<"Organization"> | string | null
   createdBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   memberships?: Prisma.MembershipListRelationFilter
@@ -323,6 +445,7 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   gameListingSeries?: Prisma.GameListingSeriesListRelationFilter
   gameListingResponses?: Prisma.GameListingResponseListRelationFilter
   playerInvites?: Prisma.PlayerInviteListRelationFilter
+  guestPlayers?: Prisma.GuestPlayerListRelationFilter
 }, "id" | "slug">
 
 export type OrganizationOrderByWithAggregationInput = {
@@ -332,16 +455,25 @@ export type OrganizationOrderByWithAggregationInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  address?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   state?: Prisma.SortOrderInput | Prisma.SortOrder
+  lat?: Prisma.SortOrderInput | Prisma.SortOrder
+  lng?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   modality?: Prisma.SortOrderInput | Prisma.SortOrder
+  weekday?: Prisma.SortOrderInput | Prisma.SortOrder
+  scheduledTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  monthlyFee?: Prisma.SortOrderInput | Prisma.SortOrder
+  singleFee?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.OrganizationCountOrderByAggregateInput
+  _avg?: Prisma.OrganizationAvgOrderByAggregateInput
   _max?: Prisma.OrganizationMaxOrderByAggregateInput
   _min?: Prisma.OrganizationMinOrderByAggregateInput
+  _sum?: Prisma.OrganizationSumOrderByAggregateInput
 }
 
 export type OrganizationScalarWhereWithAggregatesInput = {
@@ -354,12 +486,19 @@ export type OrganizationScalarWhereWithAggregatesInput = {
   slug?: Prisma.StringWithAggregatesFilter<"Organization"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Organization"> | string | null
   logoUrl?: Prisma.StringNullableWithAggregatesFilter<"Organization"> | string | null
+  address?: Prisma.StringNullableWithAggregatesFilter<"Organization"> | string | null
   city?: Prisma.StringNullableWithAggregatesFilter<"Organization"> | string | null
   state?: Prisma.StringNullableWithAggregatesFilter<"Organization"> | string | null
+  lat?: Prisma.DecimalNullableWithAggregatesFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.DecimalNullableWithAggregatesFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolWithAggregatesFilter<"Organization"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Organization"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Organization"> | Date | string
   modality?: Prisma.EnumSportModalityNullableWithAggregatesFilter<"Organization"> | $Enums.SportModality | null
+  weekday?: Prisma.IntNullableWithAggregatesFilter<"Organization"> | number | null
+  scheduledTime?: Prisma.StringNullableWithAggregatesFilter<"Organization"> | string | null
+  monthlyFee?: Prisma.DecimalNullableWithAggregatesFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.DecimalNullableWithAggregatesFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.StringNullableWithAggregatesFilter<"Organization"> | string | null
 }
 
@@ -370,12 +509,19 @@ export type OrganizationCreateInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -390,6 +536,7 @@ export type OrganizationCreateInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateInput = {
@@ -399,12 +546,19 @@ export type OrganizationUncheckedCreateInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -419,6 +573,7 @@ export type OrganizationUncheckedCreateInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUpdateInput = {
@@ -428,12 +583,19 @@ export type OrganizationUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -448,6 +610,7 @@ export type OrganizationUpdateInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateInput = {
@@ -457,12 +620,19 @@ export type OrganizationUncheckedUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -477,6 +647,7 @@ export type OrganizationUncheckedUpdateInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyInput = {
@@ -486,12 +657,19 @@ export type OrganizationCreateManyInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
 }
 
@@ -502,12 +680,19 @@ export type OrganizationUpdateManyMutationInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type OrganizationUncheckedUpdateManyInput = {
@@ -517,12 +702,19 @@ export type OrganizationUncheckedUpdateManyInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -543,13 +735,28 @@ export type OrganizationCountOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
+  address?: Prisma.SortOrder
   city?: Prisma.SortOrder
   state?: Prisma.SortOrder
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   modality?: Prisma.SortOrder
+  weekday?: Prisma.SortOrder
+  scheduledTime?: Prisma.SortOrder
+  monthlyFee?: Prisma.SortOrder
+  singleFee?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+}
+
+export type OrganizationAvgOrderByAggregateInput = {
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
+  weekday?: Prisma.SortOrder
+  monthlyFee?: Prisma.SortOrder
+  singleFee?: Prisma.SortOrder
 }
 
 export type OrganizationMaxOrderByAggregateInput = {
@@ -559,12 +766,19 @@ export type OrganizationMaxOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
+  address?: Prisma.SortOrder
   city?: Prisma.SortOrder
   state?: Prisma.SortOrder
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   modality?: Prisma.SortOrder
+  weekday?: Prisma.SortOrder
+  scheduledTime?: Prisma.SortOrder
+  monthlyFee?: Prisma.SortOrder
+  singleFee?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
 }
 
@@ -575,13 +789,28 @@ export type OrganizationMinOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
+  address?: Prisma.SortOrder
   city?: Prisma.SortOrder
   state?: Prisma.SortOrder
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   modality?: Prisma.SortOrder
+  weekday?: Prisma.SortOrder
+  scheduledTime?: Prisma.SortOrder
+  monthlyFee?: Prisma.SortOrder
+  singleFee?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+}
+
+export type OrganizationSumOrderByAggregateInput = {
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
+  weekday?: Prisma.SortOrder
+  monthlyFee?: Prisma.SortOrder
+  singleFee?: Prisma.SortOrder
 }
 
 export type OrganizationScalarRelationFilter = {
@@ -646,6 +875,20 @@ export type BoolFieldUpdateOperationsInput = {
 
 export type NullableEnumSportModalityFieldUpdateOperationsInput = {
   set?: $Enums.SportModality | null
+}
+
+export type OrganizationCreateNestedOneWithoutGuestPlayersInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutGuestPlayersInput, Prisma.OrganizationUncheckedCreateWithoutGuestPlayersInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutGuestPlayersInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutGuestPlayersNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutGuestPlayersInput, Prisma.OrganizationUncheckedCreateWithoutGuestPlayersInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutGuestPlayersInput
+  upsert?: Prisma.OrganizationUpsertWithoutGuestPlayersInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutGuestPlayersInput, Prisma.OrganizationUpdateWithoutGuestPlayersInput>, Prisma.OrganizationUncheckedUpdateWithoutGuestPlayersInput>
 }
 
 export type OrganizationCreateNestedOneWithoutMembershipsInput = {
@@ -839,12 +1082,19 @@ export type OrganizationCreateWithoutCreatedByInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
@@ -858,6 +1108,7 @@ export type OrganizationCreateWithoutCreatedByInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutCreatedByInput = {
@@ -867,12 +1118,19 @@ export type OrganizationUncheckedCreateWithoutCreatedByInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
@@ -886,6 +1144,7 @@ export type OrganizationUncheckedCreateWithoutCreatedByInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutCreatedByInput = {
@@ -924,29 +1183,44 @@ export type OrganizationScalarWhereInput = {
   slug?: Prisma.StringFilter<"Organization"> | string
   description?: Prisma.StringNullableFilter<"Organization"> | string | null
   logoUrl?: Prisma.StringNullableFilter<"Organization"> | string | null
+  address?: Prisma.StringNullableFilter<"Organization"> | string | null
   city?: Prisma.StringNullableFilter<"Organization"> | string | null
   state?: Prisma.StringNullableFilter<"Organization"> | string | null
+  lat?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFilter<"Organization"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   modality?: Prisma.EnumSportModalityNullableFilter<"Organization"> | $Enums.SportModality | null
+  weekday?: Prisma.IntNullableFilter<"Organization"> | number | null
+  scheduledTime?: Prisma.StringNullableFilter<"Organization"> | string | null
+  monthlyFee?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.DecimalNullableFilter<"Organization"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.StringNullableFilter<"Organization"> | string | null
 }
 
-export type OrganizationCreateWithoutMembershipsInput = {
+export type OrganizationCreateWithoutGuestPlayersInput = {
   id?: string
   type: $Enums.OrganizationType
   name: string
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
   awayMatches?: Prisma.MatchCreateNestedManyWithoutAwayOrganizationInput
@@ -961,6 +1235,166 @@ export type OrganizationCreateWithoutMembershipsInput = {
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
 }
 
+export type OrganizationUncheckedCreateWithoutGuestPlayersInput = {
+  id?: string
+  type: $Enums.OrganizationType
+  name: string
+  slug: string
+  description?: string | null
+  logoUrl?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdById?: string | null
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
+  homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
+  awayMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutAwayOrganizationInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutOrganizationInput
+  financialTransactions?: Prisma.FinancialTransactionUncheckedCreateNestedManyWithoutOrganizationInput
+  rankings?: Prisma.RankingSnapshotUncheckedCreateNestedManyWithoutOrganizationInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutFromOrganizationInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUncheckedCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
+  playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutGuestPlayersInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutGuestPlayersInput, Prisma.OrganizationUncheckedCreateWithoutGuestPlayersInput>
+}
+
+export type OrganizationUpsertWithoutGuestPlayersInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutGuestPlayersInput, Prisma.OrganizationUncheckedUpdateWithoutGuestPlayersInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutGuestPlayersInput, Prisma.OrganizationUncheckedCreateWithoutGuestPlayersInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutGuestPlayersInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutGuestPlayersInput, Prisma.OrganizationUncheckedUpdateWithoutGuestPlayersInput>
+}
+
+export type OrganizationUpdateWithoutGuestPlayersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumOrganizationTypeFieldUpdateOperationsInput | $Enums.OrganizationType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
+  homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
+  awayMatches?: Prisma.MatchUpdateManyWithoutAwayOrganizationNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUpdateManyWithoutOrganizationNestedInput
+  financialTransactions?: Prisma.FinancialTransactionUpdateManyWithoutOrganizationNestedInput
+  rankings?: Prisma.RankingSnapshotUpdateManyWithoutOrganizationNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutFromOrganizationNestedInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
+  playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutGuestPlayersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumOrganizationTypeFieldUpdateOperationsInput | $Enums.OrganizationType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
+  homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
+  awayMatches?: Prisma.MatchUncheckedUpdateManyWithoutAwayOrganizationNestedInput
+  matchAttendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutOrganizationNestedInput
+  financialTransactions?: Prisma.FinancialTransactionUncheckedUpdateManyWithoutOrganizationNestedInput
+  rankings?: Prisma.RankingSnapshotUncheckedUpdateManyWithoutOrganizationNestedInput
+  sentOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutFromOrganizationNestedInput
+  receivedOpponentInvites?: Prisma.OpponentInviteUncheckedUpdateManyWithoutToOrganizationNestedInput
+  gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
+  gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
+  playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutMembershipsInput = {
+  id?: string
+  type: $Enums.OrganizationType
+  name: string
+  slug: string
+  description?: string | null
+  logoUrl?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
+  peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
+  homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
+  awayMatches?: Prisma.MatchCreateNestedManyWithoutAwayOrganizationInput
+  matchAttendances?: Prisma.MatchAttendanceCreateNestedManyWithoutOrganizationInput
+  financialTransactions?: Prisma.FinancialTransactionCreateNestedManyWithoutOrganizationInput
+  rankings?: Prisma.RankingSnapshotCreateNestedManyWithoutOrganizationInput
+  sentOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutFromOrganizationInput
+  receivedOpponentInvites?: Prisma.OpponentInviteCreateNestedManyWithoutToOrganizationInput
+  gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
+  gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
+  gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
+  playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
+}
+
 export type OrganizationUncheckedCreateWithoutMembershipsInput = {
   id?: string
   type: $Enums.OrganizationType
@@ -968,12 +1402,19 @@ export type OrganizationUncheckedCreateWithoutMembershipsInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
@@ -987,6 +1428,7 @@ export type OrganizationUncheckedCreateWithoutMembershipsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMembershipsInput = {
@@ -1012,12 +1454,19 @@ export type OrganizationUpdateWithoutMembershipsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
@@ -1031,6 +1480,7 @@ export type OrganizationUpdateWithoutMembershipsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMembershipsInput = {
@@ -1040,12 +1490,19 @@ export type OrganizationUncheckedUpdateWithoutMembershipsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
@@ -1059,6 +1516,7 @@ export type OrganizationUncheckedUpdateWithoutMembershipsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutPeladaOccurrencesInput = {
@@ -1068,12 +1526,19 @@ export type OrganizationCreateWithoutPeladaOccurrencesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchCreateNestedManyWithoutHomeOrganizationInput
@@ -1087,6 +1552,7 @@ export type OrganizationCreateWithoutPeladaOccurrencesInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutPeladaOccurrencesInput = {
@@ -1096,12 +1562,19 @@ export type OrganizationUncheckedCreateWithoutPeladaOccurrencesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   homeMatches?: Prisma.MatchUncheckedCreateNestedManyWithoutHomeOrganizationInput
@@ -1115,6 +1588,7 @@ export type OrganizationUncheckedCreateWithoutPeladaOccurrencesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutPeladaOccurrencesInput = {
@@ -1140,12 +1614,19 @@ export type OrganizationUpdateWithoutPeladaOccurrencesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
@@ -1159,6 +1640,7 @@ export type OrganizationUpdateWithoutPeladaOccurrencesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutPeladaOccurrencesInput = {
@@ -1168,12 +1650,19 @@ export type OrganizationUncheckedUpdateWithoutPeladaOccurrencesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
@@ -1187,6 +1676,7 @@ export type OrganizationUncheckedUpdateWithoutPeladaOccurrencesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutHomeMatchesInput = {
@@ -1196,12 +1686,19 @@ export type OrganizationCreateWithoutHomeMatchesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1215,6 +1712,7 @@ export type OrganizationCreateWithoutHomeMatchesInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutHomeMatchesInput = {
@@ -1224,12 +1722,19 @@ export type OrganizationUncheckedCreateWithoutHomeMatchesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1243,6 +1748,7 @@ export type OrganizationUncheckedCreateWithoutHomeMatchesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutHomeMatchesInput = {
@@ -1257,12 +1763,19 @@ export type OrganizationCreateWithoutAwayMatchesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1276,6 +1789,7 @@ export type OrganizationCreateWithoutAwayMatchesInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutAwayMatchesInput = {
@@ -1285,12 +1799,19 @@ export type OrganizationUncheckedCreateWithoutAwayMatchesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1304,6 +1825,7 @@ export type OrganizationUncheckedCreateWithoutAwayMatchesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutAwayMatchesInput = {
@@ -1329,12 +1851,19 @@ export type OrganizationUpdateWithoutHomeMatchesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1348,6 +1877,7 @@ export type OrganizationUpdateWithoutHomeMatchesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutHomeMatchesInput = {
@@ -1357,12 +1887,19 @@ export type OrganizationUncheckedUpdateWithoutHomeMatchesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1376,6 +1913,7 @@ export type OrganizationUncheckedUpdateWithoutHomeMatchesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUpsertWithoutAwayMatchesInput = {
@@ -1396,12 +1934,19 @@ export type OrganizationUpdateWithoutAwayMatchesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1415,6 +1960,7 @@ export type OrganizationUpdateWithoutAwayMatchesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutAwayMatchesInput = {
@@ -1424,12 +1970,19 @@ export type OrganizationUncheckedUpdateWithoutAwayMatchesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1443,6 +1996,7 @@ export type OrganizationUncheckedUpdateWithoutAwayMatchesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutMatchAttendancesInput = {
@@ -1452,12 +2006,19 @@ export type OrganizationCreateWithoutMatchAttendancesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1471,6 +2032,7 @@ export type OrganizationCreateWithoutMatchAttendancesInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutMatchAttendancesInput = {
@@ -1480,12 +2042,19 @@ export type OrganizationUncheckedCreateWithoutMatchAttendancesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1499,6 +2068,7 @@ export type OrganizationUncheckedCreateWithoutMatchAttendancesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMatchAttendancesInput = {
@@ -1524,12 +2094,19 @@ export type OrganizationUpdateWithoutMatchAttendancesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1543,6 +2120,7 @@ export type OrganizationUpdateWithoutMatchAttendancesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMatchAttendancesInput = {
@@ -1552,12 +2130,19 @@ export type OrganizationUncheckedUpdateWithoutMatchAttendancesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1571,6 +2156,7 @@ export type OrganizationUncheckedUpdateWithoutMatchAttendancesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutFinancialTransactionsInput = {
@@ -1580,12 +2166,19 @@ export type OrganizationCreateWithoutFinancialTransactionsInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1599,6 +2192,7 @@ export type OrganizationCreateWithoutFinancialTransactionsInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutFinancialTransactionsInput = {
@@ -1608,12 +2202,19 @@ export type OrganizationUncheckedCreateWithoutFinancialTransactionsInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1627,6 +2228,7 @@ export type OrganizationUncheckedCreateWithoutFinancialTransactionsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutFinancialTransactionsInput = {
@@ -1652,12 +2254,19 @@ export type OrganizationUpdateWithoutFinancialTransactionsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1671,6 +2280,7 @@ export type OrganizationUpdateWithoutFinancialTransactionsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutFinancialTransactionsInput = {
@@ -1680,12 +2290,19 @@ export type OrganizationUncheckedUpdateWithoutFinancialTransactionsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1699,6 +2316,7 @@ export type OrganizationUncheckedUpdateWithoutFinancialTransactionsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutRankingsInput = {
@@ -1708,12 +2326,19 @@ export type OrganizationCreateWithoutRankingsInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1727,6 +2352,7 @@ export type OrganizationCreateWithoutRankingsInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutRankingsInput = {
@@ -1736,12 +2362,19 @@ export type OrganizationUncheckedCreateWithoutRankingsInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1755,6 +2388,7 @@ export type OrganizationUncheckedCreateWithoutRankingsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutRankingsInput = {
@@ -1780,12 +2414,19 @@ export type OrganizationUpdateWithoutRankingsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1799,6 +2440,7 @@ export type OrganizationUpdateWithoutRankingsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutRankingsInput = {
@@ -1808,12 +2450,19 @@ export type OrganizationUncheckedUpdateWithoutRankingsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -1827,6 +2476,7 @@ export type OrganizationUncheckedUpdateWithoutRankingsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutSentOpponentInvitesInput = {
@@ -1836,12 +2486,19 @@ export type OrganizationCreateWithoutSentOpponentInvitesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1855,6 +2512,7 @@ export type OrganizationCreateWithoutSentOpponentInvitesInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutSentOpponentInvitesInput = {
@@ -1864,12 +2522,19 @@ export type OrganizationUncheckedCreateWithoutSentOpponentInvitesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1883,6 +2548,7 @@ export type OrganizationUncheckedCreateWithoutSentOpponentInvitesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutSentOpponentInvitesInput = {
@@ -1897,12 +2563,19 @@ export type OrganizationCreateWithoutReceivedOpponentInvitesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -1916,6 +2589,7 @@ export type OrganizationCreateWithoutReceivedOpponentInvitesInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutReceivedOpponentInvitesInput = {
@@ -1925,12 +2599,19 @@ export type OrganizationUncheckedCreateWithoutReceivedOpponentInvitesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -1944,6 +2625,7 @@ export type OrganizationUncheckedCreateWithoutReceivedOpponentInvitesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutReceivedOpponentInvitesInput = {
@@ -1969,12 +2651,19 @@ export type OrganizationUpdateWithoutSentOpponentInvitesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -1988,6 +2677,7 @@ export type OrganizationUpdateWithoutSentOpponentInvitesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutSentOpponentInvitesInput = {
@@ -1997,12 +2687,19 @@ export type OrganizationUncheckedUpdateWithoutSentOpponentInvitesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -2016,6 +2713,7 @@ export type OrganizationUncheckedUpdateWithoutSentOpponentInvitesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUpsertWithoutReceivedOpponentInvitesInput = {
@@ -2036,12 +2734,19 @@ export type OrganizationUpdateWithoutReceivedOpponentInvitesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -2055,6 +2760,7 @@ export type OrganizationUpdateWithoutReceivedOpponentInvitesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutReceivedOpponentInvitesInput = {
@@ -2064,12 +2770,19 @@ export type OrganizationUncheckedUpdateWithoutReceivedOpponentInvitesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -2083,6 +2796,7 @@ export type OrganizationUncheckedUpdateWithoutReceivedOpponentInvitesInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutPlayerInvitesInput = {
@@ -2092,12 +2806,19 @@ export type OrganizationCreateWithoutPlayerInvitesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -2111,6 +2832,7 @@ export type OrganizationCreateWithoutPlayerInvitesInput = {
   gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutPlayerInvitesInput = {
@@ -2120,12 +2842,19 @@ export type OrganizationUncheckedCreateWithoutPlayerInvitesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -2139,6 +2868,7 @@ export type OrganizationUncheckedCreateWithoutPlayerInvitesInput = {
   gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutPlayerInvitesInput = {
@@ -2164,12 +2894,19 @@ export type OrganizationUpdateWithoutPlayerInvitesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -2183,6 +2920,7 @@ export type OrganizationUpdateWithoutPlayerInvitesInput = {
   gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutPlayerInvitesInput = {
@@ -2192,12 +2930,19 @@ export type OrganizationUncheckedUpdateWithoutPlayerInvitesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -2211,6 +2956,7 @@ export type OrganizationUncheckedUpdateWithoutPlayerInvitesInput = {
   gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutGameListingSeriesInput = {
@@ -2220,12 +2966,19 @@ export type OrganizationCreateWithoutGameListingSeriesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -2239,6 +2992,7 @@ export type OrganizationCreateWithoutGameListingSeriesInput = {
   gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutGameListingSeriesInput = {
@@ -2248,12 +3002,19 @@ export type OrganizationUncheckedCreateWithoutGameListingSeriesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -2267,6 +3028,7 @@ export type OrganizationUncheckedCreateWithoutGameListingSeriesInput = {
   gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutGameListingSeriesInput = {
@@ -2292,12 +3054,19 @@ export type OrganizationUpdateWithoutGameListingSeriesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -2311,6 +3080,7 @@ export type OrganizationUpdateWithoutGameListingSeriesInput = {
   gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutGameListingSeriesInput = {
@@ -2320,12 +3090,19 @@ export type OrganizationUncheckedUpdateWithoutGameListingSeriesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -2339,6 +3116,7 @@ export type OrganizationUncheckedUpdateWithoutGameListingSeriesInput = {
   gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutGameListingsInput = {
@@ -2348,12 +3126,19 @@ export type OrganizationCreateWithoutGameListingsInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -2367,6 +3152,7 @@ export type OrganizationCreateWithoutGameListingsInput = {
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutGameListingsInput = {
@@ -2376,12 +3162,19 @@ export type OrganizationUncheckedCreateWithoutGameListingsInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -2395,6 +3188,7 @@ export type OrganizationUncheckedCreateWithoutGameListingsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutGameListingsInput = {
@@ -2420,12 +3214,19 @@ export type OrganizationUpdateWithoutGameListingsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -2439,6 +3240,7 @@ export type OrganizationUpdateWithoutGameListingsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutGameListingsInput = {
@@ -2448,12 +3250,19 @@ export type OrganizationUncheckedUpdateWithoutGameListingsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -2467,6 +3276,7 @@ export type OrganizationUncheckedUpdateWithoutGameListingsInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutGameListingResponsesInput = {
@@ -2476,12 +3286,19 @@ export type OrganizationCreateWithoutGameListingResponsesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedOrganizationsInput
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceCreateNestedManyWithoutOrganizationInput
@@ -2495,6 +3312,7 @@ export type OrganizationCreateWithoutGameListingResponsesInput = {
   gameListings?: Prisma.GameListingCreateNestedManyWithoutOrganizationInput
   gameListingSeries?: Prisma.GameListingSeriesCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutGameListingResponsesInput = {
@@ -2504,12 +3322,19 @@ export type OrganizationUncheckedCreateWithoutGameListingResponsesInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: string | null
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedCreateNestedManyWithoutOrganizationInput
@@ -2523,6 +3348,7 @@ export type OrganizationUncheckedCreateWithoutGameListingResponsesInput = {
   gameListings?: Prisma.GameListingUncheckedCreateNestedManyWithoutOrganizationInput
   gameListingSeries?: Prisma.GameListingSeriesUncheckedCreateNestedManyWithoutOrganizationInput
   playerInvites?: Prisma.PlayerInviteUncheckedCreateNestedManyWithoutOrganizationInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutGameListingResponsesInput = {
@@ -2548,12 +3374,19 @@ export type OrganizationUpdateWithoutGameListingResponsesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedOrganizationsNestedInput
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
@@ -2567,6 +3400,7 @@ export type OrganizationUpdateWithoutGameListingResponsesInput = {
   gameListings?: Prisma.GameListingUpdateManyWithoutOrganizationNestedInput
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutGameListingResponsesInput = {
@@ -2576,12 +3410,19 @@ export type OrganizationUncheckedUpdateWithoutGameListingResponsesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -2595,6 +3436,7 @@ export type OrganizationUncheckedUpdateWithoutGameListingResponsesInput = {
   gameListings?: Prisma.GameListingUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyCreatedByInput = {
@@ -2604,12 +3446,19 @@ export type OrganizationCreateManyCreatedByInput = {
   slug: string
   description?: string | null
   logoUrl?: string | null
+  address?: string | null
   city?: string | null
   state?: string | null
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   modality?: $Enums.SportModality | null
+  weekday?: number | null
+  scheduledTime?: string | null
+  monthlyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type OrganizationUpdateWithoutCreatedByInput = {
@@ -2619,12 +3468,19 @@ export type OrganizationUpdateWithoutCreatedByInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUpdateManyWithoutHomeOrganizationNestedInput
@@ -2638,6 +3494,7 @@ export type OrganizationUpdateWithoutCreatedByInput = {
   gameListingSeries?: Prisma.GameListingSeriesUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutCreatedByInput = {
@@ -2647,12 +3504,19 @@ export type OrganizationUncheckedUpdateWithoutCreatedByInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   peladaOccurrences?: Prisma.PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput
   homeMatches?: Prisma.MatchUncheckedUpdateManyWithoutHomeOrganizationNestedInput
@@ -2666,6 +3530,7 @@ export type OrganizationUncheckedUpdateWithoutCreatedByInput = {
   gameListingSeries?: Prisma.GameListingSeriesUncheckedUpdateManyWithoutOrganizationNestedInput
   gameListingResponses?: Prisma.GameListingResponseUncheckedUpdateManyWithoutOrganizationNestedInput
   playerInvites?: Prisma.PlayerInviteUncheckedUpdateManyWithoutOrganizationNestedInput
+  guestPlayers?: Prisma.GuestPlayerUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateManyWithoutCreatedByInput = {
@@ -2675,12 +3540,19 @@ export type OrganizationUncheckedUpdateManyWithoutCreatedByInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   modality?: Prisma.NullableEnumSportModalityFieldUpdateOperationsInput | $Enums.SportModality | null
+  weekday?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scheduledTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  monthlyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  singleFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 
@@ -2702,6 +3574,7 @@ export type OrganizationCountOutputType = {
   gameListingSeries: number
   gameListingResponses: number
   playerInvites: number
+  guestPlayers: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2718,6 +3591,7 @@ export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Exte
   gameListingSeries?: boolean | OrganizationCountOutputTypeCountGameListingSeriesArgs
   gameListingResponses?: boolean | OrganizationCountOutputTypeCountGameListingResponsesArgs
   playerInvites?: boolean | OrganizationCountOutputTypeCountPlayerInvitesArgs
+  guestPlayers?: boolean | OrganizationCountOutputTypeCountGuestPlayersArgs
 }
 
 /**
@@ -2821,6 +3695,13 @@ export type OrganizationCountOutputTypeCountPlayerInvitesArgs<ExtArgs extends ru
   where?: Prisma.PlayerInviteWhereInput
 }
 
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountGuestPlayersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GuestPlayerWhereInput
+}
+
 
 export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2829,12 +3710,19 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   slug?: boolean
   description?: boolean
   logoUrl?: boolean
+  address?: boolean
   city?: boolean
   state?: boolean
+  lat?: boolean
+  lng?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   modality?: boolean
+  weekday?: boolean
+  scheduledTime?: boolean
+  monthlyFee?: boolean
+  singleFee?: boolean
   createdById?: boolean
   createdBy?: boolean | Prisma.Organization$createdByArgs<ExtArgs>
   memberships?: boolean | Prisma.Organization$membershipsArgs<ExtArgs>
@@ -2850,6 +3738,7 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   gameListingSeries?: boolean | Prisma.Organization$gameListingSeriesArgs<ExtArgs>
   gameListingResponses?: boolean | Prisma.Organization$gameListingResponsesArgs<ExtArgs>
   playerInvites?: boolean | Prisma.Organization$playerInvitesArgs<ExtArgs>
+  guestPlayers?: boolean | Prisma.Organization$guestPlayersArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
@@ -2860,12 +3749,19 @@ export type OrganizationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   slug?: boolean
   description?: boolean
   logoUrl?: boolean
+  address?: boolean
   city?: boolean
   state?: boolean
+  lat?: boolean
+  lng?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   modality?: boolean
+  weekday?: boolean
+  scheduledTime?: boolean
+  monthlyFee?: boolean
+  singleFee?: boolean
   createdById?: boolean
   createdBy?: boolean | Prisma.Organization$createdByArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
@@ -2877,12 +3773,19 @@ export type OrganizationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   slug?: boolean
   description?: boolean
   logoUrl?: boolean
+  address?: boolean
   city?: boolean
   state?: boolean
+  lat?: boolean
+  lng?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   modality?: boolean
+  weekday?: boolean
+  scheduledTime?: boolean
+  monthlyFee?: boolean
+  singleFee?: boolean
   createdById?: boolean
   createdBy?: boolean | Prisma.Organization$createdByArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
@@ -2894,16 +3797,23 @@ export type OrganizationSelectScalar = {
   slug?: boolean
   description?: boolean
   logoUrl?: boolean
+  address?: boolean
   city?: boolean
   state?: boolean
+  lat?: boolean
+  lng?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   modality?: boolean
+  weekday?: boolean
+  scheduledTime?: boolean
+  monthlyFee?: boolean
+  singleFee?: boolean
   createdById?: boolean
 }
 
-export type OrganizationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "name" | "slug" | "description" | "logoUrl" | "city" | "state" | "isActive" | "createdAt" | "updatedAt" | "modality" | "createdById", ExtArgs["result"]["organization"]>
+export type OrganizationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "name" | "slug" | "description" | "logoUrl" | "address" | "city" | "state" | "lat" | "lng" | "isActive" | "createdAt" | "updatedAt" | "modality" | "weekday" | "scheduledTime" | "monthlyFee" | "singleFee" | "createdById", ExtArgs["result"]["organization"]>
 export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   createdBy?: boolean | Prisma.Organization$createdByArgs<ExtArgs>
   memberships?: boolean | Prisma.Organization$membershipsArgs<ExtArgs>
@@ -2919,6 +3829,7 @@ export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.Interna
   gameListingSeries?: boolean | Prisma.Organization$gameListingSeriesArgs<ExtArgs>
   gameListingResponses?: boolean | Prisma.Organization$gameListingResponsesArgs<ExtArgs>
   playerInvites?: boolean | Prisma.Organization$playerInvitesArgs<ExtArgs>
+  guestPlayers?: boolean | Prisma.Organization$guestPlayersArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2945,6 +3856,7 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     gameListingSeries: Prisma.$GameListingSeriesPayload<ExtArgs>[]
     gameListingResponses: Prisma.$GameListingResponsePayload<ExtArgs>[]
     playerInvites: Prisma.$PlayerInvitePayload<ExtArgs>[]
+    guestPlayers: Prisma.$GuestPlayerPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2953,12 +3865,19 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     slug: string
     description: string | null
     logoUrl: string | null
+    address: string | null
     city: string | null
     state: string | null
+    lat: runtime.Decimal | null
+    lng: runtime.Decimal | null
     isActive: boolean
     createdAt: Date
     updatedAt: Date
     modality: $Enums.SportModality | null
+    weekday: number | null
+    scheduledTime: string | null
+    monthlyFee: runtime.Decimal | null
+    singleFee: runtime.Decimal | null
     createdById: string | null
   }, ExtArgs["result"]["organization"]>
   composites: {}
@@ -3368,6 +4287,7 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   gameListingSeries<T extends Prisma.Organization$gameListingSeriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$gameListingSeriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GameListingSeriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   gameListingResponses<T extends Prisma.Organization$gameListingResponsesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$gameListingResponsesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GameListingResponsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   playerInvites<T extends Prisma.Organization$playerInvitesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$playerInvitesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlayerInvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  guestPlayers<T extends Prisma.Organization$guestPlayersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$guestPlayersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GuestPlayerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3403,12 +4323,19 @@ export interface OrganizationFieldRefs {
   readonly slug: Prisma.FieldRef<"Organization", 'String'>
   readonly description: Prisma.FieldRef<"Organization", 'String'>
   readonly logoUrl: Prisma.FieldRef<"Organization", 'String'>
+  readonly address: Prisma.FieldRef<"Organization", 'String'>
   readonly city: Prisma.FieldRef<"Organization", 'String'>
   readonly state: Prisma.FieldRef<"Organization", 'String'>
+  readonly lat: Prisma.FieldRef<"Organization", 'Decimal'>
+  readonly lng: Prisma.FieldRef<"Organization", 'Decimal'>
   readonly isActive: Prisma.FieldRef<"Organization", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Organization", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Organization", 'DateTime'>
   readonly modality: Prisma.FieldRef<"Organization", 'SportModality'>
+  readonly weekday: Prisma.FieldRef<"Organization", 'Int'>
+  readonly scheduledTime: Prisma.FieldRef<"Organization", 'String'>
+  readonly monthlyFee: Prisma.FieldRef<"Organization", 'Decimal'>
+  readonly singleFee: Prisma.FieldRef<"Organization", 'Decimal'>
   readonly createdById: Prisma.FieldRef<"Organization", 'String'>
 }
     
@@ -4139,6 +5066,30 @@ export type Organization$playerInvitesArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.PlayerInviteScalarFieldEnum | Prisma.PlayerInviteScalarFieldEnum[]
+}
+
+/**
+ * Organization.guestPlayers
+ */
+export type Organization$guestPlayersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GuestPlayer
+   */
+  select?: Prisma.GuestPlayerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GuestPlayer
+   */
+  omit?: Prisma.GuestPlayerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GuestPlayerInclude<ExtArgs> | null
+  where?: Prisma.GuestPlayerWhereInput
+  orderBy?: Prisma.GuestPlayerOrderByWithRelationInput | Prisma.GuestPlayerOrderByWithRelationInput[]
+  cursor?: Prisma.GuestPlayerWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GuestPlayerScalarFieldEnum | Prisma.GuestPlayerScalarFieldEnum[]
 }
 
 /**

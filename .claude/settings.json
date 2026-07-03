@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 40 bash -c 'until curl -sf http://localhost:3000 >/dev/null; do sleep 1; done')",
+      "Bash(curl -s -X POST http://localhost:3000/api/auth/register -H \"Content-Type: application/json\" -d '{\"email\":\"testpelada@example.com\",\"password\":\"Senha123!\",\"name\":\"Teste Pelada\"}')",
+      "Bash(curl -s -X POST http://localhost:3000/api/auth/register -H \"Content-Type: application/json\" -d '{\"email\":\"testpelada@example.com\",\"password\":\"Senha123!\",\"confirmPassword\":\"Senha123!\",\"fullName\":\"Teste Pelada\"}')",
+      "Bash(node -e \"console.log\\(require.resolve\\('playwright'\\)\\)\")",
+      "Bash(curl -s -c cookies.txt -b cookies.txt -X POST http://localhost:3000/api/auth/login -H \"Content-Type: application/json\" -d '{\"email\":\"testpelada@example.com\",\"password\":\"Senha123!\"}')",
+      "Bash(node mkorg.mjs)",
+      "Bash(PGPASSWORD=postgres psql -h localhost -p 5435 -U postgres -d marca_jogo -c ' *)",
+      "Bash(echo -e \"#HttpOnly_localhost\\\\tFALSE\\\\t/\\\\tFALSE\\\\t0\\\\tactive_org\\\\torgtest001\")",
+      "Bash(curl -s -b cookies.txt -c cookies.txt -o /tmp/pelada_home.html -w \"%{http_code}\\\\n\" http://localhost:3000/pelada)",
+      "Bash(curl -s -b cookies.txt -c cookies.txt -o /tmp/pelada_jogadores.html -w \"%{http_code}\\\\n\" http://localhost:3000/pelada/jogadores)",
+      "Bash(curl -s -b cookies.txt -c cookies.txt -o /tmp/pelada_perfil.html -w \"%{http_code}\\\\n\" http://localhost:3000/pelada/perfil)",
+      "Bash(curl -s -b cookies.txt -D - -o /dev/null http://localhost:3000/pelada)",
+      "Bash(curl -s -b cookies.txt -D - -o /tmp/pelada_home.html http://localhost:3000/pelada)",
+      "Bash(curl -s -b cookies.txt -D - -o /tmp/pelada_jogadores.html http://localhost:3000/pelada/jogadores)",
+      "Bash(curl -s -b cookies.txt -D - -o /tmp/pelada_perfil.html http://localhost:3000/pelada/perfil)",
+      "Bash(grep -o \"Próxima pelada.\\\\{0,10\\\\}\\\\|Quarta-feira[^<]*\\\\|Mensalista[^<]*\\\\|R\\\\$[^<]*\\\\|Pelada de Teste\\\\|Jogadores vinculados\\\\|Nenhum jogador vinculado\" /tmp/pelada_home.html)",
+      "Bash(grep -o \"quarta-feira[^\\\\\\\\\\\\\\\\]*\\\\|R\\\\$[^\\\\\\\\\\\\\\\\\\\\\"]*\\\\|20:30\\\\|Nenhum jogador\" -i /tmp/pelada_home.html)",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e ' *)",
+      "Bash(mkdir -p /c/Users/arthu/AppData/Local/Temp/claude/c--Users-arthu-projetos-marca-jogo-v2/41b5adae-1735-49eb-8731-1ed7a838148d/scratchpad)",
+      "Bash(cp /tmp/pelada_home.html /tmp/pelada_jogadores.html /tmp/pelada_perfil.html /tmp/cookies.txt /c/Users/arthu/AppData/Local/Temp/claude/c--Users-arthu-projetos-marca-jogo-v2/41b5adae-1735-49eb-8731-1ed7a838148d/scratchpad/)",
+      "Read(//c/Users/arthu/AppData/Local/Temp/claude/c--Users-arthu-projetos-marca-jogo-v2/41b5adae-1735-49eb-8731-1ed7a838148d/scratchpad/**)"
+    ]
+  }
+}

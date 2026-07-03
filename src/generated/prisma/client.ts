@@ -67,6 +67,11 @@ export type ProfileModality = Prisma.ProfileModalityModel
  */
 export type Organization = Prisma.OrganizationModel
 /**
+ * Model GuestPlayer
+ * 
+ */
+export type GuestPlayer = Prisma.GuestPlayerModel
+/**
  * Model Membership
  * 
  */
@@ -92,10 +97,25 @@ export type PeladaPlayerStat = Prisma.PeladaPlayerStatModel
  */
 export type PeladaMvpVote = Prisma.PeladaMvpVoteModel
 /**
+ * Model PeladaPlayerRating
+ * 
+ */
+export type PeladaPlayerRating = Prisma.PeladaPlayerRatingModel
+/**
  * Model Match
  * 
  */
 export type Match = Prisma.MatchModel
+/**
+ * Model MatchMvpVote
+ * 
+ */
+export type MatchMvpVote = Prisma.MatchMvpVoteModel
+/**
+ * Model MatchPlayerRating
+ * 
+ */
+export type MatchPlayerRating = Prisma.MatchPlayerRatingModel
 /**
  * Model MatchAttendance
  * 

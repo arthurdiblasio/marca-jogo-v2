@@ -389,12 +389,16 @@ export const ModelName = {
   Profile: 'Profile',
   ProfileModality: 'ProfileModality',
   Organization: 'Organization',
+  GuestPlayer: 'GuestPlayer',
   Membership: 'Membership',
   PeladaOccurrence: 'PeladaOccurrence',
   PeladaAttendance: 'PeladaAttendance',
   PeladaPlayerStat: 'PeladaPlayerStat',
   PeladaMvpVote: 'PeladaMvpVote',
+  PeladaPlayerRating: 'PeladaPlayerRating',
   Match: 'Match',
+  MatchMvpVote: 'MatchMvpVote',
+  MatchPlayerRating: 'MatchPlayerRating',
   MatchAttendance: 'MatchAttendance',
   MatchLineupEntry: 'MatchLineupEntry',
   MatchPlayerStat: 'MatchPlayerStat',
@@ -421,7 +425,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "passwordResetToken" | "profile" | "profileModality" | "organization" | "membership" | "peladaOccurrence" | "peladaAttendance" | "peladaPlayerStat" | "peladaMvpVote" | "match" | "matchAttendance" | "matchLineupEntry" | "matchPlayerStat" | "financialTransaction" | "rankingSnapshot" | "opponentInvite" | "playerInvite" | "gameListingSeries" | "gameListing" | "gameListingPhoto" | "gameListingResponse"
+    modelProps: "user" | "passwordResetToken" | "profile" | "profileModality" | "organization" | "guestPlayer" | "membership" | "peladaOccurrence" | "peladaAttendance" | "peladaPlayerStat" | "peladaMvpVote" | "peladaPlayerRating" | "match" | "matchMvpVote" | "matchPlayerRating" | "matchAttendance" | "matchLineupEntry" | "matchPlayerStat" | "financialTransaction" | "rankingSnapshot" | "opponentInvite" | "playerInvite" | "gameListingSeries" | "gameListing" | "gameListingPhoto" | "gameListingResponse"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -795,6 +799,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    GuestPlayer: {
+      payload: Prisma.$GuestPlayerPayload<ExtArgs>
+      fields: Prisma.GuestPlayerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GuestPlayerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GuestPlayerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload>
+        }
+        findFirst: {
+          args: Prisma.GuestPlayerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GuestPlayerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload>
+        }
+        findMany: {
+          args: Prisma.GuestPlayerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload>[]
+        }
+        create: {
+          args: Prisma.GuestPlayerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload>
+        }
+        createMany: {
+          args: Prisma.GuestPlayerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GuestPlayerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload>[]
+        }
+        delete: {
+          args: Prisma.GuestPlayerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload>
+        }
+        update: {
+          args: Prisma.GuestPlayerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload>
+        }
+        deleteMany: {
+          args: Prisma.GuestPlayerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GuestPlayerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GuestPlayerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload>[]
+        }
+        upsert: {
+          args: Prisma.GuestPlayerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestPlayerPayload>
+        }
+        aggregate: {
+          args: Prisma.GuestPlayerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGuestPlayer>
+        }
+        groupBy: {
+          args: Prisma.GuestPlayerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GuestPlayerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GuestPlayerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GuestPlayerCountAggregateOutputType> | number
+        }
+      }
+    }
     Membership: {
       payload: Prisma.$MembershipPayload<ExtArgs>
       fields: Prisma.MembershipFieldRefs
@@ -1165,6 +1243,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PeladaPlayerRating: {
+      payload: Prisma.$PeladaPlayerRatingPayload<ExtArgs>
+      fields: Prisma.PeladaPlayerRatingFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PeladaPlayerRatingFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PeladaPlayerRatingFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload>
+        }
+        findFirst: {
+          args: Prisma.PeladaPlayerRatingFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PeladaPlayerRatingFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload>
+        }
+        findMany: {
+          args: Prisma.PeladaPlayerRatingFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload>[]
+        }
+        create: {
+          args: Prisma.PeladaPlayerRatingCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload>
+        }
+        createMany: {
+          args: Prisma.PeladaPlayerRatingCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PeladaPlayerRatingCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload>[]
+        }
+        delete: {
+          args: Prisma.PeladaPlayerRatingDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload>
+        }
+        update: {
+          args: Prisma.PeladaPlayerRatingUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload>
+        }
+        deleteMany: {
+          args: Prisma.PeladaPlayerRatingDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PeladaPlayerRatingUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PeladaPlayerRatingUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload>[]
+        }
+        upsert: {
+          args: Prisma.PeladaPlayerRatingUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaPlayerRatingPayload>
+        }
+        aggregate: {
+          args: Prisma.PeladaPlayerRatingAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePeladaPlayerRating>
+        }
+        groupBy: {
+          args: Prisma.PeladaPlayerRatingGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PeladaPlayerRatingGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PeladaPlayerRatingCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PeladaPlayerRatingCountAggregateOutputType> | number
+        }
+      }
+    }
     Match: {
       payload: Prisma.$MatchPayload<ExtArgs>
       fields: Prisma.MatchFieldRefs
@@ -1236,6 +1388,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.MatchCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.MatchCountAggregateOutputType> | number
+        }
+      }
+    }
+    MatchMvpVote: {
+      payload: Prisma.$MatchMvpVotePayload<ExtArgs>
+      fields: Prisma.MatchMvpVoteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MatchMvpVoteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MatchMvpVoteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload>
+        }
+        findFirst: {
+          args: Prisma.MatchMvpVoteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MatchMvpVoteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload>
+        }
+        findMany: {
+          args: Prisma.MatchMvpVoteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload>[]
+        }
+        create: {
+          args: Prisma.MatchMvpVoteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload>
+        }
+        createMany: {
+          args: Prisma.MatchMvpVoteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MatchMvpVoteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload>[]
+        }
+        delete: {
+          args: Prisma.MatchMvpVoteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload>
+        }
+        update: {
+          args: Prisma.MatchMvpVoteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload>
+        }
+        deleteMany: {
+          args: Prisma.MatchMvpVoteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MatchMvpVoteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MatchMvpVoteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload>[]
+        }
+        upsert: {
+          args: Prisma.MatchMvpVoteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchMvpVotePayload>
+        }
+        aggregate: {
+          args: Prisma.MatchMvpVoteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMatchMvpVote>
+        }
+        groupBy: {
+          args: Prisma.MatchMvpVoteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MatchMvpVoteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MatchMvpVoteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MatchMvpVoteCountAggregateOutputType> | number
+        }
+      }
+    }
+    MatchPlayerRating: {
+      payload: Prisma.$MatchPlayerRatingPayload<ExtArgs>
+      fields: Prisma.MatchPlayerRatingFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MatchPlayerRatingFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MatchPlayerRatingFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload>
+        }
+        findFirst: {
+          args: Prisma.MatchPlayerRatingFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MatchPlayerRatingFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload>
+        }
+        findMany: {
+          args: Prisma.MatchPlayerRatingFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload>[]
+        }
+        create: {
+          args: Prisma.MatchPlayerRatingCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload>
+        }
+        createMany: {
+          args: Prisma.MatchPlayerRatingCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MatchPlayerRatingCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload>[]
+        }
+        delete: {
+          args: Prisma.MatchPlayerRatingDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload>
+        }
+        update: {
+          args: Prisma.MatchPlayerRatingUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload>
+        }
+        deleteMany: {
+          args: Prisma.MatchPlayerRatingDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MatchPlayerRatingUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MatchPlayerRatingUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload>[]
+        }
+        upsert: {
+          args: Prisma.MatchPlayerRatingUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchPlayerRatingPayload>
+        }
+        aggregate: {
+          args: Prisma.MatchPlayerRatingAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMatchPlayerRating>
+        }
+        groupBy: {
+          args: Prisma.MatchPlayerRatingGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MatchPlayerRatingGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MatchPlayerRatingCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MatchPlayerRatingCountAggregateOutputType> | number
         }
       }
     }
@@ -2125,8 +2425,11 @@ export const ProfileScalarFieldEnum = {
   imageUrl: 'imageUrl',
   phone: 'phone',
   birthDate: 'birthDate',
+  address: 'address',
   city: 'city',
   state: 'state',
+  lat: 'lat',
+  lng: 'lng',
   preferredFoot: 'preferredFoot',
   shirtNumber: 'shirtNumber',
   bio: 'bio',
@@ -2158,16 +2461,35 @@ export const OrganizationScalarFieldEnum = {
   slug: 'slug',
   description: 'description',
   logoUrl: 'logoUrl',
+  address: 'address',
   city: 'city',
   state: 'state',
+  lat: 'lat',
+  lng: 'lng',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   modality: 'modality',
+  weekday: 'weekday',
+  scheduledTime: 'scheduledTime',
+  monthlyFee: 'monthlyFee',
+  singleFee: 'singleFee',
   createdById: 'createdById'
 } as const
 
 export type OrganizationScalarFieldEnum = (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum]
+
+
+export const GuestPlayerScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  organizationId: 'organizationId',
+  createdById: 'createdById'
+} as const
+
+export type GuestPlayerScalarFieldEnum = (typeof GuestPlayerScalarFieldEnum)[keyof typeof GuestPlayerScalarFieldEnum]
 
 
 export const MembershipScalarFieldEnum = {
@@ -2177,6 +2499,8 @@ export const MembershipScalarFieldEnum = {
   nickname: 'nickname',
   shirtNumber: 'shirtNumber',
   position: 'position',
+  isMonthly: 'isMonthly',
+  hasMergedGuest: 'hasMergedGuest',
   joinedAt: 'joinedAt',
   leftAt: 'leftAt',
   createdAt: 'createdAt',
@@ -2199,6 +2523,9 @@ export const PeladaOccurrenceScalarFieldEnum = {
   isCancelled: 'isCancelled',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  votingOpenedAt: 'votingOpenedAt',
+  votingClosesAt: 'votingClosesAt',
+  votingClosedAt: 'votingClosedAt',
   organizationId: 'organizationId',
   createdById: 'createdById',
   mvpUserId: 'mvpUserId'
@@ -2228,7 +2555,8 @@ export const PeladaPlayerStatScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   peladaOccurrenceId: 'peladaOccurrenceId',
-  userId: 'userId'
+  userId: 'userId',
+  guestPlayerId: 'guestPlayerId'
 } as const
 
 export type PeladaPlayerStatScalarFieldEnum = (typeof PeladaPlayerStatScalarFieldEnum)[keyof typeof PeladaPlayerStatScalarFieldEnum]
@@ -2243,6 +2571,19 @@ export const PeladaMvpVoteScalarFieldEnum = {
 } as const
 
 export type PeladaMvpVoteScalarFieldEnum = (typeof PeladaMvpVoteScalarFieldEnum)[keyof typeof PeladaMvpVoteScalarFieldEnum]
+
+
+export const PeladaPlayerRatingScalarFieldEnum = {
+  id: 'id',
+  rating: 'rating',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  peladaOccurrenceId: 'peladaOccurrenceId',
+  raterUserId: 'raterUserId',
+  ratedUserId: 'ratedUserId'
+} as const
+
+export type PeladaPlayerRatingScalarFieldEnum = (typeof PeladaPlayerRatingScalarFieldEnum)[keyof typeof PeladaPlayerRatingScalarFieldEnum]
 
 
 export const MatchScalarFieldEnum = {
@@ -2260,12 +2601,40 @@ export const MatchScalarFieldEnum = {
   notes: 'notes',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  votingOpenedAt: 'votingOpenedAt',
+  votingClosesAt: 'votingClosesAt',
+  votingClosedAt: 'votingClosedAt',
   homeOrganizationId: 'homeOrganizationId',
   awayOrganizationId: 'awayOrganizationId',
-  createdById: 'createdById'
+  createdById: 'createdById',
+  mvpUserId: 'mvpUserId'
 } as const
 
 export type MatchScalarFieldEnum = (typeof MatchScalarFieldEnum)[keyof typeof MatchScalarFieldEnum]
+
+
+export const MatchMvpVoteScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  matchId: 'matchId',
+  voterUserId: 'voterUserId',
+  votedUserId: 'votedUserId'
+} as const
+
+export type MatchMvpVoteScalarFieldEnum = (typeof MatchMvpVoteScalarFieldEnum)[keyof typeof MatchMvpVoteScalarFieldEnum]
+
+
+export const MatchPlayerRatingScalarFieldEnum = {
+  id: 'id',
+  rating: 'rating',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  matchId: 'matchId',
+  raterUserId: 'raterUserId',
+  ratedUserId: 'ratedUserId'
+} as const
+
+export type MatchPlayerRatingScalarFieldEnum = (typeof MatchPlayerRatingScalarFieldEnum)[keyof typeof MatchPlayerRatingScalarFieldEnum]
 
 
 export const MatchAttendanceScalarFieldEnum = {
@@ -2305,7 +2674,8 @@ export const MatchPlayerStatScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   matchId: 'matchId',
-  userId: 'userId'
+  userId: 'userId',
+  guestPlayerId: 'guestPlayerId'
 } as const
 
 export type MatchPlayerStatScalarFieldEnum = (typeof MatchPlayerStatScalarFieldEnum)[keyof typeof MatchPlayerStatScalarFieldEnum]
@@ -2512,6 +2882,20 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal[]'
+ */
+export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+/**
  * Reference to a field of type 'PreferredFoot'
  */
 export type EnumPreferredFootFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PreferredFoot'>
@@ -2599,20 +2983,6 @@ export type EnumMembershipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
  * Reference to a field of type 'MembershipStatus[]'
  */
 export type ListEnumMembershipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MembershipStatus[]'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal'
- */
-export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal[]'
- */
-export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -2884,12 +3254,16 @@ export type GlobalOmitConfig = {
   profile?: Prisma.ProfileOmit
   profileModality?: Prisma.ProfileModalityOmit
   organization?: Prisma.OrganizationOmit
+  guestPlayer?: Prisma.GuestPlayerOmit
   membership?: Prisma.MembershipOmit
   peladaOccurrence?: Prisma.PeladaOccurrenceOmit
   peladaAttendance?: Prisma.PeladaAttendanceOmit
   peladaPlayerStat?: Prisma.PeladaPlayerStatOmit
   peladaMvpVote?: Prisma.PeladaMvpVoteOmit
+  peladaPlayerRating?: Prisma.PeladaPlayerRatingOmit
   match?: Prisma.MatchOmit
+  matchMvpVote?: Prisma.MatchMvpVoteOmit
+  matchPlayerRating?: Prisma.MatchPlayerRatingOmit
   matchAttendance?: Prisma.MatchAttendanceOmit
   matchLineupEntry?: Prisma.MatchLineupEntryOmit
   matchPlayerStat?: Prisma.MatchPlayerStatOmit

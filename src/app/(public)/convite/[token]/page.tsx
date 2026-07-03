@@ -3,6 +3,7 @@ import { Shield } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getSession } from "@/shared/auth/auth-session";
 import { playerInviteRepository } from "@/modules/player-invites/repositories/player-invite-repository";
 import { AcceptInviteButton } from "@/components/players/accept-invite-button";
@@ -16,9 +17,14 @@ export default async function PlayerInvitePage({ params }: { params: Promise<{ t
   return (
     <div className="grid min-h-screen place-items-center bg-slate-50 px-4">
       <Card className="w-full max-w-sm space-y-4 p-6 text-center">
-        <div className="mx-auto grid size-14 place-items-center rounded-2xl bg-green-50">
-          <Shield className="size-7 text-primary" />
-        </div>
+        <Avatar className="mx-auto size-14 rounded-2xl bg-green-50">
+          {invite?.organization.logoUrl && (
+            <AvatarImage src={invite.organization.logoUrl} alt={invite.organization.name} />
+          )}
+          <AvatarFallback className="rounded-2xl bg-transparent">
+            <Shield className="size-7 text-primary" />
+          </AvatarFallback>
+        </Avatar>
 
         {!invite ? (
           <>

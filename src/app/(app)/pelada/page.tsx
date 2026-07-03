@@ -1,51 +1,119 @@
-import { EventScoreboard } from "@/components/football/event-scoreboard";
-import { ParticipantList } from "@/components/football/participant-list";
-import { SportSection } from "@/components/football/sport-section";
-import { SportsRanking } from "@/components/football/sports-ranking";
-import { StatStrip } from "@/components/football/stat-strip";
+import { redirect } from "next/navigation";
+import { MapPin, Shield } from "lucide-react";
+
 import { PageTransition } from "@/components/motion/page-transition";
 import { PageHeader } from "@/components/navigation/page-header";
-import { peladaRanking, peladaStats } from "@/constants/mock-data";
+import { Card } from "@/components/ui/card";
+import { PeladaProfileTabs } from "@/components/team/pelada-profile-tabs";
+import { EditOrganizationForm } from "@/components/organizations/edit-organization-form";
+import { requireAuth } from "@/shared/auth/require-auth";
+import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
+import { requireOrgMembership } from "@/shared/orgs/require-org-membership";
+import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
+import { WEEKDAYS } from "@/constants/weekdays";
 
-export default function PeladaHomePage() {
+const MANAGER_ROLES = ["OWNER", "ADMIN", "CAPTAIN"];
+
+const MODALITY_LABEL: Record<string, string> = {
+  FIELD_11: "Campo 11",
+  SOCIETY_7: "Society 7",
+  SOCIETY_8: "Society 8",
+  FUTSAL_5: "Futsal 5",
+};
+
+function formatCurrency(value: number | null | undefined) {
+  if (value == null) return null;
+  return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+export default async function PeladaProfilePage() {
+  const session = await requireAuth();
+
+  const activeOrgId = await getActiveOrgId();
+  if (!activeOrgId) {
+    redirect("/dashboard");
+  }
+
+  const [organization, membership] = await Promise.all([
+    organizationRepository.findById(activeOrgId),
+    requireOrgMembership(session.id, activeOrgId),
+  ]);
+
+  if (!organization) {
+    redirect("/dashboard");
+  }
+
+  const canEdit = MANAGER_ROLES.includes(membership.role);
+  const weekdayLabel = WEEKDAYS.find((day) => day.value === organization.weekday)?.label;
+
   return (
     <PageTransition className="space-y-4">
       <PageHeader
-        eyebrow="Pelada da Resenha"
-        title="Home da Pelada"
-        description="Proxima rodada, confirmados, ranking e seus numeros em uma leitura rapida."
+        eyebrow="Pelada"
+        title={organization.name}
+        description="Dados cadastrais da pelada e gestão dos jogadores."
       />
 
-      <EventScoreboard
-        type="pelada"
-        title="Proxima Pelada"
-        home="Coletes"
-        away="Sem Colete"
-        date="Hoje, 20:30"
-        venue="Arena Society Buritis"
-        confirmed={18}
-        capacity={22}
-      />
+      <PeladaProfileTabs />
 
-      <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
-        <SportSection title="Participantes Confirmados" action="18/22">
-          <ParticipantList />
-        </SportSection>
-
-        <SportSection title="Ranking" action="Rodada atual">
-          <SportsRanking items={peladaRanking} />
-        </SportSection>
-      </div>
-
-      <SportSection title="Minhas Estatisticas">
-        <StatStrip
-          items={peladaStats.map((stat) => ({
-            label: stat.label,
-            value: stat.value,
-            helper: stat.helper
-          }))}
+      {canEdit ? (
+        <EditOrganizationForm
+          organization={{
+            id: organization.id,
+            name: organization.name,
+            type: organization.type,
+            logoUrl: organization.logoUrl,
+            address: organization.address,
+            city: organization.city,
+            state: organization.state,
+            lat: organization.lat ? Number(organization.lat) : null,
+            lng: organization.lng ? Number(organization.lng) : null,
+            modality: organization.modality,
+            description: organization.description,
+            weekday: organization.weekday,
+            scheduledTime: organization.scheduledTime,
+            monthlyFee: organization.monthlyFee ? Number(organization.monthlyFee) : null,
+            singleFee: organization.singleFee ? Number(organization.singleFee) : null,
+          }}
         />
-      </SportSection>
+      ) : (
+        <Card className="flex items-start gap-4 p-5">
+          <div className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-2xl bg-green-50">
+            {organization.logoUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={organization.logoUrl} alt={organization.name} className="size-full object-cover" />
+            ) : (
+              <Shield className="size-7 text-primary" />
+            )}
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="font-black text-slate-900">{organization.name}</p>
+            {organization.modality && (
+              <p className="text-sm text-slate-500">{MODALITY_LABEL[organization.modality]}</p>
+            )}
+            {organization.address && (
+              <p className="mt-2 flex items-center gap-1.5 text-sm text-slate-500">
+                <MapPin className="size-4 shrink-0" />
+                {organization.address}
+              </p>
+            )}
+            {weekdayLabel && organization.scheduledTime && (
+              <p className="mt-2 text-sm text-slate-500">
+                Toda {weekdayLabel}, às {organization.scheduledTime}
+              </p>
+            )}
+            {(organization.monthlyFee || organization.singleFee) && (
+              <p className="mt-1 text-sm text-slate-500">
+                Mensalista: {formatCurrency(Number(organization.monthlyFee)) ?? "não definido"} · Avulso:{" "}
+                {formatCurrency(Number(organization.singleFee)) ?? "não definido"}
+              </p>
+            )}
+            {organization.description && (
+              <p className="mt-2 text-sm text-slate-600">{organization.description}</p>
+            )}
+          </div>
+        </Card>
+      )}
     </PageTransition>
   );
 }

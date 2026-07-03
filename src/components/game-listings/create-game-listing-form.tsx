@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ChevronDown, ImagePlus, Loader2, X } from "lucide-react";
+import { useState } from "react";
+import { ImagePlus, X } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { FormField } from "@/components/ui/form-field";
 import { Input } from "@/components/ui/input";
+import { AddressAutocomplete, type AddressSelection } from "@/components/ui/address-autocomplete";
 import { ALL_MODALITIES } from "@/constants/positions";
-import { fetchCitiesByState, fetchStates } from "@/constants/brazil-locations";
 import { createGameListingAction } from "@/modules/game-listings/actions/create-game-listing";
 import { computeSeriesEndDate } from "@/modules/game-listings/lib/recurrence";
 import { cn } from "@/lib/utils";
@@ -21,12 +21,34 @@ const FREQUENCIES: { value: GameListingFrequency; label: string }[] = [
   { value: "MONTHLY", label: "Mensal" },
 ];
 
-export function CreateGameListingForm() {
+interface HomeAddress {
+  address: string;
+  city: string;
+  state: string;
+  lat: number | null;
+  lng: number | null;
+}
+
+interface CreateGameListingFormProps {
+  homeAddress: HomeAddress | null;
+}
+
+export function CreateGameListingForm({ homeAddress }: CreateGameListingFormProps) {
   const [modality, setModality] = useState<SportModality | null>(null);
   const [scheduledAt, setScheduledAt] = useState("");
   const [location, setLocation] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
+  const [useHomeAddress, setUseHomeAddress] = useState(!!homeAddress);
+  const [addressSelection, setAddressSelection] = useState<AddressSelection | null>(
+    homeAddress
+      ? {
+          address: homeAddress.address,
+          city: homeAddress.city,
+          state: homeAddress.state,
+          lat: homeAddress.lat ?? 0,
+          lng: homeAddress.lng ?? 0,
+        }
+      : null,
+  );
   const [priceReais, setPriceReais] = useState("");
   const [priceNotes, setPriceNotes] = useState("");
   const [notes, setNotes] = useState("");
@@ -35,28 +57,23 @@ export function CreateGameListingForm() {
   const [photos, setPhotos] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const [states, setStates] = useState<{ value: string; label: string }[]>([]);
-  const [cities, setCities] = useState<string[]>([]);
-  const [loadingStates, setLoadingStates] = useState(true);
-  const [loadingCities, setLoadingCities] = useState(false);
-
-  useEffect(() => {
-    fetchStates()
-      .then(setStates)
-      .finally(() => setLoadingStates(false));
-  }, []);
-
-  useEffect(() => {
-    if (!state) {
-      setCities([]);
-      return;
-    }
-    setLoadingCities(true);
-    setCity("");
-    fetchCitiesByState(state)
-      .then(setCities)
-      .finally(() => setLoadingCities(false));
-  }, [state]);
+  function toggleUseHomeAddress() {
+    setUseHomeAddress((prev) => {
+      const next = !prev;
+      if (next && homeAddress) {
+        setAddressSelection({
+          address: homeAddress.address,
+          city: homeAddress.city,
+          state: homeAddress.state,
+          lat: homeAddress.lat ?? 0,
+          lng: homeAddress.lng ?? 0,
+        });
+      } else {
+        setAddressSelection(null);
+      }
+      return next;
+    });
+  }
 
   function handlePhotosChange(e: React.ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files ?? []);
@@ -79,8 +96,8 @@ export function CreateGameListingForm() {
       toast.error("Selecione a data e hora do jogo");
       return;
     }
-    if (!state || !city) {
-      toast.error("Selecione o estado e a cidade");
+    if (!addressSelection) {
+      toast.error("Selecione o endereço do jogo");
       return;
     }
     if (isRecurring && !frequency) {
@@ -91,9 +108,11 @@ export function CreateGameListingForm() {
     const formData = new FormData();
     formData.set("modality", modality);
     formData.set("scheduledAt", scheduledAt);
-    formData.set("location", location);
-    formData.set("city", city);
-    formData.set("state", state);
+    formData.set("location", location || addressSelection.address);
+    formData.set("city", addressSelection.city ?? "");
+    formData.set("state", addressSelection.state ?? "");
+    formData.set("lat", String(addressSelection.lat));
+    formData.set("lng", String(addressSelection.lng));
     if (priceReais) {
       formData.set("priceCents", String(Math.round(Number(priceReais.replace(",", ".")) * 100)));
     }
@@ -142,7 +161,48 @@ export function CreateGameListingForm() {
         </div>
       </div>
 
-      <FormField label="Local (campo/quadra)" htmlFor="location">
+      {homeAddress && (
+        <div className="flex items-center justify-between rounded-xl border-2 border-slate-200 p-4">
+          <div>
+            <p className="font-bold text-slate-900">Usar endereço cadastrado do time</p>
+            <p className="text-sm text-slate-500">{homeAddress.address}</p>
+          </div>
+          <button
+            type="button"
+            onClick={toggleUseHomeAddress}
+            className={cn(
+              "relative h-7 w-12 shrink-0 rounded-full transition",
+              useHomeAddress ? "bg-primary" : "bg-slate-200"
+            )}
+          >
+            <span
+              className={cn(
+                "absolute top-0.5 size-6 rounded-full bg-white shadow transition-all",
+                useHomeAddress ? "left-[22px]" : "left-0.5"
+              )}
+            />
+          </button>
+        </div>
+      )}
+
+      {!useHomeAddress && (
+        <FormField label="Endereço do jogo" htmlFor="address">
+          <AddressAutocomplete
+            id="address"
+            placeholder="Digite o endereço do campo/quadra"
+            onSelect={(selection) => {
+              setAddressSelection(selection);
+              setLocation((prev) => prev || selection.address);
+            }}
+          />
+        </FormField>
+      )}
+
+      <FormField
+        label="Local (campo/quadra)"
+        htmlFor="location"
+        description="Nome informal exibido no anúncio"
+      >
         <Input
           id="location"
           placeholder="Ex: Campo do Aliança"
@@ -150,52 +210,6 @@ export function CreateGameListingForm() {
           onChange={(e) => setLocation(e.target.value)}
         />
       </FormField>
-
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <FormField label="Estado" htmlFor="state">
-          <div className="relative">
-            <select
-              id="state"
-              disabled={loadingStates}
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              className="w-full appearance-none rounded-xl border-2 border-slate-200 bg-white px-4 py-4 text-base font-medium text-slate-900 outline-none transition focus:border-[#16A34A] disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <option value="">{loadingStates ? "Carregando..." : "Selecione"}</option>
-              {states.map((s) => (
-                <option key={s.value} value={s.value}>
-                  {s.label} ({s.value})
-                </option>
-              ))}
-            </select>
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
-              {loadingStates ? <Loader2 className="h-4 w-4 animate-spin" /> : <ChevronDown className="h-4 w-4" />}
-            </span>
-          </div>
-        </FormField>
-
-        <FormField label="Cidade" htmlFor="city">
-          <div className="relative">
-            <select
-              id="city"
-              disabled={!state || loadingCities}
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="w-full appearance-none rounded-xl border-2 border-slate-200 bg-white px-4 py-4 text-base font-medium text-slate-900 outline-none transition focus:border-[#16A34A] disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <option value="">{loadingCities ? "Carregando..." : state ? "Selecione" : "Escolha o estado"}</option>
-              {cities.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
-              {loadingCities ? <Loader2 className="h-4 w-4 animate-spin" /> : <ChevronDown className="h-4 w-4" />}
-            </span>
-          </div>
-        </FormField>
-      </div>
 
       <FormField label="Data e horário" htmlFor="scheduledAt">
         <Input

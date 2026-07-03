@@ -47,6 +47,9 @@ export type PeladaOccurrenceMinAggregateOutputType = {
   isCancelled: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  votingOpenedAt: Date | null
+  votingClosesAt: Date | null
+  votingClosedAt: Date | null
   organizationId: string | null
   createdById: string | null
   mvpUserId: string | null
@@ -63,6 +66,9 @@ export type PeladaOccurrenceMaxAggregateOutputType = {
   isCancelled: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  votingOpenedAt: Date | null
+  votingClosesAt: Date | null
+  votingClosedAt: Date | null
   organizationId: string | null
   createdById: string | null
   mvpUserId: string | null
@@ -79,6 +85,9 @@ export type PeladaOccurrenceCountAggregateOutputType = {
   isCancelled: number
   createdAt: number
   updatedAt: number
+  votingOpenedAt: number
+  votingClosesAt: number
+  votingClosedAt: number
   organizationId: number
   createdById: number
   mvpUserId: number
@@ -107,6 +116,9 @@ export type PeladaOccurrenceMinAggregateInputType = {
   isCancelled?: true
   createdAt?: true
   updatedAt?: true
+  votingOpenedAt?: true
+  votingClosesAt?: true
+  votingClosedAt?: true
   organizationId?: true
   createdById?: true
   mvpUserId?: true
@@ -123,6 +135,9 @@ export type PeladaOccurrenceMaxAggregateInputType = {
   isCancelled?: true
   createdAt?: true
   updatedAt?: true
+  votingOpenedAt?: true
+  votingClosesAt?: true
+  votingClosedAt?: true
   organizationId?: true
   createdById?: true
   mvpUserId?: true
@@ -139,6 +154,9 @@ export type PeladaOccurrenceCountAggregateInputType = {
   isCancelled?: true
   createdAt?: true
   updatedAt?: true
+  votingOpenedAt?: true
+  votingClosesAt?: true
+  votingClosedAt?: true
   organizationId?: true
   createdById?: true
   mvpUserId?: true
@@ -242,6 +260,9 @@ export type PeladaOccurrenceGroupByOutputType = {
   isCancelled: boolean
   createdAt: Date
   updatedAt: Date
+  votingOpenedAt: Date | null
+  votingClosesAt: Date | null
+  votingClosedAt: Date | null
   organizationId: string
   createdById: string | null
   mvpUserId: string | null
@@ -281,6 +302,9 @@ export type PeladaOccurrenceWhereInput = {
   isCancelled?: Prisma.BoolFilter<"PeladaOccurrence"> | boolean
   createdAt?: Prisma.DateTimeFilter<"PeladaOccurrence"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PeladaOccurrence"> | Date | string
+  votingOpenedAt?: Prisma.DateTimeNullableFilter<"PeladaOccurrence"> | Date | string | null
+  votingClosesAt?: Prisma.DateTimeNullableFilter<"PeladaOccurrence"> | Date | string | null
+  votingClosedAt?: Prisma.DateTimeNullableFilter<"PeladaOccurrence"> | Date | string | null
   organizationId?: Prisma.StringFilter<"PeladaOccurrence"> | string
   createdById?: Prisma.StringNullableFilter<"PeladaOccurrence"> | string | null
   mvpUserId?: Prisma.StringNullableFilter<"PeladaOccurrence"> | string | null
@@ -290,6 +314,7 @@ export type PeladaOccurrenceWhereInput = {
   attendances?: Prisma.PeladaAttendanceListRelationFilter
   playerStats?: Prisma.PeladaPlayerStatListRelationFilter
   mvpVotes?: Prisma.PeladaMvpVoteListRelationFilter
+  ratings?: Prisma.PeladaPlayerRatingListRelationFilter
 }
 
 export type PeladaOccurrenceOrderByWithRelationInput = {
@@ -303,6 +328,9 @@ export type PeladaOccurrenceOrderByWithRelationInput = {
   isCancelled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  votingOpenedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  votingClosesAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  votingClosedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   mvpUserId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -312,6 +340,7 @@ export type PeladaOccurrenceOrderByWithRelationInput = {
   attendances?: Prisma.PeladaAttendanceOrderByRelationAggregateInput
   playerStats?: Prisma.PeladaPlayerStatOrderByRelationAggregateInput
   mvpVotes?: Prisma.PeladaMvpVoteOrderByRelationAggregateInput
+  ratings?: Prisma.PeladaPlayerRatingOrderByRelationAggregateInput
 }
 
 export type PeladaOccurrenceWhereUniqueInput = Prisma.AtLeast<{
@@ -328,6 +357,9 @@ export type PeladaOccurrenceWhereUniqueInput = Prisma.AtLeast<{
   isCancelled?: Prisma.BoolFilter<"PeladaOccurrence"> | boolean
   createdAt?: Prisma.DateTimeFilter<"PeladaOccurrence"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PeladaOccurrence"> | Date | string
+  votingOpenedAt?: Prisma.DateTimeNullableFilter<"PeladaOccurrence"> | Date | string | null
+  votingClosesAt?: Prisma.DateTimeNullableFilter<"PeladaOccurrence"> | Date | string | null
+  votingClosedAt?: Prisma.DateTimeNullableFilter<"PeladaOccurrence"> | Date | string | null
   organizationId?: Prisma.StringFilter<"PeladaOccurrence"> | string
   createdById?: Prisma.StringNullableFilter<"PeladaOccurrence"> | string | null
   mvpUserId?: Prisma.StringNullableFilter<"PeladaOccurrence"> | string | null
@@ -337,6 +369,7 @@ export type PeladaOccurrenceWhereUniqueInput = Prisma.AtLeast<{
   attendances?: Prisma.PeladaAttendanceListRelationFilter
   playerStats?: Prisma.PeladaPlayerStatListRelationFilter
   mvpVotes?: Prisma.PeladaMvpVoteListRelationFilter
+  ratings?: Prisma.PeladaPlayerRatingListRelationFilter
 }, "id">
 
 export type PeladaOccurrenceOrderByWithAggregationInput = {
@@ -350,6 +383,9 @@ export type PeladaOccurrenceOrderByWithAggregationInput = {
   isCancelled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  votingOpenedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  votingClosesAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  votingClosedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   mvpUserId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -374,6 +410,9 @@ export type PeladaOccurrenceScalarWhereWithAggregatesInput = {
   isCancelled?: Prisma.BoolWithAggregatesFilter<"PeladaOccurrence"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PeladaOccurrence"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PeladaOccurrence"> | Date | string
+  votingOpenedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"PeladaOccurrence"> | Date | string | null
+  votingClosesAt?: Prisma.DateTimeNullableWithAggregatesFilter<"PeladaOccurrence"> | Date | string | null
+  votingClosedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"PeladaOccurrence"> | Date | string | null
   organizationId?: Prisma.StringWithAggregatesFilter<"PeladaOccurrence"> | string
   createdById?: Prisma.StringNullableWithAggregatesFilter<"PeladaOccurrence"> | string | null
   mvpUserId?: Prisma.StringNullableWithAggregatesFilter<"PeladaOccurrence"> | string | null
@@ -390,12 +429,16 @@ export type PeladaOccurrenceCreateInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organization: Prisma.OrganizationCreateNestedOneWithoutPeladaOccurrencesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedPeladaOccurrencesInput
   mvp?: Prisma.UserCreateNestedOneWithoutPeladaMvpAwardsInput
   attendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceUncheckedCreateInput = {
@@ -409,12 +452,16 @@ export type PeladaOccurrenceUncheckedCreateInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organizationId: string
   createdById?: string | null
   mvpUserId?: string | null
   attendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceUpdateInput = {
@@ -428,12 +475,16 @@ export type PeladaOccurrenceUpdateInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutPeladaOccurrencesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedPeladaOccurrencesNestedInput
   mvp?: Prisma.UserUpdateOneWithoutPeladaMvpAwardsNestedInput
   attendances?: Prisma.PeladaAttendanceUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateInput = {
@@ -447,12 +498,16 @@ export type PeladaOccurrenceUncheckedUpdateInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   attendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceCreateManyInput = {
@@ -466,6 +521,9 @@ export type PeladaOccurrenceCreateManyInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organizationId: string
   createdById?: string | null
   mvpUserId?: string | null
@@ -482,6 +540,9 @@ export type PeladaOccurrenceUpdateManyMutationInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PeladaOccurrenceUncheckedUpdateManyInput = {
@@ -495,6 +556,9 @@ export type PeladaOccurrenceUncheckedUpdateManyInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -521,6 +585,9 @@ export type PeladaOccurrenceCountOrderByAggregateInput = {
   isCancelled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  votingOpenedAt?: Prisma.SortOrder
+  votingClosesAt?: Prisma.SortOrder
+  votingClosedAt?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   mvpUserId?: Prisma.SortOrder
@@ -542,6 +609,9 @@ export type PeladaOccurrenceMaxOrderByAggregateInput = {
   isCancelled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  votingOpenedAt?: Prisma.SortOrder
+  votingClosesAt?: Prisma.SortOrder
+  votingClosedAt?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   mvpUserId?: Prisma.SortOrder
@@ -558,6 +628,9 @@ export type PeladaOccurrenceMinOrderByAggregateInput = {
   isCancelled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  votingOpenedAt?: Prisma.SortOrder
+  votingClosesAt?: Prisma.SortOrder
+  votingClosedAt?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   mvpUserId?: Prisma.SortOrder
@@ -699,14 +772,6 @@ export type PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationNestedInput = 
   deleteMany?: Prisma.PeladaOccurrenceScalarWhereInput | Prisma.PeladaOccurrenceScalarWhereInput[]
 }
 
-export type NullableDecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
 export type PeladaOccurrenceCreateNestedOneWithoutAttendancesInput = {
   create?: Prisma.XOR<Prisma.PeladaOccurrenceCreateWithoutAttendancesInput, Prisma.PeladaOccurrenceUncheckedCreateWithoutAttendancesInput>
   connectOrCreate?: Prisma.PeladaOccurrenceCreateOrConnectWithoutAttendancesInput
@@ -749,6 +814,20 @@ export type PeladaOccurrenceUpdateOneRequiredWithoutMvpVotesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PeladaOccurrenceUpdateToOneWithWhereWithoutMvpVotesInput, Prisma.PeladaOccurrenceUpdateWithoutMvpVotesInput>, Prisma.PeladaOccurrenceUncheckedUpdateWithoutMvpVotesInput>
 }
 
+export type PeladaOccurrenceCreateNestedOneWithoutRatingsInput = {
+  create?: Prisma.XOR<Prisma.PeladaOccurrenceCreateWithoutRatingsInput, Prisma.PeladaOccurrenceUncheckedCreateWithoutRatingsInput>
+  connectOrCreate?: Prisma.PeladaOccurrenceCreateOrConnectWithoutRatingsInput
+  connect?: Prisma.PeladaOccurrenceWhereUniqueInput
+}
+
+export type PeladaOccurrenceUpdateOneRequiredWithoutRatingsNestedInput = {
+  create?: Prisma.XOR<Prisma.PeladaOccurrenceCreateWithoutRatingsInput, Prisma.PeladaOccurrenceUncheckedCreateWithoutRatingsInput>
+  connectOrCreate?: Prisma.PeladaOccurrenceCreateOrConnectWithoutRatingsInput
+  upsert?: Prisma.PeladaOccurrenceUpsertWithoutRatingsInput
+  connect?: Prisma.PeladaOccurrenceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PeladaOccurrenceUpdateToOneWithWhereWithoutRatingsInput, Prisma.PeladaOccurrenceUpdateWithoutRatingsInput>, Prisma.PeladaOccurrenceUncheckedUpdateWithoutRatingsInput>
+}
+
 export type PeladaOccurrenceCreateWithoutMvpInput = {
   id?: string
   title: string
@@ -760,11 +839,15 @@ export type PeladaOccurrenceCreateWithoutMvpInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organization: Prisma.OrganizationCreateNestedOneWithoutPeladaOccurrencesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedPeladaOccurrencesInput
   attendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceUncheckedCreateWithoutMvpInput = {
@@ -778,11 +861,15 @@ export type PeladaOccurrenceUncheckedCreateWithoutMvpInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organizationId: string
   createdById?: string | null
   attendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceCreateOrConnectWithoutMvpInput = {
@@ -806,11 +893,15 @@ export type PeladaOccurrenceCreateWithoutCreatedByInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organization: Prisma.OrganizationCreateNestedOneWithoutPeladaOccurrencesInput
   mvp?: Prisma.UserCreateNestedOneWithoutPeladaMvpAwardsInput
   attendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceUncheckedCreateWithoutCreatedByInput = {
@@ -824,11 +915,15 @@ export type PeladaOccurrenceUncheckedCreateWithoutCreatedByInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organizationId: string
   mvpUserId?: string | null
   attendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceCreateOrConnectWithoutCreatedByInput = {
@@ -871,6 +966,9 @@ export type PeladaOccurrenceScalarWhereInput = {
   isCancelled?: Prisma.BoolFilter<"PeladaOccurrence"> | boolean
   createdAt?: Prisma.DateTimeFilter<"PeladaOccurrence"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PeladaOccurrence"> | Date | string
+  votingOpenedAt?: Prisma.DateTimeNullableFilter<"PeladaOccurrence"> | Date | string | null
+  votingClosesAt?: Prisma.DateTimeNullableFilter<"PeladaOccurrence"> | Date | string | null
+  votingClosedAt?: Prisma.DateTimeNullableFilter<"PeladaOccurrence"> | Date | string | null
   organizationId?: Prisma.StringFilter<"PeladaOccurrence"> | string
   createdById?: Prisma.StringNullableFilter<"PeladaOccurrence"> | string | null
   mvpUserId?: Prisma.StringNullableFilter<"PeladaOccurrence"> | string | null
@@ -903,11 +1001,15 @@ export type PeladaOccurrenceCreateWithoutOrganizationInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedPeladaOccurrencesInput
   mvp?: Prisma.UserCreateNestedOneWithoutPeladaMvpAwardsInput
   attendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceUncheckedCreateWithoutOrganizationInput = {
@@ -921,11 +1023,15 @@ export type PeladaOccurrenceUncheckedCreateWithoutOrganizationInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   createdById?: string | null
   mvpUserId?: string | null
   attendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceCreateOrConnectWithoutOrganizationInput = {
@@ -965,11 +1071,15 @@ export type PeladaOccurrenceCreateWithoutAttendancesInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organization: Prisma.OrganizationCreateNestedOneWithoutPeladaOccurrencesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedPeladaOccurrencesInput
   mvp?: Prisma.UserCreateNestedOneWithoutPeladaMvpAwardsInput
   playerStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceUncheckedCreateWithoutAttendancesInput = {
@@ -983,11 +1093,15 @@ export type PeladaOccurrenceUncheckedCreateWithoutAttendancesInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organizationId: string
   createdById?: string | null
   mvpUserId?: string | null
   playerStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceCreateOrConnectWithoutAttendancesInput = {
@@ -1017,11 +1131,15 @@ export type PeladaOccurrenceUpdateWithoutAttendancesInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutPeladaOccurrencesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedPeladaOccurrencesNestedInput
   mvp?: Prisma.UserUpdateOneWithoutPeladaMvpAwardsNestedInput
   playerStats?: Prisma.PeladaPlayerStatUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateWithoutAttendancesInput = {
@@ -1035,11 +1153,15 @@ export type PeladaOccurrenceUncheckedUpdateWithoutAttendancesInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   playerStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceCreateWithoutPlayerStatsInput = {
@@ -1053,11 +1175,15 @@ export type PeladaOccurrenceCreateWithoutPlayerStatsInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organization: Prisma.OrganizationCreateNestedOneWithoutPeladaOccurrencesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedPeladaOccurrencesInput
   mvp?: Prisma.UserCreateNestedOneWithoutPeladaMvpAwardsInput
   attendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceUncheckedCreateWithoutPlayerStatsInput = {
@@ -1071,11 +1197,15 @@ export type PeladaOccurrenceUncheckedCreateWithoutPlayerStatsInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organizationId: string
   createdById?: string | null
   mvpUserId?: string | null
   attendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceCreateOrConnectWithoutPlayerStatsInput = {
@@ -1105,11 +1235,15 @@ export type PeladaOccurrenceUpdateWithoutPlayerStatsInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutPeladaOccurrencesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedPeladaOccurrencesNestedInput
   mvp?: Prisma.UserUpdateOneWithoutPeladaMvpAwardsNestedInput
   attendances?: Prisma.PeladaAttendanceUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateWithoutPlayerStatsInput = {
@@ -1123,11 +1257,15 @@ export type PeladaOccurrenceUncheckedUpdateWithoutPlayerStatsInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   attendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceCreateWithoutMvpVotesInput = {
@@ -1141,11 +1279,15 @@ export type PeladaOccurrenceCreateWithoutMvpVotesInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organization: Prisma.OrganizationCreateNestedOneWithoutPeladaOccurrencesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedPeladaOccurrencesInput
   mvp?: Prisma.UserCreateNestedOneWithoutPeladaMvpAwardsInput
   attendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceUncheckedCreateWithoutMvpVotesInput = {
@@ -1159,11 +1301,15 @@ export type PeladaOccurrenceUncheckedCreateWithoutMvpVotesInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organizationId: string
   createdById?: string | null
   mvpUserId?: string | null
   attendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
 }
 
 export type PeladaOccurrenceCreateOrConnectWithoutMvpVotesInput = {
@@ -1193,11 +1339,15 @@ export type PeladaOccurrenceUpdateWithoutMvpVotesInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutPeladaOccurrencesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedPeladaOccurrencesNestedInput
   mvp?: Prisma.UserUpdateOneWithoutPeladaMvpAwardsNestedInput
   attendances?: Prisma.PeladaAttendanceUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateWithoutMvpVotesInput = {
@@ -1211,11 +1361,119 @@ export type PeladaOccurrenceUncheckedUpdateWithoutMvpVotesInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   attendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+}
+
+export type PeladaOccurrenceCreateWithoutRatingsInput = {
+  id?: string
+  title: string
+  scheduledAt: Date | string
+  location: string
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notes?: string | null
+  isCancelled?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
+  organization: Prisma.OrganizationCreateNestedOneWithoutPeladaOccurrencesInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedPeladaOccurrencesInput
+  mvp?: Prisma.UserCreateNestedOneWithoutPeladaMvpAwardsInput
+  attendances?: Prisma.PeladaAttendanceCreateNestedManyWithoutPeladaOccurrenceInput
+  playerStats?: Prisma.PeladaPlayerStatCreateNestedManyWithoutPeladaOccurrenceInput
+  mvpVotes?: Prisma.PeladaMvpVoteCreateNestedManyWithoutPeladaOccurrenceInput
+}
+
+export type PeladaOccurrenceUncheckedCreateWithoutRatingsInput = {
+  id?: string
+  title: string
+  scheduledAt: Date | string
+  location: string
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notes?: string | null
+  isCancelled?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
+  organizationId: string
+  createdById?: string | null
+  mvpUserId?: string | null
+  attendances?: Prisma.PeladaAttendanceUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+  playerStats?: Prisma.PeladaPlayerStatUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+  mvpVotes?: Prisma.PeladaMvpVoteUncheckedCreateNestedManyWithoutPeladaOccurrenceInput
+}
+
+export type PeladaOccurrenceCreateOrConnectWithoutRatingsInput = {
+  where: Prisma.PeladaOccurrenceWhereUniqueInput
+  create: Prisma.XOR<Prisma.PeladaOccurrenceCreateWithoutRatingsInput, Prisma.PeladaOccurrenceUncheckedCreateWithoutRatingsInput>
+}
+
+export type PeladaOccurrenceUpsertWithoutRatingsInput = {
+  update: Prisma.XOR<Prisma.PeladaOccurrenceUpdateWithoutRatingsInput, Prisma.PeladaOccurrenceUncheckedUpdateWithoutRatingsInput>
+  create: Prisma.XOR<Prisma.PeladaOccurrenceCreateWithoutRatingsInput, Prisma.PeladaOccurrenceUncheckedCreateWithoutRatingsInput>
+  where?: Prisma.PeladaOccurrenceWhereInput
+}
+
+export type PeladaOccurrenceUpdateToOneWithWhereWithoutRatingsInput = {
+  where?: Prisma.PeladaOccurrenceWhereInput
+  data: Prisma.XOR<Prisma.PeladaOccurrenceUpdateWithoutRatingsInput, Prisma.PeladaOccurrenceUncheckedUpdateWithoutRatingsInput>
+}
+
+export type PeladaOccurrenceUpdateWithoutRatingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  organization?: Prisma.OrganizationUpdateOneRequiredWithoutPeladaOccurrencesNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedPeladaOccurrencesNestedInput
+  mvp?: Prisma.UserUpdateOneWithoutPeladaMvpAwardsNestedInput
+  attendances?: Prisma.PeladaAttendanceUpdateManyWithoutPeladaOccurrenceNestedInput
+  playerStats?: Prisma.PeladaPlayerStatUpdateManyWithoutPeladaOccurrenceNestedInput
+  mvpVotes?: Prisma.PeladaMvpVoteUpdateManyWithoutPeladaOccurrenceNestedInput
+}
+
+export type PeladaOccurrenceUncheckedUpdateWithoutRatingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  attendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+  playerStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+  mvpVotes?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceCreateManyMvpInput = {
@@ -1229,6 +1487,9 @@ export type PeladaOccurrenceCreateManyMvpInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organizationId: string
   createdById?: string | null
 }
@@ -1244,6 +1505,9 @@ export type PeladaOccurrenceCreateManyCreatedByInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   organizationId: string
   mvpUserId?: string | null
 }
@@ -1259,11 +1523,15 @@ export type PeladaOccurrenceUpdateWithoutMvpInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutPeladaOccurrencesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedPeladaOccurrencesNestedInput
   attendances?: Prisma.PeladaAttendanceUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateWithoutMvpInput = {
@@ -1277,11 +1545,15 @@ export type PeladaOccurrenceUncheckedUpdateWithoutMvpInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   attendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateManyWithoutMvpInput = {
@@ -1295,6 +1567,9 @@ export type PeladaOccurrenceUncheckedUpdateManyWithoutMvpInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -1310,11 +1585,15 @@ export type PeladaOccurrenceUpdateWithoutCreatedByInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutPeladaOccurrencesNestedInput
   mvp?: Prisma.UserUpdateOneWithoutPeladaMvpAwardsNestedInput
   attendances?: Prisma.PeladaAttendanceUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateWithoutCreatedByInput = {
@@ -1328,11 +1607,15 @@ export type PeladaOccurrenceUncheckedUpdateWithoutCreatedByInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   attendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByInput = {
@@ -1346,6 +1629,9 @@ export type PeladaOccurrenceUncheckedUpdateManyWithoutCreatedByInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -1361,6 +1647,9 @@ export type PeladaOccurrenceCreateManyOrganizationInput = {
   isCancelled?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
   createdById?: string | null
   mvpUserId?: string | null
 }
@@ -1376,11 +1665,15 @@ export type PeladaOccurrenceUpdateWithoutOrganizationInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.UserUpdateOneWithoutCreatedPeladaOccurrencesNestedInput
   mvp?: Prisma.UserUpdateOneWithoutPeladaMvpAwardsNestedInput
   attendances?: Prisma.PeladaAttendanceUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateWithoutOrganizationInput = {
@@ -1394,11 +1687,15 @@ export type PeladaOccurrenceUncheckedUpdateWithoutOrganizationInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   attendances?: Prisma.PeladaAttendanceUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   playerStats?: Prisma.PeladaPlayerStatUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
   mvpVotes?: Prisma.PeladaMvpVoteUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
+  ratings?: Prisma.PeladaPlayerRatingUncheckedUpdateManyWithoutPeladaOccurrenceNestedInput
 }
 
 export type PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationInput = {
@@ -1412,6 +1709,9 @@ export type PeladaOccurrenceUncheckedUpdateManyWithoutOrganizationInput = {
   isCancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -1425,12 +1725,14 @@ export type PeladaOccurrenceCountOutputType = {
   attendances: number
   playerStats: number
   mvpVotes: number
+  ratings: number
 }
 
 export type PeladaOccurrenceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   attendances?: boolean | PeladaOccurrenceCountOutputTypeCountAttendancesArgs
   playerStats?: boolean | PeladaOccurrenceCountOutputTypeCountPlayerStatsArgs
   mvpVotes?: boolean | PeladaOccurrenceCountOutputTypeCountMvpVotesArgs
+  ratings?: boolean | PeladaOccurrenceCountOutputTypeCountRatingsArgs
 }
 
 /**
@@ -1464,6 +1766,13 @@ export type PeladaOccurrenceCountOutputTypeCountMvpVotesArgs<ExtArgs extends run
   where?: Prisma.PeladaMvpVoteWhereInput
 }
 
+/**
+ * PeladaOccurrenceCountOutputType without action
+ */
+export type PeladaOccurrenceCountOutputTypeCountRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PeladaPlayerRatingWhereInput
+}
+
 
 export type PeladaOccurrenceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1476,6 +1785,9 @@ export type PeladaOccurrenceSelect<ExtArgs extends runtime.Types.Extensions.Inte
   isCancelled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  votingOpenedAt?: boolean
+  votingClosesAt?: boolean
+  votingClosedAt?: boolean
   organizationId?: boolean
   createdById?: boolean
   mvpUserId?: boolean
@@ -1485,6 +1797,7 @@ export type PeladaOccurrenceSelect<ExtArgs extends runtime.Types.Extensions.Inte
   attendances?: boolean | Prisma.PeladaOccurrence$attendancesArgs<ExtArgs>
   playerStats?: boolean | Prisma.PeladaOccurrence$playerStatsArgs<ExtArgs>
   mvpVotes?: boolean | Prisma.PeladaOccurrence$mvpVotesArgs<ExtArgs>
+  ratings?: boolean | Prisma.PeladaOccurrence$ratingsArgs<ExtArgs>
   _count?: boolean | Prisma.PeladaOccurrenceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["peladaOccurrence"]>
 
@@ -1499,6 +1812,9 @@ export type PeladaOccurrenceSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   isCancelled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  votingOpenedAt?: boolean
+  votingClosesAt?: boolean
+  votingClosedAt?: boolean
   organizationId?: boolean
   createdById?: boolean
   mvpUserId?: boolean
@@ -1518,6 +1834,9 @@ export type PeladaOccurrenceSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   isCancelled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  votingOpenedAt?: boolean
+  votingClosesAt?: boolean
+  votingClosedAt?: boolean
   organizationId?: boolean
   createdById?: boolean
   mvpUserId?: boolean
@@ -1537,12 +1856,15 @@ export type PeladaOccurrenceSelectScalar = {
   isCancelled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  votingOpenedAt?: boolean
+  votingClosesAt?: boolean
+  votingClosedAt?: boolean
   organizationId?: boolean
   createdById?: boolean
   mvpUserId?: boolean
 }
 
-export type PeladaOccurrenceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "scheduledAt" | "location" | "lat" | "lng" | "notes" | "isCancelled" | "createdAt" | "updatedAt" | "organizationId" | "createdById" | "mvpUserId", ExtArgs["result"]["peladaOccurrence"]>
+export type PeladaOccurrenceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "scheduledAt" | "location" | "lat" | "lng" | "notes" | "isCancelled" | "createdAt" | "updatedAt" | "votingOpenedAt" | "votingClosesAt" | "votingClosedAt" | "organizationId" | "createdById" | "mvpUserId", ExtArgs["result"]["peladaOccurrence"]>
 export type PeladaOccurrenceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   createdBy?: boolean | Prisma.PeladaOccurrence$createdByArgs<ExtArgs>
@@ -1550,6 +1872,7 @@ export type PeladaOccurrenceInclude<ExtArgs extends runtime.Types.Extensions.Int
   attendances?: boolean | Prisma.PeladaOccurrence$attendancesArgs<ExtArgs>
   playerStats?: boolean | Prisma.PeladaOccurrence$playerStatsArgs<ExtArgs>
   mvpVotes?: boolean | Prisma.PeladaOccurrence$mvpVotesArgs<ExtArgs>
+  ratings?: boolean | Prisma.PeladaOccurrence$ratingsArgs<ExtArgs>
   _count?: boolean | Prisma.PeladaOccurrenceCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PeladaOccurrenceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1572,6 +1895,7 @@ export type $PeladaOccurrencePayload<ExtArgs extends runtime.Types.Extensions.In
     attendances: Prisma.$PeladaAttendancePayload<ExtArgs>[]
     playerStats: Prisma.$PeladaPlayerStatPayload<ExtArgs>[]
     mvpVotes: Prisma.$PeladaMvpVotePayload<ExtArgs>[]
+    ratings: Prisma.$PeladaPlayerRatingPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1584,6 +1908,9 @@ export type $PeladaOccurrencePayload<ExtArgs extends runtime.Types.Extensions.In
     isCancelled: boolean
     createdAt: Date
     updatedAt: Date
+    votingOpenedAt: Date | null
+    votingClosesAt: Date | null
+    votingClosedAt: Date | null
     organizationId: string
     createdById: string | null
     mvpUserId: string | null
@@ -1987,6 +2314,7 @@ export interface Prisma__PeladaOccurrenceClient<T, Null = never, ExtArgs extends
   attendances<T extends Prisma.PeladaOccurrence$attendancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeladaOccurrence$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   playerStats<T extends Prisma.PeladaOccurrence$playerStatsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeladaOccurrence$playerStatsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaPlayerStatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   mvpVotes<T extends Prisma.PeladaOccurrence$mvpVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeladaOccurrence$mvpVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaMvpVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ratings<T extends Prisma.PeladaOccurrence$ratingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeladaOccurrence$ratingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeladaPlayerRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2026,6 +2354,9 @@ export interface PeladaOccurrenceFieldRefs {
   readonly isCancelled: Prisma.FieldRef<"PeladaOccurrence", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"PeladaOccurrence", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"PeladaOccurrence", 'DateTime'>
+  readonly votingOpenedAt: Prisma.FieldRef<"PeladaOccurrence", 'DateTime'>
+  readonly votingClosesAt: Prisma.FieldRef<"PeladaOccurrence", 'DateTime'>
+  readonly votingClosedAt: Prisma.FieldRef<"PeladaOccurrence", 'DateTime'>
   readonly organizationId: Prisma.FieldRef<"PeladaOccurrence", 'String'>
   readonly createdById: Prisma.FieldRef<"PeladaOccurrence", 'String'>
   readonly mvpUserId: Prisma.FieldRef<"PeladaOccurrence", 'String'>
@@ -2537,6 +2868,30 @@ export type PeladaOccurrence$mvpVotesArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.PeladaMvpVoteScalarFieldEnum | Prisma.PeladaMvpVoteScalarFieldEnum[]
+}
+
+/**
+ * PeladaOccurrence.ratings
+ */
+export type PeladaOccurrence$ratingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PeladaPlayerRating
+   */
+  select?: Prisma.PeladaPlayerRatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PeladaPlayerRating
+   */
+  omit?: Prisma.PeladaPlayerRatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PeladaPlayerRatingInclude<ExtArgs> | null
+  where?: Prisma.PeladaPlayerRatingWhereInput
+  orderBy?: Prisma.PeladaPlayerRatingOrderByWithRelationInput | Prisma.PeladaPlayerRatingOrderByWithRelationInput[]
+  cursor?: Prisma.PeladaPlayerRatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PeladaPlayerRatingScalarFieldEnum | Prisma.PeladaPlayerRatingScalarFieldEnum[]
 }
 
 /**

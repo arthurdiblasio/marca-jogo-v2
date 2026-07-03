@@ -7,6 +7,8 @@ export const createGameListingSchema = z
     location: z.string().min(3, "Informe o nome do local").max(120),
     city: z.string().min(1, "Informe a cidade").max(60),
     state: z.string().length(2, "Use a sigla do estado"),
+    lat: z.coerce.number().optional(),
+    lng: z.coerce.number().optional(),
     priceCents: z.coerce.number().int().nonnegative().optional(),
     priceNotes: z.string().max(120).optional(),
     notes: z.string().max(500).optional(),

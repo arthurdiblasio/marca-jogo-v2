@@ -41,6 +41,8 @@ export type MembershipMinAggregateOutputType = {
   nickname: string | null
   shirtNumber: number | null
   position: string | null
+  isMonthly: boolean | null
+  hasMergedGuest: boolean | null
   joinedAt: Date | null
   leftAt: Date | null
   createdAt: Date | null
@@ -56,6 +58,8 @@ export type MembershipMaxAggregateOutputType = {
   nickname: string | null
   shirtNumber: number | null
   position: string | null
+  isMonthly: boolean | null
+  hasMergedGuest: boolean | null
   joinedAt: Date | null
   leftAt: Date | null
   createdAt: Date | null
@@ -71,6 +75,8 @@ export type MembershipCountAggregateOutputType = {
   nickname: number
   shirtNumber: number
   position: number
+  isMonthly: number
+  hasMergedGuest: number
   joinedAt: number
   leftAt: number
   createdAt: number
@@ -96,6 +102,8 @@ export type MembershipMinAggregateInputType = {
   nickname?: true
   shirtNumber?: true
   position?: true
+  isMonthly?: true
+  hasMergedGuest?: true
   joinedAt?: true
   leftAt?: true
   createdAt?: true
@@ -111,6 +119,8 @@ export type MembershipMaxAggregateInputType = {
   nickname?: true
   shirtNumber?: true
   position?: true
+  isMonthly?: true
+  hasMergedGuest?: true
   joinedAt?: true
   leftAt?: true
   createdAt?: true
@@ -126,6 +136,8 @@ export type MembershipCountAggregateInputType = {
   nickname?: true
   shirtNumber?: true
   position?: true
+  isMonthly?: true
+  hasMergedGuest?: true
   joinedAt?: true
   leftAt?: true
   createdAt?: true
@@ -228,6 +240,8 @@ export type MembershipGroupByOutputType = {
   nickname: string | null
   shirtNumber: number | null
   position: string | null
+  isMonthly: boolean
+  hasMergedGuest: boolean
   joinedAt: Date
   leftAt: Date | null
   createdAt: Date
@@ -266,6 +280,8 @@ export type MembershipWhereInput = {
   nickname?: Prisma.StringNullableFilter<"Membership"> | string | null
   shirtNumber?: Prisma.IntNullableFilter<"Membership"> | number | null
   position?: Prisma.StringNullableFilter<"Membership"> | string | null
+  isMonthly?: Prisma.BoolFilter<"Membership"> | boolean
+  hasMergedGuest?: Prisma.BoolFilter<"Membership"> | boolean
   joinedAt?: Prisma.DateTimeFilter<"Membership"> | Date | string
   leftAt?: Prisma.DateTimeNullableFilter<"Membership"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Membership"> | Date | string
@@ -283,6 +299,8 @@ export type MembershipOrderByWithRelationInput = {
   nickname?: Prisma.SortOrderInput | Prisma.SortOrder
   shirtNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   position?: Prisma.SortOrderInput | Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
+  hasMergedGuest?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   leftAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -304,6 +322,8 @@ export type MembershipWhereUniqueInput = Prisma.AtLeast<{
   nickname?: Prisma.StringNullableFilter<"Membership"> | string | null
   shirtNumber?: Prisma.IntNullableFilter<"Membership"> | number | null
   position?: Prisma.StringNullableFilter<"Membership"> | string | null
+  isMonthly?: Prisma.BoolFilter<"Membership"> | boolean
+  hasMergedGuest?: Prisma.BoolFilter<"Membership"> | boolean
   joinedAt?: Prisma.DateTimeFilter<"Membership"> | Date | string
   leftAt?: Prisma.DateTimeNullableFilter<"Membership"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Membership"> | Date | string
@@ -321,6 +341,8 @@ export type MembershipOrderByWithAggregationInput = {
   nickname?: Prisma.SortOrderInput | Prisma.SortOrder
   shirtNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   position?: Prisma.SortOrderInput | Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
+  hasMergedGuest?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   leftAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -344,6 +366,8 @@ export type MembershipScalarWhereWithAggregatesInput = {
   nickname?: Prisma.StringNullableWithAggregatesFilter<"Membership"> | string | null
   shirtNumber?: Prisma.IntNullableWithAggregatesFilter<"Membership"> | number | null
   position?: Prisma.StringNullableWithAggregatesFilter<"Membership"> | string | null
+  isMonthly?: Prisma.BoolWithAggregatesFilter<"Membership"> | boolean
+  hasMergedGuest?: Prisma.BoolWithAggregatesFilter<"Membership"> | boolean
   joinedAt?: Prisma.DateTimeWithAggregatesFilter<"Membership"> | Date | string
   leftAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Membership"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Membership"> | Date | string
@@ -359,6 +383,8 @@ export type MembershipCreateInput = {
   nickname?: string | null
   shirtNumber?: number | null
   position?: string | null
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: Date | string
   leftAt?: Date | string | null
   createdAt?: Date | string
@@ -374,6 +400,8 @@ export type MembershipUncheckedCreateInput = {
   nickname?: string | null
   shirtNumber?: number | null
   position?: string | null
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: Date | string
   leftAt?: Date | string | null
   createdAt?: Date | string
@@ -389,6 +417,8 @@ export type MembershipUpdateInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -404,6 +434,8 @@ export type MembershipUncheckedUpdateInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -419,6 +451,8 @@ export type MembershipCreateManyInput = {
   nickname?: string | null
   shirtNumber?: number | null
   position?: string | null
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: Date | string
   leftAt?: Date | string | null
   createdAt?: Date | string
@@ -434,6 +468,8 @@ export type MembershipUpdateManyMutationInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -447,6 +483,8 @@ export type MembershipUncheckedUpdateManyInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -477,6 +515,8 @@ export type MembershipCountOrderByAggregateInput = {
   nickname?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   position?: Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
+  hasMergedGuest?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   leftAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -496,6 +536,8 @@ export type MembershipMaxOrderByAggregateInput = {
   nickname?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   position?: Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
+  hasMergedGuest?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   leftAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -511,6 +553,8 @@ export type MembershipMinOrderByAggregateInput = {
   nickname?: Prisma.SortOrder
   shirtNumber?: Prisma.SortOrder
   position?: Prisma.SortOrder
+  isMonthly?: Prisma.SortOrder
+  hasMergedGuest?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   leftAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -622,6 +666,8 @@ export type MembershipCreateWithoutUserInput = {
   nickname?: string | null
   shirtNumber?: number | null
   position?: string | null
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: Date | string
   leftAt?: Date | string | null
   createdAt?: Date | string
@@ -636,6 +682,8 @@ export type MembershipUncheckedCreateWithoutUserInput = {
   nickname?: string | null
   shirtNumber?: number | null
   position?: string | null
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: Date | string
   leftAt?: Date | string | null
   createdAt?: Date | string
@@ -679,6 +727,8 @@ export type MembershipScalarWhereInput = {
   nickname?: Prisma.StringNullableFilter<"Membership"> | string | null
   shirtNumber?: Prisma.IntNullableFilter<"Membership"> | number | null
   position?: Prisma.StringNullableFilter<"Membership"> | string | null
+  isMonthly?: Prisma.BoolFilter<"Membership"> | boolean
+  hasMergedGuest?: Prisma.BoolFilter<"Membership"> | boolean
   joinedAt?: Prisma.DateTimeFilter<"Membership"> | Date | string
   leftAt?: Prisma.DateTimeNullableFilter<"Membership"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Membership"> | Date | string
@@ -694,6 +744,8 @@ export type MembershipCreateWithoutOrganizationInput = {
   nickname?: string | null
   shirtNumber?: number | null
   position?: string | null
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: Date | string
   leftAt?: Date | string | null
   createdAt?: Date | string
@@ -708,6 +760,8 @@ export type MembershipUncheckedCreateWithoutOrganizationInput = {
   nickname?: string | null
   shirtNumber?: number | null
   position?: string | null
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: Date | string
   leftAt?: Date | string | null
   createdAt?: Date | string
@@ -748,6 +802,8 @@ export type MembershipCreateManyUserInput = {
   nickname?: string | null
   shirtNumber?: number | null
   position?: string | null
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: Date | string
   leftAt?: Date | string | null
   createdAt?: Date | string
@@ -762,6 +818,8 @@ export type MembershipUpdateWithoutUserInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -776,6 +834,8 @@ export type MembershipUncheckedUpdateWithoutUserInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -790,6 +850,8 @@ export type MembershipUncheckedUpdateManyWithoutUserInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -804,6 +866,8 @@ export type MembershipCreateManyOrganizationInput = {
   nickname?: string | null
   shirtNumber?: number | null
   position?: string | null
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: Date | string
   leftAt?: Date | string | null
   createdAt?: Date | string
@@ -818,6 +882,8 @@ export type MembershipUpdateWithoutOrganizationInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -832,6 +898,8 @@ export type MembershipUncheckedUpdateWithoutOrganizationInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -846,6 +914,8 @@ export type MembershipUncheckedUpdateManyWithoutOrganizationInput = {
   nickname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shirtNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isMonthly?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasMergedGuest?: Prisma.BoolFieldUpdateOperationsInput | boolean
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -862,6 +932,8 @@ export type MembershipSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   nickname?: boolean
   shirtNumber?: boolean
   position?: boolean
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: boolean
   leftAt?: boolean
   createdAt?: boolean
@@ -879,6 +951,8 @@ export type MembershipSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   nickname?: boolean
   shirtNumber?: boolean
   position?: boolean
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: boolean
   leftAt?: boolean
   createdAt?: boolean
@@ -896,6 +970,8 @@ export type MembershipSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   nickname?: boolean
   shirtNumber?: boolean
   position?: boolean
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: boolean
   leftAt?: boolean
   createdAt?: boolean
@@ -913,6 +989,8 @@ export type MembershipSelectScalar = {
   nickname?: boolean
   shirtNumber?: boolean
   position?: boolean
+  isMonthly?: boolean
+  hasMergedGuest?: boolean
   joinedAt?: boolean
   leftAt?: boolean
   createdAt?: boolean
@@ -921,7 +999,7 @@ export type MembershipSelectScalar = {
   organizationId?: boolean
 }
 
-export type MembershipOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "role" | "status" | "nickname" | "shirtNumber" | "position" | "joinedAt" | "leftAt" | "createdAt" | "updatedAt" | "userId" | "organizationId", ExtArgs["result"]["membership"]>
+export type MembershipOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "role" | "status" | "nickname" | "shirtNumber" | "position" | "isMonthly" | "hasMergedGuest" | "joinedAt" | "leftAt" | "createdAt" | "updatedAt" | "userId" | "organizationId", ExtArgs["result"]["membership"]>
 export type MembershipInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
@@ -948,6 +1026,8 @@ export type $MembershipPayload<ExtArgs extends runtime.Types.Extensions.Internal
     nickname: string | null
     shirtNumber: number | null
     position: string | null
+    isMonthly: boolean
+    hasMergedGuest: boolean
     joinedAt: Date
     leftAt: Date | null
     createdAt: Date
@@ -1385,6 +1465,8 @@ export interface MembershipFieldRefs {
   readonly nickname: Prisma.FieldRef<"Membership", 'String'>
   readonly shirtNumber: Prisma.FieldRef<"Membership", 'Int'>
   readonly position: Prisma.FieldRef<"Membership", 'String'>
+  readonly isMonthly: Prisma.FieldRef<"Membership", 'Boolean'>
+  readonly hasMergedGuest: Prisma.FieldRef<"Membership", 'Boolean'>
   readonly joinedAt: Prisma.FieldRef<"Membership", 'DateTime'>
   readonly leftAt: Prisma.FieldRef<"Membership", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Membership", 'DateTime'>

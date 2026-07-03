@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { ChevronDown, Plus, Shield, Swords } from "lucide-react";
 
 import * as DropdownMenu from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useOrgs } from "@/contexts/org-context";
 import { setActiveOrgAction } from "@/modules/organizations/actions/set-active-org";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ export function OrganizationSwitcher({ className }: { className?: string }) {
   function switchOrg(orgId: string) {
     startTransition(async () => {
       await setActiveOrgAction(orgId);
+      router.push("/dashboard");
       router.refresh();
     });
   }
@@ -33,9 +35,12 @@ export function OrganizationSwitcher({ className }: { className?: string }) {
           className,
         )}
       >
-        <div className="grid size-9 shrink-0 place-items-center rounded-md bg-primary/10 text-primary">
-          <ActiveIcon className="size-5" />
-        </div>
+        <Avatar className="size-9 rounded-md bg-primary/10 text-primary">
+          {activeOrg?.logoUrl && <AvatarImage src={activeOrg.logoUrl} alt={activeOrg.name} />}
+          <AvatarFallback className="rounded-md bg-transparent">
+            <ActiveIcon className="size-5" />
+          </AvatarFallback>
+        </Avatar>
         <div className="min-w-0">
           <p className="truncate text-sm font-bold">
             {activeOrg?.name ?? "Nenhuma organização"}
@@ -71,7 +76,12 @@ export function OrganizationSwitcher({ className }: { className?: string }) {
                     isActive && "bg-muted",
                   )}
                 >
-                  <OrgIcon className="size-5 text-primary" />
+                  <Avatar className="size-8 rounded-md bg-primary/10 text-primary">
+                    {org.logoUrl && <AvatarImage src={org.logoUrl} alt={org.name} />}
+                    <AvatarFallback className="rounded-md bg-transparent">
+                      <OrgIcon className="size-4" />
+                    </AvatarFallback>
+                  </Avatar>
                   <span className="font-semibold">{org.name}</span>
                   {isActive && (
                     <span className="ml-auto text-xs font-semibold text-primary">

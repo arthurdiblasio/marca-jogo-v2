@@ -53,6 +53,7 @@ export type MatchPlayerStatMinAggregateOutputType = {
   updatedAt: Date | null
   matchId: string | null
   userId: string | null
+  guestPlayerId: string | null
 }
 
 export type MatchPlayerStatMaxAggregateOutputType = {
@@ -66,6 +67,7 @@ export type MatchPlayerStatMaxAggregateOutputType = {
   updatedAt: Date | null
   matchId: string | null
   userId: string | null
+  guestPlayerId: string | null
 }
 
 export type MatchPlayerStatCountAggregateOutputType = {
@@ -79,6 +81,7 @@ export type MatchPlayerStatCountAggregateOutputType = {
   updatedAt: number
   matchId: number
   userId: number
+  guestPlayerId: number
   _all: number
 }
 
@@ -110,6 +113,7 @@ export type MatchPlayerStatMinAggregateInputType = {
   updatedAt?: true
   matchId?: true
   userId?: true
+  guestPlayerId?: true
 }
 
 export type MatchPlayerStatMaxAggregateInputType = {
@@ -123,6 +127,7 @@ export type MatchPlayerStatMaxAggregateInputType = {
   updatedAt?: true
   matchId?: true
   userId?: true
+  guestPlayerId?: true
 }
 
 export type MatchPlayerStatCountAggregateInputType = {
@@ -136,6 +141,7 @@ export type MatchPlayerStatCountAggregateInputType = {
   updatedAt?: true
   matchId?: true
   userId?: true
+  guestPlayerId?: true
   _all?: true
 }
 
@@ -235,7 +241,8 @@ export type MatchPlayerStatGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   matchId: string
-  userId: string
+  userId: string | null
+  guestPlayerId: string | null
   _count: MatchPlayerStatCountAggregateOutputType | null
   _avg: MatchPlayerStatAvgAggregateOutputType | null
   _sum: MatchPlayerStatSumAggregateOutputType | null
@@ -271,9 +278,11 @@ export type MatchPlayerStatWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"MatchPlayerStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MatchPlayerStat"> | Date | string
   matchId?: Prisma.StringFilter<"MatchPlayerStat"> | string
-  userId?: Prisma.StringFilter<"MatchPlayerStat"> | string
+  userId?: Prisma.StringNullableFilter<"MatchPlayerStat"> | string | null
+  guestPlayerId?: Prisma.StringNullableFilter<"MatchPlayerStat"> | string | null
   match?: Prisma.XOR<Prisma.MatchScalarRelationFilter, Prisma.MatchWhereInput>
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  guestPlayer?: Prisma.XOR<Prisma.GuestPlayerNullableScalarRelationFilter, Prisma.GuestPlayerWhereInput> | null
 }
 
 export type MatchPlayerStatOrderByWithRelationInput = {
@@ -286,14 +295,17 @@ export type MatchPlayerStatOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   matchId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrderInput | Prisma.SortOrder
   match?: Prisma.MatchOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
+  guestPlayer?: Prisma.GuestPlayerOrderByWithRelationInput
 }
 
 export type MatchPlayerStatWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   matchId_userId?: Prisma.MatchPlayerStatMatchIdUserIdCompoundUniqueInput
+  matchId_guestPlayerId?: Prisma.MatchPlayerStatMatchIdGuestPlayerIdCompoundUniqueInput
   AND?: Prisma.MatchPlayerStatWhereInput | Prisma.MatchPlayerStatWhereInput[]
   OR?: Prisma.MatchPlayerStatWhereInput[]
   NOT?: Prisma.MatchPlayerStatWhereInput | Prisma.MatchPlayerStatWhereInput[]
@@ -305,10 +317,12 @@ export type MatchPlayerStatWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"MatchPlayerStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MatchPlayerStat"> | Date | string
   matchId?: Prisma.StringFilter<"MatchPlayerStat"> | string
-  userId?: Prisma.StringFilter<"MatchPlayerStat"> | string
+  userId?: Prisma.StringNullableFilter<"MatchPlayerStat"> | string | null
+  guestPlayerId?: Prisma.StringNullableFilter<"MatchPlayerStat"> | string | null
   match?: Prisma.XOR<Prisma.MatchScalarRelationFilter, Prisma.MatchWhereInput>
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id" | "matchId_userId">
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  guestPlayer?: Prisma.XOR<Prisma.GuestPlayerNullableScalarRelationFilter, Prisma.GuestPlayerWhereInput> | null
+}, "id" | "matchId_userId" | "matchId_guestPlayerId">
 
 export type MatchPlayerStatOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -320,7 +334,8 @@ export type MatchPlayerStatOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   matchId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.MatchPlayerStatCountOrderByAggregateInput
   _avg?: Prisma.MatchPlayerStatAvgOrderByAggregateInput
   _max?: Prisma.MatchPlayerStatMaxOrderByAggregateInput
@@ -341,7 +356,8 @@ export type MatchPlayerStatScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"MatchPlayerStat"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"MatchPlayerStat"> | Date | string
   matchId?: Prisma.StringWithAggregatesFilter<"MatchPlayerStat"> | string
-  userId?: Prisma.StringWithAggregatesFilter<"MatchPlayerStat"> | string
+  userId?: Prisma.StringNullableWithAggregatesFilter<"MatchPlayerStat"> | string | null
+  guestPlayerId?: Prisma.StringNullableWithAggregatesFilter<"MatchPlayerStat"> | string | null
 }
 
 export type MatchPlayerStatCreateInput = {
@@ -354,7 +370,8 @@ export type MatchPlayerStatCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   match: Prisma.MatchCreateNestedOneWithoutPlayerStatsInput
-  user: Prisma.UserCreateNestedOneWithoutMatchStatsInput
+  user?: Prisma.UserCreateNestedOneWithoutMatchStatsInput
+  guestPlayer?: Prisma.GuestPlayerCreateNestedOneWithoutMatchStatsInput
 }
 
 export type MatchPlayerStatUncheckedCreateInput = {
@@ -367,7 +384,8 @@ export type MatchPlayerStatUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   matchId: string
-  userId: string
+  userId?: string | null
+  guestPlayerId?: string | null
 }
 
 export type MatchPlayerStatUpdateInput = {
@@ -380,7 +398,8 @@ export type MatchPlayerStatUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   match?: Prisma.MatchUpdateOneRequiredWithoutPlayerStatsNestedInput
-  user?: Prisma.UserUpdateOneRequiredWithoutMatchStatsNestedInput
+  user?: Prisma.UserUpdateOneWithoutMatchStatsNestedInput
+  guestPlayer?: Prisma.GuestPlayerUpdateOneWithoutMatchStatsNestedInput
 }
 
 export type MatchPlayerStatUncheckedUpdateInput = {
@@ -393,7 +412,8 @@ export type MatchPlayerStatUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   matchId?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MatchPlayerStatCreateManyInput = {
@@ -406,7 +426,8 @@ export type MatchPlayerStatCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   matchId: string
-  userId: string
+  userId?: string | null
+  guestPlayerId?: string | null
 }
 
 export type MatchPlayerStatUpdateManyMutationInput = {
@@ -430,7 +451,8 @@ export type MatchPlayerStatUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   matchId?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MatchPlayerStatListRelationFilter = {
@@ -448,6 +470,11 @@ export type MatchPlayerStatMatchIdUserIdCompoundUniqueInput = {
   userId: string
 }
 
+export type MatchPlayerStatMatchIdGuestPlayerIdCompoundUniqueInput = {
+  matchId: string
+  guestPlayerId: string
+}
+
 export type MatchPlayerStatCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   goals?: Prisma.SortOrder
@@ -459,6 +486,7 @@ export type MatchPlayerStatCountOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   matchId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrder
 }
 
 export type MatchPlayerStatAvgOrderByAggregateInput = {
@@ -480,6 +508,7 @@ export type MatchPlayerStatMaxOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   matchId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrder
 }
 
 export type MatchPlayerStatMinOrderByAggregateInput = {
@@ -493,6 +522,7 @@ export type MatchPlayerStatMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   matchId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  guestPlayerId?: Prisma.SortOrder
 }
 
 export type MatchPlayerStatSumOrderByAggregateInput = {
@@ -542,6 +572,48 @@ export type MatchPlayerStatUncheckedUpdateManyWithoutUserNestedInput = {
   connect?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
   update?: Prisma.MatchPlayerStatUpdateWithWhereUniqueWithoutUserInput | Prisma.MatchPlayerStatUpdateWithWhereUniqueWithoutUserInput[]
   updateMany?: Prisma.MatchPlayerStatUpdateManyWithWhereWithoutUserInput | Prisma.MatchPlayerStatUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.MatchPlayerStatScalarWhereInput | Prisma.MatchPlayerStatScalarWhereInput[]
+}
+
+export type MatchPlayerStatCreateNestedManyWithoutGuestPlayerInput = {
+  create?: Prisma.XOR<Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput, Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput> | Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput[] | Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput[]
+  connectOrCreate?: Prisma.MatchPlayerStatCreateOrConnectWithoutGuestPlayerInput | Prisma.MatchPlayerStatCreateOrConnectWithoutGuestPlayerInput[]
+  createMany?: Prisma.MatchPlayerStatCreateManyGuestPlayerInputEnvelope
+  connect?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+}
+
+export type MatchPlayerStatUncheckedCreateNestedManyWithoutGuestPlayerInput = {
+  create?: Prisma.XOR<Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput, Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput> | Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput[] | Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput[]
+  connectOrCreate?: Prisma.MatchPlayerStatCreateOrConnectWithoutGuestPlayerInput | Prisma.MatchPlayerStatCreateOrConnectWithoutGuestPlayerInput[]
+  createMany?: Prisma.MatchPlayerStatCreateManyGuestPlayerInputEnvelope
+  connect?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+}
+
+export type MatchPlayerStatUpdateManyWithoutGuestPlayerNestedInput = {
+  create?: Prisma.XOR<Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput, Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput> | Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput[] | Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput[]
+  connectOrCreate?: Prisma.MatchPlayerStatCreateOrConnectWithoutGuestPlayerInput | Prisma.MatchPlayerStatCreateOrConnectWithoutGuestPlayerInput[]
+  upsert?: Prisma.MatchPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput | Prisma.MatchPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput[]
+  createMany?: Prisma.MatchPlayerStatCreateManyGuestPlayerInputEnvelope
+  set?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+  disconnect?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+  delete?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+  connect?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+  update?: Prisma.MatchPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput | Prisma.MatchPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput[]
+  updateMany?: Prisma.MatchPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput | Prisma.MatchPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput[]
+  deleteMany?: Prisma.MatchPlayerStatScalarWhereInput | Prisma.MatchPlayerStatScalarWhereInput[]
+}
+
+export type MatchPlayerStatUncheckedUpdateManyWithoutGuestPlayerNestedInput = {
+  create?: Prisma.XOR<Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput, Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput> | Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput[] | Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput[]
+  connectOrCreate?: Prisma.MatchPlayerStatCreateOrConnectWithoutGuestPlayerInput | Prisma.MatchPlayerStatCreateOrConnectWithoutGuestPlayerInput[]
+  upsert?: Prisma.MatchPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput | Prisma.MatchPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput[]
+  createMany?: Prisma.MatchPlayerStatCreateManyGuestPlayerInputEnvelope
+  set?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+  disconnect?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+  delete?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+  connect?: Prisma.MatchPlayerStatWhereUniqueInput | Prisma.MatchPlayerStatWhereUniqueInput[]
+  update?: Prisma.MatchPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput | Prisma.MatchPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput[]
+  updateMany?: Prisma.MatchPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput | Prisma.MatchPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput[]
   deleteMany?: Prisma.MatchPlayerStatScalarWhereInput | Prisma.MatchPlayerStatScalarWhereInput[]
 }
 
@@ -597,6 +669,7 @@ export type MatchPlayerStatCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   match: Prisma.MatchCreateNestedOneWithoutPlayerStatsInput
+  guestPlayer?: Prisma.GuestPlayerCreateNestedOneWithoutMatchStatsInput
 }
 
 export type MatchPlayerStatUncheckedCreateWithoutUserInput = {
@@ -609,6 +682,7 @@ export type MatchPlayerStatUncheckedCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   matchId: string
+  guestPlayerId?: string | null
 }
 
 export type MatchPlayerStatCreateOrConnectWithoutUserInput = {
@@ -650,7 +724,60 @@ export type MatchPlayerStatScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"MatchPlayerStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MatchPlayerStat"> | Date | string
   matchId?: Prisma.StringFilter<"MatchPlayerStat"> | string
-  userId?: Prisma.StringFilter<"MatchPlayerStat"> | string
+  userId?: Prisma.StringNullableFilter<"MatchPlayerStat"> | string | null
+  guestPlayerId?: Prisma.StringNullableFilter<"MatchPlayerStat"> | string | null
+}
+
+export type MatchPlayerStatCreateWithoutGuestPlayerInput = {
+  id?: string
+  goals?: number
+  assists?: number
+  yellowCards?: number
+  redCards?: number
+  rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  match: Prisma.MatchCreateNestedOneWithoutPlayerStatsInput
+  user?: Prisma.UserCreateNestedOneWithoutMatchStatsInput
+}
+
+export type MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput = {
+  id?: string
+  goals?: number
+  assists?: number
+  yellowCards?: number
+  redCards?: number
+  rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matchId: string
+  userId?: string | null
+}
+
+export type MatchPlayerStatCreateOrConnectWithoutGuestPlayerInput = {
+  where: Prisma.MatchPlayerStatWhereUniqueInput
+  create: Prisma.XOR<Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput, Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput>
+}
+
+export type MatchPlayerStatCreateManyGuestPlayerInputEnvelope = {
+  data: Prisma.MatchPlayerStatCreateManyGuestPlayerInput | Prisma.MatchPlayerStatCreateManyGuestPlayerInput[]
+  skipDuplicates?: boolean
+}
+
+export type MatchPlayerStatUpsertWithWhereUniqueWithoutGuestPlayerInput = {
+  where: Prisma.MatchPlayerStatWhereUniqueInput
+  update: Prisma.XOR<Prisma.MatchPlayerStatUpdateWithoutGuestPlayerInput, Prisma.MatchPlayerStatUncheckedUpdateWithoutGuestPlayerInput>
+  create: Prisma.XOR<Prisma.MatchPlayerStatCreateWithoutGuestPlayerInput, Prisma.MatchPlayerStatUncheckedCreateWithoutGuestPlayerInput>
+}
+
+export type MatchPlayerStatUpdateWithWhereUniqueWithoutGuestPlayerInput = {
+  where: Prisma.MatchPlayerStatWhereUniqueInput
+  data: Prisma.XOR<Prisma.MatchPlayerStatUpdateWithoutGuestPlayerInput, Prisma.MatchPlayerStatUncheckedUpdateWithoutGuestPlayerInput>
+}
+
+export type MatchPlayerStatUpdateManyWithWhereWithoutGuestPlayerInput = {
+  where: Prisma.MatchPlayerStatScalarWhereInput
+  data: Prisma.XOR<Prisma.MatchPlayerStatUpdateManyMutationInput, Prisma.MatchPlayerStatUncheckedUpdateManyWithoutGuestPlayerInput>
 }
 
 export type MatchPlayerStatCreateWithoutMatchInput = {
@@ -662,7 +789,8 @@ export type MatchPlayerStatCreateWithoutMatchInput = {
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutMatchStatsInput
+  user?: Prisma.UserCreateNestedOneWithoutMatchStatsInput
+  guestPlayer?: Prisma.GuestPlayerCreateNestedOneWithoutMatchStatsInput
 }
 
 export type MatchPlayerStatUncheckedCreateWithoutMatchInput = {
@@ -674,7 +802,8 @@ export type MatchPlayerStatUncheckedCreateWithoutMatchInput = {
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  userId: string
+  userId?: string | null
+  guestPlayerId?: string | null
 }
 
 export type MatchPlayerStatCreateOrConnectWithoutMatchInput = {
@@ -713,6 +842,7 @@ export type MatchPlayerStatCreateManyUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   matchId: string
+  guestPlayerId?: string | null
 }
 
 export type MatchPlayerStatUpdateWithoutUserInput = {
@@ -725,6 +855,7 @@ export type MatchPlayerStatUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   match?: Prisma.MatchUpdateOneRequiredWithoutPlayerStatsNestedInput
+  guestPlayer?: Prisma.GuestPlayerUpdateOneWithoutMatchStatsNestedInput
 }
 
 export type MatchPlayerStatUncheckedUpdateWithoutUserInput = {
@@ -737,6 +868,7 @@ export type MatchPlayerStatUncheckedUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   matchId?: Prisma.StringFieldUpdateOperationsInput | string
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MatchPlayerStatUncheckedUpdateManyWithoutUserInput = {
@@ -749,6 +881,59 @@ export type MatchPlayerStatUncheckedUpdateManyWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   matchId?: Prisma.StringFieldUpdateOperationsInput | string
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type MatchPlayerStatCreateManyGuestPlayerInput = {
+  id?: string
+  goals?: number
+  assists?: number
+  yellowCards?: number
+  redCards?: number
+  rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matchId: string
+  userId?: string | null
+}
+
+export type MatchPlayerStatUpdateWithoutGuestPlayerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  goals?: Prisma.IntFieldUpdateOperationsInput | number
+  assists?: Prisma.IntFieldUpdateOperationsInput | number
+  yellowCards?: Prisma.IntFieldUpdateOperationsInput | number
+  redCards?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  match?: Prisma.MatchUpdateOneRequiredWithoutPlayerStatsNestedInput
+  user?: Prisma.UserUpdateOneWithoutMatchStatsNestedInput
+}
+
+export type MatchPlayerStatUncheckedUpdateWithoutGuestPlayerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  goals?: Prisma.IntFieldUpdateOperationsInput | number
+  assists?: Prisma.IntFieldUpdateOperationsInput | number
+  yellowCards?: Prisma.IntFieldUpdateOperationsInput | number
+  redCards?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matchId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type MatchPlayerStatUncheckedUpdateManyWithoutGuestPlayerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  goals?: Prisma.IntFieldUpdateOperationsInput | number
+  assists?: Prisma.IntFieldUpdateOperationsInput | number
+  yellowCards?: Prisma.IntFieldUpdateOperationsInput | number
+  redCards?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matchId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MatchPlayerStatCreateManyMatchInput = {
@@ -760,7 +945,8 @@ export type MatchPlayerStatCreateManyMatchInput = {
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  userId: string
+  userId?: string | null
+  guestPlayerId?: string | null
 }
 
 export type MatchPlayerStatUpdateWithoutMatchInput = {
@@ -772,7 +958,8 @@ export type MatchPlayerStatUpdateWithoutMatchInput = {
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutMatchStatsNestedInput
+  user?: Prisma.UserUpdateOneWithoutMatchStatsNestedInput
+  guestPlayer?: Prisma.GuestPlayerUpdateOneWithoutMatchStatsNestedInput
 }
 
 export type MatchPlayerStatUncheckedUpdateWithoutMatchInput = {
@@ -784,7 +971,8 @@ export type MatchPlayerStatUncheckedUpdateWithoutMatchInput = {
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MatchPlayerStatUncheckedUpdateManyWithoutMatchInput = {
@@ -796,7 +984,8 @@ export type MatchPlayerStatUncheckedUpdateManyWithoutMatchInput = {
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guestPlayerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -812,8 +1001,10 @@ export type MatchPlayerStatSelect<ExtArgs extends runtime.Types.Extensions.Inter
   updatedAt?: boolean
   matchId?: boolean
   userId?: boolean
+  guestPlayerId?: boolean
   match?: boolean | Prisma.MatchDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.MatchPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.MatchPlayerStat$guestPlayerArgs<ExtArgs>
 }, ExtArgs["result"]["matchPlayerStat"]>
 
 export type MatchPlayerStatSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -827,8 +1018,10 @@ export type MatchPlayerStatSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   updatedAt?: boolean
   matchId?: boolean
   userId?: boolean
+  guestPlayerId?: boolean
   match?: boolean | Prisma.MatchDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.MatchPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.MatchPlayerStat$guestPlayerArgs<ExtArgs>
 }, ExtArgs["result"]["matchPlayerStat"]>
 
 export type MatchPlayerStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -842,8 +1035,10 @@ export type MatchPlayerStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   updatedAt?: boolean
   matchId?: boolean
   userId?: boolean
+  guestPlayerId?: boolean
   match?: boolean | Prisma.MatchDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.MatchPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.MatchPlayerStat$guestPlayerArgs<ExtArgs>
 }, ExtArgs["result"]["matchPlayerStat"]>
 
 export type MatchPlayerStatSelectScalar = {
@@ -857,27 +1052,32 @@ export type MatchPlayerStatSelectScalar = {
   updatedAt?: boolean
   matchId?: boolean
   userId?: boolean
+  guestPlayerId?: boolean
 }
 
-export type MatchPlayerStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "goals" | "assists" | "yellowCards" | "redCards" | "rating" | "createdAt" | "updatedAt" | "matchId" | "userId", ExtArgs["result"]["matchPlayerStat"]>
+export type MatchPlayerStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "goals" | "assists" | "yellowCards" | "redCards" | "rating" | "createdAt" | "updatedAt" | "matchId" | "userId" | "guestPlayerId", ExtArgs["result"]["matchPlayerStat"]>
 export type MatchPlayerStatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   match?: boolean | Prisma.MatchDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.MatchPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.MatchPlayerStat$guestPlayerArgs<ExtArgs>
 }
 export type MatchPlayerStatIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   match?: boolean | Prisma.MatchDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.MatchPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.MatchPlayerStat$guestPlayerArgs<ExtArgs>
 }
 export type MatchPlayerStatIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   match?: boolean | Prisma.MatchDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.MatchPlayerStat$userArgs<ExtArgs>
+  guestPlayer?: boolean | Prisma.MatchPlayerStat$guestPlayerArgs<ExtArgs>
 }
 
 export type $MatchPlayerStatPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "MatchPlayerStat"
   objects: {
     match: Prisma.$MatchPayload<ExtArgs>
-    user: Prisma.$UserPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs> | null
+    guestPlayer: Prisma.$GuestPlayerPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -889,7 +1089,8 @@ export type $MatchPlayerStatPayload<ExtArgs extends runtime.Types.Extensions.Int
     createdAt: Date
     updatedAt: Date
     matchId: string
-    userId: string
+    userId: string | null
+    guestPlayerId: string | null
   }, ExtArgs["result"]["matchPlayerStat"]>
   composites: {}
 }
@@ -1285,7 +1486,8 @@ readonly fields: MatchPlayerStatFieldRefs;
 export interface Prisma__MatchPlayerStatClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   match<T extends Prisma.MatchDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MatchDefaultArgs<ExtArgs>>): Prisma.Prisma__MatchClient<runtime.Types.Result.GetResult<Prisma.$MatchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.MatchPlayerStat$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MatchPlayerStat$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  guestPlayer<T extends Prisma.MatchPlayerStat$guestPlayerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MatchPlayerStat$guestPlayerArgs<ExtArgs>>): Prisma.Prisma__GuestPlayerClient<runtime.Types.Result.GetResult<Prisma.$GuestPlayerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1325,6 +1527,7 @@ export interface MatchPlayerStatFieldRefs {
   readonly updatedAt: Prisma.FieldRef<"MatchPlayerStat", 'DateTime'>
   readonly matchId: Prisma.FieldRef<"MatchPlayerStat", 'String'>
   readonly userId: Prisma.FieldRef<"MatchPlayerStat", 'String'>
+  readonly guestPlayerId: Prisma.FieldRef<"MatchPlayerStat", 'String'>
 }
     
 
@@ -1723,6 +1926,44 @@ export type MatchPlayerStatDeleteManyArgs<ExtArgs extends runtime.Types.Extensio
    * Limit how many MatchPlayerStats to delete.
    */
   limit?: number
+}
+
+/**
+ * MatchPlayerStat.user
+ */
+export type MatchPlayerStat$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * MatchPlayerStat.guestPlayer
+ */
+export type MatchPlayerStat$guestPlayerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GuestPlayer
+   */
+  select?: Prisma.GuestPlayerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GuestPlayer
+   */
+  omit?: Prisma.GuestPlayerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GuestPlayerInclude<ExtArgs> | null
+  where?: Prisma.GuestPlayerWhereInput
 }
 
 /**

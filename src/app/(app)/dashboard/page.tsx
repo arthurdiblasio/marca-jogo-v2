@@ -1,6 +1,32 @@
-import { requireAuth } from "@/shared/auth/require-auth";
-import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
+import Link from "next/link";
+import { CalendarDays, ClipboardList, MapPin, Megaphone, Search, Settings, Shield, Trophy, User, Users } from "lucide-react";
+
+import { EventScoreboard } from "@/components/football/event-scoreboard";
+import { ResultList, type MatchResultRow } from "@/components/football/result-list";
+import { SportSection } from "@/components/football/sport-section";
+import { SquadList } from "@/components/football/squad-list";
+import { StatStrip } from "@/components/football/stat-strip";
+import { PageTransition } from "@/components/motion/page-transition";
+import { PageHeader } from "@/components/navigation/page-header";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ComponentStateView } from "@/components/cards/component-state";
 import { EmptyOrgsState } from "@/components/organizations/empty-orgs-state";
+import { teamPlayers, teamStats } from "@/constants/mock-data";
+import { requireAuth } from "@/shared/auth/require-auth";
+import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
+import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
+import { membershipRepository } from "@/modules/organizations/repositories/membership-repository";
+import { matchRepository } from "@/modules/matches/repositories/match-repository";
+import { getMatchPerspective } from "@/modules/matches/lib/format";
+import { formatListingDateTime } from "@/modules/game-listings/lib/format";
+import { computeNextPeladaDate } from "@/modules/organizations/lib/next-pelada";
+
+function formatCurrency(value: number | null | undefined) {
+  if (value == null) return null;
+  return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
 
 export default async function DashboardPage() {
   const session = await requireAuth();
@@ -10,9 +36,241 @@ export default async function DashboardPage() {
     return <EmptyOrgsState />;
   }
 
+  const activeOrgId = await getActiveOrgId();
+  const activeOrg = activeOrgId ? await organizationRepository.findById(activeOrgId) : null;
+
+  if (!activeOrgId || !activeOrg) {
+    return (
+      <PageTransition className="space-y-4">
+        <PageHeader eyebrow="Home" title="Bem-vindo" description="Selecione uma organização para ver seu painel." />
+      </PageTransition>
+    );
+  }
+
+  if (activeOrg.type === "PELADA") {
+    const members = await membershipRepository.listByOrganization(activeOrgId);
+    const nextDate = computeNextPeladaDate(activeOrg.weekday, activeOrg.scheduledTime);
+    const monthlyFee = formatCurrency(activeOrg.monthlyFee ? Number(activeOrg.monthlyFee) : null);
+    const singleFee = formatCurrency(activeOrg.singleFee ? Number(activeOrg.singleFee) : null);
+
+    return (
+      <PageTransition className="space-y-4">
+        <PageHeader
+          eyebrow="Home"
+          title={activeOrg.name}
+          description="Próxima pelada, jogadores vinculados e configurações em um só lugar."
+        />
+
+        <div className="flex flex-wrap gap-3">
+          <Button asChild size="sm" className="w-auto">
+            <Link href="/pelada/rodadas">
+              <Trophy className="size-4" />
+              Ver rodadas
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="sm" className="w-auto">
+            <Link href="/pelada/jogadores">
+              <Users className="size-4" />
+              Ver jogadores
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="sm" className="w-auto">
+            <Link href="/pelada">
+              <Settings className="size-4" />
+              Configurar pelada
+            </Link>
+          </Button>
+        </div>
+
+        {nextDate ? (
+          <Card className="space-y-3 p-5">
+            <div className="flex items-center gap-3">
+              <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-green-50">
+                <CalendarDays className="size-5 text-primary" />
+              </div>
+              <div>
+                <p className="caption text-primary">Próxima pelada</p>
+                <p className="font-black text-slate-900">{formatListingDateTime(nextDate)}</p>
+              </div>
+            </div>
+
+            {activeOrg.address && (
+              <p className="flex items-center gap-1.5 text-sm text-slate-500">
+                <MapPin className="size-4 shrink-0" />
+                {activeOrg.address}
+              </p>
+            )}
+
+            {(monthlyFee || singleFee) && (
+              <p className="text-sm text-slate-500">
+                Mensalista: {monthlyFee ?? "não definido"} · Avulso: {singleFee ?? "não definido"}
+              </p>
+            )}
+          </Card>
+        ) : (
+          <Card className="p-5 text-sm text-slate-400">
+            Nenhum dia e horário fixo cadastrado ainda. Configure em{" "}
+            <Link href="/pelada" className="font-semibold text-primary">
+              Configurar pelada
+            </Link>
+            .
+          </Card>
+        )}
+
+        <section className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-black text-slate-900">Jogadores vinculados</h2>
+            <Link href="/pelada/jogadores" className="text-sm font-semibold text-primary">
+              Ver todos
+            </Link>
+          </div>
+
+          {members.length === 0 ? (
+            <ComponentStateView state="empty" emptyLabel="Nenhum jogador vinculado ainda" />
+          ) : (
+            <div className="space-y-2">
+              {members.slice(0, 5).map((member) => (
+                <Card key={member.id} className="flex items-center gap-3 p-3">
+                  <Avatar className="size-9 rounded-xl bg-green-50">
+                    {member.user.profile?.imageUrl && (
+                      <AvatarImage
+                        src={member.user.profile.imageUrl}
+                        alt={member.user.profile?.nickname || member.user.profile?.fullName || member.user.email}
+                      />
+                    )}
+                    <AvatarFallback className="rounded-xl bg-transparent">
+                      <User className="size-4 text-primary" />
+                    </AvatarFallback>
+                  </Avatar>
+                  <p className="font-bold text-slate-900">
+                    {member.user.profile?.nickname || member.user.profile?.fullName || member.user.email}
+                  </p>
+                </Card>
+              ))}
+            </div>
+          )}
+        </section>
+      </PageTransition>
+    );
+  }
+
+  if (activeOrg.type !== "TEAM") {
+    return (
+      <PageTransition className="space-y-4">
+        <PageHeader eyebrow="Home" title="Bem-vindo" description="Selecione uma organização para ver seu painel." />
+      </PageTransition>
+    );
+  }
+
+  const [upcoming, past] = await Promise.all([
+    matchRepository.listUpcomingByOrganization(activeOrgId, 1),
+    matchRepository.listPastByOrganization(activeOrgId, 3),
+  ]);
+
+  const nextMatch = upcoming[0];
+  const nextMatchPerspective = nextMatch ? getMatchPerspective(nextMatch, activeOrgId) : null;
+
+  const results: MatchResultRow[] = past
+    .map((match) => {
+      const perspective = getMatchPerspective(match, activeOrgId);
+      if (!perspective.outcome || perspective.teamScore == null || perspective.opponentScore == null) return null;
+      return {
+        id: match.id,
+        home: perspective.isHome ? "Seu time" : perspective.opponentLabel,
+        away: perspective.isHome ? perspective.opponentLabel : "Seu time",
+        score: perspective.isHome
+          ? `${perspective.teamScore}-${perspective.opponentScore}`
+          : `${perspective.opponentScore}-${perspective.teamScore}`,
+        status: perspective.outcome,
+      };
+    })
+    .filter((row): row is MatchResultRow => row !== null);
+
   return (
-    <div>
-      <h1 className="text-2xl font-black text-slate-900">Dashboard</h1>
-    </div>
+    <PageTransition className="space-y-4">
+      <PageHeader
+        eyebrow="Home"
+        title={activeOrg.name}
+        description="Proximo jogo, forma recente, estatisticas coletivas e elenco em formato de match center."
+      />
+
+      <div className="flex flex-wrap gap-3">
+        <Button asChild size="sm" className="w-auto">
+          <Link href="/jogos">
+            <Search className="size-4" />
+            Ver mural de jogos
+          </Link>
+        </Button>
+        <Button asChild variant="outline" size="sm" className="w-auto">
+          <Link href="/jogos/novo">
+            <Megaphone className="size-4" />
+            Publicar jogo
+          </Link>
+        </Button>
+        <Button asChild variant="outline" size="sm" className="w-auto">
+          <Link href="/time/agenda">
+            <CalendarDays className="size-4" />
+            Ver agenda completa
+          </Link>
+        </Button>
+        <Button asChild variant="outline" size="sm" className="w-auto">
+          <Link href="/jogos/meus-jogos">
+            <ClipboardList className="size-4" />
+            Meus jogos publicados
+          </Link>
+        </Button>
+        <Button asChild variant="outline" size="sm" className="w-auto">
+          <Link href="/time/jogadores">
+            <Users className="size-4" />
+            Gerenciar elenco
+          </Link>
+        </Button>
+        <Button asChild variant="outline" size="sm" className="w-auto">
+          <Link href="/time">
+            <Shield className="size-4" />
+            Perfil do time
+          </Link>
+        </Button>
+      </div>
+
+      {nextMatch && nextMatchPerspective ? (
+        <EventScoreboard
+          type="time"
+          title="Proximo Jogo"
+          home={nextMatchPerspective.isHome ? "Seu time" : nextMatchPerspective.opponentLabel}
+          away={nextMatchPerspective.isHome ? nextMatchPerspective.opponentLabel : "Seu time"}
+          date={formatListingDateTime(nextMatch.scheduledAt)}
+          venue={nextMatch.location}
+        />
+      ) : (
+        <Card className="p-5 text-sm text-slate-400">
+          Nenhum jogo agendado. Publique ou responda a um anuncio no{" "}
+          <Link href="/jogos" className="font-semibold text-primary">
+            mural de jogos
+          </Link>
+          .
+        </Card>
+      )}
+
+      <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <SportSection title="Ultimos Resultados">
+          <ResultList results={results} />
+        </SportSection>
+
+        <SportSection title="Estatisticas do Time">
+          <StatStrip
+            items={teamStats.map((stat) => ({
+              label: stat.label,
+              value: stat.value,
+              helper: stat.helper
+            }))}
+          />
+        </SportSection>
+      </div>
+
+      <SportSection title="Elenco" action={`${teamPlayers.length} atletas`}>
+        <SquadList players={teamPlayers} />
+      </SportSection>
+    </PageTransition>
   );
 }

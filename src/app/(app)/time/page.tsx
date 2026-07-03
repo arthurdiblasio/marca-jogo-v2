@@ -1,131 +1,101 @@
-import Link from "next/link";
-import { CalendarDays, ClipboardList, Megaphone, Search, Users } from "lucide-react";
+import { redirect } from "next/navigation";
+import { MapPin, Shield } from "lucide-react";
 
-import { EventScoreboard } from "@/components/football/event-scoreboard";
-import { ResultList, type MatchResultRow } from "@/components/football/result-list";
-import { SportSection } from "@/components/football/sport-section";
-import { SquadList } from "@/components/football/squad-list";
-import { StatStrip } from "@/components/football/stat-strip";
 import { PageTransition } from "@/components/motion/page-transition";
 import { PageHeader } from "@/components/navigation/page-header";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { teamPlayers, teamStats } from "@/constants/mock-data";
+import { TeamProfileTabs } from "@/components/team/team-profile-tabs";
+import { EditOrganizationForm } from "@/components/organizations/edit-organization-form";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
-import { matchRepository } from "@/modules/matches/repositories/match-repository";
-import { getMatchPerspective } from "@/modules/matches/lib/format";
-import { formatListingDateTime } from "@/modules/game-listings/lib/format";
+import { requireOrgMembership } from "@/shared/orgs/require-org-membership";
+import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
 
-export default async function TeamHomePage() {
-  await requireAuth();
+const MANAGER_ROLES = ["OWNER", "ADMIN", "CAPTAIN"];
+
+const MODALITY_LABEL: Record<string, string> = {
+  FIELD_11: "Campo 11",
+  SOCIETY_7: "Society 7",
+  SOCIETY_8: "Society 8",
+  FUTSAL_5: "Futsal 5",
+};
+
+export default async function TeamProfilePage() {
+  const session = await requireAuth();
+
   const activeOrgId = await getActiveOrgId();
+  if (!activeOrgId) {
+    redirect("/dashboard");
+  }
 
-  const [upcoming, past] = activeOrgId
-    ? await Promise.all([
-        matchRepository.listUpcomingByOrganization(activeOrgId, 1),
-        matchRepository.listPastByOrganization(activeOrgId, 3),
-      ])
-    : [[], []];
+  const [organization, membership] = await Promise.all([
+    organizationRepository.findById(activeOrgId),
+    requireOrgMembership(session.id, activeOrgId),
+  ]);
 
-  const nextMatch = upcoming[0];
-  const nextMatchPerspective = nextMatch ? getMatchPerspective(nextMatch, activeOrgId) : null;
+  if (!organization) {
+    redirect("/dashboard");
+  }
 
-  const results: MatchResultRow[] = past
-    .map((match) => {
-      const perspective = getMatchPerspective(match, activeOrgId);
-      if (!perspective.outcome || perspective.teamScore == null || perspective.opponentScore == null) return null;
-      return {
-        id: match.id,
-        home: perspective.isHome ? "Seu time" : perspective.opponentLabel,
-        away: perspective.isHome ? perspective.opponentLabel : "Seu time",
-        score: perspective.isHome
-          ? `${perspective.teamScore}-${perspective.opponentScore}`
-          : `${perspective.opponentScore}-${perspective.teamScore}`,
-        status: perspective.outcome,
-      };
-    })
-    .filter((row): row is MatchResultRow => row !== null);
+  const canEdit = MANAGER_ROLES.includes(membership.role);
 
   return (
     <PageTransition className="space-y-4">
       <PageHeader
         eyebrow="Time"
-        title="Home do Time"
-        description="Proximo jogo, forma recente, estatisticas coletivas e elenco em formato de match center."
+        title={organization.name}
+        description="Dados cadastrais do time e gestão do elenco."
       />
 
-      <div className="flex flex-wrap gap-3">
-        <Button asChild size="sm" className="w-auto">
-          <Link href="/jogos">
-            <Search className="size-4" />
-            Ver mural de jogos
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="sm" className="w-auto">
-          <Link href="/jogos/novo">
-            <Megaphone className="size-4" />
-            Publicar jogo
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="sm" className="w-auto">
-          <Link href="/time/agenda">
-            <CalendarDays className="size-4" />
-            Ver agenda completa
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="sm" className="w-auto">
-          <Link href="/jogos/meus-jogos">
-            <ClipboardList className="size-4" />
-            Meus jogos publicados
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="sm" className="w-auto">
-          <Link href="/time/jogadores">
-            <Users className="size-4" />
-            Gerenciar elenco
-          </Link>
-        </Button>
-      </div>
+      <TeamProfileTabs />
 
-      {nextMatch && nextMatchPerspective ? (
-        <EventScoreboard
-          type="time"
-          title="Proximo Jogo"
-          home={nextMatchPerspective.isHome ? "Seu time" : nextMatchPerspective.opponentLabel}
-          away={nextMatchPerspective.isHome ? nextMatchPerspective.opponentLabel : "Seu time"}
-          date={formatListingDateTime(nextMatch.scheduledAt)}
-          venue={nextMatch.location}
+      {canEdit ? (
+        <EditOrganizationForm
+          organization={{
+            id: organization.id,
+            name: organization.name,
+            type: organization.type,
+            logoUrl: organization.logoUrl,
+            address: organization.address,
+            city: organization.city,
+            state: organization.state,
+            lat: organization.lat ? Number(organization.lat) : null,
+            lng: organization.lng ? Number(organization.lng) : null,
+            modality: organization.modality,
+            description: organization.description,
+            weekday: organization.weekday,
+            scheduledTime: organization.scheduledTime,
+            monthlyFee: organization.monthlyFee ? Number(organization.monthlyFee) : null,
+            singleFee: organization.singleFee ? Number(organization.singleFee) : null,
+          }}
         />
       ) : (
-        <Card className="p-5 text-sm text-slate-400">
-          Nenhum jogo agendado. Publique ou responda a um anuncio no{" "}
-          <Link href="/jogos" className="font-semibold text-primary">
-            mural de jogos
-          </Link>
-          .
+        <Card className="flex items-start gap-4 p-5">
+          <div className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-2xl bg-green-50">
+            {organization.logoUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={organization.logoUrl} alt={organization.name} className="size-full object-cover" />
+            ) : (
+              <Shield className="size-7 text-primary" />
+            )}
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="font-black text-slate-900">{organization.name}</p>
+            {organization.modality && (
+              <p className="text-sm text-slate-500">{MODALITY_LABEL[organization.modality]}</p>
+            )}
+            {organization.address && (
+              <p className="mt-2 flex items-center gap-1.5 text-sm text-slate-500">
+                <MapPin className="size-4 shrink-0" />
+                {organization.address}
+              </p>
+            )}
+            {organization.description && (
+              <p className="mt-2 text-sm text-slate-600">{organization.description}</p>
+            )}
+          </div>
         </Card>
       )}
-
-      <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
-        <SportSection title="Ultimos Resultados">
-          <ResultList results={results} />
-        </SportSection>
-
-        <SportSection title="Estatisticas do Time">
-          <StatStrip
-            items={teamStats.map((stat) => ({
-              label: stat.label,
-              value: stat.value,
-              helper: stat.helper
-            }))}
-          />
-        </SportSection>
-      </div>
-
-      <SportSection title="Elenco" action={`${teamPlayers.length} atletas`}>
-        <SquadList players={teamPlayers} />
-      </SportSection>
     </PageTransition>
   );
 }

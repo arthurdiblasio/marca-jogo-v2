@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Shield, Swords, ChevronRight, ChevronDown, Loader2 } from "lucide-react";
+import { Shield, Swords, ChevronRight } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -10,8 +10,10 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { FormField } from "@/components/ui/form-field";
 import { Input } from "@/components/ui/input";
+import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
+import { ImageUpload } from "@/components/ui/image-upload";
 import { ALL_MODALITIES } from "@/constants/positions";
-import { fetchStates, fetchCitiesByState } from "@/constants/brazil-locations";
+import { WEEKDAYS } from "@/constants/weekdays";
 import { createOrganizationAction } from "@/modules/organizations/actions/create-organization";
 import {
   createOrganizationSchema,
@@ -45,10 +47,6 @@ const ORG_TYPES = [
 export function CreateOrganizationForm() {
   const [step, setStep] = useState<1 | 2>(1);
   const [selectedType, setSelectedType] = useState<"PELADA" | "TEAM" | null>(null);
-  const [states, setStates] = useState<{ value: string; label: string }[]>([]);
-  const [cities, setCities] = useState<string[]>([]);
-  const [loadingStates, setLoadingStates] = useState(true);
-  const [loadingCities, setLoadingCities] = useState(false);
 
   const {
     register,
@@ -61,25 +59,6 @@ export function CreateOrganizationForm() {
   });
 
   const selectedModality = watch("modality");
-  const watchedState = watch("state");
-
-  useEffect(() => {
-    fetchStates()
-      .then(setStates)
-      .finally(() => setLoadingStates(false));
-  }, []);
-
-  useEffect(() => {
-    if (!watchedState) {
-      setCities([]);
-      return;
-    }
-    setLoadingCities(true);
-    setValue("city", "");
-    fetchCitiesByState(watchedState)
-      .then(setCities)
-      .finally(() => setLoadingCities(false));
-  }, [watchedState]);
 
   async function onSubmit(data: CreateOrganizationInput) {
     try {
@@ -201,6 +180,18 @@ export function CreateOrganizationForm() {
                 </p>
               </div>
 
+              <div className="flex flex-col items-center gap-1.5">
+                <ImageUpload
+                  folder="organizations/logos"
+                  shape="square"
+                  fallbackIcon={<Shield className="size-7" />}
+                  onChange={(url) => setValue("logoUrl", url ?? undefined)}
+                />
+                <p className="text-xs text-slate-400">
+                  Escudo {selectedType === "TEAM" ? "do time" : "da pelada"} (opcional)
+                </p>
+              </div>
+
               <FormField
                 label="Nome"
                 htmlFor="name"
@@ -249,69 +240,99 @@ export function CreateOrganizationForm() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3">
-                <FormField
-                  label="Estado"
-                  htmlFor="state"
-                  error={errors.state?.message}
-                >
-                  <div className="relative">
-                    <select
-                      id="state"
-                      disabled={loadingStates}
-                      className="w-full appearance-none rounded-xl border-2 border-slate-200 bg-white px-4 py-4 text-base font-medium text-slate-900 outline-none transition focus:border-[#16A34A] disabled:cursor-not-allowed disabled:opacity-50"
-                      {...register("state")}
-                    >
-                      <option value="">
-                        {loadingStates ? "Carregando estados..." : "Selecione o estado"}
-                      </option>
-                      {states.map((s) => (
-                        <option key={s.value} value={s.value}>
-                          {s.label} ({s.value})
-                        </option>
-                      ))}
-                    </select>
-                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
-                      {loadingStates
-                        ? <Loader2 className="h-4 w-4 animate-spin" />
-                        : <ChevronDown className="h-4 w-4" />
-                      }
-                    </span>
-                  </div>
-                </FormField>
+              <FormField
+                label="Endereço"
+                htmlFor="address"
+                error={errors.address?.message}
+                description={
+                  selectedType === "TEAM"
+                    ? "O campo/quadra onde o time manda seus jogos."
+                    : "O local onde a pelada costuma acontecer."
+                }
+              >
+                <AddressAutocomplete
+                  id="address"
+                  placeholder="Digite o endereço do campo/quadra"
+                  onSelect={(selection) => {
+                    setValue("address", selection.address);
+                    setValue("city", selection.city ?? undefined);
+                    setValue("state", selection.state ?? undefined);
+                    setValue("lat", selection.lat);
+                    setValue("lng", selection.lng);
+                  }}
+                />
+              </FormField>
 
-                <FormField
-                  label="Cidade"
-                  htmlFor="city"
-                  error={errors.city?.message}
-                >
-                  <div className="relative">
-                    <select
-                      id="city"
-                      disabled={!watchedState || loadingCities}
-                      className="w-full appearance-none rounded-xl border-2 border-slate-200 bg-white px-4 py-4 text-base font-medium text-slate-900 outline-none transition focus:border-[#16A34A] disabled:cursor-not-allowed disabled:opacity-50"
-                      {...register("city")}
-                    >
-                      <option value="">
-                        {loadingCities
-                          ? "Carregando cidades..."
-                          : watchedState
-                            ? "Selecione a cidade"
-                            : "Selecione o estado primeiro"}
-                      </option>
-                      {cities.map((c) => (
-                        <option key={c} value={c}>{c}</option>
-                      ))}
-                    </select>
-                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
-                      {loadingCities
-                        ? <Loader2 className="h-4 w-4 animate-spin" />
-                        : <ChevronDown className="h-4 w-4" />
-                      }
-                    </span>
+              {selectedType === "PELADA" && (
+                <>
+                  <div>
+                    <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-400">
+                      Recorrência
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="rounded-full border-2 border-primary bg-primary px-4 py-1.5 text-sm font-semibold text-white">
+                        Semanal
+                      </span>
+                    </div>
                   </div>
-                </FormField>
-              </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <FormField label="Dia da semana" htmlFor="weekday" error={errors.weekday?.message}>
+                      <select
+                        id="weekday"
+                        defaultValue=""
+                        className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-base font-medium text-slate-900 outline-none transition focus:border-[#16A34A]"
+                        {...register("weekday", { valueAsNumber: true })}
+                      >
+                        <option value="">Selecione</option>
+                        {WEEKDAYS.map((day) => (
+                          <option key={day.value} value={day.value}>
+                            {day.label}
+                          </option>
+                        ))}
+                      </select>
+                    </FormField>
+
+                    <FormField label="Horário" htmlFor="scheduledTime" error={errors.scheduledTime?.message}>
+                      <Input id="scheduledTime" type="time" {...register("scheduledTime")} />
+                    </FormField>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <FormField
+                      label="Valor mensalista"
+                      htmlFor="monthlyFee"
+                      description="R$ por mês"
+                      error={errors.monthlyFee?.message}
+                    >
+                      <Input
+                        id="monthlyFee"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="0,00"
+                        {...register("monthlyFee", { valueAsNumber: true })}
+                      />
+                    </FormField>
+
+                    <FormField
+                      label="Valor avulso"
+                      htmlFor="singleFee"
+                      description="R$ por jogo"
+                      error={errors.singleFee?.message}
+                    >
+                      <Input
+                        id="singleFee"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="0,00"
+                        {...register("singleFee", { valueAsNumber: true })}
+                      />
+                    </FormField>
+                  </div>
+                </>
+              )}
 
               <div className="flex gap-3 pt-2">
                 <button
