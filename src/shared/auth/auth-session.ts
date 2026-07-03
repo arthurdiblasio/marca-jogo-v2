@@ -8,6 +8,10 @@ import {
 
 import type { AuthUser } from "./auth-user";
 
+export async function destroySession() {
+  await clearAccessTokenCookie();
+}
+
 export async function createSession(
   user: AuthUser,
   options?: {
@@ -21,10 +25,6 @@ export async function createSession(
   });
 
   return token;
-}
-
-export async function destroySession() {
-  await clearAccessTokenCookie();
 }
 
 export async function getSession() {
