@@ -5,13 +5,13 @@ import { revalidatePath } from "next/cache";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { membershipRepository } from "@/modules/organizations/repositories/membership-repository";
 import { matchRepository } from "../repositories/match-repository";
-import { saveMatchPlayerStatsSchema, type SaveMatchPlayerStatsInput } from "../schemas/match-stats-schemas";
+import { updateMatchScoreSchema, type UpdateMatchScoreInput } from "../schemas/match-stats-schemas";
 
 const MANAGER_ROLES = ["OWNER", "ADMIN", "CAPTAIN"];
 
-export async function saveMatchPlayerStatsAction(input: SaveMatchPlayerStatsInput) {
+export async function updateMatchScoreAction(input: UpdateMatchScoreInput) {
   const session = await requireAuth();
-  const data = saveMatchPlayerStatsSchema.parse(input);
+  const data = updateMatchScoreSchema.parse(input);
 
   const match = await matchRepository.findById(data.matchId);
   if (!match) {
@@ -24,22 +24,12 @@ export async function saveMatchPlayerStatsAction(input: SaveMatchPlayerStatsInpu
   ]);
 
   if (!membership || !MANAGER_ROLES.includes(membership.role)) {
-    throw new Error("Você não tem permissão para editar as estatísticas deste jogo.");
+    throw new Error("Você não tem permissão para editar o placar deste jogo.");
   }
 
-  await Promise.all(
-    data.stats.map((stat) =>
-      matchRepository.upsertPlayerStat({
-        matchId: data.matchId,
-        userId: stat.kind === "user" ? stat.id : undefined,
-        guestPlayerId: stat.kind === "guest" ? stat.id : undefined,
-        goals: stat.goals,
-        assists: stat.assists,
-        yellowCards: stat.yellowCards ?? 0,
-        redCards: stat.redCards ?? 0,
-      }),
-    ),
-  );
+  await matchRepository.updateScore(data.matchId, data.homeScore, data.awayScore);
 
   revalidatePath(`/time/agenda/${data.matchId}`);
+  revalidatePath("/time/agenda");
+  revalidatePath("/dashboard");
 }

@@ -6,6 +6,7 @@ import { PageTransition } from "@/components/motion/page-transition";
 import { PageHeader } from "@/components/navigation/page-header";
 import { Card } from "@/components/ui/card";
 import { PlayerStatSearchEditor, type StatCandidate, type StatEntry } from "@/components/stats/player-stat-search-editor";
+import { ParticipantsSelector } from "@/components/stats/participants-selector";
 import { VotingPanel, type VotingPlayer } from "@/components/voting/voting-panel";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { requireOrgMembership } from "@/shared/orgs/require-org-membership";
@@ -14,6 +15,7 @@ import { guestPlayerRepository } from "@/modules/guest-players/repositories/gues
 import { peladaOccurrenceRepository } from "@/modules/pelada-occurrences/repositories/pelada-occurrence-repository";
 import { savePeladaPlayerStatsAction } from "@/modules/pelada-occurrences/actions/save-pelada-player-stats";
 import { removePeladaPlayerStatAction } from "@/modules/pelada-occurrences/actions/remove-pelada-player-stat";
+import { setPeladaParticipantsAction } from "@/modules/pelada-occurrences/actions/set-pelada-participants";
 import { openPeladaVotingAction, closePeladaVotingAction } from "@/modules/pelada-occurrences/actions/manage-pelada-voting";
 import { submitPeladaVoteAction } from "@/modules/pelada-occurrences/actions/submit-pelada-vote";
 import { formatListingDateTime } from "@/modules/game-listings/lib/format";
@@ -68,12 +70,15 @@ export default async function PeladaRodadaDetailPage({ params }: { params: Promi
     };
   });
 
-  const votingPlayers: VotingPlayer[] = occurrence.playerStats
-    .filter((stat) => stat.userId)
-    .map((stat) => ({
-      userId: stat.userId!,
-      name: playerDisplayName(stat.user!),
-      imageUrl: stat.user!.profile?.imageUrl ?? null,
+  const declinedUserIds = occurrence.attendances.filter((a) => a.status === "DECLINED").map((a) => a.userId);
+  const declinedSet = new Set(declinedUserIds);
+
+  const votingPlayers: VotingPlayer[] = members
+    .filter((m) => !declinedSet.has(m.userId))
+    .map((m) => ({
+      userId: m.userId,
+      name: playerDisplayName(m.user),
+      imageUrl: m.user.profile?.imageUrl ?? null,
     }));
 
   const votingOpen = isVotingOpen(occurrence);
@@ -113,6 +118,11 @@ export default async function PeladaRodadaDetailPage({ params }: { params: Promi
   async function handleRemoveStat(entry: { kind: "user" | "guest"; id: string }) {
     "use server";
     await removePeladaPlayerStatAction({ peladaOccurrenceId: id, kind: entry.kind, id: entry.id });
+  }
+
+  async function handleSaveParticipants(nextDeclinedUserIds: string[]) {
+    "use server";
+    await setPeladaParticipantsAction({ peladaOccurrenceId: id, declinedUserIds: nextDeclinedUserIds });
   }
 
   async function handleOpenVoting() {
@@ -179,6 +189,26 @@ export default async function PeladaRodadaDetailPage({ params }: { params: Promi
           </div>
         )}
       </section>
+
+      {isManager && (
+        <section className="space-y-3">
+          <div>
+            <h2 className="text-lg font-black text-slate-900">Participantes</h2>
+            <p className="text-sm text-slate-500">
+              Todos vêm marcados por padrão. Desmarque quem não participou desta rodada.
+            </p>
+          </div>
+          <ParticipantsSelector
+            members={members.map((m) => ({
+              userId: m.userId,
+              name: playerDisplayName(m.user),
+              imageUrl: m.user.profile?.imageUrl ?? null,
+            }))}
+            initialDeclinedUserIds={declinedUserIds}
+            onSave={handleSaveParticipants}
+          />
+        </section>
+      )}
 
       <section className="space-y-3">
         <h2 className="text-lg font-black text-slate-900">Melhor em campo</h2>

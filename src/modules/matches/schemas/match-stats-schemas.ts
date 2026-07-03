@@ -5,6 +5,8 @@ const playerStatEntrySchema = z.object({
   id: z.string(),
   goals: z.number().int().min(0).max(99),
   assists: z.number().int().min(0).max(99),
+  yellowCards: z.number().int().min(0).max(2).optional(),
+  redCards: z.number().int().min(0).max(1).optional(),
 });
 
 export const saveMatchPlayerStatsSchema = z.object({
@@ -21,6 +23,22 @@ export const removeMatchPlayerStatSchema = z.object({
 });
 
 export type RemoveMatchPlayerStatInput = z.infer<typeof removeMatchPlayerStatSchema>;
+
+export const updateMatchScoreSchema = z.object({
+  matchId: z.string(),
+  homeScore: z.number().int().min(0).max(99),
+  awayScore: z.number().int().min(0).max(99),
+});
+
+export type UpdateMatchScoreInput = z.infer<typeof updateMatchScoreSchema>;
+
+export const setMatchParticipantsSchema = z.object({
+  matchId: z.string(),
+  organizationId: z.string(),
+  declinedUserIds: z.array(z.string()),
+});
+
+export type SetMatchParticipantsInput = z.infer<typeof setMatchParticipantsSchema>;
 
 export const submitMatchVoteSchema = z.object({
   matchId: z.string(),

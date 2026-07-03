@@ -20,6 +20,8 @@ export type StatCandidate = {
 export type StatEntry = StatCandidate & {
   goals: number;
   assists: number;
+  yellowCards?: number;
+  redCards?: number;
 };
 
 function entryKey(entry: { kind: string; id: string }) {
@@ -29,12 +31,23 @@ function entryKey(entry: { kind: string; id: string }) {
 export function PlayerStatSearchEditor({
   candidates,
   initialEntries,
+  trackCards = false,
   onSave,
   onRemove,
 }: {
   candidates: StatCandidate[];
   initialEntries: StatEntry[];
-  onSave: (entries: { kind: "user" | "guest"; id: string; goals: number; assists: number }[]) => Promise<void>;
+  trackCards?: boolean;
+  onSave: (
+    entries: {
+      kind: "user" | "guest";
+      id: string;
+      goals: number;
+      assists: number;
+      yellowCards?: number;
+      redCards?: number;
+    }[],
+  ) => Promise<void>;
   onRemove: (entry: { kind: "user" | "guest"; id: string }) => Promise<void>;
 }) {
   const router = useRouter();
@@ -53,7 +66,10 @@ export function PlayerStatSearchEditor({
   }, [query, candidates, addedKeys]);
 
   function addCandidate(candidate: StatCandidate) {
-    setEntries((prev) => [...prev, { ...candidate, goals: 0, assists: 0 }]);
+    setEntries((prev) => [
+      ...prev,
+      { ...candidate, goals: 0, assists: 0, ...(trackCards ? { yellowCards: 0, redCards: 0 } : {}) },
+    ]);
     setQuery("");
   }
 
@@ -76,7 +92,15 @@ export function PlayerStatSearchEditor({
   function handleSave() {
     startTransition(async () => {
       try {
-        await onSave(entries.map((e) => ({ kind: e.kind, id: e.id, goals: e.goals, assists: e.assists })));
+        await onSave(
+          entries.map((e) => ({
+            kind: e.kind,
+            id: e.id,
+            goals: e.goals,
+            assists: e.assists,
+            ...(trackCards ? { yellowCards: e.yellowCards ?? 0, redCards: e.redCards ?? 0 } : {}),
+          })),
+        );
         toast.success("Estatísticas salvas!");
         router.refresh();
       } catch (error) {
@@ -176,6 +200,34 @@ export function PlayerStatSearchEditor({
                       className="w-14 rounded-lg border-2 border-slate-200 px-2 py-1.5 text-center font-bold text-slate-900 outline-none focus:border-[#16A34A]"
                     />
                   </label>
+
+                  {trackCards && (
+                    <>
+                      <label className="flex items-center gap-1.5 text-sm text-slate-500">
+                        <span className="inline-block h-3.5 w-2.5 rounded-[2px] bg-amber-400" />
+                        <input
+                          type="number"
+                          min={0}
+                          max={2}
+                          value={entry.yellowCards ?? 0}
+                          onChange={(e) => updateEntry(key, { yellowCards: Number(e.target.value) })}
+                          className="w-12 rounded-lg border-2 border-amber-200 px-2 py-1.5 text-center font-bold text-slate-900 outline-none focus:border-amber-400"
+                        />
+                      </label>
+
+                      <label className="flex items-center gap-1.5 text-sm text-slate-500">
+                        <span className="inline-block h-3.5 w-2.5 rounded-[2px] bg-rose-500" />
+                        <input
+                          type="number"
+                          min={0}
+                          max={1}
+                          value={entry.redCards ?? 0}
+                          onChange={(e) => updateEntry(key, { redCards: Number(e.target.value) })}
+                          className="w-12 rounded-lg border-2 border-rose-200 px-2 py-1.5 text-center font-bold text-slate-900 outline-none focus:border-rose-400"
+                        />
+                      </label>
+                    </>
+                  )}
 
                   <button
                     type="button"

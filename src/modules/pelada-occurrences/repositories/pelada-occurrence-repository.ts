@@ -21,6 +21,7 @@ export const peladaOccurrenceRepository = {
       include: {
         organization: { select: { id: true, name: true } },
         playerStats: { include: { user: { select: userSummarySelect }, guestPlayer: true } },
+        attendances: true,
         mvpVotes: true,
         ratings: true,
       },
@@ -29,6 +30,15 @@ export const peladaOccurrenceRepository = {
 
   create(data: { organizationId: string; title: string; scheduledAt: Date; location: string; createdById: string }) {
     return prisma.peladaOccurrence.create({ data });
+  },
+
+  async setParticipants(peladaOccurrenceId: string, declinedUserIds: string[]) {
+    await prisma.$transaction([
+      prisma.peladaAttendance.deleteMany({ where: { peladaOccurrenceId } }),
+      ...declinedUserIds.map((userId) =>
+        prisma.peladaAttendance.create({ data: { peladaOccurrenceId, userId, status: "DECLINED" } }),
+      ),
+    ]);
   },
 
   upsertPlayerStat(params: {

@@ -8,7 +8,7 @@ import { membershipRepository } from "@/modules/organizations/repositories/membe
 import { matchRepository } from "../repositories/match-repository";
 import { computeVotingClosesAt } from "@/shared/voting/voting-window";
 
-const OPEN_CLOSE_ROLES = ["OWNER", "ADMIN"];
+const OPEN_CLOSE_ROLES = ["OWNER", "ADMIN", "CAPTAIN"];
 
 const schema = z.object({ matchId: z.string() });
 
@@ -25,7 +25,7 @@ async function requireMatchManager(matchId: string) {
   ]);
 
   if (!membership || !OPEN_CLOSE_ROLES.includes(membership.role)) {
-    throw new Error("Apenas o dono ou administradores podem gerenciar a votação.");
+    throw new Error("Apenas o dono, administradores ou capitão podem gerenciar a votação.");
   }
 
   return match;

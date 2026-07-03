@@ -6,6 +6,8 @@ import { PageTransition } from "@/components/motion/page-transition";
 import { PageHeader } from "@/components/navigation/page-header";
 import { Card } from "@/components/ui/card";
 import { PlayerStatSearchEditor, type StatCandidate, type StatEntry } from "@/components/stats/player-stat-search-editor";
+import { ParticipantsSelector } from "@/components/stats/participants-selector";
+import { MatchScoreEditor } from "@/components/matches/match-score-editor";
 import { VotingPanel, type VotingPlayer } from "@/components/voting/voting-panel";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
@@ -15,13 +17,15 @@ import { matchRepository } from "@/modules/matches/repositories/match-repository
 import { getMatchPerspective } from "@/modules/matches/lib/format";
 import { saveMatchPlayerStatsAction } from "@/modules/matches/actions/save-match-player-stats";
 import { removeMatchPlayerStatAction } from "@/modules/matches/actions/remove-match-player-stat";
+import { updateMatchScoreAction } from "@/modules/matches/actions/update-match-score";
+import { setMatchParticipantsAction } from "@/modules/matches/actions/set-match-participants";
 import { openMatchVotingAction, closeMatchVotingAction } from "@/modules/matches/actions/manage-match-voting";
 import { submitMatchVoteAction } from "@/modules/matches/actions/submit-match-vote";
 import { formatListingDateTime } from "@/modules/game-listings/lib/format";
 import { isVotingOpen } from "@/shared/voting/voting-window";
 
 const MANAGER_ROLES = ["OWNER", "ADMIN", "CAPTAIN"];
-const VOTING_MANAGER_ROLES = ["OWNER", "ADMIN"];
+const VOTING_MANAGER_ROLES = ["OWNER", "ADMIN", "CAPTAIN"];
 
 function playerDisplayName(user: { email: string; profile: { fullName: string | null; nickname: string | null } | null }) {
   return user.profile?.nickname || user.profile?.fullName || user.email;
@@ -71,7 +75,16 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
 
   const statEntries: StatEntry[] = match.playerStats.map((stat) => {
     if (stat.guestPlayerId && stat.guestPlayer) {
-      return { kind: "guest", id: stat.guestPlayerId, name: stat.guestPlayer.name, imageUrl: null, goals: stat.goals, assists: stat.assists };
+      return {
+        kind: "guest",
+        id: stat.guestPlayerId,
+        name: stat.guestPlayer.name,
+        imageUrl: null,
+        goals: stat.goals,
+        assists: stat.assists,
+        yellowCards: stat.yellowCards,
+        redCards: stat.redCards,
+      };
     }
     return {
       kind: "user",
@@ -80,15 +93,22 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
       imageUrl: stat.user!.profile?.imageUrl ?? null,
       goals: stat.goals,
       assists: stat.assists,
+      yellowCards: stat.yellowCards,
+      redCards: stat.redCards,
     };
   });
 
-  const votingPlayers: VotingPlayer[] = match.playerStats
-    .filter((stat) => stat.userId)
-    .map((stat) => ({
-      userId: stat.userId!,
-      name: playerDisplayName(stat.user!),
-      imageUrl: stat.user!.profile?.imageUrl ?? null,
+  const declinedUserIds = match.attendances
+    .filter((a) => a.status === "DECLINED" && a.organizationId === activeOrgId)
+    .map((a) => a.userId);
+  const declinedSet = new Set(declinedUserIds);
+
+  const votingPlayers: VotingPlayer[] = members
+    .filter((m) => !declinedSet.has(m.userId))
+    .map((m) => ({
+      userId: m.userId,
+      name: playerDisplayName(m.user),
+      imageUrl: m.user.profile?.imageUrl ?? null,
     }));
 
   const votingOpen = isVotingOpen(match);
@@ -120,7 +140,16 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
     }))
     .sort((a, b) => b.average - a.average);
 
-  async function handleSaveStats(stats: { kind: "user" | "guest"; id: string; goals: number; assists: number }[]) {
+  async function handleSaveStats(
+    stats: {
+      kind: "user" | "guest";
+      id: string;
+      goals: number;
+      assists: number;
+      yellowCards?: number;
+      redCards?: number;
+    }[],
+  ) {
     "use server";
     await saveMatchPlayerStatsAction({ matchId, stats });
   }
@@ -128,6 +157,16 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
   async function handleRemoveStat(entry: { kind: "user" | "guest"; id: string }) {
     "use server";
     await removeMatchPlayerStatAction({ matchId, kind: entry.kind, id: entry.id });
+  }
+
+  async function handleSaveScore(homeScore: number, awayScore: number) {
+    "use server";
+    await updateMatchScoreAction({ matchId, homeScore, awayScore });
+  }
+
+  async function handleSaveParticipants(nextDeclinedUserIds: string[]) {
+    "use server";
+    await setMatchParticipantsAction({ matchId, organizationId: activeOrgId!, declinedUserIds: nextDeclinedUserIds });
   }
 
   async function handleOpenVoting() {
@@ -186,12 +225,23 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
         )}
       </Card>
 
+      {isManager && (
+        <MatchScoreEditor
+          homeLabel={match.homeOrganization.name}
+          awayLabel={match.awayOrganization?.name ?? match.opponentName ?? "Adversário"}
+          homeScore={match.homeScore}
+          awayScore={match.awayScore}
+          onSave={handleSaveScore}
+        />
+      )}
+
       <section className="space-y-3">
         <h2 className="text-lg font-black text-slate-900">Estatísticas</h2>
         {isManager ? (
           <PlayerStatSearchEditor
             candidates={candidates}
             initialEntries={statEntries}
+            trackCards
             onSave={handleSaveStats}
             onRemove={handleRemoveStat}
           />
@@ -200,14 +250,48 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
             {statEntries.map((entry) => (
               <Card key={`${entry.kind}:${entry.id}`} className="flex items-center justify-between p-3">
                 <p className="font-bold text-slate-900">{entry.name}</p>
-                <p className="text-sm text-slate-500">
-                  {entry.goals} gol{entry.goals !== 1 ? "s" : ""} · {entry.assists} assist.
+                <p className="flex items-center gap-1.5 text-sm text-slate-500">
+                  <span>
+                    {entry.goals} gol{entry.goals !== 1 ? "s" : ""} · {entry.assists} assist.
+                  </span>
+                  {!!entry.yellowCards && (
+                    <span className="inline-flex items-center gap-1">
+                      <span className="inline-block h-3 w-2 rounded-[2px] bg-amber-400" />
+                      {entry.yellowCards}
+                    </span>
+                  )}
+                  {!!entry.redCards && (
+                    <span className="inline-flex items-center gap-1">
+                      <span className="inline-block h-3 w-2 rounded-[2px] bg-rose-500" />
+                      {entry.redCards}
+                    </span>
+                  )}
                 </p>
               </Card>
             ))}
           </div>
         )}
       </section>
+
+      {isManager && (
+        <section className="space-y-3">
+          <div>
+            <h2 className="text-lg font-black text-slate-900">Participantes</h2>
+            <p className="text-sm text-slate-500">
+              Todos vêm marcados por padrão. Desmarque quem não participou deste jogo.
+            </p>
+          </div>
+          <ParticipantsSelector
+            members={members.map((m) => ({
+              userId: m.userId,
+              name: playerDisplayName(m.user),
+              imageUrl: m.user.profile?.imageUrl ?? null,
+            }))}
+            initialDeclinedUserIds={declinedUserIds}
+            onSave={handleSaveParticipants}
+          />
+        </section>
+      )}
 
       <section className="space-y-3">
         <h2 className="text-lg font-black text-slate-900">Melhor em campo</h2>

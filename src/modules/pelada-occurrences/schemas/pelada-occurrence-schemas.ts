@@ -31,6 +31,13 @@ export const removePeladaPlayerStatSchema = z.object({
 
 export type RemovePeladaPlayerStatInput = z.infer<typeof removePeladaPlayerStatSchema>;
 
+export const setPeladaParticipantsSchema = z.object({
+  peladaOccurrenceId: z.string(),
+  declinedUserIds: z.array(z.string()),
+});
+
+export type SetPeladaParticipantsInput = z.infer<typeof setPeladaParticipantsSchema>;
+
 export const submitPeladaVoteSchema = z.object({
   peladaOccurrenceId: z.string(),
   mvpUserId: z.string(),
