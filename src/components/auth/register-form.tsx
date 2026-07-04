@@ -23,6 +23,8 @@ import {
 import { GoogleButton } from "./google-button";
 import { registerRequest } from "@/modules/auth/services/auth-api";
 import { PasswordInput } from "../ui/password-input";
+import { useState } from "react";
+import { FootballLoading } from "../loading/football-loading";
 
 export function RegisterForm({ inviteToken }: { inviteToken?: string }) {
   const router = useRouter();
@@ -40,24 +42,33 @@ export function RegisterForm({ inviteToken }: { inviteToken?: string }) {
     ),
   });
 
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
+
   async function onSubmit(
     data: RegisterUserInput,
   ) {
     try {
+      setIsAuthenticating(true);
+
       await registerRequest(data);
 
       toast.success(
         "Conta criada com sucesso!",
       );
 
-      router.push(inviteToken ? `/login?invite=${inviteToken}` : "/login");
+      router.replace(inviteToken ? `/dashboard?invite=${inviteToken}` : "/dashboard");
     } catch (error) {
+      setIsAuthenticating(false);
       toast.error(
         error instanceof Error
           ? error.message
           : "Erro ao criar conta",
       );
     }
+  }
+
+  if (isAuthenticating) {
+    return <FootballLoading />;
   }
 
   return (

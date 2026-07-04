@@ -13,27 +13,59 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ComponentStateView } from "@/components/cards/component-state";
 import { EmptyOrgsState } from "@/components/organizations/empty-orgs-state";
+import { PendingInviteModal } from "@/components/players/pending-invite-modal";
 import { teamPlayers, teamStats } from "@/constants/mock-data";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
 import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
 import { membershipRepository } from "@/modules/organizations/repositories/membership-repository";
 import { matchRepository } from "@/modules/matches/repositories/match-repository";
+import { playerInviteRepository } from "@/modules/player-invites/repositories/player-invite-repository";
 import { getMatchPerspective } from "@/modules/matches/lib/format";
 import { formatListingDateTime } from "@/modules/game-listings/lib/format";
 import { computeNextPeladaDate } from "@/modules/organizations/lib/next-pelada";
+import { isManagerRole } from "@/shared/auth/manager-roles";
 
 function formatCurrency(value: number | null | undefined) {
   if (value == null) return null;
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ invite?: string }>;
+}) {
   const session = await requireAuth();
+  const { invite: inviteToken } = await searchParams;
+
+  const invite = inviteToken ? await playerInviteRepository.findByToken(inviteToken) : null;
+  const pendingInvite =
+    invite && invite.status === "PENDING" && invite.expiresAt > new Date()
+      ? {
+          token: inviteToken!,
+          organizationName: invite.organization.name,
+          organizationLogoUrl: invite.organization.logoUrl,
+        }
+      : null;
+
+  const pendingInviteModal = pendingInvite ? (
+    <PendingInviteModal
+      token={pendingInvite.token}
+      organizationName={pendingInvite.organizationName}
+      organizationLogoUrl={pendingInvite.organizationLogoUrl}
+    />
+  ) : null;
+
   const orgs = await organizationRepository.findByUserId(session.id);
 
   if (orgs.length === 0) {
-    return <EmptyOrgsState />;
+    return (
+      <>
+        {pendingInviteModal}
+        <EmptyOrgsState />
+      </>
+    );
   }
 
   const activeOrgId = await getActiveOrgId();
@@ -42,6 +74,7 @@ export default async function DashboardPage() {
   if (!activeOrgId || !activeOrg) {
     return (
       <PageTransition className="space-y-4">
+        {pendingInviteModal}
         <PageHeader eyebrow="Home" title="Bem-vindo" description="Selecione uma organização para ver seu painel." />
       </PageTransition>
     );
@@ -55,6 +88,8 @@ export default async function DashboardPage() {
 
     return (
       <PageTransition className="space-y-4">
+        {pendingInviteModal}
+
         <PageHeader
           eyebrow="Home"
           title={activeOrg.name}
@@ -157,10 +192,14 @@ export default async function DashboardPage() {
   if (activeOrg.type !== "TEAM") {
     return (
       <PageTransition className="space-y-4">
+        {pendingInviteModal}
         <PageHeader eyebrow="Home" title="Bem-vindo" description="Selecione uma organização para ver seu painel." />
       </PageTransition>
     );
   }
+
+  const membership = await membershipRepository.findByUserAndOrganizations(session.id, [activeOrgId]);
+  const isManager = isManagerRole(membership?.role);
 
   const [upcoming, past] = await Promise.all([
     matchRepository.listUpcomingByOrganization(activeOrgId, 1),
@@ -188,6 +227,8 @@ export default async function DashboardPage() {
 
   return (
     <PageTransition className="space-y-4">
+      {pendingInviteModal}
+
       <PageHeader
         eyebrow="Home"
         title={activeOrg.name}
@@ -195,42 +236,52 @@ export default async function DashboardPage() {
       />
 
       <div className="flex flex-wrap gap-3">
-        <Button asChild size="sm" className="w-auto">
-          <Link href="/jogos">
-            <Search className="size-4" />
-            Ver mural de jogos
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="sm" className="w-auto">
-          <Link href="/jogos/novo">
-            <Megaphone className="size-4" />
-            Publicar jogo
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="sm" className="w-auto">
+        {isManager && (
+          <Button asChild size="sm" className="w-auto">
+            <Link href="/jogos">
+              <Search className="size-4" />
+              Ver mural de jogos
+            </Link>
+          </Button>
+        )}
+        {isManager && (
+          <Button asChild variant="outline" size="sm" className="w-auto">
+            <Link href="/jogos/novo">
+              <Megaphone className="size-4" />
+              Publicar jogo
+            </Link>
+          </Button>
+        )}
+        <Button asChild variant={isManager ? "outline" : "default"} size="sm" className="w-auto">
           <Link href="/time/agenda">
             <CalendarDays className="size-4" />
             Ver agenda completa
           </Link>
         </Button>
-        <Button asChild variant="outline" size="sm" className="w-auto">
-          <Link href="/jogos/meus-jogos">
-            <ClipboardList className="size-4" />
-            Meus jogos publicados
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="sm" className="w-auto">
-          <Link href="/time/jogadores">
-            <Users className="size-4" />
-            Gerenciar elenco
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="sm" className="w-auto">
-          <Link href="/time">
-            <Shield className="size-4" />
-            Perfil do time
-          </Link>
-        </Button>
+        {isManager && (
+          <Button asChild variant="outline" size="sm" className="w-auto">
+            <Link href="/jogos/meus-jogos">
+              <ClipboardList className="size-4" />
+              Meus jogos publicados
+            </Link>
+          </Button>
+        )}
+        {isManager && (
+          <Button asChild variant="outline" size="sm" className="w-auto">
+            <Link href="/time/jogadores">
+              <Users className="size-4" />
+              Gerenciar elenco
+            </Link>
+          </Button>
+        )}
+        {isManager && (
+          <Button asChild variant="outline" size="sm" className="w-auto">
+            <Link href="/time">
+              <Shield className="size-4" />
+              Perfil do time
+            </Link>
+          </Button>
+        )}
       </div>
 
       {nextMatch && nextMatchPerspective ? (

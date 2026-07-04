@@ -1,5 +1,6 @@
 import { registerUser } from "@/modules/auth/actions/register-user";
 import { registerUserSchema } from "@/modules/auth/schemas/register-user-schema";
+import { createSession } from "@/shared/auth/auth-session";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
@@ -10,6 +11,11 @@ export async function POST(request: Request) {
     const data = registerUserSchema.parse(body);
 
     const user = await registerUser(data);
+
+    await createSession({
+      id: user.id,
+      email: user.email,
+    });
 
     return NextResponse.json(
       {
