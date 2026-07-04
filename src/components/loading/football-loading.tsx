@@ -5,18 +5,36 @@ import {
   CircleDot,
 } from "lucide-react";
 
-export function FootballLoading() {
+export function FootballLoading({
+  overlay = false,
+}: {
+  overlay?: boolean;
+}) {
   return (
     <div
-      className="
-        flex
-        min-h-screen
-        flex-col
-        items-center
-        justify-center
-        bg-slate-950
-        text-white
-      "
+      className={
+        overlay
+          ? `
+            fixed
+            inset-0
+            z-50
+            flex
+            flex-col
+            items-center
+            justify-center
+            bg-slate-950
+            text-white
+          `
+          : `
+            flex
+            min-h-screen
+            flex-col
+            items-center
+            justify-center
+            bg-slate-950
+            text-white
+          `
+      }
     >
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold">
