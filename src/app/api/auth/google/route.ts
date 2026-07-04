@@ -16,7 +16,7 @@ const googleClient = new OAuth2Client(
 export async function POST(request: Request) {
   const body = await request.json();
 
-  const { code } = body;
+  const { code, redirectUri } = body;
   const { sub, email, name } = await getPayloadGoogleLogin();
   const user = await loginWithGoogle({
     sub,
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
   async function getPayloadGoogleLogin() {
     const { tokens } = await googleClient.getToken({
       code,
-      redirect_uri: "http://localhost:3000",
+      redirect_uri: redirectUri,
     });
     const ticket = await googleClient.verifyIdToken({
       idToken: tokens.id_token!,
