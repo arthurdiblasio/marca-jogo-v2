@@ -40,8 +40,8 @@ export function RankingPreview() {
                   justify-between
                   rounded-lg
                   border
-                  border-slate-200
-                  bg-white
+                  border-border
+                  bg-card
                   p-3
                 "
               >

@@ -6,7 +6,7 @@ import {
 
 export function HowItWorks() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-card py-20">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-center text-3xl font-extrabold">
           Tudo que você precisa
@@ -20,7 +20,7 @@ export function HowItWorks() {
               Organize Peladas
             </h3>
 
-            <p className="mt-2 text-slate-600">
+            <p className="mt-2 text-muted-foreground">
               Controle presença,
               sorteie times e acompanhe
               quem participou.
@@ -34,7 +34,7 @@ export function HowItWorks() {
               Gerencie Times
             </h3>
 
-            <p className="mt-2 text-slate-600">
+            <p className="mt-2 text-muted-foreground">
               Monte elencos,
               acompanhe desempenho
               e histórico completo.
@@ -48,7 +48,7 @@ export function HowItWorks() {
               Marque Jogos
             </h3>
 
-            <p className="mt-2 text-slate-600">
+            <p className="mt-2 text-muted-foreground">
               Agende partidas entre times,
               registre placares e estatísticas.
             </p>

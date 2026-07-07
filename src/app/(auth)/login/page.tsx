@@ -9,7 +9,7 @@ export default async function LoginPage({
   const { invite } = await searchParams;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-muted">
       <AuthHeader />
 
       <section className="mx-auto max-w-md px-6 py-8">

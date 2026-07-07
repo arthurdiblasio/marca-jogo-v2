@@ -60,7 +60,7 @@ export function ParticipantsSelector({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-muted-foreground">
           {participatingCount} de {members.length} participando
         </p>
         <button
@@ -84,13 +84,13 @@ export function ParticipantsSelector({
               )}
             >
               <div className="flex min-w-0 items-center gap-2.5">
-                <Avatar className="size-9 rounded-xl bg-green-50">
+                <Avatar className="size-9 rounded-xl bg-primary/10">
                   {member.imageUrl && <AvatarImage src={member.imageUrl} alt={member.name} />}
                   <AvatarFallback className="rounded-xl bg-transparent">
                     <User className="size-4 text-primary" />
                   </AvatarFallback>
                 </Avatar>
-                <p className="min-w-0 truncate font-bold text-slate-900">{member.name}</p>
+                <p className="min-w-0 truncate font-bold text-foreground">{member.name}</p>
               </div>
 
               <button
@@ -99,8 +99,8 @@ export function ParticipantsSelector({
                 className={cn(
                   "grid size-7 shrink-0 place-items-center rounded-lg border-2 transition",
                   isParticipating
-                    ? "border-primary bg-primary text-white"
-                    : "border-slate-200 bg-white text-transparent",
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card text-transparent",
                 )}
               >
                 <Check className="size-4" />

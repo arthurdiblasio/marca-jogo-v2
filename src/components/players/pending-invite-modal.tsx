@@ -49,7 +49,7 @@ export function PendingInviteModal({
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/70 px-4">
       <Card className="w-full max-w-sm space-y-4 p-6 text-center">
-        <Avatar className="mx-auto size-14 rounded-2xl bg-green-50">
+        <Avatar className="mx-auto size-14 rounded-2xl bg-primary/10">
           {organizationLogoUrl && <AvatarImage src={organizationLogoUrl} alt={organizationName} />}
           <AvatarFallback className="rounded-2xl bg-transparent">
             <Shield className="size-7 text-primary" />
@@ -57,8 +57,8 @@ export function PendingInviteModal({
         </Avatar>
 
         <div>
-          <h2 className="text-lg font-black text-slate-900">{organizationName} te convidou!</h2>
-          <p className="text-sm text-slate-500">Aceite o convite para entrar na organização.</p>
+          <h2 className="text-lg font-black text-foreground">{organizationName} te convidou!</h2>
+          <p className="text-sm text-muted-foreground">Aceite o convite para entrar na organização.</p>
         </div>
 
         <div className="flex flex-col gap-2">

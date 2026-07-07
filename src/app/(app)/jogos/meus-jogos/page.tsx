@@ -21,10 +21,10 @@ const STATUS_LABEL: Record<string, string> = {
 };
 
 const STATUS_CLASS: Record<string, string> = {
-  OPEN: "bg-amber-100 text-amber-700",
-  MATCHED: "bg-emerald-100 text-emerald-700",
-  EXPIRED: "bg-slate-100 text-slate-500",
-  CANCELLED: "bg-rose-100 text-rose-700",
+  OPEN: "bg-amber-100 text-amber-700 dark:bg-amber-500/15 dark:text-amber-400",
+  MATCHED: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400",
+  EXPIRED: "bg-muted text-muted-foreground",
+  CANCELLED: "bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-400",
 };
 
 export default async function MyGameListingsPage() {
@@ -50,8 +50,8 @@ export default async function MyGameListingsPage() {
       />
 
       {totalPendingResponses > 0 && (
-        <Card className="flex items-center justify-between gap-3 border-2 border-primary/20 bg-green-50 p-4">
-          <div className="flex items-center gap-2 font-bold text-slate-900">
+        <Card className="flex items-center justify-between gap-3 border-2 border-primary/20 bg-primary/10 p-4">
+          <div className="flex items-center gap-2 font-bold text-foreground">
             <Users className="size-5 text-primary" />
             {totalPendingResponses} {totalPendingResponses > 1 ? "interesses aguardando" : "interesse aguardando"}{" "}
             aceite
@@ -66,7 +66,7 @@ export default async function MyGameListingsPage() {
       )}
 
       <section className="space-y-3">
-        <h2 className="text-lg font-black text-slate-900">Pendentes de aceite</h2>
+        <h2 className="text-lg font-black text-foreground">Pendentes de aceite</h2>
         {pending.length === 0 ? (
           <ComponentStateView state="empty" emptyLabel="Nenhum jogo aguardando aceite no momento" />
         ) : (
@@ -80,7 +80,7 @@ export default async function MyGameListingsPage() {
 
       {closed.length > 0 && (
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-slate-900">Encerrados</h2>
+          <h2 className="text-lg font-black text-foreground">Encerrados</h2>
           <div className="space-y-3">
             {closed.map((listing) => (
               <MyGameListingCard key={listing.id} listing={listing} />
@@ -103,18 +103,18 @@ function MyGameListingCard({ listing }: { listing: MyGameListing }) {
     <Link href={`/jogos/${listing.id}`}>
       <Card className="space-y-2 p-4">
         <div className="flex items-center justify-between gap-3">
-          <p className="font-bold text-slate-900">
+          <p className="font-bold text-foreground">
             {listing.location} — {listing.city}/{listing.state}
           </p>
           <span className={`rounded-full px-3 py-1 text-xs font-bold ${STATUS_CLASS[listing.status]}`}>
             {STATUS_LABEL[listing.status]}
           </span>
         </div>
-        <div className="flex items-center gap-2 text-sm text-slate-600">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <CalendarDays className="size-4" />
           <span className="capitalize">{formatListingDateTime(listing.scheduledAt)}</span>
         </div>
-        <div className="flex items-center gap-2 text-sm text-slate-600">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <MapPin className="size-4" />
           <span>{listing.location}</span>
         </div>

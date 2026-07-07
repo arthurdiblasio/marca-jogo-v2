@@ -15,9 +15,9 @@ export default async function PlayerInvitePage({ params }: { params: Promise<{ t
   const session = await getSession();
 
   return (
-    <div className="grid min-h-screen place-items-center bg-slate-50 px-4">
+    <div className="grid min-h-screen place-items-center bg-muted px-4">
       <Card className="w-full max-w-sm space-y-4 p-6 text-center">
-        <Avatar className="mx-auto size-14 rounded-2xl bg-green-50">
+        <Avatar className="mx-auto size-14 rounded-2xl bg-primary/10">
           {invite?.organization.logoUrl && (
             <AvatarImage src={invite.organization.logoUrl} alt={invite.organization.name} />
           )}
@@ -28,23 +28,23 @@ export default async function PlayerInvitePage({ params }: { params: Promise<{ t
 
         {!invite ? (
           <>
-            <h1 className="text-lg font-black text-slate-900">Convite inválido</h1>
-            <p className="text-sm text-slate-500">Este link de convite não existe ou foi removido.</p>
+            <h1 className="text-lg font-black text-foreground">Convite inválido</h1>
+            <p className="text-sm text-muted-foreground">Este link de convite não existe ou foi removido.</p>
           </>
         ) : invite.status === "ACCEPTED" ? (
           <>
-            <h1 className="text-lg font-black text-slate-900">Convite já utilizado</h1>
-            <p className="text-sm text-slate-500">Este convite já foi aceito por alguém. Peça um novo link.</p>
+            <h1 className="text-lg font-black text-foreground">Convite já utilizado</h1>
+            <p className="text-sm text-muted-foreground">Este convite já foi aceito por alguém. Peça um novo link.</p>
           </>
         ) : invite.status === "CANCELLED" || invite.status === "EXPIRED" || invite.expiresAt < new Date() ? (
           <>
-            <h1 className="text-lg font-black text-slate-900">Convite expirado</h1>
-            <p className="text-sm text-slate-500">Este link não é mais válido. Peça um novo convite ao time.</p>
+            <h1 className="text-lg font-black text-foreground">Convite expirado</h1>
+            <p className="text-sm text-muted-foreground">Este link não é mais válido. Peça um novo convite ao time.</p>
           </>
         ) : (
           <>
-            <h1 className="text-lg font-black text-slate-900">{invite.organization.name} te convidou!</h1>
-            <p className="text-sm text-slate-500">Entre para o time e comece a jogar.</p>
+            <h1 className="text-lg font-black text-foreground">{invite.organization.name} te convidou!</h1>
+            <p className="text-sm text-muted-foreground">Entre para o time e comece a jogar.</p>
 
             {session ? (
               <AcceptInviteButton token={token} />

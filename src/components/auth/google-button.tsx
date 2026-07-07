@@ -79,9 +79,9 @@ export function GoogleButton() {
         disabled={isAuthenticating}
         className="
           border
-          border-slate-300
-          bg-white
-          hover:bg-slate-50
+          border-border
+          bg-card
+          hover:bg-muted
         "
       >
         <Chrome className="mr-2 h-4 w-4" />

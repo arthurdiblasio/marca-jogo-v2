@@ -82,15 +82,15 @@ export function ConfirmDialog({
           >
             <div className="flex items-start gap-3">
               {variant === "destructive" && (
-                <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-amber-50">
+                <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-amber-500/10">
                   <AlertTriangle className="size-5 text-amber-500" />
                 </div>
               )}
               <div className="min-w-0">
-                <h2 id="confirm-dialog-title" className="font-black text-slate-900">
+                <h2 id="confirm-dialog-title" className="font-black text-foreground">
                   {title}
                 </h2>
-                {description && <p className="mt-1.5 text-sm text-slate-500">{description}</p>}
+                {description && <p className="mt-1.5 text-sm text-muted-foreground">{description}</p>}
               </div>
             </div>
 

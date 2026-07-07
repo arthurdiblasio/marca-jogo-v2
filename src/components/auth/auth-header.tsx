@@ -12,7 +12,7 @@ export function AuthHeader() {
           Chama Time
         </h1>
 
-        <p className="mt-3 text-sm leading-6 text-slate-300">
+        <p className="mt-3 text-sm leading-6 text-muted-foreground/60">
           Organize peladas.
           <br />
           Monte seu time.

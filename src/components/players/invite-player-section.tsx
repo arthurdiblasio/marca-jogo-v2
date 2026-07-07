@@ -59,13 +59,13 @@ function InviteLinkRow({
   return (
     <Card className="space-y-3 p-4">
       <div className="flex items-center gap-3">
-        <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-green-50">
+        <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10">
           <UserPlus className="size-5 text-primary" />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold text-slate-700">{buildInviteLink(token)}</p>
+          <p className="truncate text-sm font-semibold text-foreground">{buildInviteLink(token)}</p>
           {expiresAt && (
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-muted-foreground">
               Expira em {formatDistanceToNowStrict(expiresAt, { locale: ptBR })} · qualquer pessoa com o link entra
               como jogador
             </p>
@@ -133,8 +133,8 @@ export function InvitePlayerSection({ pendingInvites }: { pendingInvites: Player
   return (
     <section className="space-y-3">
       <div>
-        <h2 className="text-lg font-black text-slate-900">Convidar jogador</h2>
-        <p className="text-sm text-slate-500">
+        <h2 className="text-lg font-black text-foreground">Convidar jogador</h2>
+        <p className="text-sm text-muted-foreground">
           Gere um link e compartilhe com quem você quer no time. Ao abrir o link, a pessoa entra direto como
           jogador.
         </p>
@@ -142,7 +142,7 @@ export function InvitePlayerSection({ pendingInvites }: { pendingInvites: Player
 
       {!hasInvites && (
         <Card className="flex flex-col items-center gap-3 p-6 text-center">
-          <div className="grid size-12 place-items-center rounded-xl bg-green-50">
+          <div className="grid size-12 place-items-center rounded-xl bg-primary/10">
             <UserPlus className="size-6 text-primary" />
           </div>
           <Button className="w-auto" disabled={isPending} onClick={handleCreate}>

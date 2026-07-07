@@ -3,6 +3,7 @@
 import { Bell, Search } from "lucide-react";
 
 import { OrganizationSwitcher } from "@/components/navigation/organization-switcher";
+import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { Button } from "@/components/ui/button";
 
 export function TopNavigation() {
@@ -17,6 +18,7 @@ export function TopNavigation() {
           <Button size="icon" variant="ghost" aria-label="Notificacoes">
             <Bell className="size-5" />
           </Button>
+          <ThemeToggle />
         </div>
       </div>
     </header>

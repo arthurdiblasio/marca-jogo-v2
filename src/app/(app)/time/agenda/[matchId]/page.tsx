@@ -192,7 +192,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
     <PageTransition className="space-y-6">
       <Link
         href="/time/agenda"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-primary"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary"
       >
         <ArrowLeft className="size-4" />
         Toda a agenda
@@ -205,19 +205,19 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
       />
 
       <Card className="space-y-2 p-4">
-        <p className="flex items-center gap-1.5 text-sm text-slate-500">
+        <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
           <CalendarDays className="size-4 shrink-0" />
           <span className="capitalize">{formatListingDateTime(match.scheduledAt)}</span>
         </p>
-        <p className="flex items-center gap-1.5 text-sm text-slate-500">
+        <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
           <MapPin className="size-4 shrink-0" />
           {match.location}
         </p>
         {teamScore != null && opponentScore != null && (
-          <p className="pt-1 text-2xl font-black text-slate-900">
-            {teamScore} <span className="text-slate-300">x</span> {opponentScore}
+          <p className="pt-1 text-2xl font-black text-foreground">
+            {teamScore} <span className="text-muted-foreground/60">x</span> {opponentScore}
             {outcome && (
-              <span className="ml-2 align-middle text-xs font-bold text-slate-400">
+              <span className="ml-2 align-middle text-xs font-bold text-muted-foreground">
                 ({outcome === "V" ? "Vitória" : outcome === "D" ? "Derrota" : "Empate"})
               </span>
             )}
@@ -236,7 +236,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
       )}
 
       <section className="space-y-3">
-        <h2 className="text-lg font-black text-slate-900">Estatísticas</h2>
+        <h2 className="text-lg font-black text-foreground">Estatísticas</h2>
         {isManager ? (
           <PlayerStatSearchEditor
             candidates={candidates}
@@ -249,8 +249,8 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
           <div className="space-y-2">
             {statEntries.map((entry) => (
               <Card key={`${entry.kind}:${entry.id}`} className="flex items-center justify-between p-3">
-                <p className="font-bold text-slate-900">{entry.name}</p>
-                <p className="flex items-center gap-1.5 text-sm text-slate-500">
+                <p className="font-bold text-foreground">{entry.name}</p>
+                <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
                   <span>
                     {entry.goals} gol{entry.goals !== 1 ? "s" : ""} · {entry.assists} assist.
                   </span>
@@ -276,8 +276,8 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
       {isManager && (
         <section className="space-y-3">
           <div>
-            <h2 className="text-lg font-black text-slate-900">Participantes</h2>
-            <p className="text-sm text-slate-500">
+            <h2 className="text-lg font-black text-foreground">Participantes</h2>
+            <p className="text-sm text-muted-foreground">
               Todos vêm marcados por padrão. Desmarque quem não participou deste jogo.
             </p>
           </div>
@@ -294,9 +294,9 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
       )}
 
       <section className="space-y-3">
-        <h2 className="text-lg font-black text-slate-900">Melhor em campo</h2>
+        <h2 className="text-lg font-black text-foreground">Melhor em campo</h2>
         {votingPlayers.length === 0 ? (
-          <Card className="p-5 text-sm text-slate-400">
+          <Card className="p-5 text-sm text-muted-foreground">
             Registre as estatísticas dos jogadores para liberar a votação.
           </Card>
         ) : (

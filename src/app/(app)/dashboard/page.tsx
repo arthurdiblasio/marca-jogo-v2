@@ -121,30 +121,30 @@ export default async function DashboardPage({
         {nextDate ? (
           <Card className="space-y-3 p-5">
             <div className="flex items-center gap-3">
-              <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-green-50">
+              <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary/10">
                 <CalendarDays className="size-5 text-primary" />
               </div>
               <div>
                 <p className="caption text-primary">Próxima pelada</p>
-                <p className="font-black text-slate-900">{formatListingDateTime(nextDate)}</p>
+                <p className="font-black text-foreground">{formatListingDateTime(nextDate)}</p>
               </div>
             </div>
 
             {activeOrg.address && (
-              <p className="flex items-center gap-1.5 text-sm text-slate-500">
+              <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
                 <MapPin className="size-4 shrink-0" />
                 {activeOrg.address}
               </p>
             )}
 
             {(monthlyFee || singleFee) && (
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-muted-foreground">
                 Mensalista: {monthlyFee ?? "não definido"} · Avulso: {singleFee ?? "não definido"}
               </p>
             )}
           </Card>
         ) : (
-          <Card className="p-5 text-sm text-slate-400">
+          <Card className="p-5 text-sm text-muted-foreground">
             Nenhum dia e horário fixo cadastrado ainda. Configure em{" "}
             <Link href="/pelada" className="font-semibold text-primary">
               Configurar pelada
@@ -155,7 +155,7 @@ export default async function DashboardPage({
 
         <section className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-black text-slate-900">Jogadores vinculados</h2>
+            <h2 className="text-lg font-black text-foreground">Jogadores vinculados</h2>
             <Link href="/pelada/jogadores" className="text-sm font-semibold text-primary">
               Ver todos
             </Link>
@@ -167,7 +167,7 @@ export default async function DashboardPage({
             <div className="space-y-2">
               {members.slice(0, 5).map((member) => (
                 <Card key={member.id} className="flex items-center gap-3 p-3">
-                  <Avatar className="size-9 rounded-xl bg-green-50">
+                  <Avatar className="size-9 rounded-xl bg-primary/10">
                     {member.user.profile?.imageUrl && (
                       <AvatarImage
                         src={member.user.profile.imageUrl}
@@ -178,7 +178,7 @@ export default async function DashboardPage({
                       <User className="size-4 text-primary" />
                     </AvatarFallback>
                   </Avatar>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-foreground">
                     {member.user.profile?.nickname || member.user.profile?.fullName || member.user.email}
                   </p>
                 </Card>
@@ -238,8 +238,8 @@ export default async function DashboardPage({
       />
 
       {pendingInterestsCount > 0 && (
-        <Card className="flex items-center justify-between gap-3 border-2 border-primary/20 bg-green-50 p-4">
-          <div className="flex items-center gap-2 font-bold text-slate-900">
+        <Card className="flex items-center justify-between gap-3 border-2 border-primary/20 bg-primary/10 p-4">
+          <div className="flex items-center gap-2 font-bold text-foreground">
             <Megaphone className="size-5 text-primary" />
             {pendingInterestsCount} {pendingInterestsCount > 1 ? "times querem jogar" : "time quer jogar"} com você
           </div>
@@ -308,7 +308,7 @@ export default async function DashboardPage({
           venue={nextMatch.location}
         />
       ) : (
-        <Card className="p-5 text-sm text-slate-400">
+        <Card className="p-5 text-sm text-muted-foreground">
           Nenhum jogo agendado. Publique ou responda a um anuncio no{" "}
           <Link href="/jogos" className="font-semibold text-primary">
             mural de jogos

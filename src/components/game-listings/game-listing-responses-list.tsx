@@ -18,9 +18,9 @@ const STATUS_LABEL: Record<string, string> = {
 };
 
 const STATUS_CLASS: Record<string, string> = {
-  PENDING: "bg-amber-100 text-amber-700",
-  ACCEPTED: "bg-emerald-100 text-emerald-700",
-  DECLINED: "bg-slate-100 text-slate-500",
+  PENDING: "bg-amber-100 text-amber-700 dark:bg-amber-500/15 dark:text-amber-400",
+  ACCEPTED: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400",
+  DECLINED: "bg-muted text-muted-foreground",
 };
 
 export function GameListingResponsesList({
@@ -49,7 +49,7 @@ export function GameListingResponsesList({
   }
 
   if (responses.length === 0) {
-    return <p className="text-sm text-slate-400">Nenhum time demonstrou interesse ainda.</p>;
+    return <p className="text-sm text-muted-foreground">Nenhum time demonstrou interesse ainda.</p>;
   }
 
   return (
@@ -57,7 +57,7 @@ export function GameListingResponsesList({
       {responses.map((response) => (
         <Card key={response.id} className="flex items-center justify-between gap-3 p-4">
           <div className="flex items-center gap-3">
-            <Avatar className="size-10 rounded-xl bg-green-50">
+            <Avatar className="size-10 rounded-xl bg-primary/10">
               {response.organization.logoUrl && (
                 <AvatarImage src={response.organization.logoUrl} alt={response.organization.name} />
               )}
@@ -66,8 +66,8 @@ export function GameListingResponsesList({
               </AvatarFallback>
             </Avatar>
             <div>
-              <p className="font-bold text-slate-900">{response.organization.name}</p>
-              {response.message && <p className="text-sm text-slate-500">{response.message}</p>}
+              <p className="font-bold text-foreground">{response.organization.name}</p>
+              {response.message && <p className="text-sm text-muted-foreground">{response.message}</p>}
             </div>
           </div>
 

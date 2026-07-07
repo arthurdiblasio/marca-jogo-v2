@@ -67,7 +67,7 @@ export function ImageUpload({ folder, value, onChange, shape = "circle", fallbac
           onClick={() => inputRef.current?.click()}
           disabled={isUploading}
           className={cn(
-            "grid size-28 place-items-center overflow-hidden border-2 border-dashed border-slate-200 bg-slate-50 text-slate-400 transition hover:border-slate-300 disabled:cursor-not-allowed",
+            "grid size-28 place-items-center overflow-hidden border-2 border-dashed border-border bg-muted text-muted-foreground transition hover:border-muted-foreground/40 disabled:cursor-not-allowed",
             shapeClass,
           )}
         >
@@ -80,7 +80,7 @@ export function ImageUpload({ folder, value, onChange, shape = "circle", fallbac
 
           {isUploading && (
             <div className="absolute inset-0 grid place-items-center bg-white/70">
-              <Loader2 className="size-6 animate-spin text-slate-500" />
+              <Loader2 className="size-6 animate-spin text-muted-foreground" />
             </div>
           )}
         </button>
@@ -108,7 +108,7 @@ export function ImageUpload({ folder, value, onChange, shape = "circle", fallbac
         type="button"
         onClick={() => inputRef.current?.click()}
         disabled={isUploading}
-        className="text-sm font-semibold text-primary transition hover:text-[#15803d] disabled:opacity-50"
+        className="text-sm font-semibold text-primary transition hover:opacity-80 disabled:opacity-50"
       >
         {preview ? "Trocar foto" : "Escolher foto"}
       </button>

@@ -53,7 +53,7 @@ export function StepPosition({ selectedModalities }: Props) {
         <button
           type="button"
           onClick={() => handleSubmit(true)}
-          className="text-sm text-slate-400 hover:text-slate-600 transition underline"
+          className="text-sm text-muted-foreground hover:text-foreground transition underline"
         >
           Pular esta etapa
         </button>
@@ -64,10 +64,10 @@ export function StepPosition({ selectedModalities }: Props) {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold leading-tight tracking-tight text-slate-900">
+        <h1 className="text-3xl font-bold leading-tight tracking-tight text-foreground">
           Quais posições você joga?
         </h1>
-        <p className="text-sm text-slate-500">Pode escolher mais de uma por modalidade.</p>
+        <p className="text-sm text-muted-foreground">Pode escolher mais de uma por modalidade.</p>
       </div>
 
       <div className="flex flex-col gap-7">
@@ -77,7 +77,7 @@ export function StepPosition({ selectedModalities }: Props) {
 
           return (
             <div key={modality} className="flex flex-col gap-3">
-              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
+              <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                 {modalityLabel[modality]}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -91,8 +91,8 @@ export function StepPosition({ selectedModalities }: Props) {
                       whileTap={{ scale: 0.93 }}
                       className={`rounded-xl border-2 px-4 py-2.5 text-sm font-bold transition-all ${
                         isSelected
-                          ? "border-[#16A34A] bg-[#16A34A] text-white"
-                          : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-card text-foreground hover:border-muted-foreground/40"
                       }`}
                     >
                       {pos}
@@ -111,7 +111,7 @@ export function StepPosition({ selectedModalities }: Props) {
           onClick={() => handleSubmit(false)}
           disabled={totalSelected === 0 || loading}
           whileTap={{ scale: 0.97 }}
-          className="flex items-center justify-center gap-2 rounded-xl bg-[#16A34A] px-6 py-4 text-base font-bold text-white shadow-lg shadow-green-200 transition disabled:opacity-40"
+          className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition disabled:opacity-40"
         >
           {loading ? "Salvando..." : `Continuar${totalSelected > 0 ? ` com ${totalSelected} posição${totalSelected > 1 ? "s" : ""}` : ""}`}
           {!loading && <ArrowRight size={18} />}
@@ -121,7 +121,7 @@ export function StepPosition({ selectedModalities }: Props) {
           type="button"
           onClick={() => handleSubmit(true)}
           disabled={loading}
-          className="flex items-center justify-center gap-1.5 text-sm text-slate-400 hover:text-slate-600 transition"
+          className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition"
         >
           <SkipForward size={14} />
           Pular por agora

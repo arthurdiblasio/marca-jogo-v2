@@ -112,7 +112,7 @@ export function PlayerStatSearchEditor({
   return (
     <div className="space-y-3">
       <div className="relative">
-        <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-slate-300" />
+        <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground/60" />
         <Input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -127,19 +127,19 @@ export function PlayerStatSearchEditor({
                 key={entryKey(candidate)}
                 type="button"
                 onClick={() => addCandidate(candidate)}
-                className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition hover:bg-slate-100"
+                className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition hover:bg-muted"
               >
-                <Avatar className="size-7 rounded-lg bg-green-50">
+                <Avatar className="size-7 rounded-lg bg-primary/10">
                   {candidate.imageUrl && <AvatarImage src={candidate.imageUrl} alt={candidate.name} />}
                   <AvatarFallback className="rounded-lg bg-transparent text-xs">
                     <User className="size-3.5 text-primary" />
                   </AvatarFallback>
                 </Avatar>
-                <span className="min-w-0 flex-1 truncate text-sm font-semibold text-slate-800">
+                <span className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">
                   {candidate.name}
                 </span>
                 {candidate.kind === "guest" && (
-                  <span className="shrink-0 rounded-full bg-amber-100 px-2 py-0.5 text-[0.65rem] font-bold text-amber-700">
+                  <span className="shrink-0 rounded-full bg-amber-100 px-2 py-0.5 text-[0.65rem] font-bold text-amber-700 dark:bg-amber-500/15 dark:text-amber-400">
                     Convidado
                   </span>
                 )}
@@ -150,7 +150,7 @@ export function PlayerStatSearchEditor({
       </div>
 
       {entries.length === 0 ? (
-        <p className="rounded-xl border-2 border-dashed border-slate-200 p-4 text-center text-sm text-slate-400">
+        <p className="rounded-xl border-2 border-dashed border-border p-4 text-center text-sm text-muted-foreground">
           Busque e adicione os jogadores que participaram.
         </p>
       ) : (
@@ -160,7 +160,7 @@ export function PlayerStatSearchEditor({
             return (
               <Card key={key} className="flex flex-wrap items-center justify-between gap-3 p-3.5">
                 <div className="flex min-w-0 items-center gap-2.5">
-                  <Avatar className="size-9 rounded-xl bg-green-50">
+                  <Avatar className="size-9 rounded-xl bg-primary/10">
                     {entry.imageUrl && <AvatarImage src={entry.imageUrl} alt={entry.name} />}
                     <AvatarFallback className="rounded-xl bg-transparent">
                       {entry.kind === "guest" ? (
@@ -171,13 +171,13 @@ export function PlayerStatSearchEditor({
                     </AvatarFallback>
                   </Avatar>
                   <div className="min-w-0">
-                    <p className="truncate font-bold text-slate-900">{entry.name}</p>
+                    <p className="truncate font-bold text-foreground">{entry.name}</p>
                     {entry.kind === "guest" && <p className="text-xs font-semibold text-amber-600">Convidado</p>}
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <label className="flex items-center gap-1.5 text-sm text-slate-500">
+                  <label className="flex items-center gap-1.5 text-sm text-muted-foreground">
                     Gols
                     <input
                       type="number"
@@ -185,11 +185,11 @@ export function PlayerStatSearchEditor({
                       max={99}
                       value={entry.goals}
                       onChange={(e) => updateEntry(key, { goals: Number(e.target.value) })}
-                      className="w-14 rounded-lg border-2 border-slate-200 px-2 py-1.5 text-center font-bold text-slate-900 outline-none focus:border-[#16A34A]"
+                      className="w-14 rounded-lg border-2 border-border px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-primary"
                     />
                   </label>
 
-                  <label className="flex items-center gap-1.5 text-sm text-slate-500">
+                  <label className="flex items-center gap-1.5 text-sm text-muted-foreground">
                     Assist.
                     <input
                       type="number"
@@ -197,13 +197,13 @@ export function PlayerStatSearchEditor({
                       max={99}
                       value={entry.assists}
                       onChange={(e) => updateEntry(key, { assists: Number(e.target.value) })}
-                      className="w-14 rounded-lg border-2 border-slate-200 px-2 py-1.5 text-center font-bold text-slate-900 outline-none focus:border-[#16A34A]"
+                      className="w-14 rounded-lg border-2 border-border px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-primary"
                     />
                   </label>
 
                   {trackCards && (
                     <>
-                      <label className="flex items-center gap-1.5 text-sm text-slate-500">
+                      <label className="flex items-center gap-1.5 text-sm text-muted-foreground">
                         <span className="inline-block h-3.5 w-2.5 rounded-[2px] bg-amber-400" />
                         <input
                           type="number"
@@ -211,11 +211,11 @@ export function PlayerStatSearchEditor({
                           max={2}
                           value={entry.yellowCards ?? 0}
                           onChange={(e) => updateEntry(key, { yellowCards: Number(e.target.value) })}
-                          className="w-12 rounded-lg border-2 border-amber-200 px-2 py-1.5 text-center font-bold text-slate-900 outline-none focus:border-amber-400"
+                          className="w-12 rounded-lg border-2 border-amber-200 px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-amber-400"
                         />
                       </label>
 
-                      <label className="flex items-center gap-1.5 text-sm text-slate-500">
+                      <label className="flex items-center gap-1.5 text-sm text-muted-foreground">
                         <span className="inline-block h-3.5 w-2.5 rounded-[2px] bg-rose-500" />
                         <input
                           type="number"
@@ -223,7 +223,7 @@ export function PlayerStatSearchEditor({
                           max={1}
                           value={entry.redCards ?? 0}
                           onChange={(e) => updateEntry(key, { redCards: Number(e.target.value) })}
-                          className="w-12 rounded-lg border-2 border-rose-200 px-2 py-1.5 text-center font-bold text-slate-900 outline-none focus:border-rose-400"
+                          className="w-12 rounded-lg border-2 border-rose-200 px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-rose-400"
                         />
                       </label>
                     </>
@@ -232,7 +232,7 @@ export function PlayerStatSearchEditor({
                   <button
                     type="button"
                     onClick={() => handleRemove(entry)}
-                    className="text-slate-300 transition hover:text-red-500"
+                    className="text-muted-foreground/60 transition hover:text-red-500"
                   >
                     <X className="size-4" />
                   </button>

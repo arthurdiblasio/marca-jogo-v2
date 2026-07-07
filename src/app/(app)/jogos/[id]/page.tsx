@@ -52,11 +52,11 @@ export default async function GameListingDetailPage({ params }: { params: Promis
       )}
 
       <Card className="space-y-3 p-5">
-        <div className="flex items-center gap-2 text-slate-700">
+        <div className="flex items-center gap-2 text-foreground">
           <CalendarDays className="size-4" />
           <span className="capitalize font-semibold">{formatListingDateTime(listing.scheduledAt)}</span>
         </div>
-        <div className="flex items-center gap-2 text-slate-700">
+        <div className="flex items-center gap-2 text-foreground">
           <MapPin className="size-4" />
           <span className="font-semibold">
             {listing.location}, {listing.city}/{listing.state}
@@ -64,16 +64,16 @@ export default async function GameListingDetailPage({ params }: { params: Promis
         </div>
         <p className="text-lg font-black text-primary">
           {formatPriceCents(listing.priceCents)}
-          {listing.priceNotes && <span className="ml-2 text-sm font-medium text-slate-500">{listing.priceNotes}</span>}
+          {listing.priceNotes && <span className="ml-2 text-sm font-medium text-muted-foreground">{listing.priceNotes}</span>}
         </p>
-        {listing.notes && <p className="text-sm text-slate-600">{listing.notes}</p>}
+        {listing.notes && <p className="text-sm text-muted-foreground">{listing.notes}</p>}
 
         {listing.status === "MATCHED" && (
           <p className="text-sm font-semibold text-emerald-600">
             Jogo fechado com {listing.responses.find((r) => r.status === "ACCEPTED")?.organization.name ?? "outro time"}!
           </p>
         )}
-        {listing.status === "CANCELLED" && <p className="text-sm font-semibold text-slate-400">Este jogo foi cancelado.</p>}
+        {listing.status === "CANCELLED" && <p className="text-sm font-semibold text-muted-foreground">Este jogo foi cancelado.</p>}
 
         {!isOwner && listing.status === "OPEN" && (
           <ExpressInterestButton
@@ -90,7 +90,7 @@ export default async function GameListingDetailPage({ params }: { params: Promis
 
       {isOwner && (
         <div className="space-y-3">
-          <h2 className="text-lg font-black text-slate-900">Times interessados</h2>
+          <h2 className="text-lg font-black text-foreground">Times interessados</h2>
           <GameListingResponsesList
             gameListingId={listing.id}
             responses={listing.responses}

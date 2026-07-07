@@ -105,7 +105,7 @@ export function EditOrganizationForm({ organization }: EditOrganizationFormProps
             value={logoUrl}
             onChange={setLogoUrl}
           />
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-muted-foreground">
             Escudo {organization.type === "TEAM" ? "do time" : "da pelada"} (opcional)
           </p>
         </div>
@@ -115,9 +115,9 @@ export function EditOrganizationForm({ organization }: EditOrganizationFormProps
         </FormField>
 
         <div>
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-400">
+          <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             Modalidade{" "}
-            <span className="normal-case tracking-normal font-normal text-slate-300">(opcional)</span>
+            <span className="normal-case tracking-normal font-normal text-muted-foreground/60">(opcional)</span>
           </label>
           <div className="flex flex-wrap gap-2">
             {ALL_MODALITIES.map(({ value, label }) => {
@@ -130,8 +130,8 @@ export function EditOrganizationForm({ organization }: EditOrganizationFormProps
                   className={cn(
                     "rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition",
                     isActive
-                      ? "border-primary bg-primary text-white"
-                      : "border-slate-200 bg-white text-slate-600 hover:border-slate-300",
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border bg-card text-muted-foreground hover:border-muted-foreground/40",
                   )}
                 >
                   {label}
@@ -161,11 +161,11 @@ export function EditOrganizationForm({ organization }: EditOrganizationFormProps
         {organization.type === "PELADA" && (
           <>
             <div>
-              <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-400">
+              <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 Recorrência
               </label>
               <div className="flex flex-wrap gap-2">
-                <span className="rounded-full border-2 border-primary bg-primary px-4 py-1.5 text-sm font-semibold text-white">
+                <span className="rounded-full border-2 border-primary bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground">
                   Semanal
                 </span>
               </div>
@@ -177,7 +177,7 @@ export function EditOrganizationForm({ organization }: EditOrganizationFormProps
                   id="weekday"
                   value={weekday ?? ""}
                   onChange={(e) => setWeekday(e.target.value === "" ? null : Number(e.target.value))}
-                  className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-base font-medium text-slate-900 outline-none transition focus:border-[#16A34A]"
+                  className="w-full rounded-xl border-2 border-border bg-card px-4 py-3 text-base font-medium text-foreground outline-none transition focus:border-primary"
                 >
                   <option value="">Selecione</option>
                   {WEEKDAYS.map((day) => (
@@ -232,7 +232,7 @@ export function EditOrganizationForm({ organization }: EditOrganizationFormProps
             rows={3}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-base font-medium text-slate-900 outline-none transition placeholder:text-slate-300 focus:border-[#16A34A]"
+            className="w-full rounded-xl border-2 border-border bg-card px-4 py-3 text-base font-medium text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-primary"
             placeholder="Conte um pouco sobre o time"
           />
         </FormField>

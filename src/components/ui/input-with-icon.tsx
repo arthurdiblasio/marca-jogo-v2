@@ -11,17 +11,17 @@ export function InputWithIcon({ icon, className, hasError, ...props }: InputWith
   return (
     <div
       className={cn(
-        "flex items-center rounded-xl border-2 bg-white px-4 transition",
+        "flex items-center rounded-xl border-2 bg-card px-4 transition",
         hasError
           ? "border-red-400 focus-within:border-red-400"
-          : "border-slate-200 focus-within:border-[#16A34A]",
+          : "border-border focus-within:border-primary",
       )}
     >
-      <div className="mr-3 shrink-0 text-slate-400">{icon}</div>
+      <div className="mr-3 shrink-0 text-muted-foreground">{icon}</div>
       <input
         className={cn(
-          "w-full bg-transparent py-4 text-base font-medium text-slate-900",
-          "placeholder:text-slate-300 outline-none",
+          "w-full bg-transparent py-4 text-base font-medium text-foreground",
+          "placeholder:text-muted-foreground/60 outline-none",
           className,
         )}
         {...props}

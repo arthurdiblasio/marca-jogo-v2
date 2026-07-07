@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Bell, LogOut, Search, Trophy } from "lucide-react";
 
 import { OrganizationSwitcher } from "@/components/navigation/organization-switcher";
+import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { mainNavigation } from "@/constants/navigation";
 import { useOrgs } from "@/contexts/org-context";
@@ -42,6 +43,7 @@ export function SidebarNavigation({ pendingInterestsCount = 0 }: { pendingIntere
             <Button size="icon" variant="ghost" aria-label="Notificacoes">
               <Bell className="size-5" />
             </Button>
+            <ThemeToggle />
           </div>
         </div>
 

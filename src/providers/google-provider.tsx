@@ -11,9 +11,6 @@ interface GoogleProviderProps {
 export function GoogleProvider({
   children,
 }: GoogleProviderProps) {
-  console.log(
-    process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-  );
   return (
     <GoogleOAuthProvider
       clientId={

@@ -57,7 +57,7 @@ export default async function PeladaPlayersPage() {
       {isManager && <InvitePlayerSection pendingInvites={pendingInvites} />}
 
       <section className="space-y-3">
-        <h2 className="text-lg font-black text-slate-900">Jogadores da pelada</h2>
+        <h2 className="text-lg font-black text-foreground">Jogadores da pelada</h2>
         {members.length === 0 ? (
           <ComponentStateView state="empty" emptyLabel="Nenhum jogador vinculado ainda" />
         ) : (
@@ -69,7 +69,7 @@ export default async function PeladaPlayersPage() {
                 <Card key={member.id} className="flex flex-col gap-3 p-4">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <Avatar className="size-10 rounded-xl bg-green-50">
+                      <Avatar className="size-10 rounded-xl bg-primary/10">
                         {member.user.profile?.imageUrl && (
                           <AvatarImage src={member.user.profile.imageUrl} alt={name} />
                         )}
@@ -78,15 +78,15 @@ export default async function PeladaPlayersPage() {
                         </AvatarFallback>
                       </Avatar>
                       <div>
-                        <p className="font-bold text-slate-900">{name}</p>
+                        <p className="font-bold text-foreground">{name}</p>
                         {member.user.profile?.nickname && (
-                          <p className="text-sm text-slate-500">{member.user.profile.fullName}</p>
+                          <p className="text-sm text-muted-foreground">{member.user.profile.fullName}</p>
                         )}
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
                       <MonthlyToggle membershipId={member.id} isMonthly={member.isMonthly} editable={isManager} />
-                      <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">
+                      <span className="rounded-full bg-muted px-3 py-1 text-xs font-bold text-muted-foreground">
                         {ROLE_LABEL[member.role] ?? member.role}
                       </span>
                     </div>

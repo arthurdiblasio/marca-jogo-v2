@@ -170,7 +170,7 @@ export function RegisterForm({ inviteToken }: { inviteToken?: string }) {
           : "Criar Conta"}
       </Button>
 
-      <p className="text-center text-sm text-slate-600">
+      <p className="text-center text-sm text-muted-foreground">
         Já possui uma conta?{" "}
         <Link
           href={inviteToken ? `/login?invite=${inviteToken}` : "/login"}

@@ -164,7 +164,7 @@ export function LoginForm({ inviteToken }: { inviteToken?: string }) {
           : "Entrar"}
       </Button>
 
-      <p className="text-center text-sm text-slate-600">
+      <p className="text-center text-sm text-muted-foreground">
         Ainda não possui conta?{" "}
         <Link
           href={inviteToken ? `/register?invite=${inviteToken}` : "/register"}

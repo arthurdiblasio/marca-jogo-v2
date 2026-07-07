@@ -119,7 +119,7 @@ export function AddressAutocomplete({
           onFocus={() => predictions.length > 0 && setIsOpen(true)}
           className="pr-11"
         />
-        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">
           {isSearching || isResolving ? (
             <Loader2 className="h-5 w-5 animate-spin" />
           ) : (
@@ -129,15 +129,15 @@ export function AddressAutocomplete({
       </div>
 
       {isOpen && predictions.length > 0 && (
-        <ul className="absolute z-20 mt-1.5 w-full overflow-hidden rounded-xl border-2 border-slate-200 bg-white shadow-lg">
+        <ul className="absolute z-20 mt-1.5 w-full overflow-hidden rounded-xl border-2 border-border bg-card shadow-lg">
           {predictions.map((p) => (
             <li key={p.placeId}>
               <button
                 type="button"
                 onClick={() => handleSelect(p)}
-                className="flex w-full items-start gap-2 px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                className="flex w-full items-start gap-2 px-4 py-3 text-left text-sm font-medium text-foreground transition hover:bg-muted"
               >
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
                 {p.description}
               </button>
             </li>
@@ -146,7 +146,7 @@ export function AddressAutocomplete({
       )}
 
       {resolved?.city && resolved?.state && (
-        <p className={cn("mt-1.5 text-xs font-medium text-slate-400")}>
+        <p className={cn("mt-1.5 text-xs font-medium text-muted-foreground")}>
           {resolved.city} - {resolved.state}
         </p>
       )}

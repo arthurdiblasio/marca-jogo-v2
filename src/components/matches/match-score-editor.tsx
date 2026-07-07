@@ -39,29 +39,29 @@ export function MatchScoreEditor({
 
   return (
     <Card className="space-y-3 p-4">
-      <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Placar</p>
+      <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Placar</p>
       <div className="flex items-center justify-center gap-4">
         <div className="flex flex-col items-center gap-1.5">
-          <span className="max-w-24 truncate text-sm font-semibold text-slate-600">{homeLabel}</span>
+          <span className="max-w-24 truncate text-sm font-semibold text-muted-foreground">{homeLabel}</span>
           <input
             type="number"
             min={0}
             max={99}
             value={home}
             onChange={(e) => setHome(Number(e.target.value))}
-            className="w-16 rounded-lg border-2 border-slate-200 px-2 py-2 text-center text-2xl font-black text-slate-900 outline-none focus:border-[#16A34A]"
+            className="w-16 rounded-lg border-2 border-border px-2 py-2 text-center text-2xl font-black text-foreground outline-none focus:border-primary"
           />
         </div>
-        <span className="text-lg font-black text-slate-300">x</span>
+        <span className="text-lg font-black text-muted-foreground/60">x</span>
         <div className="flex flex-col items-center gap-1.5">
-          <span className="max-w-24 truncate text-sm font-semibold text-slate-600">{awayLabel}</span>
+          <span className="max-w-24 truncate text-sm font-semibold text-muted-foreground">{awayLabel}</span>
           <input
             type="number"
             min={0}
             max={99}
             value={away}
             onChange={(e) => setAway(Number(e.target.value))}
-            className="w-16 rounded-lg border-2 border-slate-200 px-2 py-2 text-center text-2xl font-black text-slate-900 outline-none focus:border-[#16A34A]"
+            className="w-16 rounded-lg border-2 border-border px-2 py-2 text-center text-2xl font-black text-foreground outline-none focus:border-primary"
           />
         </div>
       </div>

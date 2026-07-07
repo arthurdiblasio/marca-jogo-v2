@@ -66,20 +66,20 @@ export default async function PeladaRodadasPage() {
             const votingOpen = isVotingOpen(occurrence);
             return (
               <Link key={occurrence.id} href={`/pelada/rodadas/${occurrence.id}`}>
-                <Card className="flex items-center justify-between gap-3 p-4 transition hover:border-slate-300">
+                <Card className="flex items-center justify-between gap-3 p-4 transition hover:border-muted-foreground/40">
                   <div className="min-w-0">
-                    <p className="font-bold text-slate-900">{occurrence.title}</p>
-                    <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-500">
+                    <p className="font-bold text-foreground">{occurrence.title}</p>
+                    <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
                       <CalendarDays className="size-4 shrink-0" />
                       <span className="capitalize">{formatListingDateTime(occurrence.scheduledAt)}</span>
                     </p>
-                    <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-500">
+                    <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
                       <MapPin className="size-4 shrink-0" />
                       {occurrence.location}
                     </p>
                   </div>
                   {votingOpen && (
-                    <span className="flex shrink-0 items-center gap-1 rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-primary">
+                    <span className="flex shrink-0 items-center gap-1 rounded-full bg-primary/15 px-3 py-1 text-xs font-bold text-primary">
                       <Trophy className="size-3.5" />
                       Votação aberta
                     </span>

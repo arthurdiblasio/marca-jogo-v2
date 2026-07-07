@@ -18,7 +18,7 @@ export function AuthBenefits() {
         >
           <CheckCircle2 className="h-4 w-4 text-green-500" />
 
-          <span className="text-sm text-slate-300">
+          <span className="text-sm text-muted-foreground/60">
             {benefit}
           </span>
         </div>

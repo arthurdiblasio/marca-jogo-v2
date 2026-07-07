@@ -31,7 +31,7 @@ export function PendingInterestsList({ responses }: { responses: PendingGameList
   }
 
   if (responses.length === 0) {
-    return <p className="text-sm text-slate-400">Nenhum interesse pendente no momento.</p>;
+    return <p className="text-sm text-muted-foreground">Nenhum interesse pendente no momento.</p>;
   }
 
   return (
@@ -40,7 +40,7 @@ export function PendingInterestsList({ responses }: { responses: PendingGameList
         <Card key={response.id} className="space-y-3 p-4">
           <Link
             href={`/jogos/${response.gameListing.id}`}
-            className="block text-sm font-semibold text-slate-500 hover:text-primary"
+            className="block text-sm font-semibold text-muted-foreground hover:text-primary"
           >
             <span className="flex items-center gap-1.5">
               <CalendarDays className="size-4" />
@@ -54,7 +54,7 @@ export function PendingInterestsList({ responses }: { responses: PendingGameList
 
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <Avatar className="size-10 rounded-xl bg-green-50">
+              <Avatar className="size-10 rounded-xl bg-primary/10">
                 {response.organization.logoUrl && (
                   <AvatarImage src={response.organization.logoUrl} alt={response.organization.name} />
                 )}
@@ -63,8 +63,8 @@ export function PendingInterestsList({ responses }: { responses: PendingGameList
                 </AvatarFallback>
               </Avatar>
               <div>
-                <p className="font-bold text-slate-900">{response.organization.name}</p>
-                {response.message && <p className="text-sm text-slate-500">{response.message}</p>}
+                <p className="font-bold text-foreground">{response.organization.name}</p>
+                {response.message && <p className="text-sm text-muted-foreground">{response.message}</p>}
               </div>
             </div>
 

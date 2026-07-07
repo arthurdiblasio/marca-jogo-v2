@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import "@/styles/globals.css";
 
 import { GoogleProvider } from "@/providers/google-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -30,14 +31,16 @@ export default function RootLayout({
       <body
         className={`${manrope.className} antialiased`}
       >
-        <GoogleProvider>
-          {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <GoogleProvider>
+            {children}
 
-          <Toaster
-            richColors
-            position="top-right"
-          />
-        </GoogleProvider>
+            <Toaster
+              richColors
+              position="top-right"
+            />
+          </GoogleProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

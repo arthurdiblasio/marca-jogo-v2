@@ -71,7 +71,7 @@ export default async function TeamProfilePage() {
         />
       ) : (
         <Card className="flex items-start gap-4 p-5">
-          <div className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-2xl bg-green-50">
+          <div className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-2xl bg-primary/10">
             {organization.logoUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={organization.logoUrl} alt={organization.name} className="size-full object-cover" />
@@ -80,18 +80,18 @@ export default async function TeamProfilePage() {
             )}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="font-black text-slate-900">{organization.name}</p>
+            <p className="font-black text-foreground">{organization.name}</p>
             {organization.modality && (
-              <p className="text-sm text-slate-500">{MODALITY_LABEL[organization.modality]}</p>
+              <p className="text-sm text-muted-foreground">{MODALITY_LABEL[organization.modality]}</p>
             )}
             {organization.address && (
-              <p className="mt-2 flex items-center gap-1.5 text-sm text-slate-500">
+              <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
                 <MapPin className="size-4 shrink-0" />
                 {organization.address}
               </p>
             )}
             {organization.description && (
-              <p className="mt-2 text-sm text-slate-600">{organization.description}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{organization.description}</p>
             )}
           </div>
         </Card>

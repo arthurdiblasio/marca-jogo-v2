@@ -74,7 +74,7 @@ export function FootballLoading({
         </div>
       </div>
 
-      <p className="mt-6 text-sm text-slate-400">
+      <p className="mt-6 text-sm text-muted-foreground">
         Preparando sua partida...
       </p>
     </div>

@@ -59,8 +59,8 @@ export function CreateRodadaForm({
   return (
     <Card className="space-y-4 p-4">
       <div className="flex items-center justify-between">
-        <p className="font-bold text-slate-900">Nova rodada</p>
-        <button type="button" onClick={() => setOpen(false)} className="text-slate-400 hover:text-slate-600">
+        <p className="font-bold text-foreground">Nova rodada</p>
+        <button type="button" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground">
           <X className="size-4" />
         </button>
       </div>

@@ -17,7 +17,7 @@ export function FormField({ label, htmlFor, error, description, children }: Form
       {children}
 
       {description && !error && (
-        <p className="text-xs text-slate-400">{description}</p>
+        <p className="text-xs text-muted-foreground">{description}</p>
       )}
 
       {error && (

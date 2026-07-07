@@ -41,7 +41,7 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-card py-20">
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold">
@@ -56,7 +56,7 @@ export function FeaturesSection() {
             return (
               <div
                 key={feature.title}
-                className="rounded-xl border border-slate-200 p-5"
+                className="rounded-xl border border-border p-5"
               >
                 <Icon className="h-8 w-8 text-green-600" />
 
@@ -64,7 +64,7 @@ export function FeaturesSection() {
                   {feature.title}
                 </h3>
 
-                <p className="mt-2 text-sm text-slate-600">
+                <p className="mt-2 text-sm text-muted-foreground">
                   {feature.description}
                 </p>
               </div>

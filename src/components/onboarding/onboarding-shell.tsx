@@ -25,23 +25,23 @@ export function OnboardingShell({ currentStep, totalSteps, children }: Props) {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="fixed inset-x-0 top-0 z-10 bg-[#F8FAFC]/90 backdrop-blur-sm">
+      <header className="fixed inset-x-0 top-0 z-10 bg-background/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-lg items-center gap-4 px-6 py-4">
-          <div className="flex-1 overflow-hidden rounded-full bg-slate-200 h-1.5">
+          <div className="flex-1 overflow-hidden rounded-full bg-muted h-1.5">
             <motion.div
-              className="h-full rounded-full bg-[#16A34A]"
+              className="h-full rounded-full bg-primary"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             />
           </div>
-          <span className="text-xs font-semibold text-slate-400 tabular-nums shrink-0">
+          <span className="text-xs font-semibold text-muted-foreground tabular-nums shrink-0">
             {currentStep}/{totalSteps}
           </span>
         </div>
 
         <div className="mx-auto max-w-lg px-6 pb-3">
-          <p className="text-[11px] font-medium uppercase tracking-widest text-slate-400">
+          <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
             {STEP_LABELS[currentStep]}
           </p>
         </div>
@@ -65,10 +65,10 @@ export function OnboardingShell({ currentStep, totalSteps, children }: Props) {
               key={i}
               className={`h-1 rounded-full transition-all duration-300 ${
                 i + 1 < currentStep
-                  ? "w-4 bg-[#16A34A]"
+                  ? "w-4 bg-primary"
                   : i + 1 === currentStep
-                    ? "w-6 bg-[#16A34A]"
-                    : "w-2 bg-slate-200"
+                    ? "w-6 bg-primary"
+                    : "w-2 bg-muted"
               }`}
             />
           ))}

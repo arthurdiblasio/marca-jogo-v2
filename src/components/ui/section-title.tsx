@@ -11,12 +11,12 @@ export function SectionTitle({
 }: SectionTitleProps) {
   return (
     <div>
-      <h2 className="text-xl font-bold text-slate-900">
+      <h2 className="text-xl font-bold text-foreground">
         {title}
       </h2>
 
       {subtitle && (
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-muted-foreground">
           {subtitle}
         </p>
       )}

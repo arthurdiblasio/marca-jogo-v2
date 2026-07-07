@@ -25,11 +25,21 @@ export default async function AppLayout({
   const cookieOrgId = await getActiveOrgId();
   const activeOrg = orgs.find((o) => o.id === cookieOrgId) ?? orgs[0] ?? null;
 
+  // The `active_org` cookie can be unset or stale (e.g. right after signup, before the user
+  // ever touches the org switcher). Server actions read the cookie directly via getActiveOrgId(),
+  // so if it doesn't match what we resolved here, ask the client to persist the correction.
+  const syncActiveOrgId = activeOrg && activeOrg.id !== cookieOrgId ? activeOrg.id : null;
+
   const pendingInterestsCount =
     activeOrg?.type === "TEAM" ? await gameListingRepository.countPendingResponses(activeOrg.id) : 0;
 
   return (
-    <AppShell orgs={orgs} activeOrgId={activeOrg?.id ?? null} pendingInterestsCount={pendingInterestsCount}>
+    <AppShell
+      orgs={orgs}
+      activeOrgId={activeOrg?.id ?? null}
+      syncActiveOrgId={syncActiveOrgId}
+      pendingInterestsCount={pendingInterestsCount}
+    >
       {children}
     </AppShell>
   );

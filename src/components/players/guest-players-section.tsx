@@ -68,9 +68,9 @@ function MergeGuestControl({ guest, members }: { guest: GuestPlayer; members: Me
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => setPendingMember(member)}
-                  className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                  className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm font-semibold text-foreground transition hover:bg-muted"
                 >
-                  <Avatar className="size-6 rounded-lg bg-green-50">
+                  <Avatar className="size-6 rounded-lg bg-primary/10">
                     {member.imageUrl && <AvatarImage src={member.imageUrl} alt={member.name} />}
                     <AvatarFallback className="rounded-lg bg-transparent text-xs">
                       <User className="size-3 text-primary" />
@@ -134,8 +134,8 @@ export function GuestPlayersSection({
     <section className="space-y-3">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-black text-slate-900">Jogadores convidados</h2>
-          <p className="text-sm text-slate-500">
+          <h2 className="text-lg font-black text-foreground">Jogadores convidados</h2>
+          <p className="text-sm text-muted-foreground">
             Sem conta na plataforma, mas já entram nas estatísticas. Quando a pessoa se cadastrar, vincule o convidado a ela.
           </p>
         </div>
@@ -160,7 +160,7 @@ export function GuestPlayersSection({
               <button
                 type="button"
                 onClick={() => setAdding(false)}
-                className="text-slate-400 hover:text-slate-600"
+                className="text-muted-foreground hover:text-foreground"
               >
                 <X className="size-4" />
               </button>
@@ -178,12 +178,12 @@ export function GuestPlayersSection({
           {guests.map((guest) => (
             <Card key={guest.id} className="flex items-center justify-between gap-3 p-3">
               <div className="flex items-center gap-2.5">
-                <Avatar className="size-8 rounded-xl bg-amber-50">
+                <Avatar className="size-8 rounded-xl bg-amber-500/10">
                   <AvatarFallback className="rounded-xl bg-transparent">
                     <UserPlus className="size-4 text-amber-500" />
                   </AvatarFallback>
                 </Avatar>
-                <p className="font-bold text-slate-900">{guest.name}</p>
+                <p className="font-bold text-foreground">{guest.name}</p>
               </div>
               {isManager && <MergeGuestControl guest={guest} members={members} />}
             </Card>

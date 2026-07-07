@@ -10,11 +10,11 @@ export function Input({ className, hasError, ...props }: InputProps) {
   return (
     <input
       className={cn(
-        "w-full rounded-xl border-2 bg-white px-4 py-4 text-base font-medium text-slate-900",
-        "placeholder:text-slate-300 outline-none transition",
+        "w-full rounded-xl border-2 bg-card px-4 py-4 text-base font-medium text-foreground",
+        "placeholder:text-muted-foreground/60 outline-none transition",
         hasError
           ? "border-red-400 focus:border-red-400"
-          : "border-slate-200 focus:border-[#16A34A]",
+          : "border-border focus:border-primary",
         className,
       )}
       {...props}

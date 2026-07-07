@@ -62,7 +62,7 @@ export function StepShirt() {
             max={99}
             placeholder="1–99"
             autoFocus
-            className="w-32 rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-center text-2xl font-bold text-slate-900 placeholder:text-slate-300 outline-none transition focus:border-[#16A34A] [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
+            className="w-32 rounded-xl border-2 border-border bg-card px-4 py-3 text-center text-2xl font-bold text-foreground placeholder:text-muted-foreground/60 outline-none transition focus:border-primary [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
           />
         </div>
 
@@ -72,7 +72,7 @@ export function StepShirt() {
             onClick={() => handleSubmit(false)}
             disabled={!isValid || loading}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center gap-2 rounded-xl bg-[#16A34A] px-6 py-4 text-base font-bold text-white shadow-lg shadow-green-200 transition disabled:opacity-40"
+            className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition disabled:opacity-40"
           >
             {loading ? "Salvando..." : "Continuar"}
             {!loading && <ArrowRight size={18} />}
@@ -82,7 +82,7 @@ export function StepShirt() {
             type="button"
             onClick={() => handleSubmit(true)}
             disabled={loading}
-            className="flex items-center justify-center gap-1.5 text-sm text-slate-400 hover:text-slate-600 transition"
+            className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition"
           >
             <SkipForward size={14} />
             Pular por agora

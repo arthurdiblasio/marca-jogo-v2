@@ -10,7 +10,7 @@ export function CtaSection() {
           Pronto para organizar suas peladas?
         </h2>
 
-        <p className="mt-2 text-slate-600">
+        <p className="mt-2 text-muted-foreground">
           Crie sua conta gratuitamente.
         </p>
 

@@ -41,10 +41,10 @@ export function StepModality() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold leading-tight tracking-tight text-slate-900">
+        <h1 className="text-3xl font-bold leading-tight tracking-tight text-foreground">
           Em quais modalidades você joga?
         </h1>
-        <p className="text-sm text-slate-500">Pode escolher mais de uma.</p>
+        <p className="text-sm text-muted-foreground">Pode escolher mais de uma.</p>
       </div>
 
       <div className="flex flex-col gap-3">
@@ -58,22 +58,22 @@ export function StepModality() {
               whileTap={{ scale: 0.97 }}
               className={`relative flex items-center gap-4 rounded-2xl border-2 p-4 text-left transition-all ${
                 isSelected
-                  ? "border-[#16A34A] bg-[#16A34A]/5"
-                  : "border-slate-200 bg-white hover:border-slate-300"
+                  ? "border-primary bg-primary/5"
+                  : "border-border bg-card hover:border-muted-foreground/40"
               }`}
             >
               <span className="text-3xl leading-none">{MODALITY_ICON[value]}</span>
 
               <div className="flex-1">
-                <p className={`text-sm font-bold ${isSelected ? "text-[#16A34A]" : "text-slate-800"}`}>
+                <p className={`text-sm font-bold ${isSelected ? "text-primary" : "text-foreground"}`}>
                   {label}
                 </p>
-                <p className="text-xs text-slate-400 mt-0.5">{MODALITY_DESC[value]}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{MODALITY_DESC[value]}</p>
               </div>
 
               <div
                 className={`h-6 w-6 rounded-full border-2 transition-all flex items-center justify-center shrink-0 ${
-                  isSelected ? "border-[#16A34A] bg-[#16A34A]" : "border-slate-200"
+                  isSelected ? "border-primary bg-primary" : "border-border"
                 }`}
               >
                 <AnimatePresence>
@@ -100,7 +100,7 @@ export function StepModality() {
         onClick={handleSubmit}
         disabled={selected.length === 0 || loading}
         whileTap={{ scale: 0.97 }}
-        className="flex items-center justify-center gap-2 rounded-xl bg-[#16A34A] px-6 py-4 text-base font-bold text-white shadow-lg shadow-green-200 transition disabled:opacity-40"
+        className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition disabled:opacity-40"
       >
         {loading
           ? "Salvando..."

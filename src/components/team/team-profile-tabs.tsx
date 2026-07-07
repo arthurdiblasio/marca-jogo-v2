@@ -15,7 +15,7 @@ export function TeamProfileTabs() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex gap-2 border-b border-slate-200 pb-2">
+    <nav className="flex gap-2 border-b border-border pb-2">
       {TABS.map((tab) => {
         const Icon = tab.icon;
         const active = pathname === tab.href;
@@ -28,7 +28,7 @@ export function TeamProfileTabs() {
               "flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold transition",
               active
                 ? "bg-primary text-primary-foreground"
-                : "text-slate-500 hover:bg-slate-100 hover:text-slate-700",
+                : "text-muted-foreground hover:bg-muted hover:text-foreground",
             )}
           >
             <Icon className="size-4" />

@@ -36,13 +36,13 @@ export function StepName() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <div className="flex flex-col items-center gap-1.5">
           <ImageUpload folder="profiles/avatars" onChange={setImageUrl} />
-          <p className="max-w-55 text-center text-xs text-slate-400">
+          <p className="max-w-55 text-center text-xs text-muted-foreground">
             Opcional. Use uma foto de rosto, tipo 3x4, para ficar bem visível.
           </p>
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+          <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             Nome completo
           </label>
           <input
@@ -51,20 +51,20 @@ export function StepName() {
             onChange={(e) => setFullName(e.target.value)}
             placeholder="Ex: Bruno Costa"
             autoFocus
-            className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-4 text-lg font-medium text-slate-900 placeholder:text-slate-300 outline-none transition focus:border-[#16A34A]"
+            className="w-full rounded-xl border-2 border-border bg-card px-4 py-4 text-lg font-medium text-foreground placeholder:text-muted-foreground/60 outline-none transition focus:border-primary"
           />
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-            Apelido <span className="normal-case font-normal text-slate-300">(opcional)</span>
+          <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Apelido <span className="normal-case font-normal text-muted-foreground/60">(opcional)</span>
           </label>
           <input
             type="text"
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
             placeholder="Ex: Bruninho"
-            className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-4 text-lg font-medium text-slate-900 placeholder:text-slate-300 outline-none transition focus:border-[#16A34A]"
+            className="w-full rounded-xl border-2 border-border bg-card px-4 py-4 text-lg font-medium text-foreground placeholder:text-muted-foreground/60 outline-none transition focus:border-primary"
           />
         </div>
 
@@ -72,7 +72,7 @@ export function StepName() {
           type="submit"
           disabled={!canContinue || loading}
           whileTap={{ scale: 0.97 }}
-          className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#16A34A] px-6 py-4 text-base font-bold text-white shadow-lg shadow-green-200 transition disabled:opacity-40"
+          className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition disabled:opacity-40"
         >
           {loading ? "Salvando..." : "Continuar"}
           {!loading && <ArrowRight size={18} />}

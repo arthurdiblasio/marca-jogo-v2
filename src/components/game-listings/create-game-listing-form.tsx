@@ -136,7 +136,7 @@ export function CreateGameListingForm({ homeAddress }: CreateGameListingFormProp
   return (
     <form onSubmit={handleSubmit} className="mx-auto w-full max-w-lg space-y-5">
       <div>
-        <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-400">
+        <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
           Modalidade
         </label>
         <div className="flex flex-wrap gap-2">
@@ -150,8 +150,8 @@ export function CreateGameListingForm({ homeAddress }: CreateGameListingFormProp
                 className={cn(
                   "rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition",
                   isActive
-                    ? "border-primary bg-primary text-white"
-                    : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card text-muted-foreground hover:border-muted-foreground/40"
                 )}
               >
                 {label}
@@ -162,22 +162,22 @@ export function CreateGameListingForm({ homeAddress }: CreateGameListingFormProp
       </div>
 
       {homeAddress && (
-        <div className="flex items-center justify-between rounded-xl border-2 border-slate-200 p-4">
+        <div className="flex items-center justify-between rounded-xl border-2 border-border p-4">
           <div>
-            <p className="font-bold text-slate-900">Usar endereço cadastrado do time</p>
-            <p className="text-sm text-slate-500">{homeAddress.address}</p>
+            <p className="font-bold text-foreground">Usar endereço cadastrado do time</p>
+            <p className="text-sm text-muted-foreground">{homeAddress.address}</p>
           </div>
           <button
             type="button"
             onClick={toggleUseHomeAddress}
             className={cn(
               "relative h-7 w-12 shrink-0 rounded-full transition",
-              useHomeAddress ? "bg-primary" : "bg-slate-200"
+              useHomeAddress ? "bg-primary" : "bg-muted"
             )}
           >
             <span
               className={cn(
-                "absolute top-0.5 size-6 rounded-full bg-white shadow transition-all",
+                "absolute top-0.5 size-6 rounded-full bg-card shadow transition-all",
                 useHomeAddress ? "left-[22px]" : "left-0.5"
               )}
             />
@@ -247,16 +247,16 @@ export function CreateGameListingForm({ homeAddress }: CreateGameListingFormProp
           rows={3}
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
-          className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-base font-medium text-slate-900 outline-none transition placeholder:text-slate-300 focus:border-[#16A34A]"
+          className="w-full rounded-xl border-2 border-border bg-card px-4 py-3 text-base font-medium text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-primary"
           placeholder="Detalhes extras sobre o jogo, nível do time, etc."
         />
       </FormField>
 
       <div>
-        <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-400">
+        <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
           Fotos do local
         </label>
-        <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-6 text-sm font-semibold text-slate-500 transition hover:border-slate-400">
+        <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border bg-card px-4 py-6 text-sm font-semibold text-muted-foreground transition hover:border-muted-foreground/40">
           <ImagePlus className="size-5" />
           Adicionar fotos
           <input type="file" accept="image/*" multiple className="hidden" onChange={handlePhotosChange} />
@@ -284,23 +284,23 @@ export function CreateGameListingForm({ homeAddress }: CreateGameListingFormProp
         )}
       </div>
 
-      <div className="rounded-xl border-2 border-slate-200 p-4">
+      <div className="rounded-xl border-2 border-border p-4">
         <div className="flex items-center justify-between">
           <div>
-            <p className="font-bold text-slate-900">Jogo recorrente</p>
-            <p className="text-sm text-slate-500">Repita este anúncio automaticamente pelos próximos 12 meses.</p>
+            <p className="font-bold text-foreground">Jogo recorrente</p>
+            <p className="text-sm text-muted-foreground">Repita este anúncio automaticamente pelos próximos 12 meses.</p>
           </div>
           <button
             type="button"
             onClick={() => setIsRecurring((v) => !v)}
             className={cn(
               "relative h-7 w-12 shrink-0 rounded-full transition",
-              isRecurring ? "bg-primary" : "bg-slate-200"
+              isRecurring ? "bg-primary" : "bg-muted"
             )}
           >
             <span
               className={cn(
-                "absolute top-0.5 size-6 rounded-full bg-white shadow transition-all",
+                "absolute top-0.5 size-6 rounded-full bg-card shadow transition-all",
                 isRecurring ? "left-[22px]" : "left-0.5"
               )}
             />
@@ -320,8 +320,8 @@ export function CreateGameListingForm({ homeAddress }: CreateGameListingFormProp
                     className={cn(
                       "rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition",
                       isActive
-                        ? "border-primary bg-primary text-white"
-                        : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card text-muted-foreground hover:border-muted-foreground/40"
                     )}
                   >
                     {label}
@@ -330,7 +330,7 @@ export function CreateGameListingForm({ homeAddress }: CreateGameListingFormProp
               })}
             </div>
             {scheduledAt && (
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-muted-foreground">
                 Serão criados jogos até{" "}
                 {computeSeriesEndDate(new Date(scheduledAt)).toLocaleDateString("pt-BR")}.
               </p>

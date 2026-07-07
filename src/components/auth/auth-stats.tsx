@@ -6,7 +6,7 @@ export function AuthStats() {
           1200+
         </p>
 
-        <p className="text-xs text-slate-400">
+        <p className="text-xs text-muted-foreground">
           Jogadores
         </p>
       </div>
@@ -16,7 +16,7 @@ export function AuthStats() {
           350+
         </p>
 
-        <p className="text-xs text-slate-400">
+        <p className="text-xs text-muted-foreground">
           Partidas
         </p>
       </div>
@@ -26,7 +26,7 @@ export function AuthStats() {
           80+
         </p>
 
-        <p className="text-xs text-slate-400">
+        <p className="text-xs text-muted-foreground">
           Times
         </p>
       </div>

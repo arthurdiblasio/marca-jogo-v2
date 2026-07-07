@@ -25,7 +25,7 @@ export function MonthlyToggle({
       <span
         className={cn(
           "rounded-full px-3 py-1 text-xs font-bold",
-          value ? "bg-green-100 text-primary" : "bg-slate-100 text-slate-500",
+          value ? "bg-primary/15 text-primary" : "bg-muted text-muted-foreground",
         )}
       >
         {value ? "Mensalista" : "Avulso"}
@@ -54,7 +54,7 @@ export function MonthlyToggle({
       onClick={handleToggle}
       className={cn(
         "rounded-full px-3 py-1 text-xs font-bold transition disabled:opacity-50",
-        value ? "bg-green-100 text-primary hover:bg-green-200" : "bg-slate-100 text-slate-500 hover:bg-slate-200",
+        value ? "bg-primary/15 text-primary hover:bg-primary/25" : "bg-muted text-muted-foreground hover:bg-muted",
       )}
     >
       {value ? "Mensalista" : "Avulso"}

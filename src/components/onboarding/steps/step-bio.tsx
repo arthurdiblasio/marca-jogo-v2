@@ -38,9 +38,9 @@ export function StepBio() {
             placeholder="Ex: Meia criativo, gosto de ajudar na saída de bola..."
             rows={4}
             autoFocus
-            className="w-full resize-none rounded-xl border-2 border-slate-200 bg-white px-4 py-4 text-base font-medium text-slate-900 placeholder:text-slate-300 outline-none transition focus:border-[#16A34A]"
+            className="w-full resize-none rounded-xl border-2 border-border bg-card px-4 py-4 text-base font-medium text-foreground placeholder:text-muted-foreground/60 outline-none transition focus:border-primary"
           />
-          <span className={`absolute bottom-3 right-4 text-xs tabular-nums ${remaining < 20 ? "text-amber-500" : "text-slate-300"}`}>
+          <span className={`absolute bottom-3 right-4 text-xs tabular-nums ${remaining < 20 ? "text-amber-500" : "text-muted-foreground/60"}`}>
             {remaining}
           </span>
         </div>
@@ -51,7 +51,7 @@ export function StepBio() {
             onClick={() => handleSubmit(false)}
             disabled={loading}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center gap-2 rounded-xl bg-[#16A34A] px-6 py-4 text-base font-bold text-white shadow-lg shadow-green-200 transition disabled:opacity-40"
+            className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition disabled:opacity-40"
           >
             {loading ? "Finalizando..." : "Concluir perfil"}
             {!loading && <ArrowRight size={18} />}
@@ -61,7 +61,7 @@ export function StepBio() {
             type="button"
             onClick={() => handleSubmit(true)}
             disabled={loading}
-            className="flex items-center justify-center gap-1.5 text-sm text-slate-400 hover:text-slate-600 transition"
+            className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition"
           >
             <SkipForward size={14} />
             Pular e concluir

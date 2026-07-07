@@ -8,7 +8,7 @@ export default async function OnboardingLayout({
   await requireAuth();
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-background">
       {children}
     </div>
   );

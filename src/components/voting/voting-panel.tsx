@@ -92,7 +92,7 @@ export function VotingPanel({
     <div className="space-y-4">
       {isManager && (
         <Card className="flex flex-wrap items-center justify-between gap-3 p-4">
-          <div className="flex items-center gap-2 text-sm text-slate-500">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
             {votingOpen ? (
               <>
                 <Trophy className="size-4 text-primary" />
@@ -132,8 +132,8 @@ export function VotingPanel({
       {votingOpen && (
         <Card className="space-y-4 p-4">
           <div>
-            <p className="font-bold text-slate-900">Melhor em campo</p>
-            <p className="text-sm text-slate-500">Escolha um jogador e dê uma nota para cada um.</p>
+            <p className="font-bold text-foreground">Melhor em campo</p>
+            <p className="text-sm text-muted-foreground">Escolha um jogador e dê uma nota para cada um.</p>
           </div>
 
           <div className="space-y-3">
@@ -146,17 +146,17 @@ export function VotingPanel({
                   key={player.userId}
                   className={cn(
                     "flex flex-wrap items-center justify-between gap-3 rounded-xl border-2 p-3 transition",
-                    isMvp ? "border-primary bg-green-50/60" : "border-slate-200",
+                    isMvp ? "border-primary bg-primary/15" : "border-border",
                   )}
                 >
                   <div className="flex min-w-0 items-center gap-2.5">
-                    <Avatar className="size-8 rounded-xl bg-green-50">
+                    <Avatar className="size-8 rounded-xl bg-primary/10">
                       {player.imageUrl && <AvatarImage src={player.imageUrl} alt={player.name} />}
                       <AvatarFallback className="rounded-xl bg-transparent text-xs">
                         {player.name.slice(0, 1).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
-                    <p className="min-w-0 truncate text-sm font-bold text-slate-900">{player.name}</p>
+                    <p className="min-w-0 truncate text-sm font-bold text-foreground">{player.name}</p>
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -178,7 +178,7 @@ export function VotingPanel({
                       onClick={() => setMvpUserId(player.userId)}
                       className={cn(
                         "flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold transition",
-                        isMvp ? "bg-primary text-white" : "bg-slate-100 text-slate-500 hover:bg-slate-200",
+                        isMvp ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted",
                       )}
                     >
                       <Trophy className="size-3.5" />
@@ -198,19 +198,19 @@ export function VotingPanel({
 
       {(mvpTally.length > 0 || ratingTally.length > 0) && (
         <Card className="space-y-4 p-4">
-          <p className="font-bold text-slate-900">Resultado da votação</p>
+          <p className="font-bold text-foreground">Resultado da votação</p>
 
           {mvpTally.length > 0 && (
             <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Melhor em campo</p>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Melhor em campo</p>
               <div className="space-y-1.5">
                 {mvpTally.map((entry, index) => (
                   <div key={entry.userId} className="flex items-center justify-between text-sm">
-                    <span className={cn("font-semibold", index === 0 ? "text-slate-900" : "text-slate-500")}>
+                    <span className={cn("font-semibold", index === 0 ? "text-foreground" : "text-muted-foreground")}>
                       {index === 0 && "🏆 "}
                       {entry.name}
                     </span>
-                    <span className="font-bold text-slate-700">{entry.count} voto{entry.count !== 1 ? "s" : ""}</span>
+                    <span className="font-bold text-foreground">{entry.count} voto{entry.count !== 1 ? "s" : ""}</span>
                   </div>
                 ))}
               </div>
@@ -219,12 +219,12 @@ export function VotingPanel({
 
           {ratingTally.length > 0 && (
             <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Nota média</p>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Nota média</p>
               <div className="space-y-1.5">
                 {ratingTally.map((entry) => (
                   <div key={entry.userId} className="flex items-center justify-between text-sm">
-                    <span className="font-semibold text-slate-700">{entry.name}</span>
-                    <span className="flex items-center gap-1 font-bold text-slate-900">
+                    <span className="font-semibold text-foreground">{entry.name}</span>
+                    <span className="flex items-center gap-1 font-bold text-foreground">
                       <Star className="size-3.5 fill-amber-400 text-amber-400" />
                       {entry.average.toFixed(1)}
                     </span>

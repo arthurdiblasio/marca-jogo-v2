@@ -30,9 +30,9 @@ export default async function TeamAgendaPage() {
       <PageHeader eyebrow="Time" title="Agenda" description="Jogos futuros e resultados anteriores do seu time." />
 
       <section className="space-y-3">
-        <h2 className="text-lg font-black text-slate-900">Próximos jogos</h2>
+        <h2 className="text-lg font-black text-foreground">Próximos jogos</h2>
         {upcoming.length === 0 ? (
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-muted-foreground">
             Nenhum jogo agendado.{" "}
             <Link href="/jogos" className="font-semibold text-primary">
               Buscar adversário no mural
@@ -48,9 +48,9 @@ export default async function TeamAgendaPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-lg font-black text-slate-900">Jogos anteriores</h2>
+        <h2 className="text-lg font-black text-foreground">Jogos anteriores</h2>
         {past.length === 0 ? (
-          <p className="text-sm text-slate-400">Nenhum jogo anterior ainda.</p>
+          <p className="text-sm text-muted-foreground">Nenhum jogo anterior ainda.</p>
         ) : (
           <div className="space-y-3">
             {past.map((match) => (
@@ -69,9 +69,9 @@ export default async function TeamAgendaPage() {
 
 const OUTCOME_LABEL: Record<string, string> = { V: "Vitória", E: "Empate", D: "Derrota" };
 const OUTCOME_CLASS: Record<string, string> = {
-  V: "bg-emerald-100 text-emerald-700",
-  E: "bg-amber-100 text-amber-700",
-  D: "bg-rose-100 text-rose-700",
+  V: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400",
+  E: "bg-amber-100 text-amber-700 dark:bg-amber-500/15 dark:text-amber-400",
+  D: "bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-400",
 };
 
 function UpcomingMatchCard({ match, activeOrgId }: { match: MatchWithOrgs; activeOrgId: string }) {
@@ -82,17 +82,17 @@ function UpcomingMatchCard({ match, activeOrgId }: { match: MatchWithOrgs; activ
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <Shield className="size-4 text-primary" />
-          <p className="font-bold text-slate-900">vs {opponentLabel}</p>
+          <p className="font-bold text-foreground">vs {opponentLabel}</p>
         </div>
-        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">
+        <span className="rounded-full bg-muted px-3 py-1 text-xs font-bold text-muted-foreground">
           {isHome ? "Casa" : "Fora"}
         </span>
       </div>
-      <div className="flex items-center gap-2 text-sm text-slate-600">
+      <div className="flex items-center gap-2 text-sm text-muted-foreground">
         <CalendarDays className="size-4" />
         <span className="capitalize">{formatListingDateTime(match.scheduledAt)}</span>
       </div>
-      <div className="flex items-center gap-2 text-sm text-slate-600">
+      <div className="flex items-center gap-2 text-sm text-muted-foreground">
         <MapPin className="size-4" />
         <span>{match.location}</span>
       </div>
@@ -105,18 +105,18 @@ function PastMatchCard({ match, activeOrgId }: { match: MatchWithOrgs; activeOrg
 
   return (
     <Link href={`/time/agenda/${match.id}`}>
-      <Card className="flex items-center justify-between gap-3 p-4 transition hover:border-slate-300">
+      <Card className="flex items-center justify-between gap-3 p-4 transition hover:border-muted-foreground/40">
         <div>
-          <p className="font-bold text-slate-900">vs {opponentLabel}</p>
-          <p className="text-sm text-slate-500 capitalize">{formatListingDateTime(match.scheduledAt)}</p>
+          <p className="font-bold text-foreground">vs {opponentLabel}</p>
+          <p className="text-sm text-muted-foreground capitalize">{formatListingDateTime(match.scheduledAt)}</p>
         </div>
         <div className="flex items-center gap-2">
           {match.status === "CANCELLED" ? (
-            <span className="text-sm font-semibold text-slate-400">Cancelado</span>
+            <span className="text-sm font-semibold text-muted-foreground">Cancelado</span>
           ) : (
             <>
               {teamScore != null && opponentScore != null && (
-                <span className="rounded bg-slate-100 px-3 py-1 text-sm font-black text-slate-700">
+                <span className="rounded bg-muted px-3 py-1 text-sm font-black text-foreground">
                   {teamScore} x {opponentScore}
                 </span>
               )}

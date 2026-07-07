@@ -59,7 +59,7 @@ export function GameListingsFilterBar() {
           value={currentState}
           disabled={loadingStates}
           onChange={(e) => updateParams({ state: e.target.value || undefined, city: undefined })}
-          className="w-44 appearance-none rounded-xl border-2 border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-900 outline-none transition focus:border-[#16A34A] disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-44 appearance-none rounded-xl border-2 border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground outline-none transition focus:border-primary disabled:cursor-not-allowed disabled:opacity-50"
         >
           <option value="">{loadingStates ? "Carregando..." : "Todos os estados"}</option>
           {states.map((s) => (
@@ -68,7 +68,7 @@ export function GameListingsFilterBar() {
             </option>
           ))}
         </select>
-        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
           {loadingStates ? <Loader2 className="h-4 w-4 animate-spin" /> : <ChevronDown className="h-4 w-4" />}
         </span>
       </div>
@@ -78,7 +78,7 @@ export function GameListingsFilterBar() {
           value={currentCity}
           disabled={!currentState || loadingCities}
           onChange={(e) => updateParams({ city: e.target.value || undefined })}
-          className="w-44 appearance-none rounded-xl border-2 border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-900 outline-none transition focus:border-[#16A34A] disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-44 appearance-none rounded-xl border-2 border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground outline-none transition focus:border-primary disabled:cursor-not-allowed disabled:opacity-50"
         >
           <option value="">
             {loadingCities ? "Carregando..." : currentState ? "Todas as cidades" : "Selecione o estado"}
@@ -89,7 +89,7 @@ export function GameListingsFilterBar() {
             </option>
           ))}
         </select>
-        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
           {loadingCities ? <Loader2 className="h-4 w-4 animate-spin" /> : <ChevronDown className="h-4 w-4" />}
         </span>
       </div>
@@ -105,8 +105,8 @@ export function GameListingsFilterBar() {
               className={cn(
                 "rounded-full border-2 px-3 py-1.5 text-xs font-semibold transition",
                 isActive
-                  ? "border-primary bg-primary text-white"
-                  : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card text-muted-foreground hover:border-muted-foreground/40"
               )}
             >
               {label}

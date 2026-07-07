@@ -36,7 +36,7 @@ export function StepPhone() {
           onChange={(e) => setPhone(formatPhoneInput(e.target.value))}
           placeholder="(11) 91234-5678"
           autoFocus
-          className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-4 text-lg font-medium text-slate-900 placeholder:text-slate-300 outline-none transition focus:border-[#16A34A]"
+          className="w-full rounded-xl border-2 border-border bg-card px-4 py-4 text-lg font-medium text-foreground placeholder:text-muted-foreground/60 outline-none transition focus:border-primary"
         />
 
         <div className="flex flex-col gap-3">
@@ -45,7 +45,7 @@ export function StepPhone() {
             onClick={() => handleSubmit(false)}
             disabled={!isValid || loading}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center gap-2 rounded-xl bg-[#16A34A] px-6 py-4 text-base font-bold text-white shadow-lg shadow-green-200 transition disabled:opacity-40"
+            className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition disabled:opacity-40"
           >
             {loading ? "Salvando..." : "Continuar"}
             {!loading && <ArrowRight size={18} />}
@@ -55,7 +55,7 @@ export function StepPhone() {
             type="button"
             onClick={() => handleSubmit(true)}
             disabled={loading}
-            className="flex items-center justify-center gap-1.5 text-sm text-slate-400 hover:text-slate-600 transition"
+            className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition"
           >
             <SkipForward size={14} />
             Pular por agora

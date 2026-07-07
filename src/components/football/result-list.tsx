@@ -8,7 +8,7 @@ export type MatchResultRow = {
 
 export function ResultList({ results }: { results: MatchResultRow[] }) {
   if (results.length === 0) {
-    return <p className="px-4 py-3 text-sm text-slate-400">Nenhum resultado ainda.</p>;
+    return <p className="px-4 py-3 text-sm text-muted-foreground">Nenhum resultado ainda.</p>;
   }
 
   return (

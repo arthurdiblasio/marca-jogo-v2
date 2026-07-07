@@ -1,19 +1,35 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { OrgProvider, type OrgInfo } from "@/contexts/org-context";
 import { BottomNavigation } from "@/components/navigation/bottom-navigation";
 import { SidebarNavigation } from "@/components/navigation/sidebar-navigation";
 import { TopNavigation } from "@/components/navigation/top-navigation";
+import { setActiveOrgAction } from "@/modules/organizations/actions/set-active-org";
 
 interface AppShellProps {
   children: React.ReactNode;
   orgs: OrgInfo[];
   activeOrgId: string | null;
+  syncActiveOrgId?: string | null;
   pendingInterestsCount?: number;
 }
 
-export function AppShell({ children, orgs, activeOrgId, pendingInterestsCount = 0 }: AppShellProps) {
+export function AppShell({
+  children,
+  orgs,
+  activeOrgId,
+  syncActiveOrgId,
+  pendingInterestsCount = 0,
+}: AppShellProps) {
   const activeOrg = orgs.find((o) => o.id === activeOrgId) ?? orgs[0] ?? null;
+
+  useEffect(() => {
+    if (syncActiveOrgId) {
+      setActiveOrgAction(syncActiveOrgId);
+    }
+  }, [syncActiveOrgId]);
 
   return (
     <OrgProvider orgs={orgs} activeOrg={activeOrg}>

@@ -13,15 +13,15 @@ export function FeatureCard({
 }: FeatureCardProps) {
   return (
     <div className="space-y-3">
-      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
-        <Icon className="h-5 w-5 text-green-700" />
+      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/15">
+        <Icon className="h-5 w-5 text-primary" />
       </div>
 
       <h3 className="font-semibold">
         {title}
       </h3>
 
-      <p className="text-sm text-slate-600">
+      <p className="text-sm text-muted-foreground">
         {description}
       </p>
     </div>

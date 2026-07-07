@@ -9,10 +9,10 @@ export function EmptyOrgsState() {
         <Swords className="size-10 text-primary" />
       </div>
 
-      <h1 className="text-2xl font-black text-slate-900">
+      <h1 className="text-2xl font-black text-foreground">
         Pronto para jogar?
       </h1>
-      <p className="mt-2 max-w-sm text-slate-500">
+      <p className="mt-2 max-w-sm text-muted-foreground">
         Crie sua primeira organização para registrar peladas, acompanhar estatísticas e muito mais.
       </p>
 

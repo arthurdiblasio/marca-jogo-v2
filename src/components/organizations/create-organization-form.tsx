@@ -28,9 +28,9 @@ const ORG_TYPES = [
     description: "Encontros casuais sem resultado oficial. Só diversão.",
     icon: Swords,
     iconColor: "text-amber-500",
-    iconBg: "bg-amber-50",
+    iconBg: "bg-amber-500/10",
     selectedBorder: "border-amber-400",
-    selectedBg: "bg-amber-50/60",
+    selectedBg: "bg-amber-500/15",
   },
   {
     value: "TEAM" as const,
@@ -38,9 +38,9 @@ const ORG_TYPES = [
     description: "Time estruturado com adversários, lineup e resultados.",
     icon: Shield,
     iconColor: "text-primary",
-    iconBg: "bg-green-50",
+    iconBg: "bg-primary/10",
     selectedBorder: "border-primary",
-    selectedBg: "bg-green-50/60",
+    selectedBg: "bg-primary/15",
   },
 ] as const;
 
@@ -85,7 +85,7 @@ export function CreateOrganizationForm() {
             key={s}
             className={cn(
               "h-1.5 flex-1 rounded-full transition-all duration-500",
-              s <= step ? "bg-primary" : "bg-slate-200",
+              s <= step ? "bg-primary" : "bg-muted",
             )}
           />
         ))}
@@ -101,10 +101,10 @@ export function CreateOrganizationForm() {
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.22, ease: "easeInOut" }}
             >
-              <h1 className="text-2xl font-black text-slate-900">
+              <h1 className="text-2xl font-black text-foreground">
                 Que tipo de organização?
               </h1>
-              <p className="mt-1 text-sm text-slate-500">
+              <p className="mt-1 text-sm text-muted-foreground">
                 Escolha conforme o estilo do seu grupo.
               </p>
 
@@ -131,7 +131,7 @@ export function CreateOrganizationForm() {
                           "flex items-center gap-4 rounded-2xl border-2 p-5 text-left transition-all duration-200",
                           isSelected
                             ? `${selectedBorder} ${selectedBg} shadow-sm`
-                            : "border-slate-200 bg-white hover:border-slate-300",
+                            : "border-border bg-card hover:border-muted-foreground/40",
                         )}
                       >
                         <div
@@ -143,14 +143,14 @@ export function CreateOrganizationForm() {
                           <Icon className={cn("size-6", iconColor)} />
                         </div>
                         <div className="flex-1">
-                          <p className="font-bold text-slate-900">{label}</p>
-                          <p className="mt-0.5 text-sm text-slate-500">
+                          <p className="font-bold text-foreground">{label}</p>
+                          <p className="mt-0.5 text-sm text-muted-foreground">
                             {description}
                           </p>
                         </div>
                         <ChevronRight
                           className={cn(
-                            "size-5 shrink-0 text-slate-300 transition-colors",
+                            "size-5 shrink-0 text-muted-foreground/60 transition-colors",
                             isSelected && "text-primary",
                           )}
                         />
@@ -172,10 +172,10 @@ export function CreateOrganizationForm() {
               className="space-y-5"
             >
               <div>
-                <h1 className="text-2xl font-black text-slate-900">
+                <h1 className="text-2xl font-black text-foreground">
                   Detalhes da organização
                 </h1>
-                <p className="mt-1 text-sm text-slate-500">
+                <p className="mt-1 text-sm text-muted-foreground">
                   Você pode alterar isso depois.
                 </p>
               </div>
@@ -187,7 +187,7 @@ export function CreateOrganizationForm() {
                   fallbackIcon={<Shield className="size-7" />}
                   onChange={(url) => setValue("logoUrl", url ?? undefined)}
                 />
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-muted-foreground">
                   Escudo {selectedType === "TEAM" ? "do time" : "da pelada"} (opcional)
                 </p>
               </div>
@@ -210,9 +210,9 @@ export function CreateOrganizationForm() {
               </FormField>
 
               <div>
-                <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-400">
+                <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                   Modalidade{" "}
-                  <span className="normal-case tracking-normal font-normal text-slate-300">
+                  <span className="normal-case tracking-normal font-normal text-muted-foreground/60">
                     (opcional)
                   </span>
                 </label>
@@ -229,8 +229,8 @@ export function CreateOrganizationForm() {
                         className={cn(
                           "rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition",
                           isActive
-                            ? "border-primary bg-primary text-white"
-                            : "border-slate-200 bg-white text-slate-600 hover:border-slate-300",
+                            ? "border-primary bg-primary text-primary-foreground"
+                            : "border-border bg-card text-muted-foreground hover:border-muted-foreground/40",
                         )}
                       >
                         {label}
@@ -266,11 +266,11 @@ export function CreateOrganizationForm() {
               {selectedType === "PELADA" && (
                 <>
                   <div>
-                    <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-400">
+                    <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                       Recorrência
                     </label>
                     <div className="flex flex-wrap gap-2">
-                      <span className="rounded-full border-2 border-primary bg-primary px-4 py-1.5 text-sm font-semibold text-white">
+                      <span className="rounded-full border-2 border-primary bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground">
                         Semanal
                       </span>
                     </div>
@@ -281,7 +281,7 @@ export function CreateOrganizationForm() {
                       <select
                         id="weekday"
                         defaultValue=""
-                        className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-base font-medium text-slate-900 outline-none transition focus:border-[#16A34A]"
+                        className="w-full rounded-xl border-2 border-border bg-card px-4 py-3 text-base font-medium text-foreground outline-none transition focus:border-primary"
                         {...register("weekday", { valueAsNumber: true })}
                       >
                         <option value="">Selecione</option>
@@ -338,7 +338,7 @@ export function CreateOrganizationForm() {
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="rounded-xl border-2 border-slate-200 px-6 py-4 text-sm font-bold text-slate-600 transition hover:border-slate-300 hover:bg-slate-50"
+                  className="rounded-xl border-2 border-border px-6 py-4 text-sm font-bold text-muted-foreground transition hover:border-muted-foreground/40 hover:bg-muted"
                 >
                   Voltar
                 </button>
