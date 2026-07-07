@@ -17,7 +17,7 @@ export function Navbar() {
           </div>
 
           <span className="text-lg font-extrabold text-foreground">
-            Marca Jogo
+            Chama Time
           </span>
         </Link>
 

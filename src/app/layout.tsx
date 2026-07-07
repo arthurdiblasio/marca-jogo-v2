@@ -12,7 +12,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Marca Jogo",
+  title: "Chama Time",
   description:
     "Fundação visual para aplicativo de futebol amador",
 };

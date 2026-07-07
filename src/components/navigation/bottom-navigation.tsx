@@ -7,7 +7,7 @@ import { mainNavigation } from "@/constants/navigation";
 import { useOrgs } from "@/contexts/org-context";
 import { cn } from "@/lib/utils";
 
-export function BottomNavigation() {
+export function BottomNavigation({ pendingInterestsCount = 0 }: { pendingInterestsCount?: number }) {
   const pathname = usePathname();
   const { activeOrg } = useOrgs();
   const items = mainNavigation
@@ -20,17 +20,25 @@ export function BottomNavigation() {
         {items.map((item) => {
           const Icon = item.icon;
           const active = pathname === item.href;
+          const badgeCount = item.href === "/jogos" ? pendingInterestsCount : 0;
 
           return (
             <Link
               key={`${item.href}-${item.label}`}
               href={item.href}
               className={cn(
-                "flex h-14 flex-col items-center justify-center gap-1 rounded-md text-[0.7rem] font-black text-muted-foreground",
+                "relative flex h-14 flex-col items-center justify-center gap-1 rounded-md text-[0.7rem] font-black text-muted-foreground",
                 active && "bg-primary/10 text-primary"
               )}
             >
-              <Icon className="size-5" />
+              <span className="relative">
+                <Icon className="size-5" />
+                {badgeCount > 0 && (
+                  <span className="absolute -right-2 -top-1.5 grid min-w-4 place-items-center rounded-full bg-rose-500 px-1 text-[0.6rem] font-black leading-4 text-white">
+                    {badgeCount > 9 ? "9+" : badgeCount}
+                  </span>
+                )}
+              </span>
               <span>{item.label}</span>
             </Link>
           );

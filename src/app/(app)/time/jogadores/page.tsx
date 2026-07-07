@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ComponentStateView } from "@/components/cards/component-state";
 import { InvitePlayerSection } from "@/components/players/invite-player-section";
+import { PlayerContactActions } from "@/components/players/player-contact-actions";
 import { GuestPlayersSection } from "@/components/players/guest-players-section";
 import { TeamProfileTabs } from "@/components/team/team-profile-tabs";
 import { requireAuth } from "@/shared/auth/require-auth";
@@ -70,34 +71,37 @@ export default async function TeamPlayersPage() {
                     ?.positions ?? []
                 : [];
               const positionLabel = positions.length > 0 ? positions.join(", ") : "Não selecionou nenhuma";
+              const name = member.user.profile?.nickname || member.user.profile?.fullName || member.user.email;
 
               return (
-                <Card key={member.id} className="flex items-center justify-between gap-3 p-4">
-                  <div className="flex items-center gap-3">
-                    <Avatar className="size-10 rounded-xl bg-green-50">
-                      {member.user.profile?.imageUrl && (
-                        <AvatarImage
-                          src={member.user.profile.imageUrl}
-                          alt={member.user.profile?.nickname || member.user.profile?.fullName || member.user.email}
-                        />
-                      )}
-                      <AvatarFallback className="rounded-xl bg-transparent">
-                        <User className="size-5 text-primary" />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-bold text-slate-900">
-                        {member.user.profile?.nickname || member.user.profile?.fullName || member.user.email}
-                      </p>
-                      {member.user.profile?.nickname && (
-                        <p className="text-sm text-slate-500">{member.user.profile.fullName}</p>
-                      )}
-                      {teamModality && <p className="text-sm text-slate-500">{positionLabel}</p>}
+                <Card key={member.id} className="flex flex-col gap-3 p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <Avatar className="size-10 rounded-xl bg-green-50">
+                        {member.user.profile?.imageUrl && (
+                          <AvatarImage src={member.user.profile.imageUrl} alt={name} />
+                        )}
+                        <AvatarFallback className="rounded-xl bg-transparent">
+                          <User className="size-5 text-primary" />
+                        </AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-bold text-slate-900">{name}</p>
+                        {member.user.profile?.nickname && (
+                          <p className="text-sm text-slate-500">{member.user.profile.fullName}</p>
+                        )}
+                        {teamModality && <p className="text-sm text-slate-500">{positionLabel}</p>}
+                      </div>
                     </div>
+                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">
+                      {ROLE_LABEL[member.role] ?? member.role}
+                    </span>
                   </div>
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">
-                    {ROLE_LABEL[member.role] ?? member.role}
-                  </span>
+                  {member.user.profile?.phone && (
+                    <div className="flex justify-end">
+                      <PlayerContactActions phone={member.user.profile.phone} name={name} />
+                    </div>
+                  )}
                 </Card>
               );
             })}

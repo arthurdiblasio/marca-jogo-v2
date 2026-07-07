@@ -4,6 +4,7 @@ import { AppShell } from "@/components/layout/app-shell";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { onboardingRepository } from "@/modules/onboarding/repositories/onboarding-repository";
 import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
+import { gameListingRepository } from "@/modules/game-listings/repositories/game-listing-repository";
 import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
 
 export default async function AppLayout({
@@ -22,11 +23,13 @@ export default async function AppLayout({
 
   const orgs = await organizationRepository.findByUserId(session.id);
   const cookieOrgId = await getActiveOrgId();
-  const activeOrgId =
-    orgs.find((o) => o.id === cookieOrgId)?.id ?? orgs[0]?.id ?? null;
+  const activeOrg = orgs.find((o) => o.id === cookieOrgId) ?? orgs[0] ?? null;
+
+  const pendingInterestsCount =
+    activeOrg?.type === "TEAM" ? await gameListingRepository.countPendingResponses(activeOrg.id) : 0;
 
   return (
-    <AppShell orgs={orgs} activeOrgId={activeOrgId}>
+    <AppShell orgs={orgs} activeOrgId={activeOrg?.id ?? null} pendingInterestsCount={pendingInterestsCount}>
       {children}
     </AppShell>
   );

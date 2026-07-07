@@ -8,7 +8,7 @@ export function FootballMark({ className }: { className?: string }) {
       <span className="grid size-9 place-items-center rounded-lg bg-primary text-primary-foreground">
         <Swords className="size-5" />
       </span>
-      <span>Marca Jogo</span>
+      <span>Chama Time</span>
       <Goal className="size-4 text-accent" />
     </div>
   );

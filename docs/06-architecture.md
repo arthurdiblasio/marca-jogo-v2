@@ -1,12 +1,12 @@
 # Arquitetura
 
-Este documento define a direção arquitetural oficial do projeto Marca Jogo.
+Este documento define a direção arquitetural oficial do projeto Chama Time.
 
 ---
 
 # Visão Geral
 
-O Marca Jogo é uma plataforma para organização de peladas, times, partidas, rankings e estatísticas de futebol amador.
+O Chama Time é uma plataforma para organização de peladas, times, partidas, rankings e estatísticas de futebol amador.
 
 A arquitetura deve priorizar:
 

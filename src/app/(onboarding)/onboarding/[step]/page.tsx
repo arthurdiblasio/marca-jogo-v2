@@ -12,6 +12,7 @@ import { StepPosition } from "@/components/onboarding/steps/step-position";
 import { StepFoot } from "@/components/onboarding/steps/step-foot";
 import { StepShirt } from "@/components/onboarding/steps/step-shirt";
 import { StepBio } from "@/components/onboarding/steps/step-bio";
+import { StepPhone } from "@/components/onboarding/steps/step-phone";
 
 interface Props {
   params: Promise<{ step: string }>;
@@ -51,6 +52,7 @@ export default async function OnboardingStepPage({ params }: Props) {
     6: <StepFoot />,
     7: <StepShirt />,
     8: <StepBio />,
+    9: <StepPhone />,
   };
 
   return (

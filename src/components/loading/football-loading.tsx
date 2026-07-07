@@ -38,7 +38,7 @@ export function FootballLoading({
     >
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold">
-          Marca Jogo
+          Chama Time
         </h1>
       </div>
 

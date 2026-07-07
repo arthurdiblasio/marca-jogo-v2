@@ -11,7 +11,7 @@ import { useOrgs } from "@/contexts/org-context";
 import { cn } from "@/lib/utils";
 import { logoutRequest } from "@/modules/auth/services/auth-api";
 
-export function SidebarNavigation() {
+export function SidebarNavigation({ pendingInterestsCount = 0 }: { pendingInterestsCount?: number }) {
   const pathname = usePathname();
   const router = useRouter();
   const { activeOrg } = useOrgs();
@@ -33,7 +33,7 @@ export function SidebarNavigation() {
             <span className="grid size-9 place-items-center rounded-md bg-primary text-primary-foreground">
               <Trophy className="size-5" />
             </span>
-            Marca Jogo
+            Chama Time
           </div>
           <div className="flex gap-1">
             <Button size="icon" variant="ghost" aria-label="Buscar">
@@ -51,6 +51,7 @@ export function SidebarNavigation() {
           {navigation.map((item) => {
             const Icon = item.icon;
             const active = pathname === item.href;
+            const badgeCount = item.href === "/jogos" ? pendingInterestsCount : 0;
 
             return (
               <Link
@@ -62,7 +63,12 @@ export function SidebarNavigation() {
                 )}
               >
                 <Icon className="size-5" />
-                {item.label}
+                <span className="flex-1">{item.label}</span>
+                {badgeCount > 0 && (
+                  <span className="grid min-w-5 place-items-center rounded-full bg-rose-500 px-1.5 text-xs font-black leading-5 text-white">
+                    {badgeCount > 9 ? "9+" : badgeCount}
+                  </span>
+                )}
               </Link>
             );
           })}

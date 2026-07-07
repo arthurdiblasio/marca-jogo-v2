@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { CalendarDays, MapPin, Users } from "lucide-react";
+import { ArrowRight, CalendarDays, MapPin, Users } from "lucide-react";
 
 import { PageTransition } from "@/components/motion/page-transition";
 import { PageHeader } from "@/components/navigation/page-header";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ComponentStateView } from "@/components/cards/component-state";
 import { requireAuth } from "@/shared/auth/require-auth";
@@ -38,6 +39,7 @@ export default async function MyGameListingsPage() {
 
   const pending = listings.filter((listing) => listing.status === "OPEN");
   const closed = listings.filter((listing) => listing.status !== "OPEN");
+  const totalPendingResponses = pending.reduce((sum, listing) => sum + listing.responses.length, 0);
 
   return (
     <PageTransition className="space-y-6">
@@ -46,6 +48,22 @@ export default async function MyGameListingsPage() {
         title="Meus Jogos Publicados"
         description="Anúncios criados pelo seu time e o andamento dos pedidos de aceite."
       />
+
+      {totalPendingResponses > 0 && (
+        <Card className="flex items-center justify-between gap-3 border-2 border-primary/20 bg-green-50 p-4">
+          <div className="flex items-center gap-2 font-bold text-slate-900">
+            <Users className="size-5 text-primary" />
+            {totalPendingResponses} {totalPendingResponses > 1 ? "interesses aguardando" : "interesse aguardando"}{" "}
+            aceite
+          </div>
+          <Button asChild size="sm" className="w-auto">
+            <Link href="/jogos/interesses">
+              Ver e aceitar
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+        </Card>
+      )}
 
       <section className="space-y-3">
         <h2 className="text-lg font-black text-slate-900">Pendentes de aceite</h2>

@@ -49,7 +49,7 @@ export async function saveOnboardingStep(
 
     await onboardingRepository.saveStep(session.id, step, {});
   } else if (step === ONBOARDING_TOTAL_STEPS) {
-    await onboardingRepository.completeOnboarding(session.id, data);
+    await onboardingRepository.completeOnboarding(session.id, step, data);
     redirect("/dashboard");
   } else {
     await onboardingRepository.saveStep(session.id, step, data);

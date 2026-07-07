@@ -9,7 +9,7 @@ export function AuthHeader() {
         </div>
 
         <h1 className="mt-4 text-3xl font-extrabold tracking-tight">
-          Marca Jogo
+          Chama Time
         </h1>
 
         <p className="mt-3 text-sm leading-6 text-slate-300">

@@ -1,4 +1,4 @@
-export const ONBOARDING_TOTAL_STEPS = 8;
+export const ONBOARDING_TOTAL_STEPS = 9;
 
 export const ONBOARDING_STEPS = {
   NAME: 1,
@@ -9,6 +9,7 @@ export const ONBOARDING_STEPS = {
   FOOT: 6,
   SHIRT: 7,
   BIO: 8,
+  PHONE: 9,
 } as const;
 
 export type OnboardingStepNumber = (typeof ONBOARDING_STEPS)[keyof typeof ONBOARDING_STEPS];
@@ -47,6 +48,10 @@ export type StepBioData = {
   bio?: string;
 };
 
+export type StepPhoneData = {
+  phone?: string;
+};
+
 export type OnboardingStepData =
   | StepNameData
   | StepLocationData
@@ -55,4 +60,5 @@ export type OnboardingStepData =
   | StepPositionData
   | StepFootData
   | StepShirtData
-  | StepBioData;
+  | StepBioData
+  | StepPhoneData;

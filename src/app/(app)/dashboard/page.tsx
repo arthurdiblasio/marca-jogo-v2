@@ -23,6 +23,7 @@ import { matchRepository } from "@/modules/matches/repositories/match-repository
 import { playerInviteRepository } from "@/modules/player-invites/repositories/player-invite-repository";
 import { getMatchPerspective } from "@/modules/matches/lib/format";
 import { formatListingDateTime } from "@/modules/game-listings/lib/format";
+import { gameListingRepository } from "@/modules/game-listings/repositories/game-listing-repository";
 import { computeNextPeladaDate } from "@/modules/organizations/lib/next-pelada";
 import { isManagerRole } from "@/shared/auth/manager-roles";
 
@@ -201,9 +202,10 @@ export default async function DashboardPage({
   const membership = await membershipRepository.findByUserAndOrganizations(session.id, [activeOrgId]);
   const isManager = isManagerRole(membership?.role);
 
-  const [upcoming, past] = await Promise.all([
+  const [upcoming, past, pendingInterestsCount] = await Promise.all([
     matchRepository.listUpcomingByOrganization(activeOrgId, 1),
     matchRepository.listPastByOrganization(activeOrgId, 3),
+    isManager ? gameListingRepository.countPendingResponses(activeOrgId) : Promise.resolve(0),
   ]);
 
   const nextMatch = upcoming[0];
@@ -234,6 +236,18 @@ export default async function DashboardPage({
         title={activeOrg.name}
         description="Proximo jogo, forma recente, estatisticas coletivas e elenco em formato de match center."
       />
+
+      {pendingInterestsCount > 0 && (
+        <Card className="flex items-center justify-between gap-3 border-2 border-primary/20 bg-green-50 p-4">
+          <div className="flex items-center gap-2 font-bold text-slate-900">
+            <Megaphone className="size-5 text-primary" />
+            {pendingInterestsCount} {pendingInterestsCount > 1 ? "times querem jogar" : "time quer jogar"} com você
+          </div>
+          <Button asChild size="sm" className="w-auto">
+            <Link href="/jogos/interesses">Ver e aceitar</Link>
+          </Button>
+        </Card>
+      )}
 
       <div className="flex flex-wrap gap-3">
         {isManager && (

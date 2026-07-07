@@ -11,6 +11,7 @@ const STEP_LABELS: Record<number, string> = {
   6: "Pé preferido",
   7: "Número",
   8: "Apresentação",
+  9: "Telefone",
 };
 
 interface Props {

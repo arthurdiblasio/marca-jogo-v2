@@ -26,12 +26,12 @@ export const onboardingRepository = {
     });
   },
 
-  completeOnboarding(userId: string, data: Record<string, unknown>) {
+  completeOnboarding(userId: string, step: number, data: Record<string, unknown>) {
     return prisma.profile.update({
       where: { userId },
       data: {
         ...data,
-        onboardingStep: 8,
+        onboardingStep: step,
         onboardingCompletedAt: new Date(),
       },
     });

@@ -147,6 +147,25 @@ export const gameListingRepository = {
     });
   },
 
+  countPendingResponses(organizationId: string) {
+    return prisma.gameListingResponse.count({
+      where: { status: "PENDING", gameListing: { organizationId } },
+    });
+  },
+
+  listPendingResponsesByOrganization(organizationId: string) {
+    return prisma.gameListingResponse.findMany({
+      where: { status: "PENDING", gameListing: { organizationId } },
+      include: {
+        organization: { select: organizationSummarySelect },
+        gameListing: {
+          select: { id: true, scheduledAt: true, location: true, city: true, state: true, modality: true },
+        },
+      },
+      orderBy: { createdAt: "asc" },
+    });
+  },
+
   findById(id: string) {
     return prisma.gameListing.findUnique({
       where: { id },
