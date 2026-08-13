@@ -10,17 +10,17 @@ import { cn } from "@/lib/utils";
 export function BottomNavigation({ pendingInterestsCount = 0 }: { pendingInterestsCount?: number }) {
   const pathname = usePathname();
   const { activeOrg } = useOrgs();
-  const items = mainNavigation
-    .filter((item) => !item.orgTypes || (activeOrg && item.orgTypes.includes(activeOrg.type)))
-    .slice(0, 4);
+  const items = mainNavigation.filter(
+    (item) => !item.orgTypes || (activeOrg && item.orgTypes.includes(activeOrg.type))
+  );
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-40 border-t bg-card px-2 pb-[env(safe-area-inset-bottom)] pt-2 lg:hidden">
-      <div className="grid grid-cols-4 gap-1">
+      <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${items.length}, minmax(0, 1fr))` }}>
         {items.map((item) => {
           const Icon = item.icon;
           const active = pathname === item.href;
-          const badgeCount = item.href === "/jogos" ? pendingInterestsCount : 0;
+          const badgeCount = item.href === "/jogos/meus-jogos" ? pendingInterestsCount : 0;
 
           return (
             <Link

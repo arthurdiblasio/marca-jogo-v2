@@ -53,7 +53,7 @@ export function SidebarNavigation({ pendingInterestsCount = 0 }: { pendingIntere
           {navigation.map((item) => {
             const Icon = item.icon;
             const active = pathname === item.href;
-            const badgeCount = item.href === "/jogos" ? pendingInterestsCount : 0;
+            const badgeCount = item.href === "/time/agenda" ? pendingInterestsCount : 0;
 
             return (
               <Link
