@@ -154,7 +154,7 @@ export const matchRepository = {
     });
   },
 
-  listPastByOrganization(organizationId: string, take = 20) {
+  listPastByOrganization(organizationId: string, take = 20, skip = 0) {
     return prisma.match.findMany({
       where: {
         AND: [
@@ -168,6 +168,18 @@ export const matchRepository = {
       },
       orderBy: { scheduledAt: "desc" },
       take,
+      skip,
+    });
+  },
+
+  countPastByOrganization(organizationId: string) {
+    return prisma.match.count({
+      where: {
+        AND: [
+          { OR: [{ homeOrganizationId: organizationId }, { awayOrganizationId: organizationId }] },
+          { OR: [{ scheduledAt: { lt: new Date() } }, { status: { in: ["FINISHED", "CANCELLED"] } }] },
+        ],
+      },
     });
   },
 };

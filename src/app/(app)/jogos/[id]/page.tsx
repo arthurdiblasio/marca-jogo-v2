@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CalendarDays, MapPin } from "lucide-react";
+import { ArrowLeft, CalendarDays, MapPin } from "lucide-react";
 
 import { PageTransition } from "@/components/motion/page-transition";
 import { PageHeader } from "@/components/navigation/page-header";
@@ -99,8 +99,9 @@ export default async function GameListingDetailPage({ params }: { params: Promis
         </div>
       )}
 
-      <Link href="/jogos" className="inline-block text-sm font-semibold text-primary">
-        ← Voltar para o mural
+      <Link href="/jogos" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+        <ArrowLeft className="size-4" />
+        Voltar para o mural
       </Link>
     </PageTransition>
   );

@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Pencil } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -24,17 +25,32 @@ export function MatchScoreEditor({
   const [home, setHome] = useState(homeScore ?? 0);
   const [away, setAway] = useState(awayScore ?? 0);
   const [isPending, startTransition] = useTransition();
+  const [isEditing, setIsEditing] = useState(homeScore === null || awayScore === null);
 
   function handleSave() {
     startTransition(async () => {
       try {
         await onSave(home, away);
         toast.success("Placar salvo!");
+        setIsEditing(false);
         router.refresh();
       } catch (error) {
         toast.error(error instanceof Error ? error.message : "Erro ao salvar placar");
       }
     });
+  }
+
+  if (!isEditing) {
+    return (
+      <button
+        type="button"
+        onClick={() => setIsEditing(true)}
+        className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground transition hover:text-foreground"
+      >
+        <Pencil className="size-3.5" />
+        Editar placar
+      </button>
+    );
   }
 
   return (

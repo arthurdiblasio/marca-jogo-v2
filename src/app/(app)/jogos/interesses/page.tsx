@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 import { PageTransition } from "@/components/motion/page-transition";
 import { PageHeader } from "@/components/navigation/page-header";
@@ -28,8 +29,9 @@ export default async function PendingInterestsPage() {
 
       <PendingInterestsList responses={responses} />
 
-      <Link href="/jogos/meus-jogos" className="inline-block text-sm font-semibold text-primary">
-        ← Ver meus jogos publicados
+      <Link href="/jogos/meus-jogos" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+        <ArrowLeft className="size-4" />
+        Ver meus jogos publicados
       </Link>
     </PageTransition>
   );

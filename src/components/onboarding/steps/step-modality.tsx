@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check, Goal, Users, UsersRound, Volleyball } from "lucide-react";
 
 import { saveOnboardingStep } from "@/modules/onboarding/actions/save-onboarding-step";
 import { ONBOARDING_STEPS } from "@/modules/onboarding/types/onboarding";
 import { ALL_MODALITIES, type SportModality } from "@/constants/positions";
 
-const MODALITY_ICON: Record<SportModality, string> = {
-  FIELD_11: "⚽",
-  SOCIETY_7: "🏃",
-  SOCIETY_8: "🏃",
-  FUTSAL_5: "🥅",
+const MODALITY_ICON: Record<SportModality, typeof Goal> = {
+  FIELD_11: Goal,
+  SOCIETY_7: Users,
+  SOCIETY_8: UsersRound,
+  FUTSAL_5: Volleyball,
 };
 
 const MODALITY_DESC: Record<SportModality, string> = {
@@ -50,6 +50,7 @@ export function StepModality() {
       <div className="flex flex-col gap-3">
         {ALL_MODALITIES.map(({ value, label }) => {
           const isSelected = selected.includes(value);
+          const ModalityIcon = MODALITY_ICON[value];
           return (
             <motion.button
               key={value}
@@ -62,7 +63,9 @@ export function StepModality() {
                   : "border-border bg-card hover:border-muted-foreground/40"
               }`}
             >
-              <span className="text-3xl leading-none">{MODALITY_ICON[value]}</span>
+              <ModalityIcon
+                className={`size-8 shrink-0 ${isSelected ? "text-primary" : "text-muted-foreground"}`}
+              />
 
               <div className="flex-1">
                 <p className={`text-sm font-bold ${isSelected ? "text-primary" : "text-foreground"}`}>
@@ -78,15 +81,14 @@ export function StepModality() {
               >
                 <AnimatePresence>
                   {isSelected && (
-                    <motion.svg
+                    <motion.div
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0, opacity: 0 }}
                       transition={{ duration: 0.15 }}
-                      width="12" height="9" viewBox="0 0 12 9" fill="none"
                     >
-                      <path d="M1 4.5L4.5 8L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </motion.svg>
+                      <Check className="size-3 text-white" strokeWidth={3} />
+                    </motion.div>
                   )}
                 </AnimatePresence>
               </div>

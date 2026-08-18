@@ -3,7 +3,10 @@ import Link from "next/link";
 import {
   ArrowRight,
   CalendarDays,
+  Goal,
   Shield,
+  Star,
+  Target,
   Trophy,
   Users,
 } from "lucide-react";
@@ -108,17 +111,26 @@ export function HeroSection() {
 
                 <div className="space-y-3 text-foreground">
                   <div className="flex justify-between">
-                    <span>⚽ Arthur</span>
+                    <span className="flex items-center gap-1.5">
+                      <Goal className="h-4 w-4 text-green-500" />
+                      Arthur
+                    </span>
                     <span>12 gols</span>
                   </div>
 
                   <div className="flex justify-between">
-                    <span>🎯 João</span>
+                    <span className="flex items-center gap-1.5">
+                      <Target className="h-4 w-4 text-green-500" />
+                      João
+                    </span>
                     <span>8 assistências</span>
                   </div>
 
                   <div className="flex justify-between">
-                    <span>⭐ Pedro</span>
+                    <span className="flex items-center gap-1.5">
+                      <Star className="h-4 w-4 text-green-500" />
+                      Pedro
+                    </span>
                     <span>4 MVPs</span>
                   </div>
                 </div>

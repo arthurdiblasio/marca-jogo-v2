@@ -206,8 +206,8 @@ export function VotingPanel({
               <div className="space-y-1.5">
                 {mvpTally.map((entry, index) => (
                   <div key={entry.userId} className="flex items-center justify-between text-sm">
-                    <span className={cn("font-semibold", index === 0 ? "text-foreground" : "text-muted-foreground")}>
-                      {index === 0 && "🏆 "}
+                    <span className={cn("flex items-center gap-1.5 font-semibold", index === 0 ? "text-foreground" : "text-muted-foreground")}>
+                      {index === 0 && <Trophy className="size-3.5 text-amber-500" />}
                       {entry.name}
                     </span>
                     <span className="font-bold text-foreground">{entry.count} voto{entry.count !== 1 ? "s" : ""}</span>

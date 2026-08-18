@@ -3,7 +3,7 @@
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Search, User, UserPlus, X } from "lucide-react";
+import { Pencil, Search, User, UserPlus, X } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -54,6 +54,7 @@ export function PlayerStatSearchEditor({
   const [entries, setEntries] = useState(initialEntries);
   const [query, setQuery] = useState("");
   const [isPending, startTransition] = useTransition();
+  const [isEditing, setIsEditing] = useState(initialEntries.length === 0);
 
   const addedKeys = useMemo(() => new Set(entries.map(entryKey)), [entries]);
 
@@ -102,6 +103,7 @@ export function PlayerStatSearchEditor({
           })),
         );
         toast.success("Estatísticas salvas!");
+        setIsEditing(false);
         router.refresh();
       } catch (error) {
         toast.error(error instanceof Error ? error.message : "Erro ao salvar estatísticas");
@@ -111,43 +113,58 @@ export function PlayerStatSearchEditor({
 
   return (
     <div className="space-y-3">
-      <div className="relative">
-        <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground/60" />
-        <Input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Buscar jogador para adicionar..."
-          className="pl-11"
-        />
+      {!isEditing && (
+        <div className="flex items-center justify-end">
+          <button
+            type="button"
+            onClick={() => setIsEditing(true)}
+            className="flex items-center gap-1.5 rounded-lg px-2 py-1 text-sm font-semibold text-muted-foreground transition hover:bg-muted hover:text-foreground"
+          >
+            <Pencil className="size-3.5" />
+            Editar
+          </button>
+        </div>
+      )}
 
-        {results.length > 0 && (
-          <Card className="absolute z-10 mt-1.5 w-full overflow-hidden p-1.5">
-            {results.map((candidate) => (
-              <button
-                key={entryKey(candidate)}
-                type="button"
-                onClick={() => addCandidate(candidate)}
-                className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition hover:bg-muted"
-              >
-                <Avatar className="size-7 rounded-lg bg-primary/10">
-                  {candidate.imageUrl && <AvatarImage src={candidate.imageUrl} alt={candidate.name} />}
-                  <AvatarFallback className="rounded-lg bg-transparent text-xs">
-                    <User className="size-3.5 text-primary" />
-                  </AvatarFallback>
-                </Avatar>
-                <span className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">
-                  {candidate.name}
-                </span>
-                {candidate.kind === "guest" && (
-                  <span className="shrink-0 rounded-full bg-amber-100 px-2 py-0.5 text-[0.65rem] font-bold text-amber-700 dark:bg-amber-500/15 dark:text-amber-400">
-                    Convidado
+      {isEditing && (
+        <div className="relative">
+          <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground/60" />
+          <Input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Buscar jogador para adicionar..."
+            className="pl-11"
+          />
+
+          {results.length > 0 && (
+            <Card className="absolute z-10 mt-1.5 w-full overflow-hidden p-1.5">
+              {results.map((candidate) => (
+                <button
+                  key={entryKey(candidate)}
+                  type="button"
+                  onClick={() => addCandidate(candidate)}
+                  className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition hover:bg-muted"
+                >
+                  <Avatar className="size-7 rounded-lg bg-primary/10">
+                    {candidate.imageUrl && <AvatarImage src={candidate.imageUrl} alt={candidate.name} />}
+                    <AvatarFallback className="rounded-lg bg-transparent text-xs">
+                      <User className="size-3.5 text-primary" />
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">
+                    {candidate.name}
                   </span>
-                )}
-              </button>
-            ))}
-          </Card>
-        )}
-      </div>
+                  {candidate.kind === "guest" && (
+                    <span className="shrink-0 rounded-full bg-amber-100 px-2 py-0.5 text-[0.65rem] font-bold text-amber-700 dark:bg-amber-500/15 dark:text-amber-400">
+                      Convidado
+                    </span>
+                  )}
+                </button>
+              ))}
+            </Card>
+          )}
+        </div>
+      )}
 
       {entries.length === 0 ? (
         <p className="rounded-xl border-2 border-dashed border-border p-4 text-center text-sm text-muted-foreground">
@@ -184,8 +201,9 @@ export function PlayerStatSearchEditor({
                       min={0}
                       max={99}
                       value={entry.goals}
+                      disabled={!isEditing}
                       onChange={(e) => updateEntry(key, { goals: Number(e.target.value) })}
-                      className="w-14 rounded-lg border-2 border-border px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-primary"
+                      className="w-14 rounded-lg border-2 border-border px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-primary disabled:opacity-60"
                     />
                   </label>
 
@@ -196,8 +214,9 @@ export function PlayerStatSearchEditor({
                       min={0}
                       max={99}
                       value={entry.assists}
+                      disabled={!isEditing}
                       onChange={(e) => updateEntry(key, { assists: Number(e.target.value) })}
-                      className="w-14 rounded-lg border-2 border-border px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-primary"
+                      className="w-14 rounded-lg border-2 border-border px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-primary disabled:opacity-60"
                     />
                   </label>
 
@@ -210,8 +229,9 @@ export function PlayerStatSearchEditor({
                           min={0}
                           max={2}
                           value={entry.yellowCards ?? 0}
+                          disabled={!isEditing}
                           onChange={(e) => updateEntry(key, { yellowCards: Number(e.target.value) })}
-                          className="w-12 rounded-lg border-2 border-amber-200 px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-amber-400"
+                          className="w-12 rounded-lg border-2 border-amber-200 px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-amber-400 disabled:opacity-60"
                         />
                       </label>
 
@@ -222,20 +242,23 @@ export function PlayerStatSearchEditor({
                           min={0}
                           max={1}
                           value={entry.redCards ?? 0}
+                          disabled={!isEditing}
                           onChange={(e) => updateEntry(key, { redCards: Number(e.target.value) })}
-                          className="w-12 rounded-lg border-2 border-rose-200 px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-rose-400"
+                          className="w-12 rounded-lg border-2 border-rose-200 px-2 py-1.5 text-center font-bold text-foreground outline-none focus:border-rose-400 disabled:opacity-60"
                         />
                       </label>
                     </>
                   )}
 
-                  <button
-                    type="button"
-                    onClick={() => handleRemove(entry)}
-                    className="text-muted-foreground/60 transition hover:text-red-500"
-                  >
-                    <X className="size-4" />
-                  </button>
+                  {isEditing && (
+                    <button
+                      type="button"
+                      onClick={() => handleRemove(entry)}
+                      className="text-muted-foreground/60 transition hover:text-red-500"
+                    >
+                      <X className="size-4" />
+                    </button>
+                  )}
                 </div>
               </Card>
             );
@@ -243,7 +266,7 @@ export function PlayerStatSearchEditor({
         </div>
       )}
 
-      {entries.length > 0 && (
+      {isEditing && entries.length > 0 && (
         <Button onClick={handleSave} disabled={isPending} className="w-full">
           {isPending ? "Salvando..." : "Salvar estatísticas"}
         </Button>

@@ -4,6 +4,7 @@ export function getMatchPerspective(match: MatchWithOrgs, activeOrgId: string | 
   const isHome = match.homeOrganizationId === activeOrgId;
   const opponent = isHome ? match.awayOrganization : match.homeOrganization;
   const opponentLabel = opponent?.name ?? match.opponentName ?? "Adversário a definir";
+  const opponentLogoUrl = opponent?.logoUrl ?? null;
   const teamScore = isHome ? match.homeScore : match.awayScore;
   const opponentScore = isHome ? match.awayScore : match.homeScore;
   const outcome =
@@ -15,5 +16,5 @@ export function getMatchPerspective(match: MatchWithOrgs, activeOrgId: string | 
           : "E"
       : null;
 
-  return { isHome, opponentLabel, teamScore, opponentScore, outcome };
+  return { isHome, opponentLabel, opponentLogoUrl, teamScore, opponentScore, outcome };
 }

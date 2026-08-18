@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 import { saveOnboardingStep } from "@/modules/onboarding/actions/save-onboarding-step";
 import { ONBOARDING_STEPS } from "@/modules/onboarding/types/onboarding";
@@ -110,9 +110,7 @@ export function StepFoot() {
                       exit={{ scale: 0, opacity: 0 }}
                       className="h-6 w-6 rounded-full bg-primary flex items-center justify-center shrink-0"
                     >
-                      <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
-                        <path d="M1 4.5L4.5 8L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                      <Check className="size-3.5 text-white" strokeWidth={3} />
                     </motion.div>
                   )}
                 </AnimatePresence>
