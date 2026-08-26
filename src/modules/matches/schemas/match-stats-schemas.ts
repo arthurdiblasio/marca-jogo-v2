@@ -40,6 +40,19 @@ export const setMatchParticipantsSchema = z.object({
 
 export type SetMatchParticipantsInput = z.infer<typeof setMatchParticipantsSchema>;
 
+export const setMatchLineupSchema = z.object({
+  matchId: z.string(),
+  entries: z.array(
+    z.object({
+      userId: z.string(),
+      position: z.string().max(20).optional(),
+      isStarter: z.boolean(),
+    }),
+  ),
+});
+
+export type SetMatchLineupInput = z.infer<typeof setMatchLineupSchema>;
+
 export const submitMatchVoteSchema = z.object({
   matchId: z.string(),
   mvpUserId: z.string(),

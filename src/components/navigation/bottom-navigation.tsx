@@ -7,7 +7,13 @@ import { mainNavigation } from "@/constants/navigation";
 import { useOrgs } from "@/contexts/org-context";
 import { cn } from "@/lib/utils";
 
-export function BottomNavigation({ pendingInterestsCount = 0 }: { pendingInterestsCount?: number }) {
+export function BottomNavigation({
+  pendingInterestsCount = 0,
+  pendingCallUpsCount = 0,
+}: {
+  pendingInterestsCount?: number;
+  pendingCallUpsCount?: number;
+}) {
   const pathname = usePathname();
   const { activeOrg } = useOrgs();
   const items = mainNavigation.filter(
@@ -20,7 +26,12 @@ export function BottomNavigation({ pendingInterestsCount = 0 }: { pendingInteres
         {items.map((item) => {
           const Icon = item.icon;
           const active = pathname === item.href;
-          const badgeCount = item.href === "/jogos/meus-jogos" ? pendingInterestsCount : 0;
+          const badgeCount =
+            item.href === "/jogos/meus-jogos"
+              ? pendingInterestsCount
+              : item.href === "/convocacoes"
+                ? pendingCallUpsCount
+                : 0;
 
           return (
             <Link

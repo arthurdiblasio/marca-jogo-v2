@@ -26,8 +26,21 @@ export const matchRepository = {
         attendances: true,
         mvpVotes: true,
         ratings: true,
+        lineup: true,
+        callUps: true,
       },
     });
+  },
+
+  async setLineup(matchId: string, entries: { userId: string; position: string | null; isStarter: boolean }[]) {
+    await prisma.$transaction([
+      prisma.matchLineupEntry.deleteMany({ where: { matchId } }),
+      ...entries.map((entry) =>
+        prisma.matchLineupEntry.create({
+          data: { matchId, userId: entry.userId, position: entry.position, isStarter: entry.isStarter },
+        }),
+      ),
+    ]);
   },
 
   async setParticipants(matchId: string, organizationId: string, declinedUserIds: string[]) {

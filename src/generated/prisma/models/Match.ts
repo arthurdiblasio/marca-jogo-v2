@@ -31,6 +31,7 @@ export type MatchAvgAggregateOutputType = {
   lng: runtime.Decimal | null
   homeScore: number | null
   awayScore: number | null
+  callUpSlots: number | null
 }
 
 export type MatchSumAggregateOutputType = {
@@ -38,6 +39,7 @@ export type MatchSumAggregateOutputType = {
   lng: runtime.Decimal | null
   homeScore: number | null
   awayScore: number | null
+  callUpSlots: number | null
 }
 
 export type MatchMinAggregateOutputType = {
@@ -58,6 +60,7 @@ export type MatchMinAggregateOutputType = {
   votingOpenedAt: Date | null
   votingClosesAt: Date | null
   votingClosedAt: Date | null
+  callUpSlots: number | null
   homeOrganizationId: string | null
   awayOrganizationId: string | null
   createdById: string | null
@@ -82,6 +85,7 @@ export type MatchMaxAggregateOutputType = {
   votingOpenedAt: Date | null
   votingClosesAt: Date | null
   votingClosedAt: Date | null
+  callUpSlots: number | null
   homeOrganizationId: string | null
   awayOrganizationId: string | null
   createdById: string | null
@@ -106,6 +110,7 @@ export type MatchCountAggregateOutputType = {
   votingOpenedAt: number
   votingClosesAt: number
   votingClosedAt: number
+  callUpSlots: number
   homeOrganizationId: number
   awayOrganizationId: number
   createdById: number
@@ -119,6 +124,7 @@ export type MatchAvgAggregateInputType = {
   lng?: true
   homeScore?: true
   awayScore?: true
+  callUpSlots?: true
 }
 
 export type MatchSumAggregateInputType = {
@@ -126,6 +132,7 @@ export type MatchSumAggregateInputType = {
   lng?: true
   homeScore?: true
   awayScore?: true
+  callUpSlots?: true
 }
 
 export type MatchMinAggregateInputType = {
@@ -146,6 +153,7 @@ export type MatchMinAggregateInputType = {
   votingOpenedAt?: true
   votingClosesAt?: true
   votingClosedAt?: true
+  callUpSlots?: true
   homeOrganizationId?: true
   awayOrganizationId?: true
   createdById?: true
@@ -170,6 +178,7 @@ export type MatchMaxAggregateInputType = {
   votingOpenedAt?: true
   votingClosesAt?: true
   votingClosedAt?: true
+  callUpSlots?: true
   homeOrganizationId?: true
   awayOrganizationId?: true
   createdById?: true
@@ -194,6 +203,7 @@ export type MatchCountAggregateInputType = {
   votingOpenedAt?: true
   votingClosesAt?: true
   votingClosedAt?: true
+  callUpSlots?: true
   homeOrganizationId?: true
   awayOrganizationId?: true
   createdById?: true
@@ -305,6 +315,7 @@ export type MatchGroupByOutputType = {
   votingOpenedAt: Date | null
   votingClosesAt: Date | null
   votingClosedAt: Date | null
+  callUpSlots: number | null
   homeOrganizationId: string
   awayOrganizationId: string | null
   createdById: string | null
@@ -352,6 +363,7 @@ export type MatchWhereInput = {
   votingOpenedAt?: Prisma.DateTimeNullableFilter<"Match"> | Date | string | null
   votingClosesAt?: Prisma.DateTimeNullableFilter<"Match"> | Date | string | null
   votingClosedAt?: Prisma.DateTimeNullableFilter<"Match"> | Date | string | null
+  callUpSlots?: Prisma.IntNullableFilter<"Match"> | number | null
   homeOrganizationId?: Prisma.StringFilter<"Match"> | string
   awayOrganizationId?: Prisma.StringNullableFilter<"Match"> | string | null
   createdById?: Prisma.StringNullableFilter<"Match"> | string | null
@@ -365,6 +377,7 @@ export type MatchWhereInput = {
   playerStats?: Prisma.MatchPlayerStatListRelationFilter
   mvpVotes?: Prisma.MatchMvpVoteListRelationFilter
   ratings?: Prisma.MatchPlayerRatingListRelationFilter
+  callUps?: Prisma.MatchCallUpListRelationFilter
   gameListing?: Prisma.XOR<Prisma.GameListingNullableScalarRelationFilter, Prisma.GameListingWhereInput> | null
 }
 
@@ -386,6 +399,7 @@ export type MatchOrderByWithRelationInput = {
   votingOpenedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   votingClosesAt?: Prisma.SortOrderInput | Prisma.SortOrder
   votingClosedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  callUpSlots?: Prisma.SortOrderInput | Prisma.SortOrder
   homeOrganizationId?: Prisma.SortOrder
   awayOrganizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -399,6 +413,7 @@ export type MatchOrderByWithRelationInput = {
   playerStats?: Prisma.MatchPlayerStatOrderByRelationAggregateInput
   mvpVotes?: Prisma.MatchMvpVoteOrderByRelationAggregateInput
   ratings?: Prisma.MatchPlayerRatingOrderByRelationAggregateInput
+  callUps?: Prisma.MatchCallUpOrderByRelationAggregateInput
   gameListing?: Prisma.GameListingOrderByWithRelationInput
 }
 
@@ -423,6 +438,7 @@ export type MatchWhereUniqueInput = Prisma.AtLeast<{
   votingOpenedAt?: Prisma.DateTimeNullableFilter<"Match"> | Date | string | null
   votingClosesAt?: Prisma.DateTimeNullableFilter<"Match"> | Date | string | null
   votingClosedAt?: Prisma.DateTimeNullableFilter<"Match"> | Date | string | null
+  callUpSlots?: Prisma.IntNullableFilter<"Match"> | number | null
   homeOrganizationId?: Prisma.StringFilter<"Match"> | string
   awayOrganizationId?: Prisma.StringNullableFilter<"Match"> | string | null
   createdById?: Prisma.StringNullableFilter<"Match"> | string | null
@@ -436,6 +452,7 @@ export type MatchWhereUniqueInput = Prisma.AtLeast<{
   playerStats?: Prisma.MatchPlayerStatListRelationFilter
   mvpVotes?: Prisma.MatchMvpVoteListRelationFilter
   ratings?: Prisma.MatchPlayerRatingListRelationFilter
+  callUps?: Prisma.MatchCallUpListRelationFilter
   gameListing?: Prisma.XOR<Prisma.GameListingNullableScalarRelationFilter, Prisma.GameListingWhereInput> | null
 }, "id">
 
@@ -457,6 +474,7 @@ export type MatchOrderByWithAggregationInput = {
   votingOpenedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   votingClosesAt?: Prisma.SortOrderInput | Prisma.SortOrder
   votingClosedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  callUpSlots?: Prisma.SortOrderInput | Prisma.SortOrder
   homeOrganizationId?: Prisma.SortOrder
   awayOrganizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -489,6 +507,7 @@ export type MatchScalarWhereWithAggregatesInput = {
   votingOpenedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Match"> | Date | string | null
   votingClosesAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Match"> | Date | string | null
   votingClosedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Match"> | Date | string | null
+  callUpSlots?: Prisma.IntNullableWithAggregatesFilter<"Match"> | number | null
   homeOrganizationId?: Prisma.StringWithAggregatesFilter<"Match"> | string
   awayOrganizationId?: Prisma.StringNullableWithAggregatesFilter<"Match"> | string | null
   createdById?: Prisma.StringNullableWithAggregatesFilter<"Match"> | string | null
@@ -513,6 +532,7 @@ export type MatchCreateInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
@@ -522,6 +542,7 @@ export type MatchCreateInput = {
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -543,6 +564,7 @@ export type MatchUncheckedCreateInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -552,6 +574,7 @@ export type MatchUncheckedCreateInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -573,6 +596,7 @@ export type MatchUpdateInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
@@ -582,6 +606,7 @@ export type MatchUpdateInput = {
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -603,6 +628,7 @@ export type MatchUncheckedUpdateInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -612,6 +638,7 @@ export type MatchUncheckedUpdateInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -633,6 +660,7 @@ export type MatchCreateManyInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -657,6 +685,7 @@ export type MatchUpdateManyMutationInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type MatchUncheckedUpdateManyInput = {
@@ -677,6 +706,7 @@ export type MatchUncheckedUpdateManyInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -711,6 +741,7 @@ export type MatchCountOrderByAggregateInput = {
   votingOpenedAt?: Prisma.SortOrder
   votingClosesAt?: Prisma.SortOrder
   votingClosedAt?: Prisma.SortOrder
+  callUpSlots?: Prisma.SortOrder
   homeOrganizationId?: Prisma.SortOrder
   awayOrganizationId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
@@ -722,6 +753,7 @@ export type MatchAvgOrderByAggregateInput = {
   lng?: Prisma.SortOrder
   homeScore?: Prisma.SortOrder
   awayScore?: Prisma.SortOrder
+  callUpSlots?: Prisma.SortOrder
 }
 
 export type MatchMaxOrderByAggregateInput = {
@@ -742,6 +774,7 @@ export type MatchMaxOrderByAggregateInput = {
   votingOpenedAt?: Prisma.SortOrder
   votingClosesAt?: Prisma.SortOrder
   votingClosedAt?: Prisma.SortOrder
+  callUpSlots?: Prisma.SortOrder
   homeOrganizationId?: Prisma.SortOrder
   awayOrganizationId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
@@ -766,6 +799,7 @@ export type MatchMinOrderByAggregateInput = {
   votingOpenedAt?: Prisma.SortOrder
   votingClosesAt?: Prisma.SortOrder
   votingClosedAt?: Prisma.SortOrder
+  callUpSlots?: Prisma.SortOrder
   homeOrganizationId?: Prisma.SortOrder
   awayOrganizationId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
@@ -777,6 +811,7 @@ export type MatchSumOrderByAggregateInput = {
   lng?: Prisma.SortOrder
   homeScore?: Prisma.SortOrder
   awayScore?: Prisma.SortOrder
+  callUpSlots?: Prisma.SortOrder
 }
 
 export type MatchScalarRelationFilter = {
@@ -993,6 +1028,20 @@ export type MatchUpdateOneRequiredWithoutRatingsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MatchUpdateToOneWithWhereWithoutRatingsInput, Prisma.MatchUpdateWithoutRatingsInput>, Prisma.MatchUncheckedUpdateWithoutRatingsInput>
 }
 
+export type MatchCreateNestedOneWithoutCallUpsInput = {
+  create?: Prisma.XOR<Prisma.MatchCreateWithoutCallUpsInput, Prisma.MatchUncheckedCreateWithoutCallUpsInput>
+  connectOrCreate?: Prisma.MatchCreateOrConnectWithoutCallUpsInput
+  connect?: Prisma.MatchWhereUniqueInput
+}
+
+export type MatchUpdateOneRequiredWithoutCallUpsNestedInput = {
+  create?: Prisma.XOR<Prisma.MatchCreateWithoutCallUpsInput, Prisma.MatchUncheckedCreateWithoutCallUpsInput>
+  connectOrCreate?: Prisma.MatchCreateOrConnectWithoutCallUpsInput
+  upsert?: Prisma.MatchUpsertWithoutCallUpsInput
+  connect?: Prisma.MatchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MatchUpdateToOneWithWhereWithoutCallUpsInput, Prisma.MatchUpdateWithoutCallUpsInput>, Prisma.MatchUncheckedUpdateWithoutCallUpsInput>
+}
+
 export type MatchCreateNestedOneWithoutAttendancesInput = {
   create?: Prisma.XOR<Prisma.MatchCreateWithoutAttendancesInput, Prisma.MatchUncheckedCreateWithoutAttendancesInput>
   connectOrCreate?: Prisma.MatchCreateOrConnectWithoutAttendancesInput
@@ -1069,6 +1118,7 @@ export type MatchCreateWithoutMvpInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
@@ -1077,6 +1127,7 @@ export type MatchCreateWithoutMvpInput = {
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -1098,6 +1149,7 @@ export type MatchUncheckedCreateWithoutMvpInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -1106,6 +1158,7 @@ export type MatchUncheckedCreateWithoutMvpInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -1137,6 +1190,7 @@ export type MatchCreateWithoutCreatedByInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   mvp?: Prisma.UserCreateNestedOneWithoutMatchMvpAwardsInput
@@ -1145,6 +1199,7 @@ export type MatchCreateWithoutCreatedByInput = {
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -1166,6 +1221,7 @@ export type MatchUncheckedCreateWithoutCreatedByInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   mvpUserId?: string | null
@@ -1174,6 +1230,7 @@ export type MatchUncheckedCreateWithoutCreatedByInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -1224,6 +1281,7 @@ export type MatchScalarWhereInput = {
   votingOpenedAt?: Prisma.DateTimeNullableFilter<"Match"> | Date | string | null
   votingClosesAt?: Prisma.DateTimeNullableFilter<"Match"> | Date | string | null
   votingClosedAt?: Prisma.DateTimeNullableFilter<"Match"> | Date | string | null
+  callUpSlots?: Prisma.IntNullableFilter<"Match"> | number | null
   homeOrganizationId?: Prisma.StringFilter<"Match"> | string
   awayOrganizationId?: Prisma.StringNullableFilter<"Match"> | string | null
   createdById?: Prisma.StringNullableFilter<"Match"> | string | null
@@ -1264,6 +1322,7 @@ export type MatchCreateWithoutHomeOrganizationInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
   mvp?: Prisma.UserCreateNestedOneWithoutMatchMvpAwardsInput
@@ -1272,6 +1331,7 @@ export type MatchCreateWithoutHomeOrganizationInput = {
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -1293,6 +1353,7 @@ export type MatchUncheckedCreateWithoutHomeOrganizationInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   awayOrganizationId?: string | null
   createdById?: string | null
   mvpUserId?: string | null
@@ -1301,6 +1362,7 @@ export type MatchUncheckedCreateWithoutHomeOrganizationInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -1332,6 +1394,7 @@ export type MatchCreateWithoutAwayOrganizationInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
   mvp?: Prisma.UserCreateNestedOneWithoutMatchMvpAwardsInput
@@ -1340,6 +1403,7 @@ export type MatchCreateWithoutAwayOrganizationInput = {
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -1361,6 +1425,7 @@ export type MatchUncheckedCreateWithoutAwayOrganizationInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   createdById?: string | null
   mvpUserId?: string | null
@@ -1369,6 +1434,7 @@ export type MatchUncheckedCreateWithoutAwayOrganizationInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -1432,6 +1498,7 @@ export type MatchCreateWithoutMvpVotesInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
@@ -1440,6 +1507,7 @@ export type MatchCreateWithoutMvpVotesInput = {
   lineup?: Prisma.MatchLineupEntryCreateNestedManyWithoutMatchInput
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -1461,6 +1529,7 @@ export type MatchUncheckedCreateWithoutMvpVotesInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -1469,6 +1538,7 @@ export type MatchUncheckedCreateWithoutMvpVotesInput = {
   lineup?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutMatchInput
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -1506,6 +1576,7 @@ export type MatchUpdateWithoutMvpVotesInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
@@ -1514,6 +1585,7 @@ export type MatchUpdateWithoutMvpVotesInput = {
   lineup?: Prisma.MatchLineupEntryUpdateManyWithoutMatchNestedInput
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -1535,6 +1607,7 @@ export type MatchUncheckedUpdateWithoutMvpVotesInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1543,6 +1616,7 @@ export type MatchUncheckedUpdateWithoutMvpVotesInput = {
   lineup?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutMatchNestedInput
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -1564,6 +1638,7 @@ export type MatchCreateWithoutRatingsInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
@@ -1572,6 +1647,7 @@ export type MatchCreateWithoutRatingsInput = {
   lineup?: Prisma.MatchLineupEntryCreateNestedManyWithoutMatchInput
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -1593,6 +1669,7 @@ export type MatchUncheckedCreateWithoutRatingsInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -1601,6 +1678,7 @@ export type MatchUncheckedCreateWithoutRatingsInput = {
   lineup?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutMatchInput
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -1638,6 +1716,7 @@ export type MatchUpdateWithoutRatingsInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
@@ -1646,6 +1725,7 @@ export type MatchUpdateWithoutRatingsInput = {
   lineup?: Prisma.MatchLineupEntryUpdateManyWithoutMatchNestedInput
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -1667,6 +1747,7 @@ export type MatchUncheckedUpdateWithoutRatingsInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1675,6 +1756,147 @@ export type MatchUncheckedUpdateWithoutRatingsInput = {
   lineup?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutMatchNestedInput
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
+  gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
+}
+
+export type MatchCreateWithoutCallUpsInput = {
+  id?: string
+  title?: string | null
+  opponentName?: string | null
+  scheduledAt: Date | string
+  location: string
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: $Enums.MatchStatus
+  homeScore?: number | null
+  awayScore?: number | null
+  result?: $Enums.MatchResult | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
+  homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
+  awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
+  mvp?: Prisma.UserCreateNestedOneWithoutMatchMvpAwardsInput
+  attendances?: Prisma.MatchAttendanceCreateNestedManyWithoutMatchInput
+  lineup?: Prisma.MatchLineupEntryCreateNestedManyWithoutMatchInput
+  playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
+  mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
+  ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
+}
+
+export type MatchUncheckedCreateWithoutCallUpsInput = {
+  id?: string
+  title?: string | null
+  opponentName?: string | null
+  scheduledAt: Date | string
+  location: string
+  lat?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: $Enums.MatchStatus
+  homeScore?: number | null
+  awayScore?: number | null
+  result?: $Enums.MatchResult | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  votingOpenedAt?: Date | string | null
+  votingClosesAt?: Date | string | null
+  votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
+  homeOrganizationId: string
+  awayOrganizationId?: string | null
+  createdById?: string | null
+  mvpUserId?: string | null
+  attendances?: Prisma.MatchAttendanceUncheckedCreateNestedManyWithoutMatchInput
+  lineup?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutMatchInput
+  playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
+  mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
+  ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
+}
+
+export type MatchCreateOrConnectWithoutCallUpsInput = {
+  where: Prisma.MatchWhereUniqueInput
+  create: Prisma.XOR<Prisma.MatchCreateWithoutCallUpsInput, Prisma.MatchUncheckedCreateWithoutCallUpsInput>
+}
+
+export type MatchUpsertWithoutCallUpsInput = {
+  update: Prisma.XOR<Prisma.MatchUpdateWithoutCallUpsInput, Prisma.MatchUncheckedUpdateWithoutCallUpsInput>
+  create: Prisma.XOR<Prisma.MatchCreateWithoutCallUpsInput, Prisma.MatchUncheckedCreateWithoutCallUpsInput>
+  where?: Prisma.MatchWhereInput
+}
+
+export type MatchUpdateToOneWithWhereWithoutCallUpsInput = {
+  where?: Prisma.MatchWhereInput
+  data: Prisma.XOR<Prisma.MatchUpdateWithoutCallUpsInput, Prisma.MatchUncheckedUpdateWithoutCallUpsInput>
+}
+
+export type MatchUpdateWithoutCallUpsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  opponentName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: Prisma.EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
+  homeScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  awayScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  result?: Prisma.NullableEnumMatchResultFieldUpdateOperationsInput | $Enums.MatchResult | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
+  awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
+  mvp?: Prisma.UserUpdateOneWithoutMatchMvpAwardsNestedInput
+  attendances?: Prisma.MatchAttendanceUpdateManyWithoutMatchNestedInput
+  lineup?: Prisma.MatchLineupEntryUpdateManyWithoutMatchNestedInput
+  playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
+  mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
+  ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
+}
+
+export type MatchUncheckedUpdateWithoutCallUpsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  opponentName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  lng?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: Prisma.EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
+  homeScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  awayScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  result?: Prisma.NullableEnumMatchResultFieldUpdateOperationsInput | $Enums.MatchResult | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
+  awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  attendances?: Prisma.MatchAttendanceUncheckedUpdateManyWithoutMatchNestedInput
+  lineup?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutMatchNestedInput
+  playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
+  mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
+  ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -1696,6 +1918,7 @@ export type MatchCreateWithoutAttendancesInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
@@ -1704,6 +1927,7 @@ export type MatchCreateWithoutAttendancesInput = {
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -1725,6 +1949,7 @@ export type MatchUncheckedCreateWithoutAttendancesInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -1733,6 +1958,7 @@ export type MatchUncheckedCreateWithoutAttendancesInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -1770,6 +1996,7 @@ export type MatchUpdateWithoutAttendancesInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
@@ -1778,6 +2005,7 @@ export type MatchUpdateWithoutAttendancesInput = {
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -1799,6 +2027,7 @@ export type MatchUncheckedUpdateWithoutAttendancesInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1807,6 +2036,7 @@ export type MatchUncheckedUpdateWithoutAttendancesInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -1828,6 +2058,7 @@ export type MatchCreateWithoutLineupInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
@@ -1836,6 +2067,7 @@ export type MatchCreateWithoutLineupInput = {
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -1857,6 +2089,7 @@ export type MatchUncheckedCreateWithoutLineupInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -1865,6 +2098,7 @@ export type MatchUncheckedCreateWithoutLineupInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -1902,6 +2136,7 @@ export type MatchUpdateWithoutLineupInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
@@ -1910,6 +2145,7 @@ export type MatchUpdateWithoutLineupInput = {
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -1931,6 +2167,7 @@ export type MatchUncheckedUpdateWithoutLineupInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1939,6 +2176,7 @@ export type MatchUncheckedUpdateWithoutLineupInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -1960,6 +2198,7 @@ export type MatchCreateWithoutPlayerStatsInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
@@ -1968,6 +2207,7 @@ export type MatchCreateWithoutPlayerStatsInput = {
   lineup?: Prisma.MatchLineupEntryCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingCreateNestedOneWithoutMatchInput
 }
 
@@ -1989,6 +2229,7 @@ export type MatchUncheckedCreateWithoutPlayerStatsInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -1997,6 +2238,7 @@ export type MatchUncheckedCreateWithoutPlayerStatsInput = {
   lineup?: Prisma.MatchLineupEntryUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
   gameListing?: Prisma.GameListingUncheckedCreateNestedOneWithoutMatchInput
 }
 
@@ -2034,6 +2276,7 @@ export type MatchUpdateWithoutPlayerStatsInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
@@ -2042,6 +2285,7 @@ export type MatchUpdateWithoutPlayerStatsInput = {
   lineup?: Prisma.MatchLineupEntryUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -2063,6 +2307,7 @@ export type MatchUncheckedUpdateWithoutPlayerStatsInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2071,6 +2316,7 @@ export type MatchUncheckedUpdateWithoutPlayerStatsInput = {
   lineup?: Prisma.MatchLineupEntryUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -2092,6 +2338,7 @@ export type MatchCreateWithoutGameListingInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganization: Prisma.OrganizationCreateNestedOneWithoutHomeMatchesInput
   awayOrganization?: Prisma.OrganizationCreateNestedOneWithoutAwayMatchesInput
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedMatchesInput
@@ -2101,6 +2348,7 @@ export type MatchCreateWithoutGameListingInput = {
   playerStats?: Prisma.MatchPlayerStatCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpCreateNestedManyWithoutMatchInput
 }
 
 export type MatchUncheckedCreateWithoutGameListingInput = {
@@ -2121,6 +2369,7 @@ export type MatchUncheckedCreateWithoutGameListingInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -2130,6 +2379,7 @@ export type MatchUncheckedCreateWithoutGameListingInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedCreateNestedManyWithoutMatchInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedCreateNestedManyWithoutMatchInput
   ratings?: Prisma.MatchPlayerRatingUncheckedCreateNestedManyWithoutMatchInput
+  callUps?: Prisma.MatchCallUpUncheckedCreateNestedManyWithoutMatchInput
 }
 
 export type MatchCreateOrConnectWithoutGameListingInput = {
@@ -2166,6 +2416,7 @@ export type MatchUpdateWithoutGameListingInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
@@ -2175,6 +2426,7 @@ export type MatchUpdateWithoutGameListingInput = {
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
 }
 
 export type MatchUncheckedUpdateWithoutGameListingInput = {
@@ -2195,6 +2447,7 @@ export type MatchUncheckedUpdateWithoutGameListingInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2204,6 +2457,7 @@ export type MatchUncheckedUpdateWithoutGameListingInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
 }
 
 export type MatchCreateManyMvpInput = {
@@ -2224,6 +2478,7 @@ export type MatchCreateManyMvpInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   createdById?: string | null
@@ -2247,6 +2502,7 @@ export type MatchCreateManyCreatedByInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   awayOrganizationId?: string | null
   mvpUserId?: string | null
@@ -2270,6 +2526,7 @@ export type MatchUpdateWithoutMvpInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
@@ -2278,6 +2535,7 @@ export type MatchUpdateWithoutMvpInput = {
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -2299,6 +2557,7 @@ export type MatchUncheckedUpdateWithoutMvpInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2307,6 +2566,7 @@ export type MatchUncheckedUpdateWithoutMvpInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -2328,6 +2588,7 @@ export type MatchUncheckedUpdateManyWithoutMvpInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2351,6 +2612,7 @@ export type MatchUpdateWithoutCreatedByInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   mvp?: Prisma.UserUpdateOneWithoutMatchMvpAwardsNestedInput
@@ -2359,6 +2621,7 @@ export type MatchUpdateWithoutCreatedByInput = {
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -2380,6 +2643,7 @@ export type MatchUncheckedUpdateWithoutCreatedByInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2388,6 +2652,7 @@ export type MatchUncheckedUpdateWithoutCreatedByInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -2409,6 +2674,7 @@ export type MatchUncheckedUpdateManyWithoutCreatedByInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2432,6 +2698,7 @@ export type MatchCreateManyHomeOrganizationInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   awayOrganizationId?: string | null
   createdById?: string | null
   mvpUserId?: string | null
@@ -2455,6 +2722,7 @@ export type MatchCreateManyAwayOrganizationInput = {
   votingOpenedAt?: Date | string | null
   votingClosesAt?: Date | string | null
   votingClosedAt?: Date | string | null
+  callUpSlots?: number | null
   homeOrganizationId: string
   createdById?: string | null
   mvpUserId?: string | null
@@ -2478,6 +2746,7 @@ export type MatchUpdateWithoutHomeOrganizationInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   awayOrganization?: Prisma.OrganizationUpdateOneWithoutAwayMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
   mvp?: Prisma.UserUpdateOneWithoutMatchMvpAwardsNestedInput
@@ -2486,6 +2755,7 @@ export type MatchUpdateWithoutHomeOrganizationInput = {
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -2507,6 +2777,7 @@ export type MatchUncheckedUpdateWithoutHomeOrganizationInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2515,6 +2786,7 @@ export type MatchUncheckedUpdateWithoutHomeOrganizationInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -2536,6 +2808,7 @@ export type MatchUncheckedUpdateManyWithoutHomeOrganizationInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   awayOrganizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2559,6 +2832,7 @@ export type MatchUpdateWithoutAwayOrganizationInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganization?: Prisma.OrganizationUpdateOneRequiredWithoutHomeMatchesNestedInput
   createdBy?: Prisma.UserUpdateOneWithoutCreatedMatchesNestedInput
   mvp?: Prisma.UserUpdateOneWithoutMatchMvpAwardsNestedInput
@@ -2567,6 +2841,7 @@ export type MatchUpdateWithoutAwayOrganizationInput = {
   playerStats?: Prisma.MatchPlayerStatUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUpdateOneWithoutMatchNestedInput
 }
 
@@ -2588,6 +2863,7 @@ export type MatchUncheckedUpdateWithoutAwayOrganizationInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2596,6 +2872,7 @@ export type MatchUncheckedUpdateWithoutAwayOrganizationInput = {
   playerStats?: Prisma.MatchPlayerStatUncheckedUpdateManyWithoutMatchNestedInput
   mvpVotes?: Prisma.MatchMvpVoteUncheckedUpdateManyWithoutMatchNestedInput
   ratings?: Prisma.MatchPlayerRatingUncheckedUpdateManyWithoutMatchNestedInput
+  callUps?: Prisma.MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput
   gameListing?: Prisma.GameListingUncheckedUpdateOneWithoutMatchNestedInput
 }
 
@@ -2617,6 +2894,7 @@ export type MatchUncheckedUpdateManyWithoutAwayOrganizationInput = {
   votingOpenedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosesAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   votingClosedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  callUpSlots?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   homeOrganizationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mvpUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2633,6 +2911,7 @@ export type MatchCountOutputType = {
   playerStats: number
   mvpVotes: number
   ratings: number
+  callUps: number
 }
 
 export type MatchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2641,6 +2920,7 @@ export type MatchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   playerStats?: boolean | MatchCountOutputTypeCountPlayerStatsArgs
   mvpVotes?: boolean | MatchCountOutputTypeCountMvpVotesArgs
   ratings?: boolean | MatchCountOutputTypeCountRatingsArgs
+  callUps?: boolean | MatchCountOutputTypeCountCallUpsArgs
 }
 
 /**
@@ -2688,6 +2968,13 @@ export type MatchCountOutputTypeCountRatingsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.MatchPlayerRatingWhereInput
 }
 
+/**
+ * MatchCountOutputType without action
+ */
+export type MatchCountOutputTypeCountCallUpsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchCallUpWhereInput
+}
+
 
 export type MatchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2707,6 +2994,7 @@ export type MatchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   votingOpenedAt?: boolean
   votingClosesAt?: boolean
   votingClosedAt?: boolean
+  callUpSlots?: boolean
   homeOrganizationId?: boolean
   awayOrganizationId?: boolean
   createdById?: boolean
@@ -2720,6 +3008,7 @@ export type MatchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   playerStats?: boolean | Prisma.Match$playerStatsArgs<ExtArgs>
   mvpVotes?: boolean | Prisma.Match$mvpVotesArgs<ExtArgs>
   ratings?: boolean | Prisma.Match$ratingsArgs<ExtArgs>
+  callUps?: boolean | Prisma.Match$callUpsArgs<ExtArgs>
   gameListing?: boolean | Prisma.Match$gameListingArgs<ExtArgs>
   _count?: boolean | Prisma.MatchCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["match"]>
@@ -2742,6 +3031,7 @@ export type MatchSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   votingOpenedAt?: boolean
   votingClosesAt?: boolean
   votingClosedAt?: boolean
+  callUpSlots?: boolean
   homeOrganizationId?: boolean
   awayOrganizationId?: boolean
   createdById?: boolean
@@ -2770,6 +3060,7 @@ export type MatchSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   votingOpenedAt?: boolean
   votingClosesAt?: boolean
   votingClosedAt?: boolean
+  callUpSlots?: boolean
   homeOrganizationId?: boolean
   awayOrganizationId?: boolean
   createdById?: boolean
@@ -2798,13 +3089,14 @@ export type MatchSelectScalar = {
   votingOpenedAt?: boolean
   votingClosesAt?: boolean
   votingClosedAt?: boolean
+  callUpSlots?: boolean
   homeOrganizationId?: boolean
   awayOrganizationId?: boolean
   createdById?: boolean
   mvpUserId?: boolean
 }
 
-export type MatchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "opponentName" | "scheduledAt" | "location" | "lat" | "lng" | "status" | "homeScore" | "awayScore" | "result" | "notes" | "createdAt" | "updatedAt" | "votingOpenedAt" | "votingClosesAt" | "votingClosedAt" | "homeOrganizationId" | "awayOrganizationId" | "createdById" | "mvpUserId", ExtArgs["result"]["match"]>
+export type MatchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "opponentName" | "scheduledAt" | "location" | "lat" | "lng" | "status" | "homeScore" | "awayScore" | "result" | "notes" | "createdAt" | "updatedAt" | "votingOpenedAt" | "votingClosesAt" | "votingClosedAt" | "callUpSlots" | "homeOrganizationId" | "awayOrganizationId" | "createdById" | "mvpUserId", ExtArgs["result"]["match"]>
 export type MatchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   homeOrganization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   awayOrganization?: boolean | Prisma.Match$awayOrganizationArgs<ExtArgs>
@@ -2815,6 +3107,7 @@ export type MatchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   playerStats?: boolean | Prisma.Match$playerStatsArgs<ExtArgs>
   mvpVotes?: boolean | Prisma.Match$mvpVotesArgs<ExtArgs>
   ratings?: boolean | Prisma.Match$ratingsArgs<ExtArgs>
+  callUps?: boolean | Prisma.Match$callUpsArgs<ExtArgs>
   gameListing?: boolean | Prisma.Match$gameListingArgs<ExtArgs>
   _count?: boolean | Prisma.MatchCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -2843,6 +3136,7 @@ export type $MatchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     playerStats: Prisma.$MatchPlayerStatPayload<ExtArgs>[]
     mvpVotes: Prisma.$MatchMvpVotePayload<ExtArgs>[]
     ratings: Prisma.$MatchPlayerRatingPayload<ExtArgs>[]
+    callUps: Prisma.$MatchCallUpPayload<ExtArgs>[]
     gameListing: Prisma.$GameListingPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -2863,6 +3157,7 @@ export type $MatchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     votingOpenedAt: Date | null
     votingClosesAt: Date | null
     votingClosedAt: Date | null
+    callUpSlots: number | null
     homeOrganizationId: string
     awayOrganizationId: string | null
     createdById: string | null
@@ -3270,6 +3565,7 @@ export interface Prisma__MatchClient<T, Null = never, ExtArgs extends runtime.Ty
   playerStats<T extends Prisma.Match$playerStatsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Match$playerStatsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchPlayerStatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   mvpVotes<T extends Prisma.Match$mvpVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Match$mvpVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchMvpVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   ratings<T extends Prisma.Match$ratingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Match$ratingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchPlayerRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  callUps<T extends Prisma.Match$callUpsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Match$callUpsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchCallUpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   gameListing<T extends Prisma.Match$gameListingArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Match$gameListingArgs<ExtArgs>>): Prisma.Prisma__GameListingClient<runtime.Types.Result.GetResult<Prisma.$GameListingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3317,6 +3613,7 @@ export interface MatchFieldRefs {
   readonly votingOpenedAt: Prisma.FieldRef<"Match", 'DateTime'>
   readonly votingClosesAt: Prisma.FieldRef<"Match", 'DateTime'>
   readonly votingClosedAt: Prisma.FieldRef<"Match", 'DateTime'>
+  readonly callUpSlots: Prisma.FieldRef<"Match", 'Int'>
   readonly homeOrganizationId: Prisma.FieldRef<"Match", 'String'>
   readonly awayOrganizationId: Prisma.FieldRef<"Match", 'String'>
   readonly createdById: Prisma.FieldRef<"Match", 'String'>
@@ -3896,6 +4193,30 @@ export type Match$ratingsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.MatchPlayerRatingScalarFieldEnum | Prisma.MatchPlayerRatingScalarFieldEnum[]
+}
+
+/**
+ * Match.callUps
+ */
+export type Match$callUpsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MatchCallUp
+   */
+  select?: Prisma.MatchCallUpSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MatchCallUp
+   */
+  omit?: Prisma.MatchCallUpOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchCallUpInclude<ExtArgs> | null
+  where?: Prisma.MatchCallUpWhereInput
+  orderBy?: Prisma.MatchCallUpOrderByWithRelationInput | Prisma.MatchCallUpOrderByWithRelationInput[]
+  cursor?: Prisma.MatchCallUpWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchCallUpScalarFieldEnum | Prisma.MatchCallUpScalarFieldEnum[]
 }
 
 /**

@@ -14,7 +14,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ComponentStateView } from "@/components/cards/component-state";
 import { EmptyOrgsState } from "@/components/organizations/empty-orgs-state";
 import { PendingInviteModal } from "@/components/players/pending-invite-modal";
-import { teamPlayers, teamStats } from "@/constants/mock-data";
+import { rankingRepository } from "@/modules/rankings/repositories/ranking-repository";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
 import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
@@ -26,11 +26,7 @@ import { formatListingDateTime } from "@/modules/game-listings/lib/format";
 import { gameListingRepository } from "@/modules/game-listings/repositories/game-listing-repository";
 import { computeNextPeladaDate } from "@/modules/organizations/lib/next-pelada";
 import { isManagerRole } from "@/shared/auth/manager-roles";
-
-function formatCurrency(value: number | null | undefined) {
-  if (value == null) return null;
-  return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-}
+import { formatCurrency } from "@/lib/currency";
 
 export default async function DashboardPage({
   searchParams,
@@ -202,10 +198,12 @@ export default async function DashboardPage({
   const membership = await membershipRepository.findByUserAndOrganizations(session.id, [activeOrgId]);
   const isManager = isManagerRole(membership?.role);
 
-  const [upcoming, past, pendingInterestsCount] = await Promise.all([
+  const [upcoming, past, pendingInterestsCount, teamStats, teamPlayers] = await Promise.all([
     matchRepository.listUpcomingByOrganization(activeOrgId, 1),
     matchRepository.listPastByOrganization(activeOrgId, 3),
     isManager ? gameListingRepository.countPendingResponses(activeOrgId) : Promise.resolve(0),
+    rankingRepository.getTeamCollectiveStats(activeOrgId),
+    rankingRepository.getTeamSquad(activeOrgId),
   ]);
 
   const nextMatch = upcoming[0];
@@ -323,13 +321,7 @@ export default async function DashboardPage({
         </SportSection>
 
         <SportSection title="Estatisticas do Time">
-          <StatStrip
-            items={teamStats.map((stat) => ({
-              label: stat.label,
-              value: stat.value,
-              helper: stat.helper
-            }))}
-          />
+          <StatStrip items={teamStats} />
         </SportSection>
       </div>
 

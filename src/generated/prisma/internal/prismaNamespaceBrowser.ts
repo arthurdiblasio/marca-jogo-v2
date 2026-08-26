@@ -59,6 +59,7 @@ export const ModelName = {
   GuestPlayer: 'GuestPlayer',
   Membership: 'Membership',
   PeladaOccurrence: 'PeladaOccurrence',
+  PeladaCallUp: 'PeladaCallUp',
   PeladaAttendance: 'PeladaAttendance',
   PeladaPlayerStat: 'PeladaPlayerStat',
   PeladaMvpVote: 'PeladaMvpVote',
@@ -66,6 +67,7 @@ export const ModelName = {
   Match: 'Match',
   MatchMvpVote: 'MatchMvpVote',
   MatchPlayerRating: 'MatchPlayerRating',
+  MatchCallUp: 'MatchCallUp',
   MatchAttendance: 'MatchAttendance',
   MatchLineupEntry: 'MatchLineupEntry',
   MatchPlayerStat: 'MatchPlayerStat',
@@ -229,12 +231,26 @@ export const PeladaOccurrenceScalarFieldEnum = {
   votingOpenedAt: 'votingOpenedAt',
   votingClosesAt: 'votingClosesAt',
   votingClosedAt: 'votingClosedAt',
+  callUpSlots: 'callUpSlots',
   organizationId: 'organizationId',
   createdById: 'createdById',
   mvpUserId: 'mvpUserId'
 } as const
 
 export type PeladaOccurrenceScalarFieldEnum = (typeof PeladaOccurrenceScalarFieldEnum)[keyof typeof PeladaOccurrenceScalarFieldEnum]
+
+
+export const PeladaCallUpScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  respondedAt: 'respondedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  peladaOccurrenceId: 'peladaOccurrenceId',
+  userId: 'userId'
+} as const
+
+export type PeladaCallUpScalarFieldEnum = (typeof PeladaCallUpScalarFieldEnum)[keyof typeof PeladaCallUpScalarFieldEnum]
 
 
 export const PeladaAttendanceScalarFieldEnum = {
@@ -307,6 +323,7 @@ export const MatchScalarFieldEnum = {
   votingOpenedAt: 'votingOpenedAt',
   votingClosesAt: 'votingClosesAt',
   votingClosedAt: 'votingClosedAt',
+  callUpSlots: 'callUpSlots',
   homeOrganizationId: 'homeOrganizationId',
   awayOrganizationId: 'awayOrganizationId',
   createdById: 'createdById',
@@ -338,6 +355,20 @@ export const MatchPlayerRatingScalarFieldEnum = {
 } as const
 
 export type MatchPlayerRatingScalarFieldEnum = (typeof MatchPlayerRatingScalarFieldEnum)[keyof typeof MatchPlayerRatingScalarFieldEnum]
+
+
+export const MatchCallUpScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  respondedAt: 'respondedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  matchId: 'matchId',
+  userId: 'userId',
+  organizationId: 'organizationId'
+} as const
+
+export type MatchCallUpScalarFieldEnum = (typeof MatchCallUpScalarFieldEnum)[keyof typeof MatchCallUpScalarFieldEnum]
 
 
 export const MatchAttendanceScalarFieldEnum = {

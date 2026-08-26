@@ -58,6 +58,11 @@ export type Membership = Prisma.MembershipModel
  */
 export type PeladaOccurrence = Prisma.PeladaOccurrenceModel
 /**
+ * Model PeladaCallUp
+ * 
+ */
+export type PeladaCallUp = Prisma.PeladaCallUpModel
+/**
  * Model PeladaAttendance
  * 
  */
@@ -92,6 +97,11 @@ export type MatchMvpVote = Prisma.MatchMvpVoteModel
  * 
  */
 export type MatchPlayerRating = Prisma.MatchPlayerRatingModel
+/**
+ * Model MatchCallUp
+ * 
+ */
+export type MatchCallUp = Prisma.MatchCallUpModel
 /**
  * Model MatchAttendance
  * 

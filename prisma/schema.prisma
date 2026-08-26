@@ -33,6 +33,12 @@ enum AttendanceStatus {
   WAITLISTED
 }
 
+enum CallUpStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+}
+
 enum MatchStatus {
   SCHEDULED
   IN_PROGRESS
@@ -115,6 +121,8 @@ model User {
 
   memberships                  Membership[]
   peladaAttendances            PeladaAttendance[]
+  peladaCallUps                PeladaCallUp[]
+  matchCallUps                 MatchCallUp[]
   peladaStats                  PeladaPlayerStat[]
   peladaMvpAwards              PeladaOccurrence[]     @relation("PeladaOccurrenceMvp")
   peladaMvpVotesGiven          PeladaMvpVote[]        @relation("PeladaMvpVotesGiven")
@@ -235,7 +243,7 @@ model Organization {
   createdAt   DateTime         @default(now())
   updatedAt   DateTime         @updatedAt
 
-  modality    SportModality?
+  modality SportModality?
 
   weekday       Int?
   scheduledTime String?
@@ -250,6 +258,7 @@ model Organization {
   homeMatches             Match[]                @relation("MatchHomeOrganization")
   awayMatches             Match[]                @relation("MatchAwayOrganization")
   matchAttendances        MatchAttendance[]
+  matchCallUps            MatchCallUp[]
   financialTransactions   FinancialTransaction[]
   rankings                RankingSnapshot[]
   sentOpponentInvites     OpponentInvite[]       @relation("OpponentInviteFromOrganization")
@@ -284,18 +293,18 @@ model GuestPlayer {
 }
 
 model Membership {
-  id          String           @id @default(cuid())
-  role        MembershipRole   @default(PLAYER)
-  status      MembershipStatus @default(ACTIVE)
-  nickname    String?
-  shirtNumber Int?
-  position    String?
-  isMonthly   Boolean          @default(false)
-  hasMergedGuest Boolean       @default(false)
-  joinedAt    DateTime         @default(now())
-  leftAt      DateTime?
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
+  id             String           @id @default(cuid())
+  role           MembershipRole   @default(PLAYER)
+  status         MembershipStatus @default(ACTIVE)
+  nickname       String?
+  shirtNumber    Int?
+  position       String?
+  isMonthly      Boolean          @default(false)
+  hasMergedGuest Boolean          @default(false)
+  joinedAt       DateTime         @default(now())
+  leftAt         DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
 
   userId         String
   organizationId String
@@ -325,6 +334,8 @@ model PeladaOccurrence {
   votingClosesAt DateTime?
   votingClosedAt DateTime?
 
+  callUpSlots Int?
+
   organizationId String
   createdById    String?
   mvpUserId      String?
@@ -337,10 +348,28 @@ model PeladaOccurrence {
   playerStats PeladaPlayerStat[]
   mvpVotes    PeladaMvpVote[]
   ratings     PeladaPlayerRating[]
+  callUps     PeladaCallUp[]
 
   @@index([organizationId, scheduledAt])
   @@index([createdById])
   @@index([mvpUserId])
+}
+
+model PeladaCallUp {
+  id          String       @id @default(cuid())
+  status      CallUpStatus @default(PENDING)
+  respondedAt DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  peladaOccurrenceId String
+  userId             String
+
+  peladaOccurrence PeladaOccurrence @relation(fields: [peladaOccurrenceId], references: [id], onDelete: Cascade)
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([peladaOccurrenceId, userId])
+  @@index([userId, status])
 }
 
 model PeladaAttendance {
@@ -408,8 +437,8 @@ model PeladaPlayerRating {
   updatedAt DateTime @updatedAt
 
   peladaOccurrenceId String
-  raterUserId         String
-  ratedUserId         String
+  raterUserId        String
+  ratedUserId        String
 
   peladaOccurrence PeladaOccurrence @relation(fields: [peladaOccurrenceId], references: [id], onDelete: Cascade)
   rater            User             @relation("PeladaPlayerRatingsGiven", fields: [raterUserId], references: [id], onDelete: Cascade)
@@ -440,6 +469,8 @@ model Match {
   votingClosesAt DateTime?
   votingClosedAt DateTime?
 
+  callUpSlots Int?
+
   homeOrganizationId String
   awayOrganizationId String?
   createdById        String?
@@ -455,7 +486,8 @@ model Match {
   playerStats MatchPlayerStat[]
   mvpVotes    MatchMvpVote[]
   ratings     MatchPlayerRating[]
-  gameListing GameListing? @relation("GameListingMatch")
+  callUps     MatchCallUp[]
+  gameListing GameListing?        @relation("GameListingMatch")
 
   @@index([homeOrganizationId, scheduledAt])
   @@index([awayOrganizationId])
@@ -499,6 +531,26 @@ model MatchPlayerRating {
   @@unique([matchId, raterUserId, ratedUserId])
   @@index([matchId, ratedUserId])
   @@index([raterUserId])
+}
+
+model MatchCallUp {
+  id          String       @id @default(cuid())
+  status      CallUpStatus @default(PENDING)
+  respondedAt DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  matchId        String
+  userId         String
+  organizationId String
+
+  match        Match        @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([matchId, userId])
+  @@index([userId, status])
+  @@index([organizationId])
 }
 
 model MatchAttendance {
@@ -623,12 +675,12 @@ model OpponentInvite {
 }
 
 model PlayerInvite {
-  id        String       @id @default(cuid())
-  token     String       @unique
-  status    InviteStatus @default(PENDING)
+  id        String         @id @default(cuid())
+  token     String         @unique
+  status    InviteStatus   @default(PENDING)
   role      MembershipRole @default(PLAYER)
   expiresAt DateTime
-  createdAt DateTime     @default(now())
+  createdAt DateTime       @default(now())
 
   organizationId String
   createdById    String
@@ -674,8 +726,8 @@ model GameListing {
   location    String
   city        String
   state       String
-  lat         Decimal? @db.Decimal(10, 7)
-  lng         Decimal? @db.Decimal(10, 7)
+  lat         Decimal?      @db.Decimal(10, 7)
+  lng         Decimal?      @db.Decimal(10, 7)
 
   priceCents Int?
   priceNotes String?

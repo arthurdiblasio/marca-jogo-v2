@@ -2,10 +2,12 @@ import {
   CalendarDays,
   Goal,
   Home,
+  Megaphone,
   Search,
   Shield,
   Trophy,
   Users,
+  Wallet,
 } from "lucide-react";
 
 import type { NavigationItem } from "@/types/design-system";
@@ -27,5 +29,9 @@ export const mainNavigation: NavigationItem[] = [
     icon: CalendarDays,
     orgTypes: ["PELADA"],
   },
-  { href: "/time", label: "Ranking", icon: Trophy, orgTypes: ["TEAM"] },
+  { href: "/time/ranking", label: "Ranking", icon: Trophy, orgTypes: ["TEAM"] },
+  { href: "/pelada/ranking", label: "Ranking", icon: Trophy, orgTypes: ["PELADA"] },
+  { href: "/time/financeiro", label: "Financeiro", icon: Wallet, orgTypes: ["TEAM"] },
+  { href: "/pelada/financeiro", label: "Financeiro", icon: Wallet, orgTypes: ["PELADA"] },
+  { href: "/convocacoes", label: "Convocações", icon: Megaphone },
 ];

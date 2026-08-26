@@ -7,11 +7,14 @@ import { PageHeader } from "@/components/navigation/page-header";
 import { Card } from "@/components/ui/card";
 import { PlayerStatSearchEditor, type StatCandidate, type StatEntry } from "@/components/stats/player-stat-search-editor";
 import { ParticipantsSelector } from "@/components/stats/participants-selector";
+import { LineupSelector, type LineupEntry } from "@/components/matches/lineup-selector";
+import { CallUpSelector } from "@/components/call-ups/call-up-selector";
 import { MatchScoreEditor } from "@/components/matches/match-score-editor";
 import { VotingPanel, type VotingPlayer } from "@/components/voting/voting-panel";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
 import { membershipRepository } from "@/modules/organizations/repositories/membership-repository";
+import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
 import { guestPlayerRepository } from "@/modules/guest-players/repositories/guest-player-repository";
 import { matchRepository } from "@/modules/matches/repositories/match-repository";
 import { getMatchPerspective } from "@/modules/matches/lib/format";
@@ -19,6 +22,8 @@ import { saveMatchPlayerStatsAction } from "@/modules/matches/actions/save-match
 import { removeMatchPlayerStatAction } from "@/modules/matches/actions/remove-match-player-stat";
 import { updateMatchScoreAction } from "@/modules/matches/actions/update-match-score";
 import { setMatchParticipantsAction } from "@/modules/matches/actions/set-match-participants";
+import { setMatchLineupAction } from "@/modules/matches/actions/set-match-lineup";
+import { callUpMatchPlayersAction } from "@/modules/call-ups/actions/call-up-players";
 import { openMatchVotingAction, closeMatchVotingAction } from "@/modules/matches/actions/manage-match-voting";
 import { submitMatchVoteAction } from "@/modules/matches/actions/submit-match-vote";
 import { formatListingDateTime } from "@/modules/game-listings/lib/format";
@@ -58,10 +63,30 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
 
   const { opponentLabel, teamScore, opponentScore, outcome } = getMatchPerspective(match, activeOrgId);
 
-  const [members, guests] = await Promise.all([
+  const [members, guests, organization] = await Promise.all([
     membershipRepository.listByOrganization(activeOrgId),
     guestPlayerRepository.listByOrganization(activeOrgId),
+    organizationRepository.findById(activeOrgId),
   ]);
+
+  const teamModality = organization?.modality;
+  const lineupMembers = members.map((m) => {
+    const defaultPosition = teamModality
+      ? (m.user.profile?.modalityPositions.find((mp) => mp.modality === teamModality)?.positions[0] ?? "")
+      : "";
+    return {
+      userId: m.userId,
+      name: playerDisplayName(m.user),
+      imageUrl: m.user.profile?.imageUrl ?? null,
+      defaultPosition,
+    };
+  });
+  const orgCallUps = match.callUps.filter((c) => c.organizationId === activeOrgId);
+  const initialLineupEntries: LineupEntry[] = match.lineup.map((entry) => ({
+    userId: entry.userId,
+    position: entry.position ?? "",
+    isStarter: entry.isStarter,
+  }));
 
   const candidates: StatCandidate[] = [
     ...members.map((m) => ({
@@ -167,6 +192,19 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
   async function handleSaveParticipants(nextDeclinedUserIds: string[]) {
     "use server";
     await setMatchParticipantsAction({ matchId, organizationId: activeOrgId!, declinedUserIds: nextDeclinedUserIds });
+  }
+
+  async function handleSaveLineup(entries: LineupEntry[]) {
+    "use server";
+    await setMatchLineupAction({
+      matchId,
+      entries: entries.map((e) => ({ userId: e.userId, position: e.position, isStarter: e.isStarter })),
+    });
+  }
+
+  async function handleCallUpPlayers(userIds: string[], slots: number | null) {
+    "use server";
+    await callUpMatchPlayersAction({ matchId, organizationId: activeOrgId!, userIds, slots });
   }
 
   async function handleOpenVoting() {
@@ -289,6 +327,33 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ ma
             }))}
             initialDeclinedUserIds={declinedUserIds}
             onSave={handleSaveParticipants}
+          />
+        </section>
+      )}
+
+      {isManager && (
+        <section className="space-y-3">
+          <h2 className="text-lg font-black text-foreground">Escalação</h2>
+          <LineupSelector members={lineupMembers} initialEntries={initialLineupEntries} onSave={handleSaveLineup} />
+        </section>
+      )}
+
+      {isManager && (
+        <section className="space-y-3">
+          <h2 className="text-lg font-black text-foreground">Convocar jogadores</h2>
+          <CallUpSelector
+            members={members.map((m) => {
+              const callUp = orgCallUps.find((c) => c.userId === m.userId);
+              return {
+                userId: m.userId,
+                name: playerDisplayName(m.user),
+                imageUrl: m.user.profile?.imageUrl ?? null,
+                status: callUp?.status,
+              };
+            })}
+            initialSelectedUserIds={orgCallUps.map((c) => c.userId)}
+            initialSlots={match.callUpSlots}
+            onSave={handleCallUpPlayers}
           />
         </section>
       )}

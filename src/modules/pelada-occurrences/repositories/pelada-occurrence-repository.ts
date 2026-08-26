@@ -24,6 +24,7 @@ export const peladaOccurrenceRepository = {
         attendances: true,
         mvpVotes: true,
         ratings: true,
+        callUps: true,
       },
     });
   },

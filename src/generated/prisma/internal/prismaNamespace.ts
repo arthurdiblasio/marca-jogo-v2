@@ -392,6 +392,7 @@ export const ModelName = {
   GuestPlayer: 'GuestPlayer',
   Membership: 'Membership',
   PeladaOccurrence: 'PeladaOccurrence',
+  PeladaCallUp: 'PeladaCallUp',
   PeladaAttendance: 'PeladaAttendance',
   PeladaPlayerStat: 'PeladaPlayerStat',
   PeladaMvpVote: 'PeladaMvpVote',
@@ -399,6 +400,7 @@ export const ModelName = {
   Match: 'Match',
   MatchMvpVote: 'MatchMvpVote',
   MatchPlayerRating: 'MatchPlayerRating',
+  MatchCallUp: 'MatchCallUp',
   MatchAttendance: 'MatchAttendance',
   MatchLineupEntry: 'MatchLineupEntry',
   MatchPlayerStat: 'MatchPlayerStat',
@@ -425,7 +427,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "passwordResetToken" | "profile" | "profileModality" | "organization" | "guestPlayer" | "membership" | "peladaOccurrence" | "peladaAttendance" | "peladaPlayerStat" | "peladaMvpVote" | "peladaPlayerRating" | "match" | "matchMvpVote" | "matchPlayerRating" | "matchAttendance" | "matchLineupEntry" | "matchPlayerStat" | "financialTransaction" | "rankingSnapshot" | "opponentInvite" | "playerInvite" | "gameListingSeries" | "gameListing" | "gameListingPhoto" | "gameListingResponse"
+    modelProps: "user" | "passwordResetToken" | "profile" | "profileModality" | "organization" | "guestPlayer" | "membership" | "peladaOccurrence" | "peladaCallUp" | "peladaAttendance" | "peladaPlayerStat" | "peladaMvpVote" | "peladaPlayerRating" | "match" | "matchMvpVote" | "matchPlayerRating" | "matchCallUp" | "matchAttendance" | "matchLineupEntry" | "matchPlayerStat" | "financialTransaction" | "rankingSnapshot" | "opponentInvite" | "playerInvite" | "gameListingSeries" | "gameListing" | "gameListingPhoto" | "gameListingResponse"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1021,6 +1023,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PeladaCallUp: {
+      payload: Prisma.$PeladaCallUpPayload<ExtArgs>
+      fields: Prisma.PeladaCallUpFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PeladaCallUpFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PeladaCallUpFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload>
+        }
+        findFirst: {
+          args: Prisma.PeladaCallUpFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PeladaCallUpFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload>
+        }
+        findMany: {
+          args: Prisma.PeladaCallUpFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload>[]
+        }
+        create: {
+          args: Prisma.PeladaCallUpCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload>
+        }
+        createMany: {
+          args: Prisma.PeladaCallUpCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PeladaCallUpCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload>[]
+        }
+        delete: {
+          args: Prisma.PeladaCallUpDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload>
+        }
+        update: {
+          args: Prisma.PeladaCallUpUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload>
+        }
+        deleteMany: {
+          args: Prisma.PeladaCallUpDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PeladaCallUpUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PeladaCallUpUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload>[]
+        }
+        upsert: {
+          args: Prisma.PeladaCallUpUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PeladaCallUpPayload>
+        }
+        aggregate: {
+          args: Prisma.PeladaCallUpAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePeladaCallUp>
+        }
+        groupBy: {
+          args: Prisma.PeladaCallUpGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PeladaCallUpGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PeladaCallUpCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PeladaCallUpCountAggregateOutputType> | number
+        }
+      }
+    }
     PeladaAttendance: {
       payload: Prisma.$PeladaAttendancePayload<ExtArgs>
       fields: Prisma.PeladaAttendanceFieldRefs
@@ -1536,6 +1612,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.MatchPlayerRatingCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.MatchPlayerRatingCountAggregateOutputType> | number
+        }
+      }
+    }
+    MatchCallUp: {
+      payload: Prisma.$MatchCallUpPayload<ExtArgs>
+      fields: Prisma.MatchCallUpFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MatchCallUpFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MatchCallUpFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload>
+        }
+        findFirst: {
+          args: Prisma.MatchCallUpFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MatchCallUpFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload>
+        }
+        findMany: {
+          args: Prisma.MatchCallUpFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload>[]
+        }
+        create: {
+          args: Prisma.MatchCallUpCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload>
+        }
+        createMany: {
+          args: Prisma.MatchCallUpCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MatchCallUpCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload>[]
+        }
+        delete: {
+          args: Prisma.MatchCallUpDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload>
+        }
+        update: {
+          args: Prisma.MatchCallUpUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload>
+        }
+        deleteMany: {
+          args: Prisma.MatchCallUpDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MatchCallUpUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MatchCallUpUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload>[]
+        }
+        upsert: {
+          args: Prisma.MatchCallUpUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MatchCallUpPayload>
+        }
+        aggregate: {
+          args: Prisma.MatchCallUpAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMatchCallUp>
+        }
+        groupBy: {
+          args: Prisma.MatchCallUpGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MatchCallUpGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MatchCallUpCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MatchCallUpCountAggregateOutputType> | number
         }
       }
     }
@@ -2526,12 +2676,26 @@ export const PeladaOccurrenceScalarFieldEnum = {
   votingOpenedAt: 'votingOpenedAt',
   votingClosesAt: 'votingClosesAt',
   votingClosedAt: 'votingClosedAt',
+  callUpSlots: 'callUpSlots',
   organizationId: 'organizationId',
   createdById: 'createdById',
   mvpUserId: 'mvpUserId'
 } as const
 
 export type PeladaOccurrenceScalarFieldEnum = (typeof PeladaOccurrenceScalarFieldEnum)[keyof typeof PeladaOccurrenceScalarFieldEnum]
+
+
+export const PeladaCallUpScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  respondedAt: 'respondedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  peladaOccurrenceId: 'peladaOccurrenceId',
+  userId: 'userId'
+} as const
+
+export type PeladaCallUpScalarFieldEnum = (typeof PeladaCallUpScalarFieldEnum)[keyof typeof PeladaCallUpScalarFieldEnum]
 
 
 export const PeladaAttendanceScalarFieldEnum = {
@@ -2604,6 +2768,7 @@ export const MatchScalarFieldEnum = {
   votingOpenedAt: 'votingOpenedAt',
   votingClosesAt: 'votingClosesAt',
   votingClosedAt: 'votingClosedAt',
+  callUpSlots: 'callUpSlots',
   homeOrganizationId: 'homeOrganizationId',
   awayOrganizationId: 'awayOrganizationId',
   createdById: 'createdById',
@@ -2635,6 +2800,20 @@ export const MatchPlayerRatingScalarFieldEnum = {
 } as const
 
 export type MatchPlayerRatingScalarFieldEnum = (typeof MatchPlayerRatingScalarFieldEnum)[keyof typeof MatchPlayerRatingScalarFieldEnum]
+
+
+export const MatchCallUpScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  respondedAt: 'respondedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  matchId: 'matchId',
+  userId: 'userId',
+  organizationId: 'organizationId'
+} as const
+
+export type MatchCallUpScalarFieldEnum = (typeof MatchCallUpScalarFieldEnum)[keyof typeof MatchCallUpScalarFieldEnum]
 
 
 export const MatchAttendanceScalarFieldEnum = {
@@ -2987,6 +3166,20 @@ export type ListEnumMembershipStatusFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
+ * Reference to a field of type 'CallUpStatus'
+ */
+export type EnumCallUpStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CallUpStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'CallUpStatus[]'
+ */
+export type ListEnumCallUpStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CallUpStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'AttendanceStatus'
  */
 export type EnumAttendanceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AttendanceStatus'>
@@ -3257,6 +3450,7 @@ export type GlobalOmitConfig = {
   guestPlayer?: Prisma.GuestPlayerOmit
   membership?: Prisma.MembershipOmit
   peladaOccurrence?: Prisma.PeladaOccurrenceOmit
+  peladaCallUp?: Prisma.PeladaCallUpOmit
   peladaAttendance?: Prisma.PeladaAttendanceOmit
   peladaPlayerStat?: Prisma.PeladaPlayerStatOmit
   peladaMvpVote?: Prisma.PeladaMvpVoteOmit
@@ -3264,6 +3458,7 @@ export type GlobalOmitConfig = {
   match?: Prisma.MatchOmit
   matchMvpVote?: Prisma.MatchMvpVoteOmit
   matchPlayerRating?: Prisma.MatchPlayerRatingOmit
+  matchCallUp?: Prisma.MatchCallUpOmit
   matchAttendance?: Prisma.MatchAttendanceOmit
   matchLineupEntry?: Prisma.MatchLineupEntryOmit
   matchPlayerStat?: Prisma.MatchPlayerStatOmit

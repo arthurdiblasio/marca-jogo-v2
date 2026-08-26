@@ -5,7 +5,10 @@ import { requireAuth } from "@/shared/auth/require-auth";
 import { onboardingRepository } from "@/modules/onboarding/repositories/onboarding-repository";
 import { organizationRepository } from "@/modules/organizations/repositories/organization-repository";
 import { gameListingRepository } from "@/modules/game-listings/repositories/game-listing-repository";
+import { callUpRepository } from "@/modules/call-ups/repositories/call-up-repository";
+import { formatListingDateTime } from "@/modules/game-listings/lib/format";
 import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
+import type { CallUpNotification } from "@/components/navigation/notifications-bell";
 
 export default async function AppLayout({
   children,
@@ -30,8 +33,36 @@ export default async function AppLayout({
   // so if it doesn't match what we resolved here, ask the client to persist the correction.
   const syncActiveOrgId = activeOrg && activeOrg.id !== cookieOrgId ? activeOrg.id : null;
 
-  const pendingInterestsCount =
-    activeOrg?.type === "TEAM" ? await gameListingRepository.countPendingResponses(activeOrg.id) : 0;
+  const [pendingInterestsCount, pendingCallUpsCount, { peladaCallUps, matchCallUps }] = await Promise.all([
+    activeOrg?.type === "TEAM" ? gameListingRepository.countPendingResponses(activeOrg.id) : Promise.resolve(0),
+    activeOrg ? callUpRepository.countPendingForUserInOrg(session.id, activeOrg.id) : Promise.resolve(0),
+    callUpRepository.listPendingForUserAcrossOrgs(session.id),
+  ]);
+
+  const notifications: CallUpNotification[] = [
+    ...peladaCallUps.map((callUp) => ({
+      id: callUp.id,
+      kind: "pelada" as const,
+      organizationId: callUp.peladaOccurrence.organizationId,
+      organizationName: callUp.peladaOccurrence.organization.name,
+      title: callUp.peladaOccurrence.title,
+      subtitle: formatListingDateTime(callUp.peladaOccurrence.scheduledAt),
+      href: `/pelada/rodadas/${callUp.peladaOccurrence.id}`,
+    })),
+    ...matchCallUps.map((callUp) => {
+      const isHome = callUp.match.homeOrganizationId === callUp.organization.id;
+      const opponent = isHome ? callUp.match.awayOrganization?.name : callUp.match.homeOrganization.name;
+      return {
+        id: callUp.id,
+        kind: "match" as const,
+        organizationId: callUp.organization.id,
+        organizationName: callUp.organization.name,
+        title: `vs ${opponent ?? callUp.match.opponentName ?? "Adversário"}`,
+        subtitle: formatListingDateTime(callUp.match.scheduledAt),
+        href: `/time/agenda/${callUp.match.id}`,
+      };
+    }),
+  ];
 
   return (
     <AppShell
@@ -39,6 +70,8 @@ export default async function AppLayout({
       activeOrgId={activeOrg?.id ?? null}
       syncActiveOrgId={syncActiveOrgId}
       pendingInterestsCount={pendingInterestsCount}
+      pendingCallUpsCount={pendingCallUpsCount}
+      notifications={notifications}
     >
       {children}
     </AppShell>

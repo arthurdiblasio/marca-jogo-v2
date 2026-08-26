@@ -6,6 +6,7 @@ import { OrgProvider, type OrgInfo } from "@/contexts/org-context";
 import { BottomNavigation } from "@/components/navigation/bottom-navigation";
 import { SidebarNavigation } from "@/components/navigation/sidebar-navigation";
 import { TopNavigation } from "@/components/navigation/top-navigation";
+import type { CallUpNotification } from "@/components/navigation/notifications-bell";
 import { setActiveOrgAction } from "@/modules/organizations/actions/set-active-org";
 
 interface AppShellProps {
@@ -14,6 +15,8 @@ interface AppShellProps {
   activeOrgId: string | null;
   syncActiveOrgId?: string | null;
   pendingInterestsCount?: number;
+  pendingCallUpsCount?: number;
+  notifications?: CallUpNotification[];
 }
 
 export function AppShell({
@@ -22,6 +25,8 @@ export function AppShell({
   activeOrgId,
   syncActiveOrgId,
   pendingInterestsCount = 0,
+  pendingCallUpsCount = 0,
+  notifications = [],
 }: AppShellProps) {
   const activeOrg = orgs.find((o) => o.id === activeOrgId) ?? orgs[0] ?? null;
 
@@ -34,12 +39,17 @@ export function AppShell({
   return (
     <OrgProvider orgs={orgs} activeOrg={activeOrg}>
       <div className="min-h-screen">
-        <TopNavigation />
-        <SidebarNavigation pendingInterestsCount={pendingInterestsCount} />
+        <TopNavigation notifications={notifications} activeOrgId={activeOrgId} />
+        <SidebarNavigation
+          pendingInterestsCount={pendingInterestsCount}
+          pendingCallUpsCount={pendingCallUpsCount}
+          notifications={notifications}
+          activeOrgId={activeOrgId}
+        />
         <main className="mx-auto min-h-screen w-full max-w-400 px-3 pb-24 pt-20 md:px-5 lg:pl-72 lg:pr-6 lg:pt-5">
           {children}
         </main>
-        <BottomNavigation pendingInterestsCount={pendingInterestsCount} />
+        <BottomNavigation pendingInterestsCount={pendingInterestsCount} pendingCallUpsCount={pendingCallUpsCount} />
       </div>
     </OrgProvider>
   );

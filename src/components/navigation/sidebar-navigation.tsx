@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Bell, LogOut, Search } from "lucide-react";
+import { LogOut, Search } from "lucide-react";
 
 import { Logo } from "@/components/brand/logo";
 import { OrganizationSwitcher } from "@/components/navigation/organization-switcher";
+import { NotificationsBell, type CallUpNotification } from "@/components/navigation/notifications-bell";
 import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { mainNavigation } from "@/constants/navigation";
@@ -13,7 +14,17 @@ import { useOrgs } from "@/contexts/org-context";
 import { cn } from "@/lib/utils";
 import { logoutRequest } from "@/modules/auth/services/auth-api";
 
-export function SidebarNavigation({ pendingInterestsCount = 0 }: { pendingInterestsCount?: number }) {
+export function SidebarNavigation({
+  pendingInterestsCount = 0,
+  pendingCallUpsCount = 0,
+  notifications = [],
+  activeOrgId = null,
+}: {
+  pendingInterestsCount?: number;
+  pendingCallUpsCount?: number;
+  notifications?: CallUpNotification[];
+  activeOrgId?: string | null;
+}) {
   const pathname = usePathname();
   const router = useRouter();
   const { activeOrg } = useOrgs();
@@ -36,9 +47,7 @@ export function SidebarNavigation({ pendingInterestsCount = 0 }: { pendingIntere
             <Button size="icon" variant="ghost" aria-label="Buscar">
               <Search className="size-5" />
             </Button>
-            <Button size="icon" variant="ghost" aria-label="Notificacoes">
-              <Bell className="size-5" />
-            </Button>
+            <NotificationsBell notifications={notifications} activeOrgId={activeOrgId} />
             <ThemeToggle />
           </div>
         </div>
@@ -49,7 +58,12 @@ export function SidebarNavigation({ pendingInterestsCount = 0 }: { pendingIntere
           {navigation.map((item) => {
             const Icon = item.icon;
             const active = pathname === item.href;
-            const badgeCount = item.href === "/time/agenda" ? pendingInterestsCount : 0;
+            const badgeCount =
+              item.href === "/time/agenda"
+                ? pendingInterestsCount
+                : item.href === "/convocacoes"
+                  ? pendingCallUpsCount
+                  : 0;
 
             return (
               <Link
