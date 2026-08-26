@@ -7,7 +7,7 @@ export const updateOrganizationSchema = z.object({
     .min(3, "Nome deve ter pelo menos 3 caracteres")
     .max(60, "Nome muito longo"),
   modality: z
-    .enum(["FIELD_11", "SOCIETY_7", "SOCIETY_8", "FUTSAL_5"])
+    .enum(["FIELD_11", "SOCIETY_7", "SOCIETY_6", "FUTSAL_5"])
     .optional(),
   logoUrl: z.string().max(500).optional(),
   address: z.string().max(200).optional(),

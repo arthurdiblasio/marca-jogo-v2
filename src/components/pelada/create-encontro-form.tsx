@@ -16,7 +16,7 @@ function toDatetimeLocalValue(date: Date) {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
-export function CreateRodadaForm({
+export function CreateEncontroForm({
   organizationId,
   defaultLocation,
   defaultDate,
@@ -36,7 +36,7 @@ export function CreateRodadaForm({
     return (
       <Button size="sm" className="w-auto" onClick={() => setOpen(true)}>
         <Plus className="size-4" />
-        Registrar rodada
+        Registrar encontro
       </Button>
     );
   }
@@ -46,11 +46,11 @@ export function CreateRodadaForm({
     setIsSubmitting(true);
     try {
       await createPeladaOccurrenceAction({ organizationId, title, scheduledAt, location });
-      toast.success("Rodada registrada!");
+      toast.success("Encontro registrado!");
       setOpen(false);
       router.refresh();
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Erro ao registrar rodada");
+      toast.error(error instanceof Error ? error.message : "Erro ao registrar encontro");
     } finally {
       setIsSubmitting(false);
     }
@@ -59,7 +59,7 @@ export function CreateRodadaForm({
   return (
     <Card className="space-y-4 p-4">
       <div className="flex items-center justify-between">
-        <p className="font-bold text-foreground">Nova rodada</p>
+        <p className="font-bold text-foreground">Novo encontro</p>
         <button type="button" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground">
           <X className="size-4" />
         </button>
@@ -85,7 +85,7 @@ export function CreateRodadaForm({
         </FormField>
 
         <Button type="submit" disabled={isSubmitting} className="w-full">
-          {isSubmitting ? "Salvando..." : "Registrar rodada"}
+          {isSubmitting ? "Salvando..." : "Registrar encontro"}
         </Button>
       </form>
     </Card>

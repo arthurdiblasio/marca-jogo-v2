@@ -36,7 +36,7 @@ export default async function PeladaRankingPage() {
         {ranking.length > 0 ? (
           <SportsRanking items={ranking} />
         ) : (
-          <ComponentStateView state="empty" emptyLabel="O ranking aparece após as rodadas terem votação concluída" />
+          <ComponentStateView state="empty" emptyLabel="O ranking aparece após os encontros terem votação concluída" />
         )}
       </SportSection>
     </PageTransition>

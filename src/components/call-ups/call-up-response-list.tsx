@@ -10,7 +10,6 @@ import { respondCallUpAction } from "@/modules/call-ups/actions/respond-call-up"
 
 export type CallUpResponseItem = {
   id: string;
-  kind: "pelada" | "match";
   title: string;
   subtitle: string;
 };
@@ -20,7 +19,7 @@ export function CallUpResponseList({ items }: { items: CallUpResponseItem[] }) {
 
   async function respond(item: CallUpResponseItem, status: "ACCEPTED" | "DECLINED") {
     try {
-      await respondCallUpAction({ id: item.id, kind: item.kind, status });
+      await respondCallUpAction({ id: item.id, status });
       toast.success(status === "ACCEPTED" ? "Presença confirmada!" : "Convocação recusada.");
       router.refresh();
     } catch (error) {
@@ -31,7 +30,7 @@ export function CallUpResponseList({ items }: { items: CallUpResponseItem[] }) {
   return (
     <div className="space-y-2">
       {items.map((item) => (
-        <Card key={`${item.kind}:${item.id}`} className="flex items-center gap-3 p-4">
+        <Card key={item.id} className="flex items-center gap-3 p-4">
           <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10">
             <CalendarDays className="size-5 text-primary" />
           </div>

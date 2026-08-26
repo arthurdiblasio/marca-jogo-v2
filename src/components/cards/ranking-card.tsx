@@ -28,7 +28,7 @@ export function RankingCard({ items, state = "success" }: RankingCardProps) {
           </div>
           <div className="min-w-0 flex-1">
             <p className="truncate font-bold">{item.name}</p>
-            <p className="caption text-muted-foreground">Nota da rodada</p>
+            <p className="caption text-muted-foreground">Nota do encontro</p>
           </div>
           <div className="text-right">
             <p className="text-xl font-black">{item.score}</p>

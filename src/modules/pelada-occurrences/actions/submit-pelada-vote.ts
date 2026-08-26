@@ -14,13 +14,13 @@ export async function submitPeladaVoteAction(input: SubmitPeladaVoteInput) {
 
   const occurrence = await peladaOccurrenceRepository.findById(data.peladaOccurrenceId);
   if (!occurrence) {
-    throw new Error("Rodada não encontrada.");
+    throw new Error("Encontro não encontrado.");
   }
 
   await requireOrgMembership(session.id, occurrence.organizationId);
 
   if (!isVotingOpen(occurrence)) {
-    throw new Error("A votação desta rodada não está aberta.");
+    throw new Error("A votação deste encontro não está aberta.");
   }
 
   await peladaOccurrenceRepository.submitVote({
@@ -30,5 +30,5 @@ export async function submitPeladaVoteAction(input: SubmitPeladaVoteInput) {
     ratings: data.ratings,
   });
 
-  revalidatePath(`/pelada/rodadas/${data.peladaOccurrenceId}`);
+  revalidatePath(`/pelada/encontros/${data.peladaOccurrenceId}`);
 }

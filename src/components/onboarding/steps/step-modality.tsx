@@ -11,14 +11,14 @@ import { ALL_MODALITIES, type SportModality } from "@/constants/positions";
 const MODALITY_ICON: Record<SportModality, typeof Goal> = {
   FIELD_11: Goal,
   SOCIETY_7: Users,
-  SOCIETY_8: UsersRound,
+  SOCIETY_6: UsersRound,
   FUTSAL_5: Volleyball,
 };
 
 const MODALITY_DESC: Record<SportModality, string> = {
   FIELD_11: "Grama · 11 jogadores",
   SOCIETY_7: "Society · 7 jogadores",
-  SOCIETY_8: "Society · 8 jogadores",
+  SOCIETY_6: "Society · 6 jogadores",
   FUTSAL_5: "Quadra · 5 jogadores",
 };
 

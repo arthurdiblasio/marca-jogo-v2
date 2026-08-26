@@ -24,7 +24,7 @@ export const mainNavigation: NavigationItem[] = [
   },
   { href: "/jogos", label: "Buscar Jogos", icon: Search, orgTypes: ["TEAM"] },
   {
-    href: "/pelada",
+    href: "/pelada/encontros",
     label: "Agenda",
     icon: CalendarDays,
     orgTypes: ["PELADA"],
@@ -33,5 +33,5 @@ export const mainNavigation: NavigationItem[] = [
   { href: "/pelada/ranking", label: "Ranking", icon: Trophy, orgTypes: ["PELADA"] },
   { href: "/time/financeiro", label: "Financeiro", icon: Wallet, orgTypes: ["TEAM"] },
   { href: "/pelada/financeiro", label: "Financeiro", icon: Wallet, orgTypes: ["PELADA"] },
-  { href: "/convocacoes", label: "Convocações", icon: Megaphone },
+  { href: "/convocacoes", label: "Convocações", icon: Megaphone, orgTypes: ["TEAM"] },
 ];

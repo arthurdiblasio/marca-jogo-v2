@@ -74,7 +74,7 @@ enum FinancialTransactionStatus {
 enum SportModality {
   FIELD_11
   SOCIETY_7
-  SOCIETY_8
+  SOCIETY_6
   FUTSAL_5
 }
 
@@ -121,7 +121,6 @@ model User {
 
   memberships                  Membership[]
   peladaAttendances            PeladaAttendance[]
-  peladaCallUps                PeladaCallUp[]
   matchCallUps                 MatchCallUp[]
   peladaStats                  PeladaPlayerStat[]
   peladaMvpAwards              PeladaOccurrence[]     @relation("PeladaOccurrenceMvp")
@@ -334,8 +333,6 @@ model PeladaOccurrence {
   votingClosesAt DateTime?
   votingClosedAt DateTime?
 
-  callUpSlots Int?
-
   organizationId String
   createdById    String?
   mvpUserId      String?
@@ -348,28 +345,10 @@ model PeladaOccurrence {
   playerStats PeladaPlayerStat[]
   mvpVotes    PeladaMvpVote[]
   ratings     PeladaPlayerRating[]
-  callUps     PeladaCallUp[]
 
   @@index([organizationId, scheduledAt])
   @@index([createdById])
   @@index([mvpUserId])
-}
-
-model PeladaCallUp {
-  id          String       @id @default(cuid())
-  status      CallUpStatus @default(PENDING)
-  respondedAt DateTime?
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-
-  peladaOccurrenceId String
-  userId             String
-
-  peladaOccurrence PeladaOccurrence @relation(fields: [peladaOccurrenceId], references: [id], onDelete: Cascade)
-  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([peladaOccurrenceId, userId])
-  @@index([userId, status])
 }
 
 model PeladaAttendance {

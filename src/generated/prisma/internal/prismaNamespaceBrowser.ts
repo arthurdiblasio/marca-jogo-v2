@@ -59,7 +59,6 @@ export const ModelName = {
   GuestPlayer: 'GuestPlayer',
   Membership: 'Membership',
   PeladaOccurrence: 'PeladaOccurrence',
-  PeladaCallUp: 'PeladaCallUp',
   PeladaAttendance: 'PeladaAttendance',
   PeladaPlayerStat: 'PeladaPlayerStat',
   PeladaMvpVote: 'PeladaMvpVote',
@@ -231,26 +230,12 @@ export const PeladaOccurrenceScalarFieldEnum = {
   votingOpenedAt: 'votingOpenedAt',
   votingClosesAt: 'votingClosesAt',
   votingClosedAt: 'votingClosedAt',
-  callUpSlots: 'callUpSlots',
   organizationId: 'organizationId',
   createdById: 'createdById',
   mvpUserId: 'mvpUserId'
 } as const
 
 export type PeladaOccurrenceScalarFieldEnum = (typeof PeladaOccurrenceScalarFieldEnum)[keyof typeof PeladaOccurrenceScalarFieldEnum]
-
-
-export const PeladaCallUpScalarFieldEnum = {
-  id: 'id',
-  status: 'status',
-  respondedAt: 'respondedAt',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  peladaOccurrenceId: 'peladaOccurrenceId',
-  userId: 'userId'
-} as const
-
-export type PeladaCallUpScalarFieldEnum = (typeof PeladaCallUpScalarFieldEnum)[keyof typeof PeladaCallUpScalarFieldEnum]
 
 
 export const PeladaAttendanceScalarFieldEnum = {

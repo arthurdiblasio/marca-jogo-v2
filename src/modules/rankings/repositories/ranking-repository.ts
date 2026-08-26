@@ -96,7 +96,7 @@ export const rankingRepository = {
         : 0;
 
     return [
-      { label: "Presenças", value: String(statsCount), helper: `Em ${occurrencesCount} rodadas` },
+      { label: "Presenças", value: String(statsCount), helper: `Em ${occurrencesCount} encontros` },
       { label: "Gols", value: String(statsAggregate._sum.goals ?? 0), helper: "Total da temporada" },
       { label: "Assiduidade", value: `${attendanceRate}%`, helper: "Média do grupo" },
     ];

@@ -17,7 +17,7 @@ const MANAGER_ROLES = ["OWNER", "ADMIN", "CAPTAIN"];
 const MODALITY_LABEL: Record<string, string> = {
   FIELD_11: "Campo 11",
   SOCIETY_7: "Society 7",
-  SOCIETY_8: "Society 8",
+  SOCIETY_6: "Society 6",
   FUTSAL_5: "Futsal 5",
 };
 

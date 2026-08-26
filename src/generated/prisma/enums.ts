@@ -106,7 +106,7 @@ export type FinancialTransactionStatus = (typeof FinancialTransactionStatus)[key
 export const SportModality = {
   FIELD_11: 'FIELD_11',
   SOCIETY_7: 'SOCIETY_7',
-  SOCIETY_8: 'SOCIETY_8',
+  SOCIETY_6: 'SOCIETY_6',
   FUTSAL_5: 'FUTSAL_5'
 } as const
 

@@ -95,9 +95,9 @@ export default async function DashboardPage({
 
         <div className="flex flex-wrap gap-3">
           <Button asChild size="sm" className="w-auto">
-            <Link href="/pelada/rodadas">
+            <Link href="/pelada/encontros">
               <Trophy className="size-4" />
-              Ver rodadas
+              Ver encontros
             </Link>
           </Button>
           <Button asChild variant="outline" size="sm" className="w-auto">

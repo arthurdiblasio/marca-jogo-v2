@@ -82,11 +82,6 @@ export type Membership = Prisma.MembershipModel
  */
 export type PeladaOccurrence = Prisma.PeladaOccurrenceModel
 /**
- * Model PeladaCallUp
- * 
- */
-export type PeladaCallUp = Prisma.PeladaCallUpModel
-/**
  * Model PeladaAttendance
  * 
  */

@@ -18,7 +18,7 @@ export async function createPeladaOccurrenceAction(input: CreatePeladaOccurrence
 
   const membership = await requireOrgMembership(session.id, data.organizationId);
   if (!MANAGER_ROLES.includes(membership.role)) {
-    throw new Error("Você não tem permissão para registrar uma rodada.");
+    throw new Error("Você não tem permissão para registrar um encontro.");
   }
 
   const occurrence = await peladaOccurrenceRepository.create({
@@ -29,7 +29,7 @@ export async function createPeladaOccurrenceAction(input: CreatePeladaOccurrence
     createdById: session.id,
   });
 
-  revalidatePath("/pelada/rodadas");
+  revalidatePath("/pelada/encontros");
 
   return occurrence;
 }

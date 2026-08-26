@@ -7,7 +7,6 @@ import { PageHeader } from "@/components/navigation/page-header";
 import { Card } from "@/components/ui/card";
 import { PlayerStatSearchEditor, type StatCandidate, type StatEntry } from "@/components/stats/player-stat-search-editor";
 import { ParticipantsSelector } from "@/components/stats/participants-selector";
-import { CallUpSelector } from "@/components/call-ups/call-up-selector";
 import { VotingPanel, type VotingPlayer } from "@/components/voting/voting-panel";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { requireOrgMembership } from "@/shared/orgs/require-org-membership";
@@ -17,7 +16,6 @@ import { peladaOccurrenceRepository } from "@/modules/pelada-occurrences/reposit
 import { savePeladaPlayerStatsAction } from "@/modules/pelada-occurrences/actions/save-pelada-player-stats";
 import { removePeladaPlayerStatAction } from "@/modules/pelada-occurrences/actions/remove-pelada-player-stat";
 import { setPeladaParticipantsAction } from "@/modules/pelada-occurrences/actions/set-pelada-participants";
-import { callUpPeladaPlayersAction } from "@/modules/call-ups/actions/call-up-players";
 import { openPeladaVotingAction, closePeladaVotingAction } from "@/modules/pelada-occurrences/actions/manage-pelada-voting";
 import { submitPeladaVoteAction } from "@/modules/pelada-occurrences/actions/submit-pelada-vote";
 import { formatListingDateTime } from "@/modules/game-listings/lib/format";
@@ -30,7 +28,7 @@ function playerDisplayName(user: { email: string; profile: { fullName: string | 
   return user.profile?.nickname || user.profile?.fullName || user.email;
 }
 
-export default async function PeladaRodadaDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function PeladaEncontroDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const session = await requireAuth();
 
@@ -127,11 +125,6 @@ export default async function PeladaRodadaDetailPage({ params }: { params: Promi
     await setPeladaParticipantsAction({ peladaOccurrenceId: id, declinedUserIds: nextDeclinedUserIds });
   }
 
-  async function handleCallUpPlayers(userIds: string[], slots: number | null) {
-    "use server";
-    await callUpPeladaPlayersAction({ peladaOccurrenceId: id, userIds, slots });
-  }
-
   async function handleOpenVoting() {
     "use server";
     await openPeladaVotingAction({ peladaOccurrenceId: id });
@@ -154,14 +147,14 @@ export default async function PeladaRodadaDetailPage({ params }: { params: Promi
   return (
     <PageTransition className="space-y-6">
       <Link
-        href="/pelada/rodadas"
+        href="/pelada/encontros"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary"
       >
         <ArrowLeft className="size-4" />
-        Todas as rodadas
+        Todos os encontros
       </Link>
 
-      <PageHeader eyebrow="Pelada" title={occurrence.title} description="Estatísticas da rodada e votação de melhor em campo." />
+      <PageHeader eyebrow="Pelada" title={occurrence.title} description="Estatísticas do encontro e votação de melhor em campo." />
 
       <Card className="space-y-2 p-4">
         <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
@@ -202,7 +195,7 @@ export default async function PeladaRodadaDetailPage({ params }: { params: Promi
           <div>
             <h2 className="text-lg font-black text-foreground">Participantes</h2>
             <p className="text-sm text-muted-foreground">
-              Todos vêm marcados por padrão. Desmarque quem não participou desta rodada.
+              Todos vêm marcados por padrão. Desmarque quem não participou deste encontro.
             </p>
           </div>
           <ParticipantsSelector
@@ -213,26 +206,6 @@ export default async function PeladaRodadaDetailPage({ params }: { params: Promi
             }))}
             initialDeclinedUserIds={declinedUserIds}
             onSave={handleSaveParticipants}
-          />
-        </section>
-      )}
-
-      {isManager && (
-        <section className="space-y-3">
-          <h2 className="text-lg font-black text-foreground">Convocar jogadores</h2>
-          <CallUpSelector
-            members={members.map((m) => {
-              const callUp = occurrence.callUps.find((c) => c.userId === m.userId);
-              return {
-                userId: m.userId,
-                name: playerDisplayName(m.user),
-                imageUrl: m.user.profile?.imageUrl ?? null,
-                status: callUp?.status,
-              };
-            })}
-            initialSelectedUserIds={occurrence.callUps.map((c) => c.userId)}
-            initialSlots={occurrence.callUpSlots}
-            onSave={handleCallUpPlayers}
           />
         </section>
       )}

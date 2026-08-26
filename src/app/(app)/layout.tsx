@@ -33,36 +33,24 @@ export default async function AppLayout({
   // so if it doesn't match what we resolved here, ask the client to persist the correction.
   const syncActiveOrgId = activeOrg && activeOrg.id !== cookieOrgId ? activeOrg.id : null;
 
-  const [pendingInterestsCount, pendingCallUpsCount, { peladaCallUps, matchCallUps }] = await Promise.all([
+  const [pendingInterestsCount, pendingCallUpsCount, matchCallUps] = await Promise.all([
     activeOrg?.type === "TEAM" ? gameListingRepository.countPendingResponses(activeOrg.id) : Promise.resolve(0),
     activeOrg ? callUpRepository.countPendingForUserInOrg(session.id, activeOrg.id) : Promise.resolve(0),
     callUpRepository.listPendingForUserAcrossOrgs(session.id),
   ]);
 
-  const notifications: CallUpNotification[] = [
-    ...peladaCallUps.map((callUp) => ({
+  const notifications: CallUpNotification[] = matchCallUps.map((callUp) => {
+    const isHome = callUp.match.homeOrganizationId === callUp.organization.id;
+    const opponent = isHome ? callUp.match.awayOrganization?.name : callUp.match.homeOrganization.name;
+    return {
       id: callUp.id,
-      kind: "pelada" as const,
-      organizationId: callUp.peladaOccurrence.organizationId,
-      organizationName: callUp.peladaOccurrence.organization.name,
-      title: callUp.peladaOccurrence.title,
-      subtitle: formatListingDateTime(callUp.peladaOccurrence.scheduledAt),
-      href: `/pelada/rodadas/${callUp.peladaOccurrence.id}`,
-    })),
-    ...matchCallUps.map((callUp) => {
-      const isHome = callUp.match.homeOrganizationId === callUp.organization.id;
-      const opponent = isHome ? callUp.match.awayOrganization?.name : callUp.match.homeOrganization.name;
-      return {
-        id: callUp.id,
-        kind: "match" as const,
-        organizationId: callUp.organization.id,
-        organizationName: callUp.organization.name,
-        title: `vs ${opponent ?? callUp.match.opponentName ?? "Adversário"}`,
-        subtitle: formatListingDateTime(callUp.match.scheduledAt),
-        href: `/time/agenda/${callUp.match.id}`,
-      };
-    }),
-  ];
+      organizationId: callUp.organization.id,
+      organizationName: callUp.organization.name,
+      title: `vs ${opponent ?? callUp.match.opponentName ?? "Adversário"}`,
+      subtitle: formatListingDateTime(callUp.match.scheduledAt),
+      href: `/time/agenda/${callUp.match.id}`,
+    };
+  });
 
   return (
     <AppShell

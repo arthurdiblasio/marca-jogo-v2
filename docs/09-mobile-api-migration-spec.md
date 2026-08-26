@@ -51,7 +51,7 @@ Fonte: `prisma/schema.prisma`. Todos os IDs são `cuid()`. Datas em UTC (`DateTi
 | `InviteStatus` | `PENDING`, `ACCEPTED`, `DECLINED`, `CANCELLED`, `EXPIRED` |
 | `FinancialTransactionType` | `INCOME`, `EXPENSE` |
 | `FinancialTransactionStatus` | `PENDING`, `PAID`, `CANCELLED` |
-| `SportModality` | `FIELD_11`, `SOCIETY_7`, `SOCIETY_8`, `FUTSAL_5` |
+| `SportModality` | `FIELD_11`, `SOCIETY_7`, `SOCIETY_6`, `FUTSAL_5` |
 | `PreferredFoot` | `LEFT`, `RIGHT`, `BOTH` |
 | `GameListingStatus` | `OPEN`, `MATCHED`, `EXPIRED`, `CANCELLED` |
 | `GameListingResponseStatus` | `PENDING`, `ACCEPTED`, `DECLINED` |

@@ -18,15 +18,15 @@ export async function setPeladaParticipantsAction(input: SetPeladaParticipantsIn
 
   const occurrence = await peladaOccurrenceRepository.findById(data.peladaOccurrenceId);
   if (!occurrence) {
-    throw new Error("Rodada não encontrada.");
+    throw new Error("Encontro não encontrado.");
   }
 
   const membership = await requireOrgMembership(session.id, occurrence.organizationId);
   if (!MANAGER_ROLES.includes(membership.role)) {
-    throw new Error("Você não tem permissão para editar os participantes desta rodada.");
+    throw new Error("Você não tem permissão para editar os participantes deste encontro.");
   }
 
   await peladaOccurrenceRepository.setParticipants(data.peladaOccurrenceId, data.declinedUserIds);
 
-  revalidatePath(`/pelada/rodadas/${data.peladaOccurrenceId}`);
+  revalidatePath(`/pelada/encontros/${data.peladaOccurrenceId}`);
 }

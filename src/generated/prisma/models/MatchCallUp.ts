@@ -519,6 +519,10 @@ export type MatchCallUpUncheckedUpdateManyWithoutMatchNestedInput = {
   deleteMany?: Prisma.MatchCallUpScalarWhereInput | Prisma.MatchCallUpScalarWhereInput[]
 }
 
+export type EnumCallUpStatusFieldUpdateOperationsInput = {
+  set?: $Enums.CallUpStatus
+}
+
 export type MatchCallUpCreateWithoutUserInput = {
   id?: string
   status?: $Enums.CallUpStatus

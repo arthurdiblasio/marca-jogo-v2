@@ -17,33 +17,24 @@ export default async function ConvocacoesPage() {
     redirect("/dashboard");
   }
 
-  const { peladaCallUps, matchCallUps } = await callUpRepository.listPendingForUserInOrg(session.id, activeOrgId);
+  const matchCallUps = await callUpRepository.listPendingForUserInOrg(session.id, activeOrgId);
 
-  const items: CallUpResponseItem[] = [
-    ...peladaCallUps.map((callUp) => ({
+  const items: CallUpResponseItem[] = matchCallUps.map((callUp) => {
+    const isHome = callUp.match.homeOrganizationId === activeOrgId;
+    const opponent = isHome ? callUp.match.awayOrganization?.name : callUp.match.homeOrganization.name;
+    return {
       id: callUp.id,
-      kind: "pelada" as const,
-      title: callUp.peladaOccurrence.title,
-      subtitle: formatListingDateTime(callUp.peladaOccurrence.scheduledAt),
-    })),
-    ...matchCallUps.map((callUp) => {
-      const isHome = callUp.match.homeOrganizationId === activeOrgId;
-      const opponent = isHome ? callUp.match.awayOrganization?.name : callUp.match.homeOrganization.name;
-      return {
-        id: callUp.id,
-        kind: "match" as const,
-        title: `vs ${opponent ?? callUp.match.opponentName ?? "Adversário"}`,
-        subtitle: formatListingDateTime(callUp.match.scheduledAt),
-      };
-    }),
-  ];
+      title: `vs ${opponent ?? callUp.match.opponentName ?? "Adversário"}`,
+      subtitle: formatListingDateTime(callUp.match.scheduledAt),
+    };
+  });
 
   return (
     <PageTransition className="space-y-4">
       <PageHeader
         eyebrow="Convocações"
         title="Suas convocações"
-        description="Confirme ou recuse sua presença nas rodadas e jogos para os quais você foi convocado nesta organização."
+        description="Confirme ou recuse sua presença nos jogos para os quais você foi convocado nesta organização."
       />
 
       {items.length === 0 ? (

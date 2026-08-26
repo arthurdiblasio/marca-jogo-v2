@@ -18,12 +18,12 @@ export async function removePeladaPlayerStatAction(input: RemovePeladaPlayerStat
 
   const occurrence = await peladaOccurrenceRepository.findById(data.peladaOccurrenceId);
   if (!occurrence) {
-    throw new Error("Rodada não encontrada.");
+    throw new Error("Encontro não encontrado.");
   }
 
   const membership = await requireOrgMembership(session.id, occurrence.organizationId);
   if (!MANAGER_ROLES.includes(membership.role)) {
-    throw new Error("Você não tem permissão para editar as estatísticas desta rodada.");
+    throw new Error("Você não tem permissão para editar as estatísticas deste encontro.");
   }
 
   await peladaOccurrenceRepository.removePlayerStat({
@@ -32,5 +32,5 @@ export async function removePeladaPlayerStatAction(input: RemovePeladaPlayerStat
     guestPlayerId: data.kind === "guest" ? data.id : undefined,
   });
 
-  revalidatePath(`/pelada/rodadas/${data.peladaOccurrenceId}`);
+  revalidatePath(`/pelada/encontros/${data.peladaOccurrenceId}`);
 }

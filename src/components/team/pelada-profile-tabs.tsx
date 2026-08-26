@@ -7,7 +7,7 @@ import { Shield, Trophy, Users } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 const TABS = [
-  { href: "/pelada/rodadas", label: "Rodadas", icon: Trophy },
+  { href: "/pelada/encontros", label: "Encontros", icon: Trophy },
   { href: "/pelada/jogadores", label: "Jogadores", icon: Users },
   { href: "/pelada", label: "Perfil", icon: Shield },
 ] as const;

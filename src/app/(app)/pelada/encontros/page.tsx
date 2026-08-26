@@ -7,7 +7,7 @@ import { PageHeader } from "@/components/navigation/page-header";
 import { Card } from "@/components/ui/card";
 import { ComponentStateView } from "@/components/cards/component-state";
 import { PeladaProfileTabs } from "@/components/team/pelada-profile-tabs";
-import { CreateRodadaForm } from "@/components/pelada/create-rodada-form";
+import { CreateEncontroForm } from "@/components/pelada/create-encontro-form";
 import { requireAuth } from "@/shared/auth/require-auth";
 import { getActiveOrgId } from "@/shared/orgs/active-org-cookie";
 import { requireOrgMembership } from "@/shared/orgs/require-org-membership";
@@ -19,7 +19,7 @@ import { isVotingOpen } from "@/shared/voting/voting-window";
 
 const MANAGER_ROLES = ["OWNER", "ADMIN", "CAPTAIN"];
 
-export default async function PeladaRodadasPage() {
+export default async function PeladaEncontrosPage() {
   const session = await requireAuth();
 
   const activeOrgId = await getActiveOrgId();
@@ -44,14 +44,14 @@ export default async function PeladaRodadasPage() {
     <PageTransition className="space-y-6">
       <PageHeader
         eyebrow="Pelada"
-        title="Rodadas"
-        description="Gols, assistências, time vencedor e votação de melhor em campo de cada rodada."
+        title="Encontros"
+        description="Gols, assistências, time vencedor e votação de melhor em campo de cada encontro."
       />
 
       <PeladaProfileTabs />
 
       {isManager && (
-        <CreateRodadaForm
+        <CreateEncontroForm
           organizationId={activeOrgId}
           defaultLocation={organization.address ?? ""}
           defaultDate={nextDate}
@@ -59,13 +59,13 @@ export default async function PeladaRodadasPage() {
       )}
 
       {occurrences.length === 0 ? (
-        <ComponentStateView state="empty" emptyLabel="Nenhuma rodada registrada ainda" />
+        <ComponentStateView state="empty" emptyLabel="Nenhum encontro registrado ainda" />
       ) : (
         <div className="space-y-3">
           {occurrences.map((occurrence) => {
             const votingOpen = isVotingOpen(occurrence);
             return (
-              <Link key={occurrence.id} href={`/pelada/rodadas/${occurrence.id}`}>
+              <Link key={occurrence.id} href={`/pelada/encontros/${occurrence.id}`}>
                 <Card className="flex items-center justify-between gap-3 p-4 transition hover:border-muted-foreground/40">
                   <div className="min-w-0">
                     <p className="font-bold text-foreground">{occurrence.title}</p>

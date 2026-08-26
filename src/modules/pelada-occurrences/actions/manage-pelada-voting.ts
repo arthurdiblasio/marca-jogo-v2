@@ -16,7 +16,7 @@ async function requireOccurrenceManager(peladaOccurrenceId: string) {
   const session = await requireAuth();
   const occurrence = await peladaOccurrenceRepository.findById(peladaOccurrenceId);
   if (!occurrence) {
-    throw new Error("Rodada não encontrada.");
+    throw new Error("Encontro não encontrado.");
   }
 
   const membership = await requireOrgMembership(session.id, occurrence.organizationId);
@@ -34,7 +34,7 @@ export async function openPeladaVotingAction(input: z.infer<typeof schema>) {
   const now = new Date();
   await peladaOccurrenceRepository.openVoting(data.peladaOccurrenceId, now, computeVotingClosesAt(now));
 
-  revalidatePath(`/pelada/rodadas/${data.peladaOccurrenceId}`);
+  revalidatePath(`/pelada/encontros/${data.peladaOccurrenceId}`);
 }
 
 export async function closePeladaVotingAction(input: z.infer<typeof schema>) {
@@ -43,5 +43,5 @@ export async function closePeladaVotingAction(input: z.infer<typeof schema>) {
 
   await peladaOccurrenceRepository.closeVoting(data.peladaOccurrenceId, new Date());
 
-  revalidatePath(`/pelada/rodadas/${data.peladaOccurrenceId}`);
+  revalidatePath(`/pelada/encontros/${data.peladaOccurrenceId}`);
 }
