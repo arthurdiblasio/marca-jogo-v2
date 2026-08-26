@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import { Shield } from "lucide-react";
-
+import { Logo } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
 
 export function Navbar() {
@@ -12,13 +11,7 @@ export function Navbar() {
           href="/"
           className="flex items-center gap-3"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-600">
-            <Shield className="h-5 w-5 text-white" />
-          </div>
-
-          <span className="text-lg font-extrabold text-foreground">
-            Chama Time
-          </span>
+          <Logo className="h-8 w-auto" />
         </Link>
 
         <div className="flex items-center gap-2">

@@ -5,6 +5,8 @@ import {
   CircleDot,
 } from "lucide-react";
 
+import { Logo } from "@/components/brand/logo";
+
 export function FootballLoading({
   overlay = false,
 }: {
@@ -37,9 +39,7 @@ export function FootballLoading({
       }
     >
       <div className="mb-8">
-        <h1 className="text-3xl font-extrabold">
-          Chama Time
-        </h1>
+        <Logo className="h-10 w-auto" />
       </div>
 
       <div

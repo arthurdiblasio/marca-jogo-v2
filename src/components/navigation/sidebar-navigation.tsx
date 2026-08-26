@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Bell, LogOut, Search, Trophy } from "lucide-react";
+import { Bell, LogOut, Search } from "lucide-react";
 
+import { Logo } from "@/components/brand/logo";
 import { OrganizationSwitcher } from "@/components/navigation/organization-switcher";
 import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -30,12 +31,7 @@ export function SidebarNavigation({ pendingInterestsCount = 0 }: { pendingIntere
     <aside className="fixed left-0 top-0 z-30 hidden h-screen w-64 border-r bg-card p-3 lg:block">
       <div className="flex h-full flex-col">
         <div className="mb-4 flex items-center justify-between gap-3 border-b pb-3">
-          <div className="flex items-center gap-2 text-lg font-black">
-            <span className="grid size-9 place-items-center rounded-md bg-primary text-primary-foreground">
-              <Trophy className="size-5" />
-            </span>
-            Chama Time
-          </div>
+          <Logo className="h-8 w-auto" />
           <div className="flex gap-1">
             <Button size="icon" variant="ghost" aria-label="Buscar">
               <Search className="size-5" />
